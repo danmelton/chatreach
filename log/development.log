@@ -1,0 +1,755 @@
+  [1m[36mSQL (42.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (2.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36mSQL (2.6ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+Migrating to ClearanceCreateUsers (20090816154734)
+  [1m[36mSQL (0.6ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255), "encrypted_password" varchar(128), "salt" varchar(128), "token" varchar(128), "token_expires_at" datetime, "email_confirmed" boolean DEFAULT 'f' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("users")
+  [1m[36mSQL (0.1ms)[0m  [1mCREATE INDEX "index_users_on_id_and_token" ON "users" ("id", "token")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_id_and_token')[0m
+  [1m[35mSQL (0.1ms)[0m  CREATE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_email')
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_id_and_token')[0m
+  [1m[35mSQL (0.1ms)[0m  CREATE INDEX "index_users_on_token" ON "users" ("token")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090816154734')[0m
+Migrating to CreateAccounts (20090816171425)
+  [1m[35mSQL (0.5ms)[0m  CREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090816171425')[0m
+Migrating to CreateBrands (20090816171530)
+  [1m[35mSQL (0.6ms)[0m  CREATE TABLE "brands" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090816171530')[0m
+Migrating to CreateAccountBrands (20090816171742)
+  [1m[35mSQL (0.4ms)[0m  CREATE TABLE "account_brands" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090816171742')[0m
+Migrating to AddAccountIdToUsers (20090816180726)
+  [1m[35mSQL (0.7ms)[0m  ALTER TABLE "users" ADD "account_id" integer
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090816180726')[0m
+Migrating to CreateUprofiles (20090816210255)
+  [1m[35mSQL (0.5ms)[0m  CREATE TABLE "uprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" integer, "country" varchar(255), "phone" integer, "mobile" integer, "pager" integer, "about" varchar(255), "first_name" varchar(255), "last_name" varchar(255), "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090816210255')[0m
+Migrating to AddNameToAccounts (20090816213347)
+  [1m[35mSQL (0.5ms)[0m  ALTER TABLE "accounts" ADD "name" varchar(255)
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090816213347')[0m
+Migrating to CreateOprofiles (20090816221514)
+  [1m[35mSQL (0.5ms)[0m  CREATE TABLE "oprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" integer, "country" varchar(255), "phone" integer, "mobile" integer, "pager" integer, "about" varchar(255), "sms_about" varchar(255), "account_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090816221514')[0m
+Migrating to CreateCategories (20090819170041)
+  [1m[35mSQL (0.6ms)[0m  CREATE TABLE "categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090819170041')[0m
+Migrating to CreateBrandCategories (20090819170106)
+  [1m[35mSQL (0.4ms)[0m  CREATE TABLE "brand_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "category_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090819170106')[0m
+Migrating to ActsAsTaggableOnMigration (20090819170513)
+  [1m[35mSQL (0.5ms)[0m  CREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255)) 
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE TABLE "taggings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "taggable_id" integer, "tagger_id" integer, "tagger_type" varchar(255), "taggable_type" varchar(255), "context" varchar(255), "created_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("taggings")
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE INDEX "index_taggings_on_tag_id" ON "taggings" ("tag_id")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("taggings")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_taggings_on_tag_id')[0m
+  [1m[35mSQL (0.2ms)[0m  CREATE INDEX "index_taggings_on_taggable_id_and_taggable_type_and_context" ON "taggings" ("taggable_id", "taggable_type", "context")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090819170513')[0m
+Migrating to CreateArticles (20090819171236)
+  [1m[35mSQL (0.5ms)[0m  CREATE TABLE "articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "content" text, "intro" text, "published" boolean, "account_id" integer, "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090819171236')[0m
+Migrating to CreateArticleBrands (20090819172359)
+  [1m[35mSQL (0.4ms)[0m  CREATE TABLE "article_brands" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "article_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090819172359')[0m
+Migrating to CreateArticleCategories (20090819185425)
+  [1m[35mSQL (0.5ms)[0m  CREATE TABLE "article_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "article_id" integer, "category_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090819185425')[0m
+Migrating to RemoveAccountId (20090819191938)
+  [1m[35mSQL (0.7ms)[0m  CREATE TEMPORARY TABLE "altered_articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "content" text, "intro" text, "published" boolean, "account_id" integer, "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("articles")[0m
+  [1m[35mSQL (0.8ms)[0m  DROP TABLE "articles"
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TABLE "articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "content" text, "intro" text, "published" boolean, "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("altered_articles")
+  [1m[36mSQL (0.5ms)[0m  [1mDROP TABLE "altered_articles"[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090819191938')
+Migrating to CreateAccountArticles (20090819192242)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "account_articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "article_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090819192242')
+Migrating to AddAccountIdToCategories (20090824170551)
+  [1m[36mSQL (0.5ms)[0m  [1mALTER TABLE "categories" ADD "account_id" integer DEFAULT '1'[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090824170551')
+Migrating to AddAdminToUsers (20090824185750)
+  [1m[36mSQL (0.6ms)[0m  [1mALTER TABLE "users" ADD "admin" boolean DEFAULT 'f'[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090824185750')
+Migrating to CreateAccountOrganizations (20090824192325)
+  [1m[36mSQL (0.6ms)[0m  [1mCREATE TABLE "account_organizations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "oprofile_id" integer, "brand_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.4ms)[0m  ALTER TABLE "oprofiles" ADD "name" varchar(255)
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090824192325')[0m
+Migrating to CreateReferrals (20090826184014)
+  [1m[35mSQL (0.5ms)[0m  CREATE TABLE "referrals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "code" varchar(255), "brand_id" integer, "account_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090826184014')[0m
+Migrating to CreateBrandSettings (20090826200637)
+  [1m[35mSQL (0.6ms)[0m  CREATE TABLE "brand_settings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "name" varchar(255), "setting" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090826200637')[0m
+Migrating to CreateConversations (20090826210732)
+  [1m[35mSQL (0.6ms)[0m  CREATE TABLE "conversations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "user_id" integer, "transcript" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090826210732')[0m
+Migrating to RemoveIntroFromArticles (20090826220019)
+  [1m[35mSQL (0.4ms)[0m  CREATE TEMPORARY TABLE "altered_articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "content" text, "intro" text, "published" boolean, "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("articles")[0m
+  [1m[35mSQL (0.5ms)[0m  DROP TABLE "articles"
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TABLE "articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "content" text, "published" boolean, "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("altered_articles")
+  [1m[36mSQL (0.2ms)[0m  [1mDROP TABLE "altered_articles"[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090826220019')
+Migrating to AddUserIdToAccounts (20090826221805)
+  [1m[36mSQL (0.7ms)[0m  [1mALTER TABLE "accounts" ADD "user_id" integer[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090826221805')
+Migrating to CreateTextContents (20090827223338)
+  [1m[36mSQL (0.6ms)[0m  [1mCREATE TABLE "text_contents" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "response" varchar(255), "user_id" integer, "published" boolean, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090827223338')
+Migrating to CreateAccountTexts (20090827224410)
+  [1m[36mSQL (0.7ms)[0m  [1mCREATE TABLE "account_texts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "text_content_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090827224410')
+Migrating to CreateCategoryTexts (20090827231149)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "category_texts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "category_id" integer, "text_content_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090827231149')
+Migrating to CreateFeeds (20090831185931)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "feed_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "summary" text, "url" varchar(255), "published_at" date, "guid" varchar(255), "feed_source_id" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090831185931')
+Migrating to CreateFeedSources (20090831191600)
+  [1m[36mSQL (0.7ms)[0m  [1mCREATE TABLE "feed_sources" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "url" varchar(255), "feed_type" varchar(255), "brand_id" integer, "source" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090831191600')
+Migrating to CreateTextSessions (20090904194435)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "text_sessions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "phone" integer, "carrier_id" integer, "chatter_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090904194435')
+Migrating to CreateTextHistories (20090904194556)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "text_histories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text_session_id" integer, "tag_id" integer, "text" varchar(255), "response" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090904194556')
+Migrating to CreateChatters (20090904194742)
+  [1m[36mSQL (0.6ms)[0m  [1mCREATE TABLE "chatters" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "demographic_id" integer, "profile_id" integer, "social_id" integer, "initiated" boolean, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090904194742')
+Migrating to CreateTagTypos (20090904194912)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "tag_typos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "typo" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090904194912')
+Migrating to CreateCarriers (20090904195516)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "carriers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090904195516')
+Migrating to AddSessionToTextSessions (20090904204458)
+  [1m[36mSQL (0.7ms)[0m  [1mALTER TABLE "text_sessions" ADD "session" varchar(255)[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090904204458')
+Migrating to CreateChatterProfiles (20090904214202)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "chatter_profiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "birthday" date, "age" integer, "gender" varchar(255), "phone" varchar(255), "city" varchar(255), "state" varchar(255), "zipcode" integer, "country" varchar(255), "first_name" varchar(255), "last_name" varchar(255), "chatter_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090904214202')
+Migrating to CreateCredits (20090904215322)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "credits" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "cents" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090904215322')
+Migrating to AddGeomToOprofiles (20090909171909)
+  [1m[36mSQL (0.2ms)[0m  [1mALTER TABLE "oprofiles" ADD "geom" point NOT NULL[0m
+SQLite3::SQLException: Cannot add a NOT NULL column with default value NULL: ALTER TABLE "oprofiles" ADD "geom" point NOT NULL
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/danielmelton/Documents/development/railsapps/sext-3/config/environment.rb:5)
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (2.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36mSQL (2.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+Migrating to ClearanceCreateUsers (20090816154734)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255), "encrypted_password" varchar(128), "salt" varchar(128), "token" varchar(128), "token_expires_at" datetime, "email_confirmed" boolean DEFAULT 'f' NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36mSQL (0.1ms)[0m  [1mCREATE INDEX "index_users_on_id_and_token" ON "users" ("id", "token")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_id_and_token')[0m
+  [1m[35mSQL (0.1ms)[0m  CREATE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_email')
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_id_and_token')[0m
+  [1m[35mSQL (0.1ms)[0m  CREATE INDEX "index_users_on_token" ON "users" ("token")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090816154734')[0m
+Migrating to CreateAccounts (20090816171425)
+  [1m[35mSQL (0.4ms)[0m  CREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090816171425')[0m
+Migrating to CreateBrands (20090816171530)
+  [1m[35mSQL (0.4ms)[0m  CREATE TABLE "brands" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090816171530')[0m
+Migrating to CreateAccountBrands (20090816171742)
+  [1m[35mSQL (0.4ms)[0m  CREATE TABLE "account_brands" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090816171742')[0m
+Migrating to AddAccountIdToUsers (20090816180726)
+  [1m[35mSQL (0.5ms)[0m  ALTER TABLE "users" ADD "account_id" integer
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090816180726')[0m
+Migrating to CreateUprofiles (20090816210255)
+  [1m[35mSQL (0.5ms)[0m  CREATE TABLE "uprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" integer, "country" varchar(255), "phone" integer, "mobile" integer, "pager" integer, "about" varchar(255), "first_name" varchar(255), "last_name" varchar(255), "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090816210255')[0m
+Migrating to AddNameToAccounts (20090816213347)
+  [1m[35mSQL (0.6ms)[0m  ALTER TABLE "accounts" ADD "name" varchar(255)
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090816213347')[0m
+Migrating to CreateOprofiles (20090816221514)
+  [1m[35mSQL (0.5ms)[0m  CREATE TABLE "oprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" integer, "country" varchar(255), "phone" integer, "mobile" integer, "pager" integer, "about" varchar(255), "sms_about" varchar(255), "account_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090816221514')[0m
+Migrating to CreateCategories (20090819170041)
+  [1m[35mSQL (0.5ms)[0m  CREATE TABLE "categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090819170041')[0m
+Migrating to CreateBrandCategories (20090819170106)
+  [1m[35mSQL (0.5ms)[0m  CREATE TABLE "brand_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "category_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090819170106')[0m
+Migrating to ActsAsTaggableOnMigration (20090819170513)
+  [1m[35mSQL (0.9ms)[0m  CREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255)) 
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TABLE "taggings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "taggable_id" integer, "tagger_id" integer, "tagger_type" varchar(255), "taggable_type" varchar(255), "context" varchar(255), "created_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("taggings")
+  [1m[36mSQL (0.1ms)[0m  [1mCREATE INDEX "index_taggings_on_tag_id" ON "taggings" ("tag_id")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("taggings")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_taggings_on_tag_id')[0m
+  [1m[35mSQL (0.2ms)[0m  CREATE INDEX "index_taggings_on_taggable_id_and_taggable_type_and_context" ON "taggings" ("taggable_id", "taggable_type", "context")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090819170513')[0m
+Migrating to CreateArticles (20090819171236)
+  [1m[35mSQL (0.5ms)[0m  CREATE TABLE "articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "content" text, "intro" text, "published" boolean, "account_id" integer, "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090819171236')[0m
+Migrating to CreateArticleBrands (20090819172359)
+  [1m[35mSQL (0.5ms)[0m  CREATE TABLE "article_brands" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "article_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090819172359')[0m
+Migrating to CreateArticleCategories (20090819185425)
+  [1m[35mSQL (0.5ms)[0m  CREATE TABLE "article_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "article_id" integer, "category_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090819185425')[0m
+Migrating to RemoveAccountId (20090819191938)
+  [1m[35mSQL (0.6ms)[0m  CREATE TEMPORARY TABLE "altered_articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "content" text, "intro" text, "published" boolean, "account_id" integer, "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("articles")[0m
+  [1m[35mSQL (0.5ms)[0m  DROP TABLE "articles"
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TABLE "articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "content" text, "intro" text, "published" boolean, "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("altered_articles")
+  [1m[36mSQL (0.4ms)[0m  [1mDROP TABLE "altered_articles"[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090819191938')
+Migrating to CreateAccountArticles (20090819192242)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "account_articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "article_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090819192242')
+Migrating to AddAccountIdToCategories (20090824170551)
+  [1m[36mSQL (0.5ms)[0m  [1mALTER TABLE "categories" ADD "account_id" integer DEFAULT '1'[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090824170551')
+Migrating to AddAdminToUsers (20090824185750)
+  [1m[36mSQL (0.5ms)[0m  [1mALTER TABLE "users" ADD "admin" boolean DEFAULT 'f'[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090824185750')
+Migrating to CreateAccountOrganizations (20090824192325)
+  [1m[36mSQL (0.4ms)[0m  [1mCREATE TABLE "account_organizations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "oprofile_id" integer, "brand_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  ALTER TABLE "oprofiles" ADD "name" varchar(255)
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090824192325')[0m
+Migrating to CreateReferrals (20090826184014)
+  [1m[35mSQL (0.5ms)[0m  CREATE TABLE "referrals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "code" varchar(255), "brand_id" integer, "account_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090826184014')[0m
+Migrating to CreateBrandSettings (20090826200637)
+  [1m[35mSQL (0.5ms)[0m  CREATE TABLE "brand_settings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "name" varchar(255), "setting" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090826200637')[0m
+Migrating to CreateConversations (20090826210732)
+  [1m[35mSQL (0.5ms)[0m  CREATE TABLE "conversations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "user_id" integer, "transcript" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090826210732')[0m
+Migrating to RemoveIntroFromArticles (20090826220019)
+  [1m[35mSQL (0.4ms)[0m  CREATE TEMPORARY TABLE "altered_articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "content" text, "intro" text, "published" boolean, "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("articles")[0m
+  [1m[35mSQL (0.5ms)[0m  DROP TABLE "articles"
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TABLE "articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "content" text, "published" boolean, "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("altered_articles")
+  [1m[36mSQL (0.2ms)[0m  [1mDROP TABLE "altered_articles"[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090826220019')
+Migrating to AddUserIdToAccounts (20090826221805)
+  [1m[36mSQL (0.5ms)[0m  [1mALTER TABLE "accounts" ADD "user_id" integer[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090826221805')
+Migrating to CreateTextContents (20090827223338)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "text_contents" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "response" varchar(255), "user_id" integer, "published" boolean, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090827223338')
+Migrating to CreateAccountTexts (20090827224410)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "account_texts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "text_content_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090827224410')
+Migrating to CreateCategoryTexts (20090827231149)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "category_texts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "category_id" integer, "text_content_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090827231149')
+Migrating to CreateFeeds (20090831185931)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "feed_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "summary" text, "url" varchar(255), "published_at" date, "guid" varchar(255), "feed_source_id" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090831185931')
+Migrating to CreateFeedSources (20090831191600)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "feed_sources" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "url" varchar(255), "feed_type" varchar(255), "brand_id" integer, "source" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090831191600')
+Migrating to CreateTextSessions (20090904194435)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "text_sessions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "phone" integer, "carrier_id" integer, "chatter_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090904194435')
+Migrating to CreateTextHistories (20090904194556)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "text_histories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text_session_id" integer, "tag_id" integer, "text" varchar(255), "response" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090904194556')
+Migrating to CreateChatters (20090904194742)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "chatters" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "demographic_id" integer, "profile_id" integer, "social_id" integer, "initiated" boolean, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090904194742')
+Migrating to CreateTagTypos (20090904194912)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "tag_typos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "typo" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090904194912')
+Migrating to CreateCarriers (20090904195516)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "carriers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090904195516')
+Migrating to AddSessionToTextSessions (20090904204458)
+  [1m[36mSQL (1.3ms)[0m  [1mALTER TABLE "text_sessions" ADD "session" varchar(255)[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090904204458')
+Migrating to CreateChatterProfiles (20090904214202)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "chatter_profiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "birthday" date, "age" integer, "gender" varchar(255), "phone" varchar(255), "city" varchar(255), "state" varchar(255), "zipcode" integer, "country" varchar(255), "first_name" varchar(255), "last_name" varchar(255), "chatter_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090904214202')
+Migrating to CreateCredits (20090904215322)
+  [1m[36mSQL (0.6ms)[0m  [1mCREATE TABLE "credits" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "cents" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090904215322')
+Migrating to AddGeomToOprofiles (20090909171909)
+  [1m[36mSQL (0.2ms)[0m  [1mALTER TABLE "oprofiles" ADD "geom" point NOT NULL[0m
+SQLite3::SQLException: Cannot add a NOT NULL column with default value NULL: ALTER TABLE "oprofiles" ADD "geom" point NOT NULL
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/danielmelton/Documents/development/railsapps/sext-3/config/environment.rb:5)
+  [1m[36mSQL (1.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to ClearanceCreateUsers (20090816154734)
+Migrating to CreateAccounts (20090816171425)
+Migrating to CreateBrands (20090816171530)
+Migrating to CreateAccountBrands (20090816171742)
+Migrating to AddAccountIdToUsers (20090816180726)
+Migrating to CreateUprofiles (20090816210255)
+Migrating to AddNameToAccounts (20090816213347)
+Migrating to CreateOprofiles (20090816221514)
+Migrating to CreateCategories (20090819170041)
+Migrating to CreateBrandCategories (20090819170106)
+Migrating to ActsAsTaggableOnMigration (20090819170513)
+Migrating to CreateArticles (20090819171236)
+Migrating to CreateArticleBrands (20090819172359)
+Migrating to CreateArticleCategories (20090819185425)
+Migrating to RemoveAccountId (20090819191938)
+Migrating to CreateAccountArticles (20090819192242)
+Migrating to AddAccountIdToCategories (20090824170551)
+Migrating to AddAdminToUsers (20090824185750)
+Migrating to CreateAccountOrganizations (20090824192325)
+Migrating to CreateReferrals (20090826184014)
+Migrating to CreateBrandSettings (20090826200637)
+Migrating to CreateConversations (20090826210732)
+Migrating to RemoveIntroFromArticles (20090826220019)
+Migrating to AddUserIdToAccounts (20090826221805)
+Migrating to CreateTextContents (20090827223338)
+Migrating to CreateAccountTexts (20090827224410)
+Migrating to CreateCategoryTexts (20090827231149)
+Migrating to CreateFeeds (20090831185931)
+Migrating to CreateFeedSources (20090831191600)
+Migrating to CreateTextSessions (20090904194435)
+Migrating to CreateTextHistories (20090904194556)
+Migrating to CreateChatters (20090904194742)
+Migrating to CreateTagTypos (20090904194912)
+Migrating to CreateCarriers (20090904195516)
+Migrating to AddSessionToTextSessions (20090904204458)
+Migrating to CreateChatterProfiles (20090904214202)
+Migrating to CreateCredits (20090904215322)
+Migrating to AddGeomToOprofiles (20090909171909)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.6ms)[0m  [1mALTER TABLE "oprofiles" ADD "geom" point[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090909171909')
+Migrating to AddTextTypeToTextHistories (20090909195157)
+  [1m[36mSQL (0.7ms)[0m  [1mALTER TABLE "text_histories" ADD "text_type" varchar(255)[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090909195157')
+Migrating to AddCarrieridToCarriers (20090911144049)
+  [1m[36mSQL (0.5ms)[0m  [1mALTER TABLE "carriers" ADD "carrierid" varchar(255)[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090911144049')
+Migrating to AddCustodialIdToOprofiles (20090914140217)
+  [1m[36mSQL (0.5ms)[0m  [1mALTER TABLE "oprofiles" ADD "custodial_id" integer[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090914140217')
+Migrating to AddCodeToAccounts (20090914160511)
+  [1m[36mSQL (0.5ms)[0m  [1mALTER TABLE "accounts" ADD "code" varchar(255)[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090914160511')
+Migrating to AddWebsiteToOprofiles (20090914183120)
+  [1m[36mSQL (0.6ms)[0m  [1mALTER TABLE "oprofiles" ADD "website" varchar(255)[0m
+  [1m[35mSQL (0.2ms)[0m  ALTER TABLE "oprofiles" ADD "email" varchar(255)
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20090914183120')[0m
+Migrating to ChangeSettingsToText (20090915182050)
+  [1m[35mSQL (0.6ms)[0m  CREATE TEMPORARY TABLE "altered_brand_settings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "name" varchar(255), "setting" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("brand_settings")[0m
+  [1m[35mSQL (0.5ms)[0m  DROP TABLE "brand_settings"
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE TABLE "brand_settings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "name" varchar(255), "setting" text(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("altered_brand_settings")
+  [1m[36mSQL (0.5ms)[0m  [1mDROP TABLE "altered_brand_settings"[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090915182050')
+Migrating to ClearanceUpdateUsers (20090921151142)
+  [1m[36mSQL (0.6ms)[0m  [1mALTER TABLE "users" ADD "confirmation_token" varchar(128)[0m
+  [1m[35mSQL (0.2ms)[0m  ALTER TABLE "users" ADD "remember_token" varchar(128)
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_token')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_info('index_users_on_id_and_token')
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE INDEX "index_users_on_id_and_confirmation_token" ON "users" ("id", "confirmation_token")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_id_and_confirmation_token')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_token')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_info('index_users_on_id_and_token')
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE INDEX "index_users_on_remember_token" ON "users" ("remember_token")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090921151142')
+Migrating to CreateVideos (20090930173743)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "videos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "video_id" varchar(255), "name" varchar(255), "thumbnail" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090930173743')
+Migrating to CreateBrandVideos (20090930201535)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "brand_videos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "video_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20090930201535')
+Migrating to AddAuthorToFeedSources (20091008153447)
+  [1m[36mSQL (0.6ms)[0m  [1mALTER TABLE "feed_sources" ADD "author" varchar(255)[0m
+  [1m[35mSQL (0.3ms)[0m  CREATE TEMPORARY TABLE "altered_feed_sources" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "url" varchar(255), "source_url" varchar(255), "brand_id" integer, "source" varchar(255), "created_at" datetime, "updated_at" datetime, "author" varchar(255)) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("feed_sources")[0m
+  [1m[35mSQL (0.4ms)[0m  DROP TABLE "feed_sources"
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE TABLE "feed_sources" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "url" varchar(255), "source_url" varchar(255), "brand_id" integer, "source" varchar(255), "created_at" datetime, "updated_at" datetime, "author" varchar(255)) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("altered_feed_sources")
+  [1m[36mSQL (0.2ms)[0m  [1mDROP TABLE "altered_feed_sources"[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20091008153447')
+Migrating to CreateProfileTypes (20091009163409)
+  [1m[36mSQL (0.7ms)[0m  [1mCREATE TABLE "profile_types" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "thumbnail" varchar(255), "url" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20091009163409')
+Migrating to AddSuperAdminToUsers (20091009163430)
+  [1m[36mSQL (0.7ms)[0m  [1mALTER TABLE "users" ADD "super" boolean[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20091009163430')
+Migrating to AddIndexes (20091014171728)
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("videos")[0m
+  [1m[35mSQL (0.4ms)[0m  CREATE INDEX "index_videos_on_id" ON "videos" ("id")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("videos")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_videos_on_id')
+  [1m[36mSQL (0.1ms)[0m  [1mCREATE INDEX "index_videos_on_name" ON "videos" ("name")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("articles")
+  [1m[36mSQL (0.1ms)[0m  [1mCREATE INDEX "index_articles_on_id" ON "articles" ("id")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("articles")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_articles_on_id')[0m
+  [1m[35mSQL (0.2ms)[0m  CREATE INDEX "index_articles_on_title" ON "articles" ("title")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("feed_entries")[0m
+  [1m[35mSQL (0.1ms)[0m  CREATE INDEX "index_feed_entries_on_id" ON "feed_entries" ("id")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20091014171728')[0m
+Migrating to CreateBrandTags (20091015154811)
+  [1m[35mSQL (0.5ms)[0m  CREATE TABLE "brand_tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "brand_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20091015154811')[0m
+Migrating to AddImageToProfileType (20091016162447)
+  [1m[35mSQL (0.6ms)[0m  ALTER TABLE "profile_types" ADD "content_type" varchar(255)
+  [1m[36mSQL (0.2ms)[0m  [1mALTER TABLE "profile_types" ADD "filename" varchar(255)[0m
+  [1m[35mSQL (0.2ms)[0m  ALTER TABLE "profile_types" ADD "size" integer
+  [1m[36mSQL (0.2ms)[0m  [1mALTER TABLE "profile_types" ADD "width" integer[0m
+  [1m[35mSQL (0.2ms)[0m  ALTER TABLE "profile_types" ADD "height" integer
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20091016162447')[0m
+Migrating to CreateProfiles (20091016165020)
+  [1m[35mSQL (0.7ms)[0m  CREATE TABLE "profiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "username" varchar(255), "password" varchar(255), "profile_type_id" integer, "profile_url" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20091016165020')[0m
+Migrating to CreateFaqs (20091020135344)
+  [1m[35mSQL (0.6ms)[0m  CREATE TABLE "faqs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "user_id" integer, "content" text, "title" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20091020135344')[0m
+Migrating to CreateHelps (20091026162757)
+  [1m[35mSQL (0.5ms)[0m  CREATE TABLE "helps" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "user_id" integer, "content" text, "title" varchar(255), "feature" boolean, "published" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20091026162757')[0m
+Migrating to CreateBlogs (20091102183715)
+  [1m[35mSQL (0.5ms)[0m  CREATE TABLE "blogs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "title" varchar(255), "content" text, "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20091102183715')[0m
+Migrating to AlterPhoneOnTextSession (20091117163436)
+  [1m[35mSQL (0.3ms)[0m  CREATE TEMPORARY TABLE "altered_text_sessions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "phone" integer, "carrier_id" integer, "chatter_id" integer, "created_at" datetime, "updated_at" datetime, "session" varchar(255)) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("text_sessions")[0m
+  [1m[35mSQL (0.5ms)[0m  DROP TABLE "text_sessions"
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE TABLE "text_sessions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "phone" varchar(255), "carrier_id" integer, "chatter_id" integer, "created_at" datetime, "updated_at" datetime, "session" varchar(255)) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("altered_text_sessions")
+  [1m[36mSQL (0.3ms)[0m  [1mDROP TABLE "altered_text_sessions"[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20091117163436')
+Migrating to CreateSessionPowerons (20091118203542)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "session_powerons" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20091118203542')
+Migrating to CreateSessionVideos (20091118204354)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "session_videos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "video_id" integer, "start_time" time, "end_time" time, "referral_id" integer, "session_poweron_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20091118204354')
+Migrating to AddReferralIdToSessionPoweron (20091120153256)
+  [1m[36mSQL (0.5ms)[0m  [1mALTER TABLE "session_powerons" ADD "referral_id" integer[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20091120153256')
+Migrating to AddPublishedAtToBlogs (20091130150100)
+  [1m[36mSQL (0.6ms)[0m  [1mALTER TABLE "blogs" ADD "published_at" datetime[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20091130150100')
+Migrating to AlterPhoneOnProfiles (20091203204135)
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE TEMPORARY TABLE "altered_oprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" integer, "country" varchar(255), "phone" integer, "mobile" integer, "pager" integer, "about" varchar(255), "sms_about" varchar(255), "account_id" integer, "created_at" datetime, "updated_at" datetime, "name" varchar(255), "geom" integer, "custodial_id" integer, "website" varchar(255), "email" varchar(255)) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("oprofiles")
+  [1m[36mSQL (0.6ms)[0m  [1mDROP TABLE "oprofiles"[0m
+  [1m[35mSQL (0.4ms)[0m  CREATE TABLE "oprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" integer, "country" varchar(255), "phone" varchar(255), "mobile" integer, "pager" integer, "about" varchar(255), "sms_about" varchar(255), "account_id" integer, "created_at" datetime, "updated_at" datetime, "name" varchar(255), "geom" integer, "custodial_id" integer, "website" varchar(255), "email" varchar(255)) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_oprofiles")[0m
+  [1m[35mSQL (0.3ms)[0m  DROP TABLE "altered_oprofiles"
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TEMPORARY TABLE "altered_oprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" integer, "country" varchar(255), "phone" varchar(255), "mobile" integer, "pager" integer, "about" varchar(255), "sms_about" varchar(255), "account_id" integer, "created_at" datetime, "updated_at" datetime, "name" varchar(255), "geom" integer, "custodial_id" integer, "website" varchar(255), "email" varchar(255)) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("oprofiles")
+  [1m[36mSQL (0.3ms)[0m  [1mDROP TABLE "oprofiles"[0m
+  [1m[35mSQL (0.3ms)[0m  CREATE TABLE "oprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" integer, "country" varchar(255), "phone" varchar(255), "mobile" varchar(255), "pager" integer, "about" varchar(255), "sms_about" varchar(255), "account_id" integer, "created_at" datetime, "updated_at" datetime, "name" varchar(255), "geom" integer, "custodial_id" integer, "website" varchar(255), "email" varchar(255)) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_oprofiles")[0m
+  [1m[35mSQL (0.3ms)[0m  DROP TABLE "altered_oprofiles"
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TEMPORARY TABLE "altered_oprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" integer, "country" varchar(255), "phone" varchar(255), "mobile" varchar(255), "pager" integer, "about" varchar(255), "sms_about" varchar(255), "account_id" integer, "created_at" datetime, "updated_at" datetime, "name" varchar(255), "geom" integer, "custodial_id" integer, "website" varchar(255), "email" varchar(255)) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("oprofiles")
+  [1m[36mSQL (0.3ms)[0m  [1mDROP TABLE "oprofiles"[0m
+  [1m[35mSQL (0.3ms)[0m  CREATE TABLE "oprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" integer, "country" varchar(255), "phone" varchar(255), "mobile" varchar(255), "pager" varchar(255), "about" varchar(255), "sms_about" varchar(255), "account_id" integer, "created_at" datetime, "updated_at" datetime, "name" varchar(255), "geom" integer, "custodial_id" integer, "website" varchar(255), "email" varchar(255)) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_oprofiles")[0m
+  [1m[35mSQL (0.3ms)[0m  DROP TABLE "altered_oprofiles"
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TEMPORARY TABLE "altered_uprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" integer, "country" varchar(255), "phone" integer, "mobile" integer, "pager" integer, "about" varchar(255), "first_name" varchar(255), "last_name" varchar(255), "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("uprofiles")
+  [1m[36mSQL (0.3ms)[0m  [1mDROP TABLE "uprofiles"[0m
+  [1m[35mSQL (0.3ms)[0m  CREATE TABLE "uprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" integer, "country" varchar(255), "phone" varchar(255), "mobile" integer, "pager" integer, "about" varchar(255), "first_name" varchar(255), "last_name" varchar(255), "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_uprofiles")[0m
+  [1m[35mSQL (0.2ms)[0m  DROP TABLE "altered_uprofiles"
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TEMPORARY TABLE "altered_uprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" integer, "country" varchar(255), "phone" varchar(255), "mobile" integer, "pager" integer, "about" varchar(255), "first_name" varchar(255), "last_name" varchar(255), "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("uprofiles")
+  [1m[36mSQL (0.3ms)[0m  [1mDROP TABLE "uprofiles"[0m
+  [1m[35mSQL (0.2ms)[0m  CREATE TABLE "uprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" integer, "country" varchar(255), "phone" varchar(255), "mobile" varchar(255), "pager" integer, "about" varchar(255), "first_name" varchar(255), "last_name" varchar(255), "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_uprofiles")[0m
+  [1m[35mSQL (0.3ms)[0m  DROP TABLE "altered_uprofiles"
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TEMPORARY TABLE "altered_uprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" integer, "country" varchar(255), "phone" varchar(255), "mobile" varchar(255), "pager" integer, "about" varchar(255), "first_name" varchar(255), "last_name" varchar(255), "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("uprofiles")
+  [1m[36mSQL (0.3ms)[0m  [1mDROP TABLE "uprofiles"[0m
+  [1m[35mSQL (0.3ms)[0m  CREATE TABLE "uprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" integer, "country" varchar(255), "phone" varchar(255), "mobile" varchar(255), "pager" varchar(255), "about" varchar(255), "first_name" varchar(255), "last_name" varchar(255), "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_uprofiles")[0m
+  [1m[35mSQL (0.2ms)[0m  DROP TABLE "altered_uprofiles"
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20091203204135')[0m
+Migrating to AddMoreIndexes (20091207154314)
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("session_powerons")
+  [1m[36mSQL (0.4ms)[0m  [1mCREATE INDEX "index_session_powerons_on_id" ON "session_powerons" ("id")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("session_powerons")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_session_powerons_on_id')[0m
+  [1m[35mSQL (0.1ms)[0m  CREATE INDEX "index_session_powerons_on_referral_id" ON "session_powerons" ("referral_id")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("accounts")[0m
+  [1m[35mSQL (0.1ms)[0m  CREATE INDEX "index_accounts_on_id" ON "accounts" ("id")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("oprofiles")[0m
+  [1m[35mSQL (0.1ms)[0m  CREATE INDEX "index_oprofiles_on_id" ON "oprofiles" ("id")
+  [1m[36mSQL (0.2ms)[0m  [1mPRAGMA index_list("uprofiles")[0m
+  [1m[35mSQL (0.3ms)[0m  CREATE INDEX "index_uprofiles_on_id" ON "uprofiles" ("id")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("session_videos")[0m
+  [1m[35mSQL (0.1ms)[0m  CREATE INDEX "index_session_videos_on_id" ON "session_videos" ("id")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("text_histories")[0m
+  [1m[35mSQL (0.1ms)[0m  CREATE INDEX "index_text_histories_on_id" ON "text_histories" ("id")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("text_sessions")[0m
+  [1m[35mSQL (0.1ms)[0m  CREATE INDEX "index_text_sessions_on_id" ON "text_sessions" ("id")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("text_contents")[0m
+  [1m[35mSQL (0.1ms)[0m  CREATE INDEX "index_text_contents_on_id" ON "text_contents" ("id")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20091207154314')[0m
+Migrating to ChangeProfileAboutToText (20091207183022)
+  [1m[35mSQL (0.3ms)[0m  CREATE TEMPORARY TABLE "altered_oprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" integer, "country" varchar(255), "phone" varchar(255), "mobile" varchar(255), "pager" varchar(255), "about" varchar(255), "sms_about" varchar(255), "account_id" integer, "created_at" datetime, "updated_at" datetime, "name" varchar(255), "geom" integer, "custodial_id" integer, "website" varchar(255), "email" varchar(255)) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("oprofiles")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_oprofiles_on_id')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("altered_oprofiles")[0m
+  [1m[35mSQL (0.1ms)[0m  CREATE INDEX "temp_index_altered_oprofiles_on_id" ON "altered_oprofiles" ("id")
+  [1m[36mSQL (0.6ms)[0m  [1mDROP TABLE "oprofiles"[0m
+  [1m[35mSQL (0.3ms)[0m  CREATE TABLE "oprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" integer, "country" varchar(255), "phone" varchar(255), "mobile" varchar(255), "pager" varchar(255), "about" text(255), "sms_about" varchar(255), "account_id" integer, "created_at" datetime, "updated_at" datetime, "name" varchar(255), "geom" integer, "custodial_id" integer, "website" varchar(255), "email" varchar(255)) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("altered_oprofiles")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('temp_index_altered_oprofiles_on_id')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("oprofiles")[0m
+  [1m[35mSQL (0.2ms)[0m  CREATE INDEX "index_oprofiles_on_id" ON "oprofiles" ("id")
+  [1m[36mSQL (0.3ms)[0m  [1mDROP TABLE "altered_oprofiles"[0m
+  [1m[35mSQL (0.2ms)[0m  CREATE TEMPORARY TABLE "altered_uprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" integer, "country" varchar(255), "phone" varchar(255), "mobile" varchar(255), "pager" varchar(255), "about" varchar(255), "first_name" varchar(255), "last_name" varchar(255), "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("uprofiles")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_uprofiles_on_id')
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("altered_uprofiles")[0m
+  [1m[35mSQL (0.2ms)[0m  CREATE INDEX "temp_index_altered_uprofiles_on_id" ON "altered_uprofiles" ("id")
+  [1m[36mSQL (0.4ms)[0m  [1mDROP TABLE "uprofiles"[0m
+  [1m[35mSQL (0.3ms)[0m  CREATE TABLE "uprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" integer, "country" varchar(255), "phone" varchar(255), "mobile" varchar(255), "pager" varchar(255), "about" text(255), "first_name" varchar(255), "last_name" varchar(255), "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("altered_uprofiles")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('temp_index_altered_uprofiles_on_id')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("uprofiles")[0m
+  [1m[35mSQL (0.2ms)[0m  CREATE INDEX "index_uprofiles_on_id" ON "uprofiles" ("id")
+  [1m[36mSQL (0.3ms)[0m  [1mDROP TABLE "altered_uprofiles"[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20091207183022')
+Migrating to AddSingleReferralAbility (20091229145729)
+  [1m[36mSQL (0.5ms)[0m  [1mALTER TABLE "referrals" ADD "rcontent_id" integer[0m
+  [1m[35mSQL (0.2ms)[0m  ALTER TABLE "referrals" ADD "rcontent_type" varchar(255)
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20091229145729')[0m
+Migrating to ChangeTitleToNameInArticles (20091229174747)
+  [1m[35mSQL (0.3ms)[0m  CREATE TEMPORARY TABLE "altered_articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "content" text, "published" boolean, "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("articles")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_articles_on_title')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_articles_on_id')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("altered_articles")
+  [1m[36mSQL (0.1ms)[0m  [1mCREATE INDEX "temp_index_altered_articles_on_title" ON "altered_articles" ("name")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("altered_articles")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('temp_index_altered_articles_on_title')[0m
+  [1m[35mSQL (0.1ms)[0m  CREATE INDEX "temp_index_altered_articles_on_id" ON "altered_articles" ("id")
+  [1m[36mSQL (0.6ms)[0m  [1mDROP TABLE "articles"[0m
+  [1m[35mSQL (0.4ms)[0m  CREATE TABLE "articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "content" text, "published" boolean, "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("altered_articles")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('temp_index_altered_articles_on_id')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('temp_index_altered_articles_on_title')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("articles")
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE INDEX "index_articles_on_id" ON "articles" ("id")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("articles")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_articles_on_id')[0m
+  [1m[35mSQL (0.2ms)[0m  CREATE INDEX "index_articles_on_title" ON "articles" ("name")
+  [1m[36mSQL (0.4ms)[0m  [1mDROP TABLE "altered_articles"[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20091229174747')
+Migrating to CreatePoweronChatters (20100218155214)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "poweron_chatters" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "screen_name" varchar(255), "profile_id" integer, "account_id" integer, "age" integer, "gender" integer, "hiv" integer, "race" integer, "sexual_orientation" integer, "drug_use" integer, "alcohol_use" integer, "smoking" integer, "out_level" integer, "risk_level" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20100218155214')
+Migrating to CreatePoweronKeywords (20100218171125)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "poweron_keywords" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "poweron_chatter_id" integer, "keyword_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20100218171125')
+Migrating to CreateKeywords (20100218171635)
+  [1m[36mSQL (0.6ms)[0m  [1mCREATE TABLE "keywords" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "weight" integer, "content" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20100218171635')
+Migrating to AddNameToReferrals (20100225142533)
+  [1m[36mSQL (0.5ms)[0m  [1mALTER TABLE "referrals" ADD "name" varchar(255)[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20100225142533')
+Migrating to CreateBrandAdmins (20100315165140)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "brand_admins" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "brand_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20100315165140')
+Migrating to ChangeZipcode (20100318153823)
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE TEMPORARY TABLE "altered_oprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" integer, "country" varchar(255), "phone" varchar(255), "mobile" varchar(255), "pager" varchar(255), "about" text(255), "sms_about" varchar(255), "account_id" integer, "created_at" datetime, "updated_at" datetime, "name" varchar(255), "geom" integer, "custodial_id" integer, "website" varchar(255), "email" varchar(255)) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("oprofiles")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_oprofiles_on_id')[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("altered_oprofiles")
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE INDEX "temp_index_altered_oprofiles_on_id" ON "altered_oprofiles" ("id")[0m
+  [1m[35mSQL (0.6ms)[0m  DROP TABLE "oprofiles"
+  [1m[36mSQL (0.4ms)[0m  [1mCREATE TABLE "oprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" varchar(255), "country" varchar(255), "phone" varchar(255), "mobile" varchar(255), "pager" varchar(255), "about" text(255), "sms_about" varchar(255), "account_id" integer, "created_at" datetime, "updated_at" datetime, "name" varchar(255), "geom" integer, "custodial_id" integer, "website" varchar(255), "email" varchar(255)) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("altered_oprofiles")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('temp_index_altered_oprofiles_on_id')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("oprofiles")
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE INDEX "index_oprofiles_on_id" ON "oprofiles" ("id")[0m
+  [1m[35mSQL (0.4ms)[0m  DROP TABLE "altered_oprofiles"
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE TEMPORARY TABLE "altered_uprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" integer, "country" varchar(255), "phone" varchar(255), "mobile" varchar(255), "pager" varchar(255), "about" text(255), "first_name" varchar(255), "last_name" varchar(255), "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("uprofiles")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_uprofiles_on_id')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("altered_uprofiles")
+  [1m[36mSQL (0.1ms)[0m  [1mCREATE INDEX "temp_index_altered_uprofiles_on_id" ON "altered_uprofiles" ("id")[0m
+  [1m[35mSQL (0.4ms)[0m  DROP TABLE "uprofiles"
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE TABLE "uprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" varchar(255), "country" varchar(255), "phone" varchar(255), "mobile" varchar(255), "pager" varchar(255), "about" text(255), "first_name" varchar(255), "last_name" varchar(255), "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("altered_uprofiles")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('temp_index_altered_uprofiles_on_id')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("uprofiles")
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE INDEX "index_uprofiles_on_id" ON "uprofiles" ("id")[0m
+  [1m[35mSQL (0.3ms)[0m  DROP TABLE "altered_uprofiles"
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20100318153823')[0m
+Migrating to ChangeZipcodeChatterProfiles (20100511195907)
+  [1m[35mSQL (0.4ms)[0m  CREATE TEMPORARY TABLE "altered_chatter_profiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "birthday" date, "age" integer, "gender" varchar(255), "phone" varchar(255), "city" varchar(255), "state" varchar(255), "zipcode" integer, "country" varchar(255), "first_name" varchar(255), "last_name" varchar(255), "chatter_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("chatter_profiles")[0m
+  [1m[35mSQL (0.5ms)[0m  DROP TABLE "chatter_profiles"
+  [1m[36mSQL (0.4ms)[0m  [1mCREATE TABLE "chatter_profiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "birthday" date, "age" integer, "gender" varchar(255), "phone" varchar(255), "city" varchar(255), "state" varchar(255), "zipcode" varchar(255), "country" varchar(255), "first_name" varchar(255), "last_name" varchar(255), "chatter_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("altered_chatter_profiles")
+  [1m[36mSQL (0.2ms)[0m  [1mDROP TABLE "altered_chatter_profiles"[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20100511195907')
+Migrating to AddInactiveToUsers (20100730145634)
+  [1m[36mSQL (0.7ms)[0m  [1mALTER TABLE "users" ADD "inactive" boolean DEFAULT 'f'[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20100730145634')
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.7ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("account_articles")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("account_brands")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("account_organizations")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("account_texts")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("accounts")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_accounts_on_id')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("article_brands")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("article_categories")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("articles")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_articles_on_title')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_articles_on_id')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("blogs")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("brand_admins")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("brand_categories")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("brand_settings")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("brand_tags")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("brand_videos")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("brands")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("carriers")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("categories")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("category_texts")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("chatter_profiles")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("chatters")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("conversations")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("credits")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("faqs")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("feed_entries")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_feed_entries_on_id')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("feed_sources")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("helps")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("keywords")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("oprofiles")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_oprofiles_on_id')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("poweron_chatters")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("poweron_keywords")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("profile_types")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("profiles")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("referrals")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("session_powerons")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_session_powerons_on_referral_id')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_session_powerons_on_id')
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("session_videos")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_session_videos_on_id')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("tag_typos")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("taggings")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_taggings_on_taggable_id_and_taggable_type_and_context')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_taggings_on_tag_id')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("tags")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("text_contents")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_text_contents_on_id')[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("text_histories")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_text_histories_on_id')[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("text_sessions")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_text_sessions_on_id')[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("uprofiles")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_uprofiles_on_id')[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_remember_token')[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_info('index_users_on_id_and_confirmation_token')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_token')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_email')
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_id_and_token')[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("videos")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_videos_on_name')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_videos_on_id')
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/danielmelton/Documents/development/railsapps/sext-3/config/environment.rb:5)
+  [1m[36mSQL (2.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/danielmelton/Documents/development/railsapps/sext-3/config/environment.rb:5)
+  [1m[36mSQL (1.9ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/danielmelton/Documents/development/railsapps/sext-3/config/environment.rb:5)
+  [1m[36mSQL (2.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Oprofile> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/oprofile.rb:10)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Oprofile> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/oprofile.rb:11)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Oprofile> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/oprofile.rb:12)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Oprofile> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/oprofile.rb:13)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Oprofile> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/oprofile.rb:14)
+  [1m[35mSQL (0.7ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.9ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Oprofile> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/oprofile.rb:10)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Oprofile> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/oprofile.rb:11)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Oprofile> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/oprofile.rb:12)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Oprofile> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/oprofile.rb:13)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Oprofile> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/oprofile.rb:14)
+  [1m[35mSQL (0.6ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m

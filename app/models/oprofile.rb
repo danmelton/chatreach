@@ -15,13 +15,6 @@ class Oprofile < ActiveRecord::Base
      :conditions => ['round((((acos(sin((?*pi()/180)) * sin((x(oprofiles.geom)*pi()/180)) + cos((?*pi()/180)) * cos((x(oprofiles.geom)*pi()/180)) * cos(((?- y(oprofiles.geom))*pi()/180))))*180/pi())*60*1.1515),2) <= ?', lon, lon, lat, m] ,
      :order => ['round((((acos(sin(('+lon.to_s+'*pi()/180)) * sin((x(oprofiles.geom)*pi()/180)) + cos(('+lon.to_s+'*pi()/180)) * cos((x(oprofiles.geom)*pi()/180)) * cos((('+lat.to_s+'- y(oprofiles.geom))*pi()/180))))*180/pi())*60*1.1515),2) ASC'] } }   
 
-  define_index do
-     indexes about
-     indexes name
-     indexes address
-     indexes sms_about
-  end
-       
   def geocode
       if !address.blank?
       address = self.address + " " +self.city + ", " + self.state + " "+ self.zip.to_s
