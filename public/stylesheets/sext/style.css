@@ -1,0 +1,124 @@
+body {
+	background: url('/images/sext/sext_background.png') repeat-x;
+}
+
+.container { width: 770px; margin: 0 auto; }
+.column { float: left; margin-right: 10px; }
+.span-19 { width: 750px; }
+.span-4 { width: 350px; }
+.last { margin-right: 0; }
+
+#header {
+	height: 60px;
+	width: 100%;
+	background-color: #8954a2;
+}
+
+#celltop {
+	height: 152px;
+	background: url('/images/sext/sext_top.png') repeat-x;}
+
+#header ul {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+#header ul li {
+	float: left;
+	margin-left: 10px;
+	margin-top: 20px;
+	}	
+	
+#header ul li a {
+	font-family: Arial;
+	font-size: 18px;
+	font-weight: bold;
+	text-decoration: none;
+	color: white;
+}
+	
+#cellmiddle {
+	background: url('/images/sext/sext_cell_back.png') repeat-y;
+	}
+	
+#content {
+	background-color: white;
+	width: 651px;
+	height: 550px;
+	margin-left: 52px;
+	padding-top: 25px;
+}
+#cellbottom {
+	height: 164px;
+	background: url('/images/sext/sext_bottom.png') repeat-x;}
+	
+#left_column {
+	margin-left: 15px;
+}
+
+#left_column h1 {
+	font-family: Arial;
+	font-size: 200%;
+	color: #56c0e0;
+}
+
+#left_column p {
+	font-size: 1.5em;
+}
+#user_login {
+	float: right;
+}
+
+#user_login input.text{
+	border:4px solid #9CF6D3;
+	color: #07715D;
+	width: 12em;
+	height: 1.25em;
+}
+
+#login{
+	background-color:#56c0e0;
+	border:1px solid #56c0e0;
+	color:#FFFFFF;
+	padding-bottom:5px;
+	width:6em;               
+	font-size: 1.50em;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+}
+
+#user_login #welcome {
+	font-size: 12px;
+	color: white;
+	padding-right: 10px;
+}
+
+#user_login #welcome h2 {
+	color: white;
+	margin: 0px;
+	font-size: 150%;
+}
+
+#user_login #welcome a {
+	color: white;
+	text-decoration: none;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+#labels {
+	color: white;
+	text-transform: uppercase;
+	font-size: 8px;
+}
+
+#labels label {
+	margin-right: 16em;
+}
+
+#credits {
+	text-align: center;
+	color: white;
+}
+

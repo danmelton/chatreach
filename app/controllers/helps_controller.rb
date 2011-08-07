@@ -1,6 +1,6 @@
 class HelpsController < ApplicationController
   before_filter :admin, :except => :show
-  before_filter :authenticate, :except => :show
+  before_filter :authenticate_user!, :except => :show
   layout "application"
   # GET /helps
   # GET /helps.xml

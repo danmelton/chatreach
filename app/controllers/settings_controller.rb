@@ -1,5 +1,5 @@
 class SettingsController < ApplicationController
-  before_filter :authenticate
+  before_filter :authenticate_user!
   
   def index
     @settings = BrandSetting.all_settings(current_user.account.id, session[:brand])

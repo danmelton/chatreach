@@ -1,0 +1,40 @@
+8
+
+dir
+405
+https://nptech@nonprofit.springloops.com:443/source/chatreachproduct/trunk/chatreach/public_html/js/jgcharts/plugins/jgtable
+https://nptech@nonprofit.springloops.com:443/source/chatreachproduct
+
+
+
+2009-05-05T21:58:17.681040Z
+241
+nptech
+
+
+svn:special svn:externals svn:needs-lock
+
+jgtable.pack.js
+file
+
+
+
+
+2009-03-09T16:23:18.000000Z
+53865058e8db30905dcbcbe4d212570e
+2009-05-05T21:58:17.681040Z
+241
+nptech
+
+jgtable.js
+file
+
+
+
+
+2009-03-09T16:23:20.000000Z
+9f2f61ea5a70d2681b76f79c9ef1e677
+2009-05-05T21:58:17.681040Z
+241
+nptech
+

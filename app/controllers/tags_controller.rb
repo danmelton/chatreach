@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-  before_filter :authenticate
+  before_filter :authenticate_user!
   layout "application"
   protect_from_forgery :only => [:delete]
   

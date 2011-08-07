@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>FCBKcomplete Demo</title>
+    
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen" title="Test Stylesheet" charset="utf-8" />
+    <script src="jquery-1.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="fcbkcomplete.js" type="text/javascript" charset="utf-8"></script>    
+  </head>
+  
+  <body id="test">    
+    <h1>FCBKcomplete Demo</h1>
+    <div id="text"></div>
+    <form action="test_submit" method="get" accept-charset="utf-8">
+      <ol>        
+        <li id="facebook-list" class="input-text">
+          <label>FacebookList input</label>
+          <input type="text" value="" id="facebook-demo" />
+          <ul id="preadded" style="display:none">
+              <li value="1">Jorge Luis Borges</li>
+              <li value="2">Julio Cortazar</li>           
+          </ul>
+          <div id="facebook-auto">
+            <div class="default">Type the name of an argentine writer you like</div> 
+            <ul id="feed">              
+            </ul>
+          </div>
+        </li>
+      </ol>   
+    </form>  
+    <script language="JavaScript">
+        $(document).ready(function() {        
+          $.facebooklist('#facebook-demo', '#preadded', '#facebook-auto','fetched.php', 10, 1);
+        });    
+    </script>
+  </body>  
+</html>

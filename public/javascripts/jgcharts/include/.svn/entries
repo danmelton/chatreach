@@ -1,0 +1,34 @@
+8
+
+dir
+405
+https://nptech@nonprofit.springloops.com:443/source/chatreachproduct/trunk/chatreach/public_html/js/jgcharts/include
+https://nptech@nonprofit.springloops.com:443/source/chatreachproduct
+
+
+
+2009-05-05T21:58:17.681040Z
+241
+nptech
+
+
+svn:special svn:externals svn:needs-lock
+
+demo
+dir
+
+gui
+dir
+
+css
+dir
+
+json
+dir
+
+icons
+dir
+
+js
+dir
+

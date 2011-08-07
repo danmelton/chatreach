@@ -1,5 +1,5 @@
 class TextContentsController < ApplicationController
-  before_filter [:authenticate, :brand_admin, :tag_list_name]
+  before_filter [:authenticate_user!, :brand_admin, :tag_list_name]
   layout "application"
   # GET /textcontents
   # GET /textcontents.xml

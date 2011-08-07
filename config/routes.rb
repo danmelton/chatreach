@@ -66,12 +66,6 @@ Sext3::Application.routes.draw do
   resources :dashboard
   match '/textmessage', :controller => 'text_messages', :action=>'index', :format=>'xml'
   match '/text_messages', :controller => 'text_messages', :action=>'index', :format=>'xml'
-  resources :passwords, :controller => 'clearance/passwords',   :only       => [:new, :create]
-  match  '/signup',    :controller => 'users',               :action => 'new'
-  match  '/register',  :controller => 'users',               :action => 'new'
-  match     '/login',     :controller => 'clearance/sessions',  :action => 'new'
-  match    '/logout',    :controller => 'sessions',            :action => 'destroy'  
-  match :session, :controller => 'clearance/sessions', :only=> [:new, :create, :destroy]
   
   root :to => "dashboard#index"
     

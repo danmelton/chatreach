@@ -1,0 +1,208 @@
+@font-face {
+  font-family:"Aller";
+  src: url(http://www.chatreach.com/stylesheets/Aller/Aller_Rg.ttf) format("truetype");
+}
+
+@font-face {
+  font-family:"Aller Light";
+  src: url(http://www.chatreach.com/stylesheets/Aller/Aller_Lt.ttf) format("truetype");
+}
+
+body{
+	background-color:#A5FFDB;
+	font-family:"Aller","Helvetica Neue",Arial,Helvetica,sans-serif;
+}
+
+#footer{
+	min-height: 25px;
+}
+
+div.home_nav{
+	border-bottom:1px solid #AAAAAA;
+	background-color: #FFFFFF;
+	color: #FF1600;
+	margin: 0 auto;
+ 	padding: 0px;
+}
+
+.home_nav a{
+	text-decoration: none;
+	color: #FF1600;
+	font-size: 1.75em;
+	font-weight: bold;
+}
+
+.home_nav a:hover{
+	text-decoration: underline;
+	color: #FF1600;
+}
+
+.home_nav ul{
+	height: 50px;
+}
+
+
+.links{
+	margin:0 auto;
+	width: 100%;
+}
+
+.links li{
+	color: #fff;
+	display: inline;
+	margin: 0;
+	padding-right: 10px;
+	padding-left: 10px;
+}                     
+
+#home_nav.links li{
+	padding-bottom:25px;
+}                     
+
+
+#home_nav.links li.active{
+	background-image:url(..http://www.chatreach.com/images/blue_triangle.png);
+	background-position:center bottom;
+	background-repeat:no-repeat;
+}
+
+
+
+.navigation{
+	background-color: #FF0F00;
+	margin: 0 auto;
+	padding: 20px;
+	background-image: url("http://www.chatreach.com/images/background_topbar.png");
+	height: 12px;
+}
+
+.navigation a{
+	text-decoration: none;
+	color: #fff;
+}
+
+.navigation a:hover{
+	text-decoration: underline;
+	color: #fff;
+}
+
+#nav li.active{
+	background-image:url(http://www.chatreach.com/images/white_triangle.png);
+	background-position:center bottom;
+	background-repeat:no-repeat;
+	padding-bottom:15px;
+}
+
+.button{
+	background-color:#68C400;
+	border:1px solid #68C400;
+	color:#FFFFFF;
+	height:23px;
+	padding:8px;
+}
+
+.button:hover{
+	background-color:#529900;
+	border:1px solid #529900;
+}
+
+.round-7{
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+}
+
+.full{
+	width: 700px;
+	margin: auto;
+}
+
+#container{
+	display: block;
+}         
+
+.blue_container{
+	background-color: #A5FFDB;	
+}     
+
+
+h1{
+	color: #49CC00;
+	font-weight: bold;
+	clear: both;
+	font-size: 200%;
+}  
+
+h2, legend{
+	color:#006A56;
+	font-size:1.5em;
+	font-weight:bold;
+} 
+
+
+
+
+#container.login{
+	background-color: #E9FFFD;
+	color: #07715D;
+	padding-top:15px;
+}
+
+.clickable{
+	cursor: pointer;
+}
+
+#front_pane{
+	background-color:#FFFFFF;
+	border:1px solid #CCCCCC;
+	padding:1em;
+	margin-bottom:10px;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+}
+
+#left_front_pane{
+	margin-left:1.5em;
+}
+
+
+#front_pane h3 {
+	color:#FF4707;
+	font-size:1.5em;
+	margin-top: 10px;
+}
+
+
+
+
+/* --- Blog ---- */
+
+.blog {
+	margin-bottom: 0px;
+}
+
+#rss {
+	text-align: right;
+}
+
+h4.blog {
+	margin-top: 20px;
+	margin-bottom: 10px;
+	font-size: 200%;
+	color: #FF1600;
+}
+
+ul.blog {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+ul.blog li {
+
+}
+
+ul.blog li span {
+	font-size: 12px;
+}
+
+

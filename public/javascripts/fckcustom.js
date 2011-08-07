@@ -1,0 +1,1 @@
+FCKConfig.SkinPath = FCKConfig.BasePath + 'skins/office2003/' ;

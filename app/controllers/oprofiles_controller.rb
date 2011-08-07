@@ -1,6 +1,6 @@
 class OprofilesController < ApplicationController
   layout "application"
-  before_filter :authenticate, :except => [:show, :claim, :verify]
+  before_filter :authenticate_user!, :except => [:show, :claim, :verify]
   before_filter :tag_list_name
   # GET /oprofiles
   # GET /oprofiles.xml

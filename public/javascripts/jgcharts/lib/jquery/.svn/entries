@@ -1,0 +1,52 @@
+8
+
+dir
+405
+https://nptech@nonprofit.springloops.com:443/source/chatreachproduct/trunk/chatreach/public_html/js/jgcharts/lib/jquery
+https://nptech@nonprofit.springloops.com:443/source/chatreachproduct
+
+
+
+2009-05-05T21:58:17.681040Z
+241
+nptech
+
+
+svn:special svn:externals svn:needs-lock
+
+jquery-1.3.1.min.js
+file
+
+
+
+
+2009-03-09T16:23:16.000000Z
+5d4c7816890f3308da6126f5fa65c979
+2009-05-05T21:58:17.681040Z
+241
+nptech
+
+jquery-1.3.2.min.js
+file
+
+
+
+
+2009-03-03T15:10:46.000000Z
+bb381e2d19d8eace86b34d20759491a5
+2009-05-05T21:58:17.681040Z
+241
+nptech
+
+jquery-1.2.6.min.js
+file
+
+
+
+
+2009-03-09T16:23:16.000000Z
+a9331828c517ac5d97f93b3cfdbcc9bc
+2009-05-05T21:58:17.681040Z
+241
+nptech
+

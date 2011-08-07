@@ -9,6 +9,8 @@ class ActiveSupport::TestCase
   # -- they do not yet inherit this setting
   fixtures :all
   
+  Dir["#{File.dirname(__FILE__)}/factories/*.rb"].each {|f| require f} 
+  
   def setup
       FakeWeb.allow_net_connect = false
       FakeWeb.register_uri(:get, 'http://sex.chatreach.com:80/geo?address=613%20Sandusky%20Ave%20Kansas%20City,%20KS%2066101', :body => File.read("#{Rails.root}/test/fake/geo"))      

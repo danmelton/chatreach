@@ -1,6 +1,6 @@
 class ReportsController < ApplicationController
   layout "application"
-  before_filter [:authenticate, :dates]
+  before_filter [:authenticate_user!, :dates]
   
   def show
    if @date_start <= @date_end

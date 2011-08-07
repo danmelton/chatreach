@@ -11,8 +11,9 @@ gem 'acts-as-taggable-on'
 group :development, :test do
   gem 'sqlite3'
   gem 'activerecord-spatialite-adapter'
-  gem 'factory_girl'
+  gem 'factory_girl_rails'
   gem 'shoulda'
   gem 'fakeweb'
   gem 'mocha'
+  gem 'faker'
 end
