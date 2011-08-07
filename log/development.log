@@ -753,3 +753,660 @@ DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
 [0m
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/danielmelton/Documents/development/railsapps/sext-3/config/environment.rb:5)
+  [1m[36mSQL (0.3ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.1ms)[0m  [1mCREATE TABLE "account_articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "article_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.2ms)[0m  [1mCREATE TABLE "account_brands" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.4ms)[0m  [1mCREATE TABLE "account_organizations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "oprofile_id" integer, "brand_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.4ms)[0m  [1mCREATE TABLE "account_texts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "text_content_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.3ms)[0m  [1mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime, "name" varchar(255), "user_id" integer, "code" varchar(255)) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("accounts")
+  [1m[36mSQL (2.1ms)[0m  [1mCREATE INDEX "index_accounts_on_id" ON "accounts" ("id")[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.6ms)[0m  [1mCREATE TABLE "article_brands" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "article_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.5ms)[0m  [1mCREATE TABLE "article_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "article_id" integer, "category_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (4.0ms)[0m  [1mCREATE TABLE "articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "content" text, "published" boolean, "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("articles")
+  [1m[36mSQL (3.3ms)[0m  [1mCREATE INDEX "index_articles_on_id" ON "articles" ("id")[0m
+  [1m[35mSQL (0.2ms)[0m  PRAGMA index_list("articles")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_articles_on_id')[0m
+  [1m[35mSQL (2.3ms)[0m  CREATE INDEX "index_articles_on_title" ON "articles" ("name")
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.8ms)[0m  CREATE TABLE "blogs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "title" varchar(255), "content" text, "user_id" integer, "created_at" datetime, "updated_at" datetime, "published_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.2ms)[0m  CREATE TABLE "brand_admins" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "brand_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.3ms)[0m  CREATE TABLE "brand_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "category_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.5ms)[0m  CREATE TABLE "brand_settings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "name" varchar(255), "setting" text(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.6ms)[0m  CREATE TABLE "brand_tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "brand_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.8ms)[0m  CREATE TABLE "brand_videos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "video_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.0ms)[0m  CREATE TABLE "brands" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.6ms)[0m  CREATE TABLE "carriers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "carrierid" varchar(255)) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.6ms)[0m  CREATE TABLE "categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "account_id" integer DEFAULT 1) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.3ms)[0m  CREATE TABLE "category_texts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "category_id" integer, "text_content_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (5.4ms)[0m  CREATE TABLE "chatter_profiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "birthday" date, "age" integer, "gender" varchar(255), "phone" varchar(255), "city" varchar(255), "state" varchar(255), "zipcode" varchar(255), "country" varchar(255), "first_name" varchar(255), "last_name" varchar(255), "chatter_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.6ms)[0m  CREATE TABLE "chatters" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "demographic_id" integer, "profile_id" integer, "social_id" integer, "initiated" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.7ms)[0m  CREATE TABLE "conversations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "user_id" integer, "transcript" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE TABLE "credits" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "cents" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.7ms)[0m  CREATE TABLE "faqs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "user_id" integer, "content" text, "title" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.6ms)[0m  CREATE TABLE "feed_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "summary" text, "url" varchar(255), "published_at" date, "guid" varchar(255), "feed_source_id" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("feed_entries")[0m
+  [1m[35mSQL (2.0ms)[0m  CREATE INDEX "index_feed_entries_on_id" ON "feed_entries" ("id")
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.5ms)[0m  CREATE TABLE "feed_sources" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "url" varchar(255), "source_url" varchar(255), "brand_id" integer, "source" varchar(255), "created_at" datetime, "updated_at" datetime, "author" varchar(255)) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (4.1ms)[0m  CREATE TABLE "helps" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "user_id" integer, "content" text, "title" varchar(255), "feature" boolean, "published" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.6ms)[0m  CREATE TABLE "keywords" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "weight" integer, "content" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.8ms)[0m  CREATE TABLE "oprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" varchar(255), "country" varchar(255), "phone" varchar(255), "mobile" varchar(255), "pager" varchar(255), "about" text(255), "sms_about" varchar(255), "account_id" integer, "created_at" datetime, "updated_at" datetime, "name" varchar(255), "geom" integer, "custodial_id" integer, "website" varchar(255), "email" varchar(255)) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("oprofiles")[0m
+  [1m[35mSQL (2.6ms)[0m  CREATE INDEX "index_oprofiles_on_id" ON "oprofiles" ("id")
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.4ms)[0m  CREATE TABLE "poweron_chatters" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "screen_name" varchar(255), "profile_id" integer, "account_id" integer, "age" integer, "gender" integer, "hiv" integer, "race" integer, "sexual_orientation" integer, "drug_use" integer, "alcohol_use" integer, "smoking" integer, "out_level" integer, "risk_level" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.8ms)[0m  CREATE TABLE "poweron_keywords" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "poweron_chatter_id" integer, "keyword_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.5ms)[0m  CREATE TABLE "profile_types" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "thumbnail" varchar(255), "url" varchar(255), "created_at" datetime, "updated_at" datetime, "content_type" varchar(255), "filename" varchar(255), "size" integer, "width" integer, "height" integer) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.9ms)[0m  CREATE TABLE "profiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "username" varchar(255), "password" varchar(255), "profile_type_id" integer, "profile_url" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (4.4ms)[0m  CREATE TABLE "referrals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "code" varchar(255), "brand_id" integer, "account_id" integer, "created_at" datetime, "updated_at" datetime, "rcontent_id" integer, "rcontent_type" varchar(255), "name" varchar(255)) 
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.3ms)[0m  CREATE TABLE "session_powerons" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "created_at" datetime, "updated_at" datetime, "referral_id" integer) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("session_powerons")[0m
+  [1m[35mSQL (2.5ms)[0m  CREATE INDEX "index_session_powerons_on_id" ON "session_powerons" ("id")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("session_powerons")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_session_powerons_on_id')
+  [1m[36mSQL (3.7ms)[0m  [1mCREATE INDEX "index_session_powerons_on_referral_id" ON "session_powerons" ("referral_id")[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.8ms)[0m  [1mCREATE TABLE "session_videos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "video_id" integer, "start_time" time, "end_time" time, "referral_id" integer, "session_poweron_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("session_videos")
+  [1m[36mSQL (2.7ms)[0m  [1mCREATE INDEX "index_session_videos_on_id" ON "session_videos" ("id")[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.6ms)[0m  [1mCREATE TABLE "tag_typos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "typo" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (3.6ms)[0m  [1mCREATE TABLE "taggings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "taggable_id" integer, "tagger_id" integer, "tagger_type" varchar(255), "taggable_type" varchar(255), "context" varchar(255), "created_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("taggings")
+  [1m[36mSQL (4.1ms)[0m  [1mCREATE INDEX "index_taggings_on_tag_id" ON "taggings" ("tag_id")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("taggings")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_taggings_on_tag_id')[0m
+  [1m[35mSQL (3.7ms)[0m  CREATE INDEX "index_taggings_on_taggable_id_and_taggable_type_and_context" ON "taggings" ("taggable_id", "taggable_type", "context")
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255)) 
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.2ms)[0m  CREATE TABLE "text_contents" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "response" varchar(255), "user_id" integer, "published" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("text_contents")[0m
+  [1m[35mSQL (2.5ms)[0m  CREATE INDEX "index_text_contents_on_id" ON "text_contents" ("id")
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (4.2ms)[0m  CREATE TABLE "text_histories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text_session_id" integer, "tag_id" integer, "text" varchar(255), "response" varchar(255), "created_at" datetime, "updated_at" datetime, "text_type" varchar(255)) 
+  [1m[36mSQL (0.5ms)[0m  [1mPRAGMA index_list("text_histories")[0m
+  [1m[35mSQL (3.3ms)[0m  CREATE INDEX "index_text_histories_on_id" ON "text_histories" ("id")
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE TABLE "text_sessions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "phone" varchar(255), "carrier_id" integer, "chatter_id" integer, "created_at" datetime, "updated_at" datetime, "session" varchar(255)) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("text_sessions")[0m
+  [1m[35mSQL (3.0ms)[0m  CREATE INDEX "index_text_sessions_on_id" ON "text_sessions" ("id")
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.8ms)[0m  CREATE TABLE "uprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" varchar(255), "country" varchar(255), "phone" varchar(255), "mobile" varchar(255), "pager" varchar(255), "about" text(255), "first_name" varchar(255), "last_name" varchar(255), "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("uprofiles")[0m
+  [1m[35mSQL (4.3ms)[0m  CREATE INDEX "index_uprofiles_on_id" ON "uprofiles" ("id")
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.0ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255), "encrypted_password" varchar(128), "salt" varchar(128), "token" varchar(128), "token_expires_at" datetime, "email_confirmed" boolean DEFAULT 'f' NOT NULL, "created_at" datetime, "updated_at" datetime, "account_id" integer, "admin" boolean DEFAULT 'f', "confirmation_token" varchar(128), "remember_token" varchar(128), "super" boolean, "inactive" boolean DEFAULT 'f') 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (3.8ms)[0m  CREATE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_email')
+  [1m[36mSQL (3.9ms)[0m  [1mCREATE INDEX "index_users_on_id_and_confirmation_token" ON "users" ("id", "confirmation_token")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_id_and_confirmation_token')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_email')
+  [1m[36mSQL (2.2ms)[0m  [1mCREATE INDEX "index_users_on_id_and_token" ON "users" ("id", "token")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_id_and_token')[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_info('index_users_on_id_and_confirmation_token')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+  [1m[35mSQL (2.3ms)[0m  CREATE INDEX "index_users_on_remember_token" ON "users" ("remember_token")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_remember_token')
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_id_and_token')[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_info('index_users_on_id_and_confirmation_token')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+  [1m[35mSQL (3.6ms)[0m  CREATE INDEX "index_users_on_token" ON "users" ("token")
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.7ms)[0m  CREATE TABLE "videos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "video_id" varchar(255), "name" varchar(255), "thumbnail" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("videos")[0m
+  [1m[35mSQL (4.0ms)[0m  CREATE INDEX "index_videos_on_id" ON "videos" ("id")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("videos")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_videos_on_id')
+  [1m[36mSQL (2.6ms)[0m  [1mCREATE INDEX "index_videos_on_name" ON "videos" ("name")[0m
+  [1m[35mSQL (0.6ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mSQL (0.7ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35mSQL (2.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20100730145634')
+  [1m[36mSQL (2.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090816154734')[0m
+  [1m[35mSQL (2.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090816171425')
+  [1m[36mSQL (3.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090816171530')[0m
+  [1m[35mSQL (2.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090816171742')
+  [1m[36mSQL (2.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090816180726')[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090816210255')
+  [1m[36mSQL (2.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090816213347')[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090816221514')
+  [1m[36mSQL (2.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090819170041')[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090819170106')
+  [1m[36mSQL (2.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090819170513')[0m
+  [1m[35mSQL (4.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090819191938')
+  [1m[36mSQL (1.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090824170551')[0m
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090824185750')
+  [1m[36mSQL (1.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090824192325')[0m
+  [1m[35mSQL (5.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090826200637')
+  [1m[36mSQL (1.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090826221805')[0m
+  [1m[35mSQL (1.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090827223338')
+  [1m[36mSQL (1.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090827224410')[0m
+  [1m[35mSQL (3.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090827231149')
+  [1m[36mSQL (2.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090904194435')[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090904194556')
+  [1m[36mSQL (2.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090904194742')[0m
+  [1m[35mSQL (2.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090904194912')
+  [1m[36mSQL (2.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090904195516')[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090904204458')
+  [1m[36mSQL (2.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090904214202')[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090909171909')
+  [1m[36mSQL (1.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090909195157')[0m
+  [1m[35mSQL (2.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090911144049')
+  [1m[36mSQL (2.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090914140217')[0m
+  [1m[35mSQL (1.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090914160511')
+  [1m[36mSQL (1.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090914183120')[0m
+  [1m[35mSQL (2.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090915182050')
+  [1m[36mSQL (2.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090921151142')[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091009163409')
+  [1m[36mSQL (2.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091009163430')[0m
+  [1m[35mSQL (2.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091014171728')
+  [1m[36mSQL (2.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091015154811')[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091016162447')
+  [1m[36mSQL (2.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091016165020')[0m
+  [1m[35mSQL (2.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091026162757')
+  [1m[36mSQL (2.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091117163436')[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091203204135')
+  [1m[36mSQL (2.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091207154314')[0m
+  [1m[35mSQL (2.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091207183022')
+  [1m[36mSQL (2.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091229174747')[0m
+  [1m[35mSQL (2.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20100218171635')
+  [1m[36mSQL (2.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100225142533')[0m
+  [1m[35mSQL (2.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20100315165140')
+  [1m[36mSQL (2.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100318153823')[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20100511195907')
+  [1m[36mSQL (32.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.6ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.9ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/danielmelton/Documents/development/railsapps/sext-3/config/environment.rb:5)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-07 14:42:30 -0700
+
+ActionController::RoutingError (No route matches "/"):
+  
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-07 14:44:49 -0700
+
+NameError (undefined local variable or method `map' for #<ActionDispatch::Routing::Mapper:0x000001011f93c8>):
+  config/routes.rb:2:in `block in <top (required)>'
+  config/routes.rb:1:in `<top (required)>'
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (7.6ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-07 14:46:50 -0700
+
+SyntaxError (/Users/danielmelton/Documents/development/railsapps/sext-3/config/routes.rb:5: syntax error, unexpected tASSOC, expecting keyword_end
+  controller => "helps" do |help|
+               ^
+/Users/danielmelton/Documents/development/railsapps/sext-3/config/routes.rb:5: syntax error, unexpected keyword_do, expecting keyword_end
+  controller => "helps" do |help|
+                          ^
+/Users/danielmelton/Documents/development/railsapps/sext-3/config/routes.rb:6: syntax error, unexpected tSTRING_BEG, expecting keyword_end
+    help.sext "/help/sext", :controller => "helps", :action => 'sext'
+               ^
+/Users/danielmelton/Documents/development/railsapps/sext-3/config/routes.rb:6: syntax error, unexpected ',', expecting keyword_end
+    help.sext "/help/sext", :controller => "helps", :action => 'sext'
+                           ^
+/Users/danielmelton/Documents/development/railsapps/sext-3/config/routes.rb:6: syntax error, unexpected ',', expecting keyword_end
+    help.sext "/help/sext", :controller => "helps", :action => 'sext'
+                                                   ^
+/Users/danielmelton/Documents/development/railsapps/sext-3/config/routes.rb:13: syntax error, unexpected tASSOC, expecting $end
+  controller => "products" do |products|
+               ^):
+  
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-07 14:48:15 -0700
+
+SyntaxError (/Users/danielmelton/Documents/development/railsapps/sext-3/config/routes.rb:6: syntax error, unexpected ':', expecting keyword_end
+    help.sext "/help/sext", :controller :helps", :action => 'sext'
+                                         ^
+/Users/danielmelton/Documents/development/railsapps/sext-3/config/routes.rb:14: syntax error, unexpected tSTRING_BEG, expecting keyword_do or '{' or '('
+    products.products "/products", :action :index"
+                                 ^
+/Users/danielmelton/Documents/development/railsapps/sext-3/config/routes.rb:15: syntax error, unexpected ':', expecting keyword_end
+    products.poweron "/products/poweron", :action :poweron" 
+                                                   ^
+/Users/danielmelton/Documents/development/railsapps/sext-3/config/routes.rb:16: syntax error, unexpected tSTRING_BEG, expecting keyword_end
+    products.poweron "/products/poweron/:name", :action :poweron"
+                                              ^
+/Users/danielmelton/Documents/development/railsapps/sext-3/config/routes.rb:17: syntax error, unexpected ':', expecting keyword_end
+    products.sext "/products/sext", :action :sext"
+                                             ^
+/Users/danielmelton/Documents/development/railsapps/sext-3/config/routes.rb:18: syntax error, unexpected tSTRING_BEG, expecting keyword_end
+    products.sext "/products/sext/:name", :action :sext"
+                                        ^):
+  
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (29.7ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (35.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-07 14:48:34 -0700
+
+SyntaxError (/Users/danielmelton/Documents/development/railsapps/sext-3/config/routes.rb:6: syntax error, unexpected ':', expecting keyword_end
+    help.sext "/help/sext", :controller :helps", :action => 'sext'
+                                         ^
+/Users/danielmelton/Documents/development/railsapps/sext-3/config/routes.rb:14: syntax error, unexpected tSTRING_BEG, expecting keyword_do or '{' or '('
+  #   products.products "/products", :action :index"
+                                   ^
+/Users/danielmelton/Documents/development/railsapps/sext-3/config/routes.rb:91: syntax error, unexpected $end, expecting keyword_end):
+  
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-07 14:48:44 -0700
+
+NoMethodError (undefined method `resource' for nil:NilClass):
+  config/routes.rb:74:in `block (2 levels) in <top (required)>'
+  config/routes.rb:73:in `block in <top (required)>'
+  config/routes.rb:1:in `<top (required)>'
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-07 14:49:14 -0700
+
+NoMethodError (undefined method `resource' for nil:NilClass):
+  config/routes.rb:74:in `block (2 levels) in <top (required)>'
+  config/routes.rb:73:in `block in <top (required)>'
+  config/routes.rb:1:in `<top (required)>'
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (5.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-07 14:49:18 -0700
+
+ActionController::RoutingError (No route matches "/"):
+  
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-07 14:49:41 -0700
+
+NoMethodError (undefined method `resource' for nil:NilClass):
+  config/routes.rb:74:in `block (2 levels) in <top (required)>'
+  config/routes.rb:73:in `block in <top (required)>'
+  config/routes.rb:1:in `<top (required)>'
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-07 14:50:10 -0700
+
+NoMethodError (undefined method `resources' for nil:NilClass):
+  config/routes.rb:74:in `block (2 levels) in <top (required)>'
+  config/routes.rb:73:in `block in <top (required)>'
+  config/routes.rb:1:in `<top (required)>'
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-07 14:50:17 -0700
+
+ArgumentError (missing :controller):
+  config/routes.rb:76:in `block in <top (required)>'
+  config/routes.rb:1:in `<top (required)>'
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-07 14:51:03 -0700
+  Processing by DomainsController#index as HTML
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:BrandSetting> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/brand_setting.rb:5)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:BrandSetting> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/brand_setting.rb:6)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:BrandSetting> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/brand_setting.rb:7)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:BrandSetting> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/brand_setting.rb:8)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:BrandSetting> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/brand_setting.rb:9)
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT COUNT(*) FROM "brand_settings" WHERE (brand_settings.name = 'domain' and brand_settings.setting = 'localhost')[0m
+  [1m[35mBrandSetting Load (0.1ms)[0m  SELECT "brand_settings".* FROM "brand_settings" WHERE (brand_settings.name = 'domain')
+Completed 500 Internal Server Error in 122ms
+
+NameError (undefined local variable or method `home_path' for #<DomainsController:0x00000100ed25c8>):
+  app/controllers/domains_controller.rb:16:in `index'
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.7ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-07 14:51:32 -0700
+
+ActionController::RoutingError (uninitialized constant DomainsController):
+  
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-07 14:52:52 -0700
+
+ActionController::RoutingError (uninitialized constant DomainsController):
+  
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-07 14:52:54 -0700
+
+ActionController::RoutingError (uninitialized constant DomainsController):
+  
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.1ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/danielmelton/Documents/development/railsapps/sext-3/config/environment.rb:5)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-07 14:53:38 -0700
+
+ActionController::RoutingError (uninitialized constant DomainsController):
+  
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-07 14:54:20 -0700
+
+ActionController::RoutingError (uninitialized constant DomainsController):
+  
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-07 14:55:00 -0700
+  Processing by DashboardController#index as HTML
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'ca8de9fe42bc039962d4906a1190673bec6edafa' LIMIT 1
+Completed 500 Internal Server Error in 157ms
+
+NoMethodError (undefined method `account' for nil:NilClass):
+  app/controllers/dashboard_controller.rb:7:in `index'
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.9ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (8.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-07 14:55:58 -0700
+  Processing by DashboardController#index as HTML
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `account' for nil:NilClass):
+  app/controllers/dashboard_controller.rb:7:in `index'
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.1ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-07 14:56:11 -0700
+  Processing by DashboardController#index as HTML
+Completed 500 Internal Server Error in 0ms
+
+ArgumentError (wrong number of arguments (0 for 1)):
+  
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.7ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (8.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-07 14:57:06 -0700
+  Processing by DashboardController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'ca8de9fe42bc039962d4906a1190673bec6edafa' LIMIT 1[0m
+Completed 500 Internal Server Error in 77ms
+
+NoMethodError (undefined method `account' for nil:NilClass):
+  app/controllers/dashboard_controller.rb:6:in `index'
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.7ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-07 14:57:11 -0700
+  Processing by DashboardController#index as HTML
+Completed 500 Internal Server Error in 0ms
+
+ArgumentError (wrong number of arguments (0 for 1)):
+  
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.7ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.6ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/danielmelton/Documents/development/railsapps/sext-3/config/environment.rb:5)
+  [1m[36mSQL (1.9ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("users")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_token')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_remember_token')
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_id_and_token')[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_info('index_users_on_id_and_confirmation_token')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/danielmelton/Documents/development/railsapps/sext-3/config/environment.rb:5)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-07 15:02:01 -0700
+  Processing by DashboardController#index as HTML
+Completed 500 Internal Server Error in 1ms
+
+ArgumentError (wrong number of arguments (0 for 1)):
+  
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.2ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-07 15:02:07 -0700
+  Processing by DashboardController#index as HTML
+Completed 500 Internal Server Error in 0ms
+
+ArgumentError (wrong number of arguments (0 for 1)):
+  
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.1ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (8.5ms)

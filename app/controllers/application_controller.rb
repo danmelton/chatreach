@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
   include Clearance::Authentication
   helper :all
-  
-  before_filter :prepare_for_mobile
 
   protect_from_forgery
   
@@ -18,13 +16,7 @@ class ApplicationController < ActionController::Base
       @brand_tag_list = Brand.find(session[:brand]).tags
     end
   end
-  
-  def check_login_brand
-    if session[:brand].nil? and current_user
-    session[:brand] = current_user.account.brands.first.id unless current_user.account.brands.blank?      
-    end
-  end
-  
+    
   def admin?
     current_user.admin?
   end
@@ -43,16 +35,7 @@ class ApplicationController < ActionController::Base
     flash[:failure] = flash_message if flash_message
     redirect_to('/dashboard')
   end
-  
-  def is_mobile?
-    if request.user_agent =~ /Mobile|webOS/
-      true
-    else
-      false
-    end
-  end
-  helper_method :is_mobile?
-  
+    
   def brand_admin?
     if session[:brand]
       Brand.find(session[:brand]).admins.include?(current_user)
@@ -60,18 +43,4 @@ class ApplicationController < ActionController::Base
   end
   helper_method :brand_admin?
   
-  def mobile_device?
-    if session[:mobile_param]
-      session[:mobile_param] == "1"
-    else
-      request.user_agent =~ /Mobile|webOS/
-    end
-  end
-  helper_method :mobile_device?
-  
-  def prepare_for_mobile
-      session[:mobile_param] = params[:mobile] if params[:mobile]
-      request.format = :mobile if mobile_device?
-  end
-
 end

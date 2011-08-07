@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
-  before_filter [:authenticate, :check_login_brand]
+  before_filter :authenticate
   layout "application"
   
   def index

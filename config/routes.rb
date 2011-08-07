@@ -1,58 +1,77 @@
 Sext3::Application.routes.draw do
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
+  resources :keywords
+  resources :reports
 
-  # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
+  # controller :helps do |help|
+  #   help.sext "/help/sext", :controller :helps", :action => 'sext'
+  # end
+  resources :help, :controller => 'helps'
+  resources :helps
 
-  # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
+  resources :faqs
 
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  # controller :products do |products|
+  #   products.products "/products", :action :index"
+  #   products.poweron "/products/poweron", :action :poweron" 
+  #   products.poweron "/products/poweron/:name", :action :poweron"
+  #   products.sext "/products/sext", :action :sext"
+  #   products.sext "/products/sext/:name", :action :sext"
+  # end
+  
+  # controller :home do |home|
+  #   home.home '/home', :controller => 'home', :action => 'index'
+  #   home.about '/home/about', :controller => 'home', :action => 'about'    
+  #   home.pricing '/home/pricing', :controller => 'home', :action => 'pricing'    
+  #   home.signup '/home/contact', :controller => 'home', :action => 'contact'                
+  #   home.signup '/home/webinars', :controller => 'home', :action => 'webinars'                    
+  #   home.signup '/home/webinar', :controller => 'home', :action => 'webinar'                        
+  #   home.thankyou '/home/thankyou', :controller => 'home', :action => 'thankyou'                    
+  #   home.blog '/home/blog/:id/:title', :controller => 'home', :action => 'blog'                    
+  #   home.blog '/home/blog', :controller => 'home', :action => 'blog'                        
+  #   home.blog '/home/blog/rss', :controller => 'home', :action => 'rss'                            
+  # end
+  
+  
+  resources :profiles
 
-  # Sample resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
+  resources :settings, :collection => {:update => :post}
+    
+  match 'geo', :controller => 'geo', :action => 'index', :format => 'xml'
 
-  # Sample resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
+  resources :carriers
 
-  # Sample resource route with more complex sub-resources
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', :on => :collection
-  #     end
-  #   end
+  resources :chatters
+  resources :text_messages
 
-  # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  resources :text_contents, :collection => {:add => :any, :remove => :any, :simulator => :any}
 
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => "welcome#index"
+  resources :oprofiles, :collection => {:add => :any, :remove => :any}
 
-  # See how all your routes lay out with "rake routes"
+  resources :categories
+  
+  resources :tags
 
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id(.:format)))'
+  resources :uprofiles
+  
+  resources 'organizations', :controller => 'oprofiles', :collection => {:verify => :any}
+
+  match '/change_user', :controller => 'users', :action => 'change_user' 
+  resources 'user', :controller => 'users' 
+  resources 'manage_users', :controller => 'users' 
+
+  resources :brands
+
+  resources :dashboard
+  match '/textmessage', :controller => 'text_messages', :action=>'index', :format=>'xml'
+  match '/text_messages', :controller => 'text_messages', :action=>'index', :format=>'xml'
+  resources :passwords, :controller => 'clearance/passwords',   :only       => [:new, :create]
+  match  '/signup',    :controller => 'users',               :action => 'new'
+  match  '/register',  :controller => 'users',               :action => 'new'
+  match     '/login',     :controller => 'clearance/sessions',  :action => 'new'
+  match    '/logout',    :controller => 'sessions',            :action => 'destroy'  
+  match :session, :controller => 'clearance/sessions', :only=> [:new, :create, :destroy]
+  
+  root :to => "dashboard#index"
+    
+
 end
