@@ -1,0 +1,50 @@
+<% content_for :javascript do %>
+<script type="text/javascript">
+$("#content").css("background", "url('/images/sext/sext_image_"+Math.floor(Math.random()*5)+".png') no-repeat bottom right");
+</script>
+<% end %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>New Media Campaign - South Carolina Contraceptive Access Initiative</title>            
+    <%= stylesheet_link_tag 'blueprint/screen', :media => 'all', :cache => true %>
+    <%= stylesheet_link_tag 'sext/style', :media => 'all', :cache => true %>
+    <%= yield :header %>
+  </head>
+  <body class="<%= body_class %>">
+	<div id="header">
+		<ul>
+			<li><a href="/sext/" class="about">About</a></li>
+			<li><a href="/sext/parents" class="parents">For Parents</a></li>
+			<li><a href="/sext/contact" class="contact">Contact</a></li>
+		</ul>
+      <div id="user_login">
+		<%= signedin(current_user)%>
+      </div>
+	</div>
+  	<div id="container" class="full">
+	    <div class='container'>
+		  <div id="celltop" class='column span-19'>
+
+		  </div>
+		  <div id="cellmiddle" class='column span-19'>
+			<div id="content">
+				<div id="left_column" class="span-4">
+				<%= yield %>
+				</div>
+			</div>
+		  </div>
+		  <div id="cellbottom" class='column last span-19'>
+		  </div>
+		</div>
+    </div>
+	
+    <%= render :partial => 'layouts/javascript' %>
+    <%= render :partial => 'layouts/brand_footer' %>
+	<% if RAILS_ENV=='production'%>
+	<%= render :partial => 'layouts/sext_google_analytics' %>
+	<% end %>
+  </body>
+</html>

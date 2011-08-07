@@ -1,0 +1,46 @@
+<div class="span-8 prepend-1 last">
+  <img src="/images/chat_reach_logo_blue.jpg" width="300" height="125"/>
+  <h4><%= title %></h4>
+  <p>  <%= description %></p>
+	<%= render :partial=>"/home/email_signup"%>    
+	<%= render :partial=>"/home/sign_up"%>
+	<a href="/home/blog"><h4 class="blog">Blog</h4></a>
+	<ul class="blog">
+	<% @blogs.each do |blog|%>
+				<li><%=blog.title%><span>
+				<%= blog.content[0..50] + "..."%><br><a href="/home/blog/<%=blog.to_url%>">More >></a></span>
+				</li>
+	<% end %>
+	</ul>
+	<script src="http://widgets.twimg.com/j/2/widget.js"></script>
+  <script>
+  new TWTR.Widget({
+    version: 2,
+    type: 'profile',
+    rpp: 5,
+    interval: 6000,
+    width: 'auto',
+    height: 300,
+    theme: {
+      shell: {
+        background: '#e9fffd',
+        color: '#030303'
+      },
+      tweets: {
+        background: '#e9fffd',
+        color: '#000000',
+        links: '#ff4507'
+      }
+    },
+    features: {
+      scrollbar: false,
+      loop: false,
+      live: false,
+      hashtags: true,
+      timestamp: false,
+      avatars: true,
+      behavior: 'all'
+    }
+  }).render().setUser('chatreach').start();
+  </script>
+</div>                 

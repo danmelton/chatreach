@@ -1,0 +1,26 @@
+<div id="demo" class="clickable" onClick="$('#signup').show()">
+  <a>Request a Demo</a>
+</div>
+<div id="signup" style="display: none">
+<div style="text-align: right">
+<a onClick="$('#signup').hide()">Hide</a>
+</div>
+	<fieldset>
+		<legend>Your Details</legend>
+		<form action="http://chatreach.heroku.com/leads/create" method="post">
+	    <p><label>First Name: </label><input type="text" name="lead[first_name]" value=""></p>
+	    <p><label>Last Name: </label><input type="text" name="lead[last_name]" value=""></p>
+	    <p><label>Email: </label><input type="text" name="lead[email]" value=""></p>
+	    <p><label>Phone: </label><input type="text" name="lead[phone]" value=""></p>
+	    <p><label>Organization Name:</label><br><textarea name="lead[company]"> </textarea></p>
+	    <p><label>Address:</label><textarea name="lead[address]"></textarea></p>
+	    <input type="hidden" name="lead[assigned_to]" value="1">
+	    <input type="hidden" name="lead[source]" value="web">
+	  	<input type="hidden" name="authorization" value="f7d8af4289e11ba46854223a77cc6556957a9a26ae24aa94e8df4c5229e62bb7dd4698c5ecb6defda15912f9f4e220f3261edeb208ac499e391d009a5a533dd1">
+	  	<input type="hidden" name="token" value="SY64eUAj9BXO17IHPla-">
+	    <input type="hidden" name="on_success" value="http://www.chatreach.com/home/thankyou">
+	    <input type="hidden" name="on_failure" value="http://www.chatreach.com/home/thankyou">
+	    <input type="submit" value="Submit >>" class="button clickable round-7">
+	  </form>
+	</fieldset>
+</div>

@@ -1,0 +1,9 @@
+<div class="innerBox span-15">
+<h1><%=h @help.title %></h1>
+<p>
+  <%= @help.content %>
+</p>
+</div>
+  	<%= render :partial => "help", :locals => {:related => @related, :featured => @featured, :new => @new }%>
+<div style="clear: both;"/></div>
+</div>

@@ -1,0 +1,54 @@
+<% content_for :javascript do %>
+<%= javascript_include_tag "tablesorter/jquery.tablesorter.js", :cache => true %>
+<%= javascript_include_tag "quicksearch.js", :cache => true %>
+<script type="text/javascript">
+$(document).ready(function() {        
+	 $("table#tableList").tablesorter({
+	   sortList:[[0,0]], 
+	   headers: { 3: { sorter: false}}
+	 });
+	$('table#tableList tbody tr').quicksearch({
+	  position: 'before',
+	  attached: 'table#tableList',
+	  stripeRowClass: ['odd', 'even'],
+	  labelText: 'Search the table',
+	  inputClass: 'text'
+	}); 
+});
+</script>
+<% end %>
+<div id="questionList">
+<h1>Text Content</h1>
+<ul id="submenu" class="links border">
+  <li><%= link_to "Published Content", {:action=>:index, :type=>"linked"}%></a></li>
+  <li><%= link_to "New Content Item", new_text_content_path%></li>
+  <li class="last"><%= link_to "My Content", {:action=>:index, :type=>"my"}%></a></li>
+</ul>
+<table id="tableList" class="tablesorter">
+  <thead>
+	<th>Tag</th>
+	<th>Action</th>
+    <th>Text</th>
+	<% if @view_type == "my"%>
+	<th>Published</th>
+	<% end%>
+    <th>Submitted By</th>
+	<th>Actions</th>
+  </thead>
+<% @text_contents.each do |text_content| %>
+  <tr id="text<%="#{text_content.id}"%>">
+	<td><%=h eval "text_content.#{@tag_list_name.gsub('_list', '')}.map(&:name).to_sentence"  %></td>
+	<td><%=h text_content.categories.map(&:name).to_sentence %></td>
+    <td><%=h text_content.response %></td>
+	<% if @view_type == "my"%>
+	<td><%=h text_content.published %></td>
+	<% end%>	
+    <td><%=h "#{text_content.user.uprofile.first_name} #{text_content.user.uprofile.last_name}" %></td>
+    <td><%= unlink_txt(@view_type, text_content)%><%= link_txt(@view_type,text_content)%><%= edit_txt(text_content)%><%= delete_txt(text_content)%></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+</div>

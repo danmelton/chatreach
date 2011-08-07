@@ -1,0 +1,14 @@
+<div class="innerBox span-15">
+<h1>Edit Settings</h1>
+<div class="directions">
+  <p>Edit your settings below for <%= @brand %>.</p>
+</div>
+<fieldset>
+	<legend><%= @brand %> Settings</legend>
+	  	<%= render :partial => "brand_#{session[:brand]}_form", :object => @settings%>
+</fieldset>
+</div>
+</div>
+  	<%= render :partial => "brand_#{session[:brand]}_help"%>
+<div style="clear: both;"/></div>
+</div>

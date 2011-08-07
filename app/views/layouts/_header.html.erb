@@ -1,0 +1,20 @@
+<div id="loggedBackground"></div>
+<div id="header">
+  <div class="full">
+  </div>
+  <div class="navigation">
+    <ul class="links full" id="nav">
+	<% if current_user%>
+      <li class="link_item"><%= link_to "Home", "/dashboard"%></li>
+		<%= render :partial=> "layouts/brand"%>
+      <li class="link_item"><%= link_to "Log Out", '/logout'%></li>
+	<% else %>
+	  <li class="link_item"><%= link_to "Main", root_url%></li>
+      <li><a href="/login/about">About</a></li>
+      <li><a href="/login/contact">Contact</a></li>	
+	<% end %>
+    </ul>
+
+  </div>
+</div>        
+

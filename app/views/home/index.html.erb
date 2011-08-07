@@ -1,0 +1,33 @@
+<% content_for :menu do %>
+<li class="active"><a href="/">home</a></li>
+<li><a href="/home/about">about</a></li>
+<li><a href="/home/contact">contact</a></li>
+<li><a href="/products">products</a></li>
+<li><a href="/home/blog">blog</a></li>
+<% end %>
+<div id="middle">
+	<div id='left' class="span-14">
+		<div id="left_front_pane" class="span-14">
+  			<div id="front_pane">
+    		<%= render :partial=>"videos"%>
+  			</div>
+		</div>
+		<div class="feeds">
+			<h1>Products</h1>
+			<div class="span-6">
+				<a href="/products/poweron/about"><img src="/images/products/poweron_small.jpg"></a>
+				<h2>PowerOn</h2>
+			is a media rich website and outreach program for gay, bisexual and questioning men aged 18 to 55. Geared for HIV prevention, Poweron includes tools to track conversations, online referral generation, tracking and training. 
+				<div id="learnmore"><a href="/products/poweron/about">Learn More >> </a></div>
+			</div>	
+		  	<div class="span-6 prepend-1 last">
+			<a href="/products/sext/about"><img src="/images/products/sext_small.jpg"></a>	
+		    <h2>Sext</h2>
+			provides sexual health education through text messaging. Targeted towards youth 16 to 24, the text message line is a tech-savvy way to reach young people 24/7. Content provided by <a href="http://www.advocatesforyouth.org/" target="_blank">Advocates for Youth</a>.
+				<div id="learnmore"><a href="/products/sext/about">Learn More >> </a></div>
+		  	</div>            
+		</div>
+	</div>
+		<%= render :partial=>"right", :locals => {:title => "Welcome to Chatreach!", :description => "Chatreach is a collection of products to help health clinics, hospitals, county health departments and organizations reach their clients through new media outlets like cell phones, social networks and the web."}%>
+</div>
+<div class="clear" />

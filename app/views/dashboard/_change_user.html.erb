@@ -1,0 +1,9 @@
+<h2>Administrator</h2>
+<form action="/change_user" method="get">
+  <select name="users">
+  <% @users.each do |u| %>
+    <option value="<%=u.id%>"><%=u.email%>-<%=u.account.name%></option>
+  <% end %>
+  </select>
+  <input type="submit" value="Change User >>">
+</form>

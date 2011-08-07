@@ -1,0 +1,5 @@
+<div id="flash"  style="background: white; padding: 20px 20px 0px 20px;">
+  <% flash.each do |key, value| -%>
+    <div id="message" class="notice"><%=h value %></div>
+  <% end -%>
+</div>

@@ -1,0 +1,48 @@
+<% content_for :javascript do %>
+<%= javascript_include_tag "tablesorter/jquery.tablesorter.js", :cache => true %>
+<%= javascript_include_tag "quicksearch.js", :cache => true %>
+<script type="text/javascript">
+$(document).ready(function() {        
+	 $("table#tableList").tablesorter({
+	   sortList:[[0,0]], 
+	   headers: { 3: { sorter: false}}
+	 });
+	$('table#tableList tbody tr').quicksearch({
+	  position: 'before',
+	  attached: 'table#tableList',
+	  stripeRowClass: ['odd', 'even'],
+	  labelText: 'Search the table',
+	  inputClass: 'text'
+	}); 
+});
+</script>
+<% end %>
+<div id="questionList">
+	
+<h1>Manage Users</h1>
+<%     if current_user.admin == true %>
+<ul id="submenu" class="links border">
+  <li class="last"><%= link_to "Create a New User", {:action=>:new}%></a></li>
+</ul>
+<% end %>
+<table id="tableList" class="tablesorter">
+  <thead>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Active?</th>
+    <th>Admin?</th>
+	<th>Actions</th>
+  </thead>
+
+<% @users.each do |user| %>
+  <tr id="user<%="#{user.id}"%>">
+    <td><%=h user.name %></td>
+    <td><%=h user.email %></td>
+    <td><%=h !user.inactive? %></td>    
+    <td><%=h user.admin %></td>
+    <td><%= delete_user(user)%></td>
+  </tr>
+<% end %>
+</table>
+
+<br />

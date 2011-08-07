@@ -1,0 +1,9 @@
+<div id="report_date">
+    <% form_tag('/reports/show', :method => :get) do %>
+      <label>Date 1:</label>
+      <%= date_select("report", "start", :default => @date_start, :end_year => Time.now.year) %><br/>
+      <label>Date 2:</label>
+      <%= date_select("report", "end", :default => @date_end)  %><br/>
+      		<%= submit_tag 'Update', :class => "button clickable round-7"  %>
+    <% end -%>
+</div>

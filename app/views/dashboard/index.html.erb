@@ -1,0 +1,20 @@
+<%=mobile%>
+  <div class="innerBox ui-corner-top">
+    <div class="status span-11 append-1">
+      <%= render :partial => "first_time" %>
+      <% if current_user.super? or !session[:super].blank?%>
+        <p><%= render :partial => "change_user" %>
+        </p>
+      <% end %>
+    </div>
+    <div class="news span-11 last">
+      <ul>
+        <li class="event">
+			    <%= render :partial => "helps/dash_help"%>
+        </li>
+      </ul>
+    </div>
+    
+    <div style="clear:both;"></div>
+  </div>
+</div>

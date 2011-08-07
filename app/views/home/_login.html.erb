@@ -1,0 +1,9 @@
+<% form_for :session, :url => session_path(:return_to => '/dashboard') do |form| %>
+		<%= form.text_field :email, :size => 20, :id =>"username", :class=>"text watermark", :title => "Email", :onclick => "this.value=''" %>
+		<%= form.password_field :password, :title=>"Password", :class=>"text", :id=>"pass"%>
+		<%= form.submit "Login", :class=>"submit clickable", :value=>"LOGIN",:id=>"login", :name=>"login" %>
+		<br><%= render :partial => 'passwords/new'%>
+    
+<% end %>
+
+

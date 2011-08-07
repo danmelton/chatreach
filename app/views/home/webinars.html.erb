@@ -1,0 +1,48 @@
+<% content_for :menu do %>
+	<li><a href="/">home</a></li>
+	<li><a href="/home/about">about</a></li>
+	<li><a href="/home/contact">contact</a></li>
+	<li><a href="/products">products</a></li>
+	<li><a href="/home/blog">blog</a></li>		
+<% end %>
+<div id="middle">
+	<div id='left' class="span-14">
+		<div id="left_front_pane" class="span-14">
+  			<div id="front_pane">
+				<h1>Webinars</h1>
+				<ul id="submenu" class="links border"> 
+					<li><a href="#upcoming">Upcoming</a></li>
+					<li><a href="#about">About the Instructor</a></li>
+					<li class="last "><a href="/home/webinar">Sign in to the Webinar</a></li>
+				</ul>
+The following is a list of our webinars.  We're moving to ondemand webinars in April which means you can watch the seminar as a video.  Check back in May.
+<a name="upcoming"></a>
+				<ul class="blog">				  
+          <li><b>Online Outreach Tips</b><p>February 4, 2-3pm CST<br>Instructor: Dan Melton, PhD<br>
+          We'll cover popular websites like Gay.com, Adam4Adam and Squirt giving you tips and techniques to improve your online outreach.    
+          </p>
+          </li>                    
+          <li><b>Facebook FanPages & Viral Strategies </b><br>Instructor: Dan Melton, PhD<br>
+          Fanpages are easy options for agencies to create viral landing pages on Facebook.  You'll learn the basics of setting up a page, recruiting fans and keeping them up-to-date with your events.  
+          </p></li>
+          <li><b>Sext Text Msg Demo </b><br>Instructor: Dan Melton, PhD<br>
+          The Sext Line provides sexual health education through text messaging. Targeted towards youth 16 to 24, the text message line is a tech-savvy way to reach young people 24/7. Content provided by Advocates for Youth. Learn how this program can be customized for your agency and region.
+          </p></li>
+          <li><b>Creating and Distributing Online Viral Health Videos </b><br>Instructor: Dan Melton, PhD<br>
+          In less than 10 minutes, you can film, edit and upload a story or health message to high-traffic destinations websites like YouTube, Vimeo or Viddler.  These enable quick production and sharing of video content from small handheld devices like cell phones or the new FlipMino HD. Learn how to create and distribute online health videos.  
+          </p></li>
+          <li><b>Conducting an Online Needs Assessment </b><p>April 6, 2-3pm CST<br>Instructor: Dan Melton, PhD<br>
+          Social networks are exploding, but how do you know which ones your agency should be actively engaged in outreach?  What is the prevalence of online hookups?  Are people online getting engaged with offline agencies?  In this webinar, you'll learn how to search social networks to determine the prevalence of online users in your target demographic.  You'll also learn how to deploy surveys using advertising on Facebook and MySpace.  Perfect for grant writers or program evaluators.
+          </p></li>
+        </ul>
+          <a name="about"></a>
+          <p></p>
+          <h1>About Dan</h1>
+          <p>Dan Melton, Ph.D., MPA is the Founder and CEO for npT Labs LLC, located in the Kansas City area. As a public-minded, Generation Net, tech head, Prior to starting npT, Dan has been in the roles of Executive Director, Development Director, and Marketing Director for Kansas City nonprofits. Over the past eight years, Dan led the concept-development, fundraising and implementation of cutting-edge technology projects for Kansas City and national nonprofits. With nine years of experience in health and human services, Dan brings a unique hybrid of business and public sector experience to his work with health and human service agencies.  Dan received his bachelor’s degree in Economics and Political Science, his masters in Public Administration and doctorate in Public Affairs and Economics from the Henry Bloch School of Business and Public Administration at the University of Missouri-Kansas City.</p>  			  
+		    </div>
+		    
+		</div>
+	</div>
+		<%= render :partial=>"right", :locals => {:title => "Welcome to Chatreach!", :description => "Chatreach is a collection of products to help health clinics, hospitals, county health departments and organizations reach their clients through new media outlets like cell phones, social networks and the web."}%>
+</div>
+<div class="clear" />

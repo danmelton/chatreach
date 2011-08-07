@@ -1,0 +1,8 @@
+<% if session[:brand]%>
+<% if Brand.find(session[:brand]).name=='Sext'%>
+		<%= render :partial=> "layouts/brand_2"%>
+<%end%>
+<% else %>
+<li class="link_item"><%= link_to "Your Profile", edit_uprofile_path(current_user.uprofile)%></li>
+<li class="link_item"><%= link_to "Your Organization Profile", edit_organization_path(current_user.account.programs.first.id)%></li>
+<% end %>

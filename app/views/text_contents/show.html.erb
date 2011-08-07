@@ -1,0 +1,33 @@
+<p>
+  <b>Account:</b>
+  <%=h @text_content.account_id %>
+</p>
+
+<p>
+  <b>Brand:</b>
+  <%=h @text_content.brand_id %>
+</p>
+
+<p>
+  <b>Action:</b>
+  <%=h @text_content.action_id %>
+</p>
+
+<p>
+  <b>Response:</b>
+  <%=h @text_content.response %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @text_content.user_id %>
+</p>
+
+<p>
+  <b>Published:</b>
+  <%=h @text_content.published %>
+</p>
+
+
+<%= link_to 'Edit', edit_text_content_path(@text_content) %> |
+<%= link_to 'Back', text_contents_path %>

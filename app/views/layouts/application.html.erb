@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>chatreach</title>            
+    <%= stylesheet_link_tag 'blueprint/screen', :media => 'all', :cache => true %>
+    <%= stylesheet_link_tag 'style', :media => 'all', :cache => true %>
+    <%= yield :header %>
+  </head>
+  <body class="<%= body_class %>" onload="<%= yield :bodyload%>">
+    <%= render :partial => 'layouts/header' -%>
+  	<div id="container" class="full">
+	    <div class="blue_container">
+		  <div id="banner" class="ui-corner-bottom">
+		    <div id="status" class="span-12">
+		      	<%= render :partial => 'layouts/flashes' -%>
+		    </div>
+		    <div class="clear"></div>
+		  </div>
+	</div>
+<%= yield %>
+    </div>
+	<%= render :partial => 'layouts/footer' %>
+
+	<% if current_user %>    
+		<%= render :partial => 'layouts/toolbar' %>
+	<%end%>
+
+    <%= render :partial => 'layouts/javascript' %>
+  </body>
+</html>

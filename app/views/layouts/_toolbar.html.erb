@@ -1,0 +1,24 @@
+<div id="toolbar">
+	<% current_user.account.brands.each do |brand| %>
+  <div class="brand_inner_icon rollover <% if session[:brand]==brand.id %> active_icon <%end%>">
+    <%= link_to brand.name, brand_path(brand) %>
+  </div>
+	<% end %> 
+               
+  <div class="profile_icon rollover <% if controller=="uprofiles"%> active_icon <%end%>">
+	<%= link_to "Your Profile", edit_uprofile_path(current_user.uprofile)%>
+  </div>
+  <div class="profile_icon rollover <% if controller=="oprofiles"%> active_icon <%end%>">
+	<%= link_to "Your Organization Profile", edit_oprofile_path(current_user.account.programs.first )%>
+  </div>
+<% if current_user.admin?%>
+  <div class="profile_icon rollover <% if controller=="users"%> active_icon <%end%>">
+	<%= link_to "Manage Users", "/manage_users"%>
+  </div>
+<% end %>
+
+
+  <div class="profile_icon">
+	<p>Your Account: <b><%= current_user.account.name %></b>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<% content_for :javascript do %>
+<%= javascript_include_tag "tablesorter/jquery.tablesorter.js", :cache => true %>
+<%= javascript_include_tag "quicksearch.js", :cache => true %>
+<script type="text/javascript">
+$(document).ready(function() {        
+	 $("table#tableList").tablesorter({
+	   sortList:[[0,0]], 
+	   headers: { 3: { sorter: false}}
+	 });
+	$('table#tableList tbody tr').quicksearch({
+	  position: 'before',
+	  attached: 'table#tableList',
+	  stripeRowClass: ['odd', 'even'],
+	  labelText: 'Search the table',
+	  inputClass: 'text'
+	}); 
+});
+</script>
+<% end %>
+
+<div id="questionList">
+<h1>Keywords</h1>
+<ul id="submenu" class="links border">
+  <li><%= link_to "New Keyword", new_keyword_path%></li>
+  <li><%= link_to "All Keywords", '/keywords'%></li>	
+</ul>
+<table id="tableList" class="tablesorter">
+  <thead>
+    <th>Brand</th>
+    <th>Weight</th>
+    <th>Content</th>
+	  <th>Actions</th>
+  </thead>
+
+<% @keywords.each do |keyword| %>
+  <tr>
+    <td><% if !keyword.brand.nil?%> <%=keyword.brand.name%> <%else%> none <%end %></td>
+    <td><%=h keyword.weight %></td>
+    <td><%=h keyword.content %></td>
+    <td><%= link_to 'Show', keyword %> | <%= link_to 'Edit', edit_keyword_path(keyword) %> | <%= link_to 'Destroy', keyword, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New keyword', new_keyword_path %>

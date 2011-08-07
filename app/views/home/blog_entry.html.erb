@@ -1,0 +1,22 @@
+<% content_for :menu do %>
+	<li><a href="/">home</a></li>
+	<li><a href="/home/about">about</a></li>
+	<li><a href="/home/contact">contact</a></li>
+	<li><a href="/products">products</a></li>
+	<li class="active"><a href="/home/blog">blog</a></li>	
+<% end %>
+<div id="middle">
+	<div id='left' class="span-14">
+		<div id="left_front_pane" class="span-14">
+  			<div id="front_pane">
+				<a href="/home/blog"><< Back</a>
+				<h2><%=@blog.title%></h2>
+				<%= @blog.content%>
+  			</div>
+		</div>
+
+	</div>
+		<%= render :partial=>"right", :locals => {:title => "Welcome to Chatreach!", :description => "Chatreach is a collection of products to help health clinics, hospitals, county health departments and organizations reach their clients through new media outlets like cell phones, social networks and the web."}%>
+</div>
+<div class="clear" />
+

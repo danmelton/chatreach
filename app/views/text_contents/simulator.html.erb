@@ -1,0 +1,33 @@
+<% content_for :javascript do %>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#send_message").click(function(){
+		$.get("/textmessage/", {message:$('#message').attr('value'), sessionId:$('#session_id').attr('value'), phoneNumber:'9999999999', carrierID:'99999'}, function(data){
+			var response = $(data).find("result").text();
+			$("#response").append("<span class='text_request'># " + $('#message').attr('value') + "</span><br />");
+			$("#response").append("<span class='text_response'># " + response + "</span><br />");
+			$('#message').val('');
+		});
+	});	
+});
+</script>
+<% end %>
+
+<div class="blue_container">
+  <div class="innerBox span-15">
+<h1>Text Messaging Simulator</h1>
+
+<input type="hidden" name="session_id" id="session_id" value="99">
+<div style="padding-left:40px; padding-right:40px;">
+	<strong>Text Message:</strong> <input type="text" id="message" size="60" maxlength="160" /> <input type="button" id="send_message" value="Send Txt">
+	<div>
+		<strong>Response:</strong>
+		<br />
+		<div id="response" style="border: 1px solid #345; padding: 10px;">
+		</div>	
+	</div>
+</div>
+ </div>
+	<%= render :partial=>"help_simulator" %>
+  <div style="clear: both;"/></div>  
+</div>

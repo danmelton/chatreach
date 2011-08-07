@@ -1,0 +1,44 @@
+<div class="blue_container">
+	<div class="innerBox span-15">
+<h1>New User</h1>
+<div class="directions">
+  <p>Add a new user to your account.</p>
+</div>
+
+<fieldset>
+	<legend>Details</legend>
+
+<% form_for(@user, :url => '/manage_users') do |f| %>
+  <%= f.error_messages %>
+	<% fields_for :uprofile do |uprofile| -%>
+	<p>
+    <%= f.label :first_name %><br />
+	<%= uprofile.text_field :first_name %>
+	</p>
+	<p>
+    <%= f.label :last_name %><br />
+	<%= uprofile.text_field :last_name %>	
+	</p>
+	<% end -%>
+	<p>
+    <%= f.label :email %><br />
+	<%= f.text_field :email %>
+	</p>
+  	<p>
+    <%= f.label :password %><br />
+	<%= f.text_field :password %>
+	</p>
+    <%= f.label :password_confirmation %><br />	
+	<%= f.text_field :password_confirmation, :label => "Confirm password" %>
+	</p>
+	<p>
+	<%= f.check_box :admin %>	
+    <%= f.label :admin, "Admin?" %>
+	</p>
+	<%= f.submit 'Create', :class => "button clickable round-7" %>
+<% end %>
+</fieldset>
+</div>
+	  <%= render :partial => "help"%>
+<div style="clear: both;"/></div>
+</div>

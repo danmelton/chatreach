@@ -1,0 +1,8 @@
+<% title "Dashboard" %>
+
+<%= render :partial => "brand_#{session[:brand]}"%>
+
+<ul>
+  <li class="arrow"><%= link_to "Log Out", logout_path %></li>
+  <li class="arrow"><%= link_to "View in Normal Mode", '?mobile=0' %></li>  
+</ul>

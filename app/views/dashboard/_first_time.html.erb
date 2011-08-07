@@ -1,0 +1,19 @@
+<h2>Welcome to Chatreach!</h2>
+<p>As a first time visitor, you need to complete a couple tasks.  These will help familiarize you with the system. Let's get started.  </p>
+  <ul>
+    <li>
+      <div class="update">
+        <span class="title">Step 1: Edit Your Profile</span><br>
+        <span class="update">Your user profile contains simple contact information that enables us or other resources to get ahold of you</span><br>
+        <span class="actions"><%= link_to "Click Here to Edit Your Profile >>", edit_uprofile_path(current_user.uprofile)%></span>
+      </div>
+    </li>
+    <li>
+      <div class="update">
+        <span class="title">Step 2: Edit Your Organization's Profile</span><br>
+        <span class="update">Whenever a referral is given to your organization, we use your profile information to map your address or respond to text message inquiries.</span><br>
+        <span class="actions"><%= link_to "Click Here to Edit Your Organization Profile >>", edit_organization_path(current_user.account.programs.first.id)%></span>
+      </div>
+    </li>
+    <%= render :partial => "brand_#{session[:brand]}"%>
+  </ul>

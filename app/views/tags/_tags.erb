@@ -1,0 +1,7 @@
+<ul id="tags" class="lists">
+<% tags.all.each do |tag| -%>
+<% eval "tagged = item.#{tag_list_name}.include?(tag.name)" %>
+  <li id="tag"><%= check_box_tag tag_list_name.to_s, tag.name, tagged, :name => model_name.to_s + '[' + tag_list_name.to_s + '][]' -%>
+  <%= label_tag tag_list_name.to_s, tag.name -%></li>
+<% end %>
+</ul>

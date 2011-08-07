@@ -1,0 +1,21 @@
+xml.instruct!
+
+xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
+ xml.channel do
+
+   xml.title       "Chatreach Blog"
+   xml.link        'http://www.chatreach.com/home/blog/'
+   xml.description "Chatreach: Blog about products, social media and health"
+
+   @blogs.each do |blog|
+     xml.item do
+       xml.title       blog.title
+       xml.author      blog.user.name
+       xml.link        'http://www.chatreach.com/home/blog/' + blog.to_url
+       xml.description(truncate(blog.content, 200))
+       xml.guid        'http://www.chatreach.com/home/blog/' + blog.to_url
+     end
+   end
+
+ end
+end  

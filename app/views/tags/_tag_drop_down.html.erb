@@ -1,0 +1,8 @@
+<p><%= f.label tag_list_name.to_s, "Select a Tag" %><br />
+	<select name="text_content[<%=tag_list_name%>]" id="text_content_<%=tag_list_name%>">
+		<% tags.all(:order => 'tags.name').each do |tag| %>
+			<option value="<%= tag.name %>"<%if eval "@textcontent.#{tag_list_name}.include?(tag.name)"%> selected=""<%end%>><%= tag.name %></option>
+		<% end %>
+	</select>
+</p>
+

@@ -1,0 +1,17 @@
+<p><%= f.label :brand_id, "Select a Brand" %><br />
+	<select name="keyword[brand_id]">
+		<option value="0"<%if @keyword.brand_id == "0"%> selected=""<%end%>>All Brands</option>
+		<% Brand.all.each do |brand| %>
+			<option value="<%= brand.id %>"<%if @keyword.brand_id == brand.id%> selected=""<%end%>><%= brand.name %></option>
+		<% end %>
+	</select>
+</p>
+
+<p>
+  <%= f.label :weight %><br />
+  <%= f.text_field :weight %>
+</p>
+<p>
+  <%= f.label :content %><br />
+  <%= f.text_field :content %>
+</p>

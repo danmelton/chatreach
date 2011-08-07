@@ -1,0 +1,9 @@
+<ul id="report">
+<li>Total Chatters: <b><%=@total_chatters%></b></li>
+<li>New Chatters: <b><%=@total_new_chatters%></b></li>
+<li>Total Content Distributed: <b><%=@total_content%></b></li>
+<li>Average Content Distributed Per Chatter: <b><%=(@total_content.to_f/@total_chatters.to_f).round(2) unless @total_chatters == 0%></b></li>
+</ul>
+<p><img src="<%=@total_new_chatters_graph%>"></p>
+<p><img src="<%=@total_chatters_graph%>"></p>
+<p><img src="<%=@total_content_graph%>"></p>

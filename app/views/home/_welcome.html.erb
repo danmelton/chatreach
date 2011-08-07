@@ -1,0 +1,4 @@
+<div id="welcome">
+	<h2>Welcome <%=h  current_user.uprofile.first_name %></h2>
+<%= link_to "Dashboard", '/dashboard', :class=>"welcome"%> | <%= link_to "Log Out", "/logout", :class=>"welcome"%> | <%= link_to "Your Profile", edit_uprofile_path(current_user.uprofile), :class=>"welcome"%>
+</div>

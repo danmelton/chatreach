@@ -1,0 +1,37 @@
+<% content_for :header do %>
+<%= GMap.header %>
+<%= @map.to_html %>
+<% end %>
+<div class="innerBox span-15">
+<h1><%=h @oprofile.name%></h1>
+<%= @map.div(:width => 400, :height => 300, :style => "float: right") %>
+<p>
+  <h2>Address:</h2>
+  <%=h @oprofile.address %><br />
+  <%=h @oprofile.city %>, <%=h @oprofile.state %><br />
+  <%=h @oprofile.zip %>
+</p>
+<p>
+  <h2>Contact:</h2>
+  <%if @oprofile.phone? %> Office Phone:<br /> <%=h number_to_phone(@oprofile.phone, :area_code => true)%><%end%>
+  <%if @oprofile.mobile? %> Cell Phone:<br /> <%=h number_to_phone(@oprofile.mobile, :area_code => true)%><%end%>
+  <%if @oprofile.pager? %> Pager Number:<br /> <%=h number_to_phone(@oprofile.pager, :area_code => true)%><%end%>
+</p>
+<p>
+  <h2>Web Info:</h2>
+  <%if @oprofile.website?%>Website:<br /> <a href="<%=h @oprofile.website%>"><%end%>
+  <%if @oprofile.email?%>Email:<br /> <a href="<%=h @oprofile.email%>"><%end%>
+</p>
+
+<p>
+  <h2 class="about">About:</h2>
+  <%= @oprofile.about %>
+</p>
+<p>
+<%= edit_org(@oprofile) %>
+<%= can_claim_org(@oprofile) %>
+</p>
+</div>
+
+
+

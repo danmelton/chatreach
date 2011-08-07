@@ -1,0 +1,21 @@
+<div id="help_pane" class="span-7 last">
+<h4>Featured</h4>
+<ul>
+	<% @featured.each do |content| %>
+	<li><a href="/help/<%=content.to_url%>"><%=content.title%></a></li>
+	<% end%>
+</ul>
+<h4>Related</h4>
+<ul>
+	<% @related.each do |content| %>
+	<li><a href="/help/<%=content.to_url%>"><%=content.title%></a></li>
+	<% end%>
+</ul>
+
+<h4>Recent</h4> 
+<ul>
+	<% @recent.each do |content| %>
+	<li><a href="/help/<%=content.to_url%>"><%=content.title%></a></li>
+	<% end%>
+</ul>
+</div>

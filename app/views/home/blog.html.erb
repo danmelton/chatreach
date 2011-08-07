@@ -1,0 +1,26 @@
+<% content_for :menu do %>
+	<li><a href="/">home</a></li>
+	<li><a href="/home/about">about</a></li>
+	<li><a href="/home/contact">contact</a></li>
+	<li><a href="/products">products</a></li>
+	<li class="active"><a href="/home/blog">blog</a></li>	
+<% end %>
+<div id="middle">
+	<div id='left' class="span-14">
+		<div id="left_front_pane" class="span-14">
+  			<div id="front_pane">
+  			  <div id="rss"><a href="/home/blog/rss/">RSS Feed >></a></div>
+	<% @blogs.each do |blog|%>
+				<h2 class="blog"><%=blog.title%></h2>
+				<div id="blog_date"><%=blog.published_at.strftime("%B %d, %Y")%></div>				
+				<p><%= blog.content[0..150]%>
+				<a href="/home/blog/<%=blog.to_url%>">More >></a></p>
+	<% end %>				
+  			</div>
+		</div>
+
+	</div>
+		<%= render :partial=>"right", :locals => {:title => "Welcome to Chatreach!", :description => "Chatreach is a collection of products to help health clinics, hospitals, county health departments and organizations reach their clients through new media outlets like cell phones, social networks and the web."}%>
+</div>
+<div class="clear" />
+

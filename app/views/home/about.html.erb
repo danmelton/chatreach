@@ -1,0 +1,24 @@
+<% content_for :menu do %>
+	<li><a href="/">home</a></li>
+	<li class="active"><a href="/home/about">about</a></li>
+	<li><a href="/home/contact">contact</a></li>
+	<li><a href="/products">products</a></li>
+	<li><a href="/home/blog">blog</a></li>		
+<% end %>
+<div id="middle">
+	<div id='left' class="span-14">
+		<div id="left_front_pane" class="span-14">
+  			<div id="front_pane">
+				<h1>About Chatreach</h1>
+				<p>Chatreach is a collection of products to help health clinics, hospitals, county health departments and organizations reach their clients through new media outlets like cell phones, social networks and the web. We're focused in HIV/STI prevention and sexual health education.</p>
+				<p>Our first product, PowerOn launched in 2008 to assist agency outreach workers in delivering HIV prevention information online through social networks.  Focused on gay men, 18 to 55, PowerOn delivers videos, blogs, and health information to educate and increase awareness about HIV and STIs.  PowerOn evolved from the work of the University of Washington in Seattle and a partnership with Healthy Living Projects, Inc an Olathe, KS HIV prevention agency.  Our second product, Sext was formed in partnership with Advocates for Youth and funded by the New Morning Foundation.  Sext is a text message line that deliver sexual health information and referrals to local clinics 24/7 for youth 16 to 24.  Four cities in South Carolina serve as pilot sites.</p>
+				<p>Chatreach is a product of npT Labs, LLC, a socially conscious for-profit dedicated to health and human services organizations.  Founded by Dan Melton, PhD, MPA in 2002, npT Labs offers new media technologies to organizations that serve health or economic development needs.  More at <a href="http://www.nptlabs.com">http://www.nptlabs.com</a>
+				
+  			</div>
+		</div>
+
+	</div>
+		<%= render :partial=>"right", :locals => {:title => "Welcome to Chatreach!", :description => "Chatreach is a collection of products to help health clinics, hospitals, county health departments and organizations reach their clients through new media outlets like cell phones, social networks and the web."}%>
+</div>
+<div class="clear" />
+

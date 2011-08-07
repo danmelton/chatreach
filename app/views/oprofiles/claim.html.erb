@@ -1,0 +1,20 @@
+ <%= render :partial => "layouts/flashes"%>
+<div class="blue_container">
+	<div class="innerBox span-15">
+
+<h1>Claim this Organization</h1>
+<div class="directions">
+  <p>To claim this organization, you'll need a code.  If you have this code, enter it below. Otherwise, please request it by click here.</p>
+</div>
+<% form_tag(:action => "claim") do %>
+<p>
+<label for="code">Code: </label>
+<input type="text" name="code" value="<%=@code%>">
+</p> 
+<%= submit_tag "Claim >>", :id => "submit", :name => "submit", :class => "button clickable round-7" %>
+<% end -%>
+</fieldset>
+</div>
+	  <%= render :partial => "claim_help"%>
+<div style="clear: both;"/></div>
+</div>

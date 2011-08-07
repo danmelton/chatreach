@@ -1,0 +1,24 @@
+<% content_for :menu do %>
+	<li><a href="/">home</a></li>
+	<li><a href="/home/about">about</a></li>
+	<li class="active"><a href="/home/contact">contact</a></li>
+	<li><a href="/products">products</a></li>
+	<li><a href="/home/blog">blog</a></li>			
+<% end %>
+<div id="middle">
+	<div id='left' class="span-14">
+		<div id="left_front_pane" class="span-14">
+  			<div id="front_pane">
+				<h1>Contact Us</h1>
+				We're located in Kansas City, KS.  Drop us an email for more information, help, or press.  If you're interested in writing for PowerOn, we're also looking for content!
+				<h2>Address:</h2>613 Sandusky Avenue<br> Kansas City, KS<p>
+				<h2>Email:</h2>info@nptlabs.com<p>
+				<h2>Phone:</h2> 913-871-5839
+  			</div>
+		</div>
+
+	</div>
+		<%= render :partial=>"right", :locals => {:title => "Welcome to Chatreach!", :description => "Chatreach is a collection of products to help health clinics, hospitals, county health departments and organizations reach their clients through new media outlets like cell phones, social networks and the web."}%>
+</div>
+<div class="clear" />
+

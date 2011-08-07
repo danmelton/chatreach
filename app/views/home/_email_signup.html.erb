@@ -1,0 +1,99 @@
+<style>
+.link,
+.signupframe {
+	color: #07715D;
+	font-family: Arial, Helvetica, sans-serif;
+	}
+	.link {
+		text-decoration: none;
+		}
+	.signupframe {
+		border: 1px solid #E9FFFD;
+		background: #E9FFFD;
+		}
+</style>
+
+<div id="demo" class="clickable" onClick="$('#email_signup').show()">
+  <a>Receive Email Updates</a>
+</div>
+<div id="email_signup" style="display: none">
+<div style="text-align: right">
+<a onClick="$('#email_signup').hide()">Hide</a>
+</div>
+
+<form method=post action="https://app.icontact.com/icp/signup.php" name="icpsignup" id="icpsignup3395" accept-charset="UTF-8" onsubmit="return verifyRequired3395();" >
+<input type=hidden name=redirect value="http://www.chatreach.com/home/thankyou" />
+<input type=hidden name=errorredirect value="http://www.icontact.com/www/signup/error.html" />
+
+<div id="SignUp">
+<table width="260" class="signupframe" border="0" cellspacing="0" cellpadding="5">
+	<tr>
+      <td valign=top align=right>
+        <font size="1" face="Arial,Helvetica, sans-serif">*</font> <font size="2">Email</font>
+      </td>
+      <td align=left>
+        <input type=text name="fields_email">
+      </td>
+    </tr>
+	<tr>
+      <td valign=top align=right>
+         <font size="2">First Name</font>
+      </td>
+      <td align=left>
+        <input type=text name="fields_fname">
+      </td>
+    </tr>
+	<tr>
+      <td valign=top align=right>
+         <font size="2">Last Name</font>
+      </td>
+      <td align=left>
+        <input type=text name="fields_lname">
+      </td>
+    </tr>
+	<tr>
+      <td valign=top align=right>
+         <font size="2">Organization</font>
+      </td>
+      <td align=left>
+        <input type=text name="fields_business">
+      </td>
+    </tr>
+    <input type=hidden name="listid" value="21110">
+    <input type=hidden name="specialid:21110" value="CDDK">
+
+    <input type=hidden name=clientid value="160305">
+    <input type=hidden name=formid value="3395">
+    <input type=hidden name=reallistid value="1">
+    <input type=hidden name=doubleopt value="0">
+    <TR>
+      <TD> </TD>
+      <TD><font size="1">*</font><font size="2"> = Required Field</FONT></TD>
+    </TR>
+    <tr>
+      <td> </td>
+      <td><input type="submit" name="Submit" value="Submit" class="button clickable round-7"></td>
+    </tr>
+    </table>
+</div>
+</form>
+<script type="text/javascript">
+
+var icpForm3395 = document.getElementById('icpsignup3395');
+
+if (document.location.protocol === "https:")
+
+	icpForm3395.action = "https://app.icontact.com/icp/signup.php";
+function verifyRequired3395() {
+  if (icpForm3395["fields_email"].value == "") {
+    icpForm3395["fields_email"].focus();
+    alert("The Email field is required.");
+    return false;
+  }
+
+
+return true;
+}
+</script>
+</div>
+<p>

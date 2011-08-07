@@ -1,0 +1,22 @@
+<div class="blue_container">
+<div class="innerBox span-15">
+<h1>Add Text Content</h1>
+<div class="directions">
+  <p>This information is what your clients will as text messages.</p>
+</div>
+
+<fieldset>
+	<legend>Details</legend>
+	<% form_for(@textcontent) do |f| %>
+	  <%= f.error_messages %>
+	
+<%= render :partial=>'form', :locals => { :f => f} %>
+  <p>
+    <%= f.submit 'Create', :class => "button clickable round-7" %>
+  </p>
+<% end %>
+</fieldset>
+</div>
+  	<%= render :partial => "help"%>
+<div style="clear: both;"/></div>
+</div>

@@ -1,0 +1,16 @@
+<div class="innerBox span-15">
+<h1>Change Your Password</h1>
+<div class="directions">
+  <p>Enter a new password below.</p>
+</div>
+
+<% form_for(:user, :url  => user_password_path(@user, :token=>@user.confirmation_token), :html => { :method => :put }) do |f| %>
+  <%= f.error_messages %>
+  <p><%= f.label :password, "Password" %><br>
+  <%= f.text_field :password, :as => :password%></p>
+  <p>
+    <%= f.label :password_confirmation, "Password Confirmation" %><br>
+  <%= f.text_field :password_confirmation, :as => :password%></p>
+  <%= f.submit "Change Password"%>
+<% end %>
+

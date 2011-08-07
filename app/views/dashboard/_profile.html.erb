@@ -1,0 +1,22 @@
+<div id="profile" class="span-5 last">
+	<dl>
+      <dt>image</dt>
+        <dd class="data_image">
+			<img src="/images/default_user_image.gif" width="60" height="60" />
+		</dd>
+    </dl>
+    <dl>
+      <dt>Name</dt>
+	<% if !current_user.uprofile.nil?%>
+        <dd class="data_name"><%= "#{current_user.uprofile.first_name} #{current_user.uprofile.last_name}"%></dd>
+	<% end %>
+      <dt>Organization</dt>
+        <dd class="data_organization"><%= current_user.uprofile.user.account.name %></dd>
+      <dt>Location</dt>
+	<% if !current_user.uprofile.nil?%>
+        <dd class="data_location">
+		<%= "#{current_user.uprofile.city}, #{current_user.uprofile.state}"%>
+		</dd>
+		<% end %>
+    </dl>
+</div>

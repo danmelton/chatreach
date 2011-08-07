@@ -1,0 +1,12 @@
+<a href="#" onclick="return change_pass();">Forgot Password?</a>	
+<script type="text/javascript" charset="utf-8">
+function change_pass() {
+	newwindow2=window.open('','name','height=150,width=250');
+	var tmp = newwindow2.document;
+	tmp.write('<html><head><title>popup</title>');
+	tmp.write('<body><p><b>We will email you a link to change your password.</b></p><% form_for :password, :url => passwords_path do |form| %><%= form.label :email, "Email address" %><%= form.text_field :email %><%= form.submit "Reset password", :onClick => "self.close();"%><% end %>');
+	tmp.write('</body></html>');
+	tmp.close();
+}  
+</script>
+
