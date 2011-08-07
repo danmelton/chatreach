@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100730145634) do
+ActiveRecord::Schema.define(:version => 20110807221158) do
 
   create_table "account_articles", :force => true do |t|
     t.integer  "account_id"
@@ -433,27 +433,23 @@ ActiveRecord::Schema.define(:version => 20100730145634) do
   add_index "uprofiles", ["id"], :name => "index_uprofiles_on_id"
 
   create_table "users", :force => true do |t|
-    t.string   "email"
-    t.string   "encrypted_password", :limit => 128
-    t.string   "salt",               :limit => 128
-    t.string   "token",              :limit => 128
-    t.datetime "token_expires_at"
-    t.boolean  "email_confirmed",                   :default => false, :null => false
+    t.string   "email",                                 :default => "", :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                         :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "password_salt"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "account_id"
-    t.boolean  "admin",                             :default => false
-    t.string   "confirmation_token", :limit => 128
-    t.string   "remember_token",     :limit => 128
-    t.boolean  "super"
-    t.boolean  "inactive",                          :default => false
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email"
-  add_index "users", ["id", "confirmation_token"], :name => "index_users_on_id_and_confirmation_token"
-  add_index "users", ["id", "token"], :name => "index_users_on_id_and_token"
-  add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
-  add_index "users", ["token"], :name => "index_users_on_token"
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
   create_table "videos", :force => true do |t|
     t.string   "video_id"

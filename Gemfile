@@ -5,7 +5,7 @@ gem 'rails', '3.0.9'
 source 'http://rubygems.org'
 source 'http://gems.rubyforge.org'
 
-gem 'clearance'
+gem 'devise'
 gem 'acts-as-taggable-on'
 
 group :development, :test do

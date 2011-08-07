@@ -1,4 +1,6 @@
 Sext3::Application.routes.draw do
+  devise_for :users
+
   resources :keywords
   resources :reports
 
