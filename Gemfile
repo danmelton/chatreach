@@ -5,6 +5,7 @@ gem 'rails', '3.0.9'
 gem 'devise'
 gem 'acts-as-taggable-on'
 gem "inherited_resources"
+gem 'jquery-rails'
 
 group :test, :development do
   gem 'sqlite3'
