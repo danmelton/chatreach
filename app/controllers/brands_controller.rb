@@ -1,16 +1,17 @@
-class BrandsController < ApplicationController
+class BrandsController < InheritedResources::Base
   before_filter :authenticate_user!
-  before_filter :admin, :except => :show
+  before_filter :brand_admin, :only => [:update, :edit]
+  before_filter :admin, :only => [:create, :new, :destroy]  
   layout "application"
   
-  def show
-    #creates a session for that brand
-    session[:brand] = current_user.account.brands.find(params[:id]).id
-    redirect_to '/dashboard'
+  private
+    
+  def brand_admin
+    if !admin? 
+      brand = Brand.find(params[:id])
+      if !brand.admins.include?(current_user) 
+        redirect_to :back
+      end
+    end
   end
-  
-  def index
-    @brands = Brand.all
-  end
-
 end

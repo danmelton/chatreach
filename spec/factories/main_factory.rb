@@ -1,18 +1,20 @@
-#User Factories
-Factory.sequence :email do |n|
-  "user#{n}@example.com"
-end
 
 Factory.define :user do |u|
   u.email { Faker::Internet.email }
   u.password "something"
   u.admin false
-  # u.uprofile {Factory(:uprofile)}
 end
 
-Factory.define :admin_user,:parent => :user do |u|
+Factory.define :admin_user, :parent => :user do |u|
   u.admin true
 end
+
+
+Factory.define :brand do |b|
+  b.name { Faker::Lorem.words(1)[0] }
+  b.admins { [Factory(:user), Factory(:user)]}
+end
+
 # 
 # 
 # Factory.define :organization, :parent => :account do |org|
@@ -25,9 +27,7 @@ end
 #   account.name "My Organization"
 # end
 # 
-# Factory.sequence :bname do |n|
-#   "brand#{n}"
-# end
+
 # 
 # #Brand Factories
 # Factory.define :brand do |brand|

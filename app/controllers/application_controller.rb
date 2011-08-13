@@ -21,25 +21,10 @@ class ApplicationController < ActionController::Base
   end
 
   def admin
-    deny_admin_access("You do not have the necessary access for that.") unless admin?
+    if !admin?
+      flash[:failure] = "You need to be an admin!"
+      redirect_to :back
+    end  
   end
-  
-  def brand_admin
-    deny_admin_access("You do not have the necessary access for that.") unless brand_admin?
-  end
-
-  private
-
-  def deny_admin_access(flash_message = nil)
-    flash[:failure] = flash_message if flash_message
-    redirect_to('/dashboard')
-  end
-    
-  def brand_admin?
-    if session[:brand]
-      Brand.find(session[:brand]).admins.include?(current_user)
-    end
-  end
-  helper_method :brand_admin?
   
 end

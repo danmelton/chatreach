@@ -10,12 +10,10 @@ Spork.prefork do
   require 'webmock/rspec'
 
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
-  Dir["#{File.dirname(__FILE__)}/factories/*.rb"].each {|f| require f} 
 
   RSpec.configure do |config|
     config.mock_with :rspec
     config.include WebMock::API
-    config.fixture_path = "#{::Rails.root}/spec/factories"
     config.include Devise::TestHelpers, :type => :controller
     config.include Devise::TestHelpers, :type => :view
     config.include Devise::TestHelpers, :type => :helper
@@ -25,8 +23,8 @@ Spork.prefork do
 end
 
 Spork.each_run do
+  require 'factory_girl_rails'
   # This code will be run each time you run your specs.
-
 end
 
 def setup
