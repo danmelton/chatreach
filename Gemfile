@@ -8,12 +8,16 @@ source 'http://gems.rubyforge.org'
 gem 'devise'
 gem 'acts-as-taggable-on'
 
-group :development, :test do
+group :test, :development do
   gem 'sqlite3'
   gem 'activerecord-spatialite-adapter'
+  gem 'spork'
   gem 'factory_girl_rails'
-  gem 'shoulda'
-  gem 'fakeweb'
   gem 'mocha'
+  gem 'rspec-rails'
+  gem 'ZenTest'
+  gem 'simplecov'
+  gem 'webmock'
+  gem 'yard'
   gem 'faker'
 end

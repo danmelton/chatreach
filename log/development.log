@@ -2175,3 +2175,17 @@ NoMethodError (undefined method `brands' for nil:NilClass):
 Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
 Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
 Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-07 16:07:42 -0700
+  Processing by DashboardController#index as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+Completed 500 Internal Server Error in 89ms
+
+NoMethodError (undefined method `brands' for nil:NilClass):
+  app/controllers/dashboard_controller.rb:7:in `index'
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.8ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.1ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/danielmelton/Documents/development/railsapps/sext-3/config/environment.rb:5)
