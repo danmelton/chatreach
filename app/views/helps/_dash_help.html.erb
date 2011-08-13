@@ -1,9 +1,2 @@
 <h1>Help Articles</h1>
-<h2><%=@help_feature.title%></h2>
-<p><%=sanitize @help_feature.content[0..250] + "...", :tags => %w()  %><a href="/help/<%=@help_feature.to_url%>">More ..</a></p>
 <h2>Recent Help Articles</h2>	
-<ul>
-	<% @help_recent.each do |content| %>
-	<li><a href="/help/<%=content.to_url%>"><%=content.title%></a></li>
-	<% end%>
-<ul>

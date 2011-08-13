@@ -9172,3 +9172,144 @@ Completed 200 OK in 6ms (Views: 1.2ms | ActiveRecord: 2.4ms)
 Redirected to http://test.host/brands/4
 Completed 302 Found in 8ms
   [1m[35mBrand Load (0.1ms)[0m  SELECT "brands".* FROM "brands" WHERE "brands"."id" = 4 LIMIT 1
+  [1m[36mSQL (2.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Creating scope :belongs_to. Overwriting existing method TextContent.belongs_to.
+  [1m[35mSQL (0.6ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'greg.zemlak@rippin.biz') LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (0.8ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('greg.zemlak@rippin.biz', '$2a$10$qhukC7PpQSZro/BiaW0BuOiekCjB63FkpJK6n8WUO1279h6ynU8m6', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:00:31.025749', '2011-08-13 21:00:31.025749', 'f')[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE ("users"."email" = 'zackary@whitehaag.org') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('zackary@whitehaag.org', '$2a$10$dy0GzjsFGG6xkxgI8Z4YQ.49KoZes4JPgJk2RUoewoJZyHZfsy0t6', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:00:31.130002', '2011-08-13 21:00:31.130002', 'f')[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE ("users"."email" = 'karlie_padberg@cassinreichert.com') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('karlie_padberg@cassinreichert.com', '$2a$10$4nE1VUD/rExPcIq49xKgtu4jCPeLllw88dgdeD5rmntVFlNPBefRW', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:00:31.222325', '2011-08-13 21:00:31.222325', 'f')[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE ("users"."email" = 'ronaldo_lubowitz@hudson.com') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('ronaldo_lubowitz@hudson.com', '$2a$10$qbZSTJ17tQHUKxWLyCK4Q.5y/LV6Brydlrmg9tcyzUweEEh2NrxhS', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:00:31.314413', '2011-08-13 21:00:31.314413', 'f')[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE ("users"."email" = 'talia_johnson@hammes.biz') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('talia_johnson@hammes.biz', '$2a$10$rL9JuQQf0fwPAAwT2gDzh.mbrkUTZapQ1hP98u8BHnRlK.mtpCLAK', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:00:31.406761', '2011-08-13 21:00:31.406761', 'f')[0m
+  [1m[36mSQL (2.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Creating scope :belongs_to. Overwriting existing method TextContent.belongs_to.
+  [1m[35mSQL (0.6ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'marquis@auer.net') LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('marquis@auer.net', '$2a$10$eWe9QCqid0wkZTsz3Q10ROZVgesIDN.HAdIoD/Go3EQvvWfLn2.fG', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:15:49.221081', '2011-08-13 21:15:49.221081', 'f')[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT 1 FROM "users" WHERE ("users"."email" = 'avis@thielleannon.info') LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('avis@thielleannon.info', '$2a$10$Q3fhO/0lOBUfmMB3wKKtDedOChb3saMhwQY/UYMDOYDDzYAorVpNa', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:15:49.324279', '2011-08-13 21:15:49.324279', 'f')[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT 1 FROM "brands" WHERE ("brands"."name" = 'enim') LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES ('enim', '2011-08-13 21:15:49.347530', '2011-08-13 21:15:49.347530')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "brand_admins" ("user_id", "brand_id", "created_at", "updated_at") VALUES (6, 4, '2011-08-13 21:15:49.399124', '2011-08-13 21:15:49.399124')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "brand_admins" ("user_id", "brand_id", "created_at", "updated_at") VALUES (7, 4, '2011-08-13 21:15:49.405151', '2011-08-13 21:15:49.405151')[0m
+  Processing by DashboardController#index as HTML
+Completed   in 11ms
+Rendered text template (0.0ms)
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'alexys@reilly.com') LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('alexys@reilly.com', '$2a$10$0BLggg99OmjhVkMQFUkU6eveUy3GK1s4N7p43kO0OmKIM7GhF.z52', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:17:59.596281', '2011-08-13 21:17:59.596281', 'f')[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT 1 FROM "users" WHERE ("users"."email" = 'wayne.lueilwitz@pfannerstill.org') LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('wayne.lueilwitz@pfannerstill.org', '$2a$10$ovRNgXoi70xbvNKNcomWweJQXilgRAC5akOrlg0m0tjrPhv10fivS', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:17:59.700084', '2011-08-13 21:17:59.700084', 'f')[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "brands" WHERE ("brands"."name" = 'dolor') LIMIT 1
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES ('dolor', '2011-08-13 21:17:59.723881', '2011-08-13 21:17:59.723881')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "brand_admins" ("user_id", "brand_id", "created_at", "updated_at") VALUES (6, 4, '2011-08-13 21:17:59.775825', '2011-08-13 21:17:59.775825')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "brand_admins" ("user_id", "brand_id", "created_at", "updated_at") VALUES (7, 4, '2011-08-13 21:17:59.781810', '2011-08-13 21:17:59.781810')[0m
+  Processing by DashboardController#index as HTML
+Completed   in 11ms
+Rendered text template (0.0ms)
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'lowell_dickinson@wuckert.com') LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('lowell_dickinson@wuckert.com', '$2a$10$a4.WmrzBk8au3Q6qSPAUju9JtiUYhNXWIncMK1g8P.TRfwOv2KIjG', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:18:05.668307', '2011-08-13 21:18:05.668307', 'f')[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT 1 FROM "users" WHERE ("users"."email" = 'aiyana@kuhnferry.info') LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('aiyana@kuhnferry.info', '$2a$10$NNJZ3Jj0SJ6oIYtBjjEPuOOIA2EevQxNrc8WUNlAU7vE4czDp3ENO', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:18:05.771823', '2011-08-13 21:18:05.771823', 'f')[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT 1 FROM "brands" WHERE ("brands"."name" = 'similique') LIMIT 1
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES ('similique', '2011-08-13 21:18:05.795190', '2011-08-13 21:18:05.795190')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "brand_admins" ("user_id", "brand_id", "created_at", "updated_at") VALUES (6, 4, '2011-08-13 21:18:05.846644', '2011-08-13 21:18:05.846644')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "brand_admins" ("user_id", "brand_id", "created_at", "updated_at") VALUES (7, 4, '2011-08-13 21:18:05.852709', '2011-08-13 21:18:05.852709')[0m
+  Processing by DashboardController#index as HTML
+Completed   in 11ms
+Rendered text template (0.0ms)
+  [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE ("users"."email" = 'graciela_toy@bauchpowlowski.com') LIMIT 1
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('graciela_toy@bauchpowlowski.com', '$2a$10$cwedeZR4FHGggx6TkSq.TOe1RY14tWKFAjvcnmig6280/uN5BKmIq', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:18:06.008324', '2011-08-13 21:18:06.008324', 'f')[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT 1 FROM "users" WHERE ("users"."email" = 'audreanne@romaguera.biz') LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('audreanne@romaguera.biz', '$2a$10$am1nj4iSLScFy4Pr4vD/b.kvxXPjI17Z69f1Q7yhkvjgAsgrfuD3.', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:18:06.098306', '2011-08-13 21:18:06.098306', 'f')[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT 1 FROM "brands" WHERE ("brands"."name" = 'illo') LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES ('illo', '2011-08-13 21:18:06.101506', '2011-08-13 21:18:06.101506')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "brand_admins" ("user_id", "brand_id", "created_at", "updated_at") VALUES (6, 4, '2011-08-13 21:18:06.103002', '2011-08-13 21:18:06.103002')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "brand_admins" ("user_id", "brand_id", "created_at", "updated_at") VALUES (7, 4, '2011-08-13 21:18:06.105277', '2011-08-13 21:18:06.105277')[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT 1 FROM "users" WHERE ("users"."email" = 'florian.stehr@emard.info') LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('florian.stehr@emard.info', '$2a$10$N8XEhNYb.VveS67BtOun/OI/MiS78IxW28Ws5TmMUuhnnmh9K8dDS', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:18:06.208499', '2011-08-13 21:18:06.208499', 'f')[0m
+  Processing by DashboardController#index as HTML
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 8 LIMIT 1
+  [1m[36mBrand Load (0.1ms)[0m  [1mSELECT "brands".* FROM "brands" LIMIT 1[0m
+Completed 200 OK in 15ms (Views: 4.2ms | ActiveRecord: 2.7ms)
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'verona_wiza@mosciski.net') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (0.6ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('verona_wiza@mosciski.net', '$2a$10$jCiH1CQ8kUxAiMwgzV/1..ZUvjG9M0o.TEGxW0NLMlR7f7oEYN4Lm', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:18:33.714239', '2011-08-13 21:18:33.714239', 'f')[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT 1 FROM "users" WHERE ("users"."email" = 'darryl.hoppe@cassinschowalter.info') LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('darryl.hoppe@cassinschowalter.info', '$2a$10$5jGEpnvUSSfPzhLSlemmx.qxutBXnBKuS8mhbyBM9AY7KKzqcAnuK', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:18:33.817312', '2011-08-13 21:18:33.817312', 'f')[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT 1 FROM "brands" WHERE ("brands"."name" = 'quasi') LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES ('quasi', '2011-08-13 21:18:33.840649', '2011-08-13 21:18:33.840649')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "brand_admins" ("user_id", "brand_id", "created_at", "updated_at") VALUES (6, 4, '2011-08-13 21:18:33.891623', '2011-08-13 21:18:33.891623')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "brand_admins" ("user_id", "brand_id", "created_at", "updated_at") VALUES (7, 4, '2011-08-13 21:18:33.897595', '2011-08-13 21:18:33.897595')[0m
+  Processing by DashboardController#index as HTML
+Completed   in 10ms
+Rendered text template (0.0ms)
+  [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE ("users"."email" = 'sid@okeefewindler.net') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('sid@okeefewindler.net', '$2a$10$seI0qD0Dy/me5pxhUZX7xOJhnc/2qxtIlnG61CghZ5pXESW7ma0OG', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:18:34.049730', '2011-08-13 21:18:34.049730', 'f')[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT 1 FROM "users" WHERE ("users"."email" = 'horacio_schmitt@tillmanberge.net') LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('horacio_schmitt@tillmanberge.net', '$2a$10$s71XDRwYDJtvNAYkaodX8OTSlYh5bCq50tzdSudsQNW4fTEp3Q0Tu', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:18:34.139221', '2011-08-13 21:18:34.139221', 'f')[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT 1 FROM "brands" WHERE ("brands"."name" = 'quisquam') LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES ('quisquam', '2011-08-13 21:18:34.142349', '2011-08-13 21:18:34.142349')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "brand_admins" ("user_id", "brand_id", "created_at", "updated_at") VALUES (6, 4, '2011-08-13 21:18:34.143748', '2011-08-13 21:18:34.143748')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "brand_admins" ("user_id", "brand_id", "created_at", "updated_at") VALUES (7, 4, '2011-08-13 21:18:34.144966', '2011-08-13 21:18:34.144966')[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE ("users"."email" = 'gennaro@gutkowski.com') LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('gennaro@gutkowski.com', '$2a$10$qozo9T9McIttCgPIsaR7g.wqUcIB.dsgg6Phal1sKVEDLyRPwKtYy', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:18:34.234299', '2011-08-13 21:18:34.234299', 'f')[0m
+  Processing by DashboardController#index as HTML
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 8 LIMIT 1
+  [1m[36mBrand Load (0.1ms)[0m  [1mSELECT "brands".* FROM "brands" LIMIT 1[0m
+Completed 200 OK in 14ms (Views: 3.3ms | ActiveRecord: 2.6ms)
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'christ@swaniawski.info') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('christ@swaniawski.info', '$2a$10$2FJt9g/.gdrN6VFJiSplcez8uF5nrXlX5ZLFZNPAvdIPvQaPnfQf6', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:18:47.340215', '2011-08-13 21:18:47.340215', 'f')[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT 1 FROM "users" WHERE ("users"."email" = 'trenton@ernser.name') LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('trenton@ernser.name', '$2a$10$QTv29QhgbJbu5KAylIIxZO8CTXiVCLYiMCsHFK8WjA1.XFdZ0m/hq', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:18:47.445332', '2011-08-13 21:18:47.445332', 'f')[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT 1 FROM "brands" WHERE ("brands"."name" = 'assumenda') LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES ('assumenda', '2011-08-13 21:18:47.472314', '2011-08-13 21:18:47.472314')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "brand_admins" ("user_id", "brand_id", "created_at", "updated_at") VALUES (6, 4, '2011-08-13 21:18:47.523347', '2011-08-13 21:18:47.523347')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "brand_admins" ("user_id", "brand_id", "created_at", "updated_at") VALUES (7, 4, '2011-08-13 21:18:47.529226', '2011-08-13 21:18:47.529226')[0m
+  Processing by DashboardController#index as HTML
+Completed   in 11ms
+Rendered text template (0.0ms)
+  [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE ("users"."email" = 'matteo@langosh.com') LIMIT 1
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('matteo@langosh.com', '$2a$10$WlpdOd5ZiWVVCaKKkylO/uBfAKO7OnG/5coY6zgQ42GcRdrCWYYDG', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:18:47.681578', '2011-08-13 21:18:47.681578', 'f')[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT 1 FROM "users" WHERE ("users"."email" = 'anabelle.hermiston@konopelskidibbert.com') LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('anabelle.hermiston@konopelskidibbert.com', '$2a$10$7n9wqKv.raqKLVNBfR8irudzCxkhBZmBFwWLSF3LR8ZdjEbOVeplK', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:18:47.771410', '2011-08-13 21:18:47.771410', 'f')[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT 1 FROM "brands" WHERE ("brands"."name" = 'voluptas') LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES ('voluptas', '2011-08-13 21:18:47.774709', '2011-08-13 21:18:47.774709')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "brand_admins" ("user_id", "brand_id", "created_at", "updated_at") VALUES (6, 4, '2011-08-13 21:18:47.776124', '2011-08-13 21:18:47.776124')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "brand_admins" ("user_id", "brand_id", "created_at", "updated_at") VALUES (7, 4, '2011-08-13 21:18:47.777330', '2011-08-13 21:18:47.777330')[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "users" WHERE ("users"."email" = 'onie@boyle.net') LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('onie@boyle.net', '$2a$10$GmjV7NAet/WKbj43JIZvMOAKygp/qZU5.KHlCAnaiPyOFNpBVHu4K', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:18:47.866456', '2011-08-13 21:18:47.866456', 'f')[0m
+  Processing by DashboardController#index as HTML
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 8 LIMIT 1
+  [1m[36mBrand Load (0.1ms)[0m  [1mSELECT "brands".* FROM "brands" LIMIT 1[0m
+Completed 200 OK in 13ms (Views: 3.2ms | ActiveRecord: 2.6ms)

@@ -1,8 +1,7 @@
-<%=mobile%>
   <div class="innerBox ui-corner-top">
     <div class="status span-11 append-1">
       <%= render :partial => "first_time" %>
-      <% if current_user.super? or !session[:super].blank?%>
+      <% if current_user.admin? or !session[:admin].blank?%>
         <p><%= render :partial => "change_user" %>
         </p>
       <% end %>

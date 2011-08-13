@@ -5,6 +5,7 @@ Sext3::Application.routes.draw do
       resources :settings
   end  
 
+  get "/dashboard", :controller => :dashboard, :action => :index, :as => :dashboard_path
 
   resources :keywords
   resources :reports  

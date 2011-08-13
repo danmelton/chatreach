@@ -2498,3 +2498,2164 @@ DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3
 DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/danielmelton/Documents/development/railsapps/sext-3/config/environment.rb:5)
 DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/danielmelton/Documents/development/railsapps/sext-3/config/environment.rb:5)
 DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/danielmelton/Documents/development/railsapps/sext-3/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/danielmelton/Documents/development/railsapps/sext-3/config/environment.rb:5)
+  [1m[36mSQL (0.3ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.5ms)[0m  [1mCREATE TABLE "account_articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "article_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.1ms)[0m  [1mCREATE TABLE "account_brands" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.1ms)[0m  [1mCREATE TABLE "account_organizations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "oprofile_id" integer, "brand_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.4ms)[0m  [1mCREATE TABLE "account_texts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "text_content_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.3ms)[0m  [1mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime, "name" varchar(255), "user_id" integer, "code" varchar(255)) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("accounts")
+  [1m[36mSQL (2.1ms)[0m  [1mCREATE INDEX "index_accounts_on_id" ON "accounts" ("id")[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.7ms)[0m  [1mCREATE TABLE "article_brands" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "article_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE "article_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "article_id" integer, "category_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.2ms)[0m  [1mCREATE TABLE "articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "content" text, "published" boolean, "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("articles")
+  [1m[36mSQL (2.5ms)[0m  [1mCREATE INDEX "index_articles_on_id" ON "articles" ("id")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("articles")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_articles_on_id')[0m
+  [1m[35mSQL (2.3ms)[0m  CREATE INDEX "index_articles_on_title" ON "articles" ("name")
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.1ms)[0m  CREATE TABLE "blogs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "title" varchar(255), "content" text, "user_id" integer, "created_at" datetime, "updated_at" datetime, "published_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE TABLE "brand_admins" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "brand_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.1ms)[0m  CREATE TABLE "brand_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "category_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.2ms)[0m  CREATE TABLE "brand_settings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "name" varchar(255), "setting" text(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.2ms)[0m  CREATE TABLE "brand_tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "brand_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE TABLE "brand_videos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "video_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.6ms)[0m  CREATE TABLE "brands" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE TABLE "carriers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "carrierid" varchar(255)) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.2ms)[0m  CREATE TABLE "categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "account_id" integer DEFAULT 1) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.2ms)[0m  CREATE TABLE "category_texts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "category_id" integer, "text_content_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE TABLE "chatter_profiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "birthday" date, "age" integer, "gender" varchar(255), "phone" varchar(255), "city" varchar(255), "state" varchar(255), "zipcode" varchar(255), "country" varchar(255), "first_name" varchar(255), "last_name" varchar(255), "chatter_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE TABLE "chatters" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "demographic_id" integer, "profile_id" integer, "social_id" integer, "initiated" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.3ms)[0m  CREATE TABLE "conversations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "user_id" integer, "transcript" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE TABLE "credits" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "cents" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.5ms)[0m  CREATE TABLE "faqs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "user_id" integer, "content" text, "title" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.9ms)[0m  CREATE TABLE "feed_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "summary" text, "url" varchar(255), "published_at" date, "guid" varchar(255), "feed_source_id" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("feed_entries")[0m
+  [1m[35mSQL (2.7ms)[0m  CREATE INDEX "index_feed_entries_on_id" ON "feed_entries" ("id")
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE TABLE "feed_sources" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "url" varchar(255), "source_url" varchar(255), "brand_id" integer, "source" varchar(255), "created_at" datetime, "updated_at" datetime, "author" varchar(255)) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.2ms)[0m  CREATE TABLE "helps" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "user_id" integer, "content" text, "title" varchar(255), "feature" boolean, "published" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.7ms)[0m  CREATE TABLE "keywords" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "weight" integer, "content" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.7ms)[0m  CREATE TABLE "oprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" varchar(255), "country" varchar(255), "phone" varchar(255), "mobile" varchar(255), "pager" varchar(255), "about" text(255), "sms_about" varchar(255), "account_id" integer, "created_at" datetime, "updated_at" datetime, "name" varchar(255), "geom" integer, "custodial_id" integer, "website" varchar(255), "email" varchar(255)) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("oprofiles")[0m
+  [1m[35mSQL (2.5ms)[0m  CREATE INDEX "index_oprofiles_on_id" ON "oprofiles" ("id")
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.1ms)[0m  CREATE TABLE "poweron_chatters" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "screen_name" varchar(255), "profile_id" integer, "account_id" integer, "age" integer, "gender" integer, "hiv" integer, "race" integer, "sexual_orientation" integer, "drug_use" integer, "alcohol_use" integer, "smoking" integer, "out_level" integer, "risk_level" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.2ms)[0m  CREATE TABLE "poweron_keywords" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "poweron_chatter_id" integer, "keyword_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.8ms)[0m  CREATE TABLE "profile_types" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "thumbnail" varchar(255), "url" varchar(255), "created_at" datetime, "updated_at" datetime, "content_type" varchar(255), "filename" varchar(255), "size" integer, "width" integer, "height" integer) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.2ms)[0m  CREATE TABLE "profiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "username" varchar(255), "password" varchar(255), "profile_type_id" integer, "profile_url" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.2ms)[0m  CREATE TABLE "referrals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "code" varchar(255), "brand_id" integer, "account_id" integer, "created_at" datetime, "updated_at" datetime, "rcontent_id" integer, "rcontent_type" varchar(255), "name" varchar(255)) 
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.8ms)[0m  CREATE TABLE "session_powerons" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "created_at" datetime, "updated_at" datetime, "referral_id" integer) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("session_powerons")[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE INDEX "index_session_powerons_on_id" ON "session_powerons" ("id")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("session_powerons")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_session_powerons_on_id')
+  [1m[36mSQL (3.1ms)[0m  [1mCREATE INDEX "index_session_powerons_on_referral_id" ON "session_powerons" ("referral_id")[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.9ms)[0m  [1mCREATE TABLE "session_videos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "video_id" integer, "start_time" time, "end_time" time, "referral_id" integer, "session_poweron_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("session_videos")
+  [1m[36mSQL (2.5ms)[0m  [1mCREATE INDEX "index_session_videos_on_id" ON "session_videos" ("id")[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.3ms)[0m  [1mCREATE TABLE "tag_typos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "typo" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.6ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.4ms)[0m  [1mCREATE TABLE "taggings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "taggable_id" integer, "tagger_id" integer, "tagger_type" varchar(255), "taggable_type" varchar(255), "context" varchar(255), "created_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("taggings")
+  [1m[36mSQL (2.3ms)[0m  [1mCREATE INDEX "index_taggings_on_tag_id" ON "taggings" ("tag_id")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("taggings")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_taggings_on_tag_id')[0m
+  [1m[35mSQL (4.0ms)[0m  CREATE INDEX "index_taggings_on_taggable_id_and_taggable_type_and_context" ON "taggings" ("taggable_id", "taggable_type", "context")
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.3ms)[0m  CREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255)) 
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.0ms)[0m  CREATE TABLE "text_contents" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "response" varchar(255), "user_id" integer, "published" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("text_contents")[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE INDEX "index_text_contents_on_id" ON "text_contents" ("id")
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.7ms)[0m  CREATE TABLE "text_histories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text_session_id" integer, "tag_id" integer, "text" varchar(255), "response" varchar(255), "created_at" datetime, "updated_at" datetime, "text_type" varchar(255)) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("text_histories")[0m
+  [1m[35mSQL (2.5ms)[0m  CREATE INDEX "index_text_histories_on_id" ON "text_histories" ("id")
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.1ms)[0m  CREATE TABLE "text_sessions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "phone" varchar(255), "carrier_id" integer, "chatter_id" integer, "created_at" datetime, "updated_at" datetime, "session" varchar(255)) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("text_sessions")[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE INDEX "index_text_sessions_on_id" ON "text_sessions" ("id")
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE TABLE "uprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" varchar(255), "country" varchar(255), "phone" varchar(255), "mobile" varchar(255), "pager" varchar(255), "about" text(255), "first_name" varchar(255), "last_name" varchar(255), "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("uprofiles")[0m
+  [1m[35mSQL (3.4ms)[0m  CREATE INDEX "index_uprofiles_on_id" ON "uprofiles" ("id")
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.9ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(128) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "password_salt" varchar(255), "created_at" datetime, "updated_at" datetime, "admin" boolean DEFAULT 'f') 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (2.8ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_email')
+  [1m[36mSQL (4.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (0.7ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.5ms)[0m  [1mCREATE TABLE "videos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "video_id" varchar(255), "name" varchar(255), "thumbnail" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("videos")
+  [1m[36mSQL (2.9ms)[0m  [1mCREATE INDEX "index_videos_on_id" ON "videos" ("id")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("videos")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_videos_on_id')[0m
+  [1m[35mSQL (2.2ms)[0m  CREATE INDEX "index_videos_on_name" ON "videos" ("name")
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.5ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (3.2ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (2.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110807221158')[0m
+  [1m[35mSQL (2.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090816154734')
+  [1m[36mSQL (1.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090816171425')[0m
+  [1m[35mSQL (1.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090816171530')
+  [1m[36mSQL (1.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090816171742')[0m
+  [1m[35mSQL (1.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090816180726')
+  [1m[36mSQL (1.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090816210255')[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090816213347')
+  [1m[36mSQL (2.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090816221514')[0m
+  [1m[35mSQL (2.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090819170041')
+  [1m[36mSQL (1.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090819170106')[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090819170513')
+  [1m[36mSQL (1.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090819191938')[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090824170551')
+  [1m[36mSQL (2.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090824185750')[0m
+  [1m[35mSQL (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090824192325')
+  [1m[36mSQL (1.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090826200637')[0m
+  [1m[35mSQL (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090826221805')
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090827223338')[0m
+  [1m[35mSQL (2.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090827224410')
+  [1m[36mSQL (2.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090827231149')[0m
+  [1m[35mSQL (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090904194435')
+  [1m[36mSQL (1.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090904194556')[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090904194742')
+  [1m[36mSQL (2.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090904194912')[0m
+  [1m[35mSQL (2.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090904195516')
+  [1m[36mSQL (1.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090904204458')[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090904214202')
+  [1m[36mSQL (1.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090909171909')[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090909195157')
+  [1m[36mSQL (1.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090911144049')[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090914140217')
+  [1m[36mSQL (1.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090914160511')[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090914183120')
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090915182050')[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090921151142')
+  [1m[36mSQL (1.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091009163409')[0m
+  [1m[35mSQL (1.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091009163430')
+  [1m[36mSQL (1.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091014171728')[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091015154811')
+  [1m[36mSQL (2.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091016162447')[0m
+  [1m[35mSQL (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091016165020')
+  [1m[36mSQL (1.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091026162757')[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091117163436')
+  [1m[36mSQL (2.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091203204135')[0m
+  [1m[35mSQL (2.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091207154314')
+  [1m[36mSQL (1.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091207183022')[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091229174747')
+  [1m[36mSQL (2.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100218171635')[0m
+  [1m[35mSQL (2.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20100225142533')
+  [1m[36mSQL (2.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100315165140')[0m
+  [1m[35mSQL (2.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20100318153823')
+  [1m[36mSQL (2.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100511195907')[0m
+  [1m[35mSQL (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20100730145634')
+  [1m[36mSQL (2.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110807215920')[0m
+  [1m[35mSQL (0.6ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/danielmelton/Documents/development/railsapps/sext-3/config/environment.rb:5)
+  [1m[36mSQL (0.3ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE "account_articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "article_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.5ms)[0m  [1mCREATE TABLE "account_brands" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.8ms)[0m  [1mCREATE TABLE "account_organizations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "oprofile_id" integer, "brand_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.6ms)[0m  [1mCREATE TABLE "account_texts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "text_content_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.2ms)[0m  [1mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime, "name" varchar(255), "user_id" integer, "code" varchar(255)) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("accounts")
+  [1m[36mSQL (1.9ms)[0m  [1mCREATE INDEX "index_accounts_on_id" ON "accounts" ("id")[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.3ms)[0m  [1mCREATE TABLE "article_brands" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "article_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.1ms)[0m  [1mCREATE TABLE "article_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "article_id" integer, "category_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.2ms)[0m  [1mCREATE TABLE "articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "content" text, "published" boolean, "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("articles")
+  [1m[36mSQL (2.5ms)[0m  [1mCREATE INDEX "index_articles_on_id" ON "articles" ("id")[0m
+  [1m[35mSQL (0.2ms)[0m  PRAGMA index_list("articles")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_articles_on_id')[0m
+  [1m[35mSQL (2.6ms)[0m  CREATE INDEX "index_articles_on_title" ON "articles" ("name")
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (1.9ms)[0m  CREATE TABLE "blogs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "title" varchar(255), "content" text, "user_id" integer, "created_at" datetime, "updated_at" datetime, "published_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.2ms)[0m  CREATE TABLE "brand_admins" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "brand_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE TABLE "brand_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "category_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.5ms)[0m  CREATE TABLE "brand_settings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "name" varchar(255), "setting" text(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.6ms)[0m  CREATE TABLE "brand_tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "brand_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.5ms)[0m  CREATE TABLE "brand_videos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "video_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.9ms)[0m  CREATE TABLE "brands" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.8ms)[0m  CREATE TABLE "carriers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "carrierid" varchar(255)) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.5ms)[0m  CREATE TABLE "categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "account_id" integer DEFAULT 1) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.1ms)[0m  CREATE TABLE "category_texts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "category_id" integer, "text_content_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.0ms)[0m  CREATE TABLE "chatter_profiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "birthday" date, "age" integer, "gender" varchar(255), "phone" varchar(255), "city" varchar(255), "state" varchar(255), "zipcode" varchar(255), "country" varchar(255), "first_name" varchar(255), "last_name" varchar(255), "chatter_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.1ms)[0m  CREATE TABLE "chatters" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "demographic_id" integer, "profile_id" integer, "social_id" integer, "initiated" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.6ms)[0m  CREATE TABLE "conversations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "user_id" integer, "transcript" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE TABLE "credits" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "cents" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE TABLE "faqs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "user_id" integer, "content" text, "title" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.9ms)[0m  CREATE TABLE "feed_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "summary" text, "url" varchar(255), "published_at" date, "guid" varchar(255), "feed_source_id" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("feed_entries")[0m
+  [1m[35mSQL (2.1ms)[0m  CREATE INDEX "index_feed_entries_on_id" ON "feed_entries" ("id")
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE TABLE "feed_sources" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "url" varchar(255), "source_url" varchar(255), "brand_id" integer, "source" varchar(255), "created_at" datetime, "updated_at" datetime, "author" varchar(255)) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.0ms)[0m  CREATE TABLE "helps" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "user_id" integer, "content" text, "title" varchar(255), "feature" boolean, "published" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.3ms)[0m  CREATE TABLE "keywords" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "weight" integer, "content" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.6ms)[0m  CREATE TABLE "oprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" varchar(255), "country" varchar(255), "phone" varchar(255), "mobile" varchar(255), "pager" varchar(255), "about" text(255), "sms_about" varchar(255), "account_id" integer, "created_at" datetime, "updated_at" datetime, "name" varchar(255), "geom" integer, "custodial_id" integer, "website" varchar(255), "email" varchar(255)) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("oprofiles")[0m
+  [1m[35mSQL (2.8ms)[0m  CREATE INDEX "index_oprofiles_on_id" ON "oprofiles" ("id")
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.1ms)[0m  CREATE TABLE "poweron_chatters" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "screen_name" varchar(255), "profile_id" integer, "account_id" integer, "age" integer, "gender" integer, "hiv" integer, "race" integer, "sexual_orientation" integer, "drug_use" integer, "alcohol_use" integer, "smoking" integer, "out_level" integer, "risk_level" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.0ms)[0m  CREATE TABLE "poweron_keywords" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "poweron_chatter_id" integer, "keyword_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.1ms)[0m  CREATE TABLE "profile_types" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "thumbnail" varchar(255), "url" varchar(255), "created_at" datetime, "updated_at" datetime, "content_type" varchar(255), "filename" varchar(255), "size" integer, "width" integer, "height" integer) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (1.9ms)[0m  CREATE TABLE "profiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "username" varchar(255), "password" varchar(255), "profile_type_id" integer, "profile_url" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.5ms)[0m  CREATE TABLE "referrals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "code" varchar(255), "brand_id" integer, "account_id" integer, "created_at" datetime, "updated_at" datetime, "rcontent_id" integer, "rcontent_type" varchar(255), "name" varchar(255)) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.3ms)[0m  CREATE TABLE "session_powerons" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "created_at" datetime, "updated_at" datetime, "referral_id" integer) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("session_powerons")[0m
+  [1m[35mSQL (2.5ms)[0m  CREATE INDEX "index_session_powerons_on_id" ON "session_powerons" ("id")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("session_powerons")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_session_powerons_on_id')
+  [1m[36mSQL (3.3ms)[0m  [1mCREATE INDEX "index_session_powerons_on_referral_id" ON "session_powerons" ("referral_id")[0m
+  [1m[35mSQL (0.7ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.2ms)[0m  [1mCREATE TABLE "session_videos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "video_id" integer, "start_time" time, "end_time" time, "referral_id" integer, "session_poweron_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("session_videos")
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE INDEX "index_session_videos_on_id" ON "session_videos" ("id")[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.1ms)[0m  [1mCREATE TABLE "tag_typos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "typo" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.4ms)[0m  [1mCREATE TABLE "taggings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "taggable_id" integer, "tagger_id" integer, "tagger_type" varchar(255), "taggable_type" varchar(255), "context" varchar(255), "created_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("taggings")
+  [1m[36mSQL (2.1ms)[0m  [1mCREATE INDEX "index_taggings_on_tag_id" ON "taggings" ("tag_id")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("taggings")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_taggings_on_tag_id')[0m
+  [1m[35mSQL (2.9ms)[0m  CREATE INDEX "index_taggings_on_taggable_id_and_taggable_type_and_context" ON "taggings" ("taggable_id", "taggable_type", "context")
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.1ms)[0m  CREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255)) 
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.1ms)[0m  CREATE TABLE "text_contents" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "response" varchar(255), "user_id" integer, "published" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("text_contents")[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE INDEX "index_text_contents_on_id" ON "text_contents" ("id")
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.6ms)[0m  CREATE TABLE "text_histories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text_session_id" integer, "tag_id" integer, "text" varchar(255), "response" varchar(255), "created_at" datetime, "updated_at" datetime, "text_type" varchar(255)) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("text_histories")[0m
+  [1m[35mSQL (2.5ms)[0m  CREATE INDEX "index_text_histories_on_id" ON "text_histories" ("id")
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.2ms)[0m  CREATE TABLE "text_sessions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "phone" varchar(255), "carrier_id" integer, "chatter_id" integer, "created_at" datetime, "updated_at" datetime, "session" varchar(255)) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("text_sessions")[0m
+  [1m[35mSQL (2.5ms)[0m  CREATE INDEX "index_text_sessions_on_id" ON "text_sessions" ("id")
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE TABLE "uprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" varchar(255), "country" varchar(255), "phone" varchar(255), "mobile" varchar(255), "pager" varchar(255), "about" text(255), "first_name" varchar(255), "last_name" varchar(255), "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("uprofiles")[0m
+  [1m[35mSQL (3.3ms)[0m  CREATE INDEX "index_uprofiles_on_id" ON "uprofiles" ("id")
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(128) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "password_salt" varchar(255), "created_at" datetime, "updated_at" datetime, "admin" boolean DEFAULT 'f') 
+  [1m[36mSQL (0.3ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (2.6ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_email')
+  [1m[36mSQL (3.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (0.7ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.2ms)[0m  [1mCREATE TABLE "videos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "video_id" varchar(255), "name" varchar(255), "thumbnail" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("videos")
+  [1m[36mSQL (2.3ms)[0m  [1mCREATE INDEX "index_videos_on_id" ON "videos" ("id")[0m
+  [1m[35mSQL (0.2ms)[0m  PRAGMA index_list("videos")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_videos_on_id')[0m
+  [1m[35mSQL (2.3ms)[0m  CREATE INDEX "index_videos_on_name" ON "videos" ("name")
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.6ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (2.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110807221158')[0m
+  [1m[35mSQL (2.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090816154734')
+  [1m[36mSQL (2.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090816171425')[0m
+  [1m[35mSQL (1.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090816171530')
+  [1m[36mSQL (1.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090816171742')[0m
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090816180726')
+  [1m[36mSQL (1.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090816210255')[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090816213347')
+  [1m[36mSQL (1.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090816221514')[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090819170041')
+  [1m[36mSQL (1.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090819170106')[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090819170513')
+  [1m[36mSQL (2.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090819191938')[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090824170551')
+  [1m[36mSQL (1.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090824185750')[0m
+  [1m[35mSQL (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090824192325')
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090826200637')[0m
+  [1m[35mSQL (2.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090826221805')
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090827223338')[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090827224410')
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090827231149')[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090904194435')
+  [1m[36mSQL (2.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090904194556')[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090904194742')
+  [1m[36mSQL (1.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090904194912')[0m
+  [1m[35mSQL (2.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090904195516')
+  [1m[36mSQL (2.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090904204458')[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090904214202')
+  [1m[36mSQL (1.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090909171909')[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090909195157')
+  [1m[36mSQL (2.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090911144049')[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090914140217')
+  [1m[36mSQL (1.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090914160511')[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090914183120')
+  [1m[36mSQL (1.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090915182050')[0m
+  [1m[35mSQL (2.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090921151142')
+  [1m[36mSQL (2.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091009163409')[0m
+  [1m[35mSQL (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091009163430')
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091014171728')[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091015154811')
+  [1m[36mSQL (2.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091016162447')[0m
+  [1m[35mSQL (1.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091016165020')
+  [1m[36mSQL (1.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091026162757')[0m
+  [1m[35mSQL (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091117163436')
+  [1m[36mSQL (1.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091203204135')[0m
+  [1m[35mSQL (2.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091207154314')
+  [1m[36mSQL (2.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091207183022')[0m
+  [1m[35mSQL (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091229174747')
+  [1m[36mSQL (2.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100218171635')[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20100225142533')
+  [1m[36mSQL (2.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100315165140')[0m
+  [1m[35mSQL (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20100318153823')
+  [1m[36mSQL (1.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100511195907')[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20100730145634')
+  [1m[36mSQL (1.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110807215920')[0m
+  [1m[35mSQL (0.6ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'vita@beierdubuque.com') LIMIT 1[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('vita@beierdubuque.com', '$2a$10$abmh5p4RJoZn.geezCTpde5p6VSgPPxfS8.lEuGN1CJiUR8b1f3Pe', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 20:59:39.630175', '2011-08-13 20:59:39.630175', 't')
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'verner.anderson@ziemann.info') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('verner.anderson@ziemann.info', '$2a$10$yt6Y0c6i4EQo.bh9EoRBvOeakh.b5PUKlyzSXW.OJt6MNTQFGIEm.', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 20:59:39.734377', '2011-08-13 20:59:39.734377', 'f')
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'sabina@balistreri.com') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('sabina@balistreri.com', '$2a$10$xPMlDnE/n/wsIDT2Q8cO8.LyHOzfNu1n1GPbsAUWlobcjg73fznEq', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 20:59:39.826613', '2011-08-13 20:59:39.826613', 'f')
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'alejandra.pfannerstill@bechtelarsipes.com') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('alejandra.pfannerstill@bechtelarsipes.com', '$2a$10$XfesVTnO0nTOFssyoZ5Fj.XC4S1piADvohUVOLu1OdLezYelrDt.e', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 20:59:39.918484', '2011-08-13 20:59:39.918484', 'f')
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'kelly.spencer@marksmarquardt.com') LIMIT 1[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('kelly.spencer@marksmarquardt.com', '$2a$10$jtxcKjQnIC34eBg2fwb2Je5dmvqxespxJl3Ypv562rLNv/qyuCbVW', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 20:59:40.010375', '2011-08-13 20:59:40.010375', 'f')
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'marcus@pfannerstillshields.org') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('marcus@pfannerstillshields.org', '$2a$10$zvggbT.ooRVujHclVUGtDuNeXnc4l8VKdAgYfmvPJvZ4Co0mxRO6.', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 20:59:40.102615', '2011-08-13 20:59:40.102615', 'f')
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/danielmelton/Documents/development/railsapps/sext-3/config/environment.rb:5)
+  [1m[36mSQL (0.3ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.3ms)[0m  [1mCREATE TABLE "account_articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "article_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE "account_brands" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.3ms)[0m  [1mCREATE TABLE "account_organizations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "oprofile_id" integer, "brand_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.8ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE "account_texts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "text_content_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.2ms)[0m  [1mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime, "name" varchar(255), "user_id" integer, "code" varchar(255)) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("accounts")
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE INDEX "index_accounts_on_id" ON "accounts" ("id")[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.8ms)[0m  [1mCREATE TABLE "article_brands" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "article_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE "article_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "article_id" integer, "category_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.9ms)[0m  [1mCREATE TABLE "articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "content" text, "published" boolean, "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("articles")
+  [1m[36mSQL (3.5ms)[0m  [1mCREATE INDEX "index_articles_on_id" ON "articles" ("id")[0m
+  [1m[35mSQL (0.2ms)[0m  PRAGMA index_list("articles")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_articles_on_id')[0m
+  [1m[35mSQL (2.6ms)[0m  CREATE INDEX "index_articles_on_title" ON "articles" ("name")
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (1.9ms)[0m  CREATE TABLE "blogs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "title" varchar(255), "content" text, "user_id" integer, "created_at" datetime, "updated_at" datetime, "published_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.5ms)[0m  CREATE TABLE "brand_admins" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "brand_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE TABLE "brand_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "category_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.1ms)[0m  CREATE TABLE "brand_settings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "name" varchar(255), "setting" text(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.9ms)[0m  CREATE TABLE "brand_tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "brand_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.3ms)[0m  CREATE TABLE "brand_videos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "video_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.6ms)[0m  CREATE TABLE "brands" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE TABLE "carriers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "carrierid" varchar(255)) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.7ms)[0m  CREATE TABLE "categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "account_id" integer DEFAULT 1) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.5ms)[0m  CREATE TABLE "category_texts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "category_id" integer, "text_content_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE TABLE "chatter_profiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "birthday" date, "age" integer, "gender" varchar(255), "phone" varchar(255), "city" varchar(255), "state" varchar(255), "zipcode" varchar(255), "country" varchar(255), "first_name" varchar(255), "last_name" varchar(255), "chatter_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE TABLE "chatters" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "demographic_id" integer, "profile_id" integer, "social_id" integer, "initiated" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.5ms)[0m  CREATE TABLE "conversations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "user_id" integer, "transcript" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE TABLE "credits" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "cents" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.1ms)[0m  CREATE TABLE "faqs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "user_id" integer, "content" text, "title" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.2ms)[0m  CREATE TABLE "feed_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "summary" text, "url" varchar(255), "published_at" date, "guid" varchar(255), "feed_source_id" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("feed_entries")[0m
+  [1m[35mSQL (2.2ms)[0m  CREATE INDEX "index_feed_entries_on_id" ON "feed_entries" ("id")
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.2ms)[0m  CREATE TABLE "feed_sources" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "url" varchar(255), "source_url" varchar(255), "brand_id" integer, "source" varchar(255), "created_at" datetime, "updated_at" datetime, "author" varchar(255)) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.6ms)[0m  CREATE TABLE "helps" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "user_id" integer, "content" text, "title" varchar(255), "feature" boolean, "published" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE TABLE "keywords" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "weight" integer, "content" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.6ms)[0m  CREATE TABLE "oprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" varchar(255), "country" varchar(255), "phone" varchar(255), "mobile" varchar(255), "pager" varchar(255), "about" text(255), "sms_about" varchar(255), "account_id" integer, "created_at" datetime, "updated_at" datetime, "name" varchar(255), "geom" integer, "custodial_id" integer, "website" varchar(255), "email" varchar(255)) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("oprofiles")[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE INDEX "index_oprofiles_on_id" ON "oprofiles" ("id")
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.3ms)[0m  CREATE TABLE "poweron_chatters" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "screen_name" varchar(255), "profile_id" integer, "account_id" integer, "age" integer, "gender" integer, "hiv" integer, "race" integer, "sexual_orientation" integer, "drug_use" integer, "alcohol_use" integer, "smoking" integer, "out_level" integer, "risk_level" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (1.9ms)[0m  CREATE TABLE "poweron_keywords" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "poweron_chatter_id" integer, "keyword_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.6ms)[0m  CREATE TABLE "profile_types" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "thumbnail" varchar(255), "url" varchar(255), "created_at" datetime, "updated_at" datetime, "content_type" varchar(255), "filename" varchar(255), "size" integer, "width" integer, "height" integer) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.1ms)[0m  CREATE TABLE "profiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "username" varchar(255), "password" varchar(255), "profile_type_id" integer, "profile_url" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.8ms)[0m  CREATE TABLE "referrals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "code" varchar(255), "brand_id" integer, "account_id" integer, "created_at" datetime, "updated_at" datetime, "rcontent_id" integer, "rcontent_type" varchar(255), "name" varchar(255)) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.5ms)[0m  CREATE TABLE "session_powerons" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "created_at" datetime, "updated_at" datetime, "referral_id" integer) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("session_powerons")[0m
+  [1m[35mSQL (2.7ms)[0m  CREATE INDEX "index_session_powerons_on_id" ON "session_powerons" ("id")
+  [1m[36mSQL (0.2ms)[0m  [1mPRAGMA index_list("session_powerons")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_session_powerons_on_id')
+  [1m[36mSQL (8.9ms)[0m  [1mCREATE INDEX "index_session_powerons_on_referral_id" ON "session_powerons" ("referral_id")[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.1ms)[0m  [1mCREATE TABLE "session_videos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "video_id" integer, "start_time" time, "end_time" time, "referral_id" integer, "session_poweron_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("session_videos")
+  [1m[36mSQL (2.3ms)[0m  [1mCREATE INDEX "index_session_videos_on_id" ON "session_videos" ("id")[0m
+  [1m[35mSQL (0.7ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.2ms)[0m  [1mCREATE TABLE "tag_typos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "typo" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.9ms)[0m  [1mCREATE TABLE "taggings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "taggable_id" integer, "tagger_id" integer, "tagger_type" varchar(255), "taggable_type" varchar(255), "context" varchar(255), "created_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("taggings")
+  [1m[36mSQL (2.8ms)[0m  [1mCREATE INDEX "index_taggings_on_tag_id" ON "taggings" ("tag_id")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("taggings")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_taggings_on_tag_id')[0m
+  [1m[35mSQL (3.3ms)[0m  CREATE INDEX "index_taggings_on_taggable_id_and_taggable_type_and_context" ON "taggings" ("taggable_id", "taggable_type", "context")
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.3ms)[0m  CREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255)) 
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.9ms)[0m  CREATE TABLE "text_contents" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "response" varchar(255), "user_id" integer, "published" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("text_contents")[0m
+  [1m[35mSQL (2.5ms)[0m  CREATE INDEX "index_text_contents_on_id" ON "text_contents" ("id")
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.1ms)[0m  CREATE TABLE "text_histories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text_session_id" integer, "tag_id" integer, "text" varchar(255), "response" varchar(255), "created_at" datetime, "updated_at" datetime, "text_type" varchar(255)) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("text_histories")[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE INDEX "index_text_histories_on_id" ON "text_histories" ("id")
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.2ms)[0m  CREATE TABLE "text_sessions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "phone" varchar(255), "carrier_id" integer, "chatter_id" integer, "created_at" datetime, "updated_at" datetime, "session" varchar(255)) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("text_sessions")[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE INDEX "index_text_sessions_on_id" ON "text_sessions" ("id")
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.7ms)[0m  CREATE TABLE "uprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" varchar(255), "country" varchar(255), "phone" varchar(255), "mobile" varchar(255), "pager" varchar(255), "about" text(255), "first_name" varchar(255), "last_name" varchar(255), "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("uprofiles")[0m
+  [1m[35mSQL (3.3ms)[0m  CREATE INDEX "index_uprofiles_on_id" ON "uprofiles" ("id")
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.0ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(128) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "password_salt" varchar(255), "created_at" datetime, "updated_at" datetime, "admin" boolean DEFAULT 'f') 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (3.0ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_email')
+  [1m[36mSQL (3.4ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (0.6ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.1ms)[0m  [1mCREATE TABLE "videos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "video_id" varchar(255), "name" varchar(255), "thumbnail" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("videos")
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE INDEX "index_videos_on_id" ON "videos" ("id")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("videos")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_videos_on_id')[0m
+  [1m[35mSQL (2.2ms)[0m  CREATE INDEX "index_videos_on_name" ON "videos" ("name")
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.7ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (2.6ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (1.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (2.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110807221158')[0m
+  [1m[35mSQL (2.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090816154734')
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090816171425')[0m
+  [1m[35mSQL (2.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090816171530')
+  [1m[36mSQL (3.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090816171742')[0m
+  [1m[35mSQL (1.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090816180726')
+  [1m[36mSQL (2.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090816210255')[0m
+  [1m[35mSQL (1.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090816213347')
+  [1m[36mSQL (1.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090816221514')[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090819170041')
+  [1m[36mSQL (2.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090819170106')[0m
+  [1m[35mSQL (2.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090819170513')
+  [1m[36mSQL (1.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090819191938')[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090824170551')
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090824185750')[0m
+  [1m[35mSQL (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090824192325')
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090826200637')[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090826221805')
+  [1m[36mSQL (2.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090827223338')[0m
+  [1m[35mSQL (2.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090827224410')
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090827231149')[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090904194435')
+  [1m[36mSQL (2.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090904194556')[0m
+  [1m[35mSQL (3.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090904194742')
+  [1m[36mSQL (1.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090904194912')[0m
+  [1m[35mSQL (2.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090904195516')
+  [1m[36mSQL (1.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090904204458')[0m
+  [1m[35mSQL (2.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090904214202')
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090909171909')[0m
+  [1m[35mSQL (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090909195157')
+  [1m[36mSQL (1.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090911144049')[0m
+  [1m[35mSQL (2.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090914140217')
+  [1m[36mSQL (3.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090914160511')[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090914183120')
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090915182050')[0m
+  [1m[35mSQL (2.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090921151142')
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091009163409')[0m
+  [1m[35mSQL (2.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091009163430')
+  [1m[36mSQL (1.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091014171728')[0m
+  [1m[35mSQL (2.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091015154811')
+  [1m[36mSQL (1.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091016162447')[0m
+  [1m[35mSQL (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091016165020')
+  [1m[36mSQL (2.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091026162757')[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091117163436')
+  [1m[36mSQL (2.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091203204135')[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091207154314')
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091207183022')[0m
+  [1m[35mSQL (3.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091229174747')
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100218171635')[0m
+  [1m[35mSQL (1.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20100225142533')
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100315165140')[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20100318153823')
+  [1m[36mSQL (2.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100511195907')[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20100730145634')
+  [1m[36mSQL (2.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110807215920')[0m
+  [1m[35mSQL (0.6ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'kaia.wilkinson@oberbrunnerjacobson.name') LIMIT 1[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('kaia.wilkinson@oberbrunnerjacobson.name', '$2a$10$k38mTim7.0UvMO5RDN.56utMW6iO40IaVtDPAOCUyvzgfv8sdIAya', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:01:32.018354', '2011-08-13 21:01:32.018354', 't')
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'alford.witting@oconner.biz') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('alford.witting@oconner.biz', '$2a$10$iUsfiJeESrdig8MuYwrjLuzVEhj0vGgJq7wCJ0i113i8ZnJbYyv12', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:01:32.121719', '2011-08-13 21:01:32.121719', 'f')
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'shannon.runolfsdottir@pouros.com') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('shannon.runolfsdottir@pouros.com', '$2a$10$LvPGOyPbRQfynvaxuFhvouMLmEz.lKTA17zYDJQaz8EE2CS.yUwwq', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:01:32.213650', '2011-08-13 21:01:32.213650', 'f')
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'kavon_ziemann@parisian.com') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('kavon_ziemann@parisian.com', '$2a$10$7PL0omuxDlGu4MtSB7HH7.eJS.Q6hHcfrsOqzoGrRYq2nD1Y8FYq.', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:01:32.305856', '2011-08-13 21:01:32.305856', 'f')
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'kelsie.metz@stiedemanntoy.info') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('kelsie.metz@stiedemanntoy.info', '$2a$10$0aQlXM.xT.BG6pzEi.m3i.lSrPlNaKzCWqyJi1YjK6bTE8l1VxUfu', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:01:32.397841', '2011-08-13 21:01:32.397841', 'f')
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'loy@sawayn.biz') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('loy@sawayn.biz', '$2a$10$sS7.PO48qb6t7JDtHZj/kO0CsZcapo397xsbjOOBmKPl18flxQKaa', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:01:32.489920', '2011-08-13 21:01:32.489920', 'f')
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/danielmelton/Documents/development/railsapps/sext-3/config/environment.rb:5)
+  [1m[36mSQL (0.3ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.8ms)[0m  [1mCREATE TABLE "account_articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "article_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.2ms)[0m  [1mCREATE TABLE "account_brands" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.2ms)[0m  [1mCREATE TABLE "account_organizations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "oprofile_id" integer, "brand_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.7ms)[0m  [1mCREATE TABLE "account_texts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "text_content_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.1ms)[0m  [1mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime, "name" varchar(255), "user_id" integer, "code" varchar(255)) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("accounts")
+  [1m[36mSQL (2.1ms)[0m  [1mCREATE INDEX "index_accounts_on_id" ON "accounts" ("id")[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.1ms)[0m  [1mCREATE TABLE "article_brands" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "article_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.8ms)[0m  [1mCREATE TABLE "article_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "article_id" integer, "category_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.9ms)[0m  [1mCREATE TABLE "articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "content" text, "published" boolean, "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("articles")
+  [1m[36mSQL (2.6ms)[0m  [1mCREATE INDEX "index_articles_on_id" ON "articles" ("id")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("articles")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_articles_on_id')[0m
+  [1m[35mSQL (2.9ms)[0m  CREATE INDEX "index_articles_on_title" ON "articles" ("name")
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.1ms)[0m  CREATE TABLE "blogs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "title" varchar(255), "content" text, "user_id" integer, "created_at" datetime, "updated_at" datetime, "published_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.5ms)[0m  CREATE TABLE "brand_admins" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "brand_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE TABLE "brand_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "category_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.0ms)[0m  CREATE TABLE "brand_settings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "name" varchar(255), "setting" text(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.8ms)[0m  CREATE TABLE "brand_tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "brand_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE TABLE "brand_videos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "video_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE TABLE "brands" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.0ms)[0m  CREATE TABLE "carriers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "carrierid" varchar(255)) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.6ms)[0m  CREATE TABLE "categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "account_id" integer DEFAULT 1) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.1ms)[0m  CREATE TABLE "category_texts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "category_id" integer, "text_content_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.1ms)[0m  CREATE TABLE "chatter_profiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "birthday" date, "age" integer, "gender" varchar(255), "phone" varchar(255), "city" varchar(255), "state" varchar(255), "zipcode" varchar(255), "country" varchar(255), "first_name" varchar(255), "last_name" varchar(255), "chatter_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.7ms)[0m  CREATE TABLE "chatters" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "demographic_id" integer, "profile_id" integer, "social_id" integer, "initiated" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.8ms)[0m  CREATE TABLE "conversations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "user_id" integer, "transcript" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.3ms)[0m  CREATE TABLE "credits" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "cents" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.2ms)[0m  CREATE TABLE "faqs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "user_id" integer, "content" text, "title" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.2ms)[0m  CREATE TABLE "feed_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "summary" text, "url" varchar(255), "published_at" date, "guid" varchar(255), "feed_source_id" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("feed_entries")[0m
+  [1m[35mSQL (3.0ms)[0m  CREATE INDEX "index_feed_entries_on_id" ON "feed_entries" ("id")
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.9ms)[0m  CREATE TABLE "feed_sources" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "url" varchar(255), "source_url" varchar(255), "brand_id" integer, "source" varchar(255), "created_at" datetime, "updated_at" datetime, "author" varchar(255)) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.5ms)[0m  CREATE TABLE "helps" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "user_id" integer, "content" text, "title" varchar(255), "feature" boolean, "published" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.2ms)[0m  CREATE TABLE "keywords" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "weight" integer, "content" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.0ms)[0m  CREATE TABLE "oprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" varchar(255), "country" varchar(255), "phone" varchar(255), "mobile" varchar(255), "pager" varchar(255), "about" text(255), "sms_about" varchar(255), "account_id" integer, "created_at" datetime, "updated_at" datetime, "name" varchar(255), "geom" integer, "custodial_id" integer, "website" varchar(255), "email" varchar(255)) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("oprofiles")[0m
+  [1m[35mSQL (2.0ms)[0m  CREATE INDEX "index_oprofiles_on_id" ON "oprofiles" ("id")
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.5ms)[0m  CREATE TABLE "poweron_chatters" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "screen_name" varchar(255), "profile_id" integer, "account_id" integer, "age" integer, "gender" integer, "hiv" integer, "race" integer, "sexual_orientation" integer, "drug_use" integer, "alcohol_use" integer, "smoking" integer, "out_level" integer, "risk_level" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.7ms)[0m  CREATE TABLE "poweron_keywords" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "poweron_chatter_id" integer, "keyword_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.4ms)[0m  CREATE TABLE "profile_types" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "thumbnail" varchar(255), "url" varchar(255), "created_at" datetime, "updated_at" datetime, "content_type" varchar(255), "filename" varchar(255), "size" integer, "width" integer, "height" integer) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.3ms)[0m  CREATE TABLE "profiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "username" varchar(255), "password" varchar(255), "profile_type_id" integer, "profile_url" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.0ms)[0m  CREATE TABLE "referrals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "code" varchar(255), "brand_id" integer, "account_id" integer, "created_at" datetime, "updated_at" datetime, "rcontent_id" integer, "rcontent_type" varchar(255), "name" varchar(255)) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.3ms)[0m  CREATE TABLE "session_powerons" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "created_at" datetime, "updated_at" datetime, "referral_id" integer) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("session_powerons")[0m
+  [1m[35mSQL (2.0ms)[0m  CREATE INDEX "index_session_powerons_on_id" ON "session_powerons" ("id")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("session_powerons")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_info('index_session_powerons_on_id')
+  [1m[36mSQL (4.0ms)[0m  [1mCREATE INDEX "index_session_powerons_on_referral_id" ON "session_powerons" ("referral_id")[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.3ms)[0m  [1mCREATE TABLE "session_videos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "video_id" integer, "start_time" time, "end_time" time, "referral_id" integer, "session_poweron_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("session_videos")
+  [1m[36mSQL (2.4ms)[0m  [1mCREATE INDEX "index_session_videos_on_id" ON "session_videos" ("id")[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE "tag_typos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "typo" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.7ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.1ms)[0m  [1mCREATE TABLE "taggings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "taggable_id" integer, "tagger_id" integer, "tagger_type" varchar(255), "taggable_type" varchar(255), "context" varchar(255), "created_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("taggings")
+  [1m[36mSQL (2.4ms)[0m  [1mCREATE INDEX "index_taggings_on_tag_id" ON "taggings" ("tag_id")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("taggings")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_taggings_on_tag_id')[0m
+  [1m[35mSQL (3.5ms)[0m  CREATE INDEX "index_taggings_on_taggable_id_and_taggable_type_and_context" ON "taggings" ("taggable_id", "taggable_type", "context")
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.0ms)[0m  CREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255)) 
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.0ms)[0m  CREATE TABLE "text_contents" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "response" varchar(255), "user_id" integer, "published" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("text_contents")[0m
+  [1m[35mSQL (2.5ms)[0m  CREATE INDEX "index_text_contents_on_id" ON "text_contents" ("id")
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.1ms)[0m  CREATE TABLE "text_histories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text_session_id" integer, "tag_id" integer, "text" varchar(255), "response" varchar(255), "created_at" datetime, "updated_at" datetime, "text_type" varchar(255)) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("text_histories")[0m
+  [1m[35mSQL (2.5ms)[0m  CREATE INDEX "index_text_histories_on_id" ON "text_histories" ("id")
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (5.2ms)[0m  CREATE TABLE "text_sessions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "phone" varchar(255), "carrier_id" integer, "chatter_id" integer, "created_at" datetime, "updated_at" datetime, "session" varchar(255)) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("text_sessions")[0m
+  [1m[35mSQL (2.9ms)[0m  CREATE INDEX "index_text_sessions_on_id" ON "text_sessions" ("id")
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.7ms)[0m  CREATE TABLE "uprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" varchar(255), "country" varchar(255), "phone" varchar(255), "mobile" varchar(255), "pager" varchar(255), "about" text(255), "first_name" varchar(255), "last_name" varchar(255), "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("uprofiles")[0m
+  [1m[35mSQL (4.2ms)[0m  CREATE INDEX "index_uprofiles_on_id" ON "uprofiles" ("id")
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(128) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "password_salt" varchar(255), "created_at" datetime, "updated_at" datetime, "admin" boolean DEFAULT 'f') 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (2.3ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_email')
+  [1m[36mSQL (3.2ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (0.6ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE "videos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "video_id" varchar(255), "name" varchar(255), "thumbnail" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("videos")
+  [1m[36mSQL (2.1ms)[0m  [1mCREATE INDEX "index_videos_on_id" ON "videos" ("id")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("videos")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_videos_on_id')[0m
+  [1m[35mSQL (2.3ms)[0m  CREATE INDEX "index_videos_on_name" ON "videos" ("name")
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.9ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (2.6ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (2.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110807221158')[0m
+  [1m[35mSQL (2.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090816154734')
+  [1m[36mSQL (2.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090816171425')[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090816171530')
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090816171742')[0m
+  [1m[35mSQL (2.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090816180726')
+  [1m[36mSQL (2.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090816210255')[0m
+  [1m[35mSQL (2.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090816213347')
+  [1m[36mSQL (2.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090816221514')[0m
+  [1m[35mSQL (2.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090819170041')
+  [1m[36mSQL (3.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090819170106')[0m
+  [1m[35mSQL (1.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090819170513')
+  [1m[36mSQL (1.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090819191938')[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090824170551')
+  [1m[36mSQL (1.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090824185750')[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090824192325')
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090826200637')[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090826221805')
+  [1m[36mSQL (2.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090827223338')[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090827224410')
+  [1m[36mSQL (2.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090827231149')[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090904194435')
+  [1m[36mSQL (2.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090904194556')[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090904194742')
+  [1m[36mSQL (2.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090904194912')[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090904195516')
+  [1m[36mSQL (2.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090904204458')[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090904214202')
+  [1m[36mSQL (2.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090909171909')[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090909195157')
+  [1m[36mSQL (1.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090911144049')[0m
+  [1m[35mSQL (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090914140217')
+  [1m[36mSQL (1.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090914160511')[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090914183120')
+  [1m[36mSQL (2.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090915182050')[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090921151142')
+  [1m[36mSQL (2.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091009163409')[0m
+  [1m[35mSQL (2.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091009163430')
+  [1m[36mSQL (2.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091014171728')[0m
+  [1m[35mSQL (2.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091015154811')
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091016162447')[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091016165020')
+  [1m[36mSQL (1.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091026162757')[0m
+  [1m[35mSQL (2.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091117163436')
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091203204135')[0m
+  [1m[35mSQL (1.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091207154314')
+  [1m[36mSQL (1.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091207183022')[0m
+  [1m[35mSQL (1.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091229174747')
+  [1m[36mSQL (1.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100218171635')[0m
+  [1m[35mSQL (2.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20100225142533')
+  [1m[36mSQL (1.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100315165140')[0m
+  [1m[35mSQL (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20100318153823')
+  [1m[36mSQL (1.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100511195907')[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20100730145634')
+  [1m[36mSQL (1.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110807215920')[0m
+  [1m[35mSQL (0.6ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'aliyah@yostzieme.com') LIMIT 1[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('aliyah@yostzieme.com', '$2a$10$R8vGgsV3RCWPrQYDlUlfi.xUHqqTS1cTTJ92pvVNV2c6ZSXskHU.C', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:01:57.345759', '2011-08-13 21:01:57.345759', 't')
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'mariam_dach@vonkiehn.info') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('mariam_dach@vonkiehn.info', '$2a$10$rTNVfNvKIt4KhP/jCt/qLe41JTJ4bTGRBQNerFLFbGsdq2VEv7Wwm', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:01:57.449095', '2011-08-13 21:01:57.449095', 'f')
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'lyla_zboncak@emard.name') LIMIT 1[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('lyla_zboncak@emard.name', '$2a$10$yjb7JLN/k2dFCGr77d0fy.7MRdhMhxOzXwmUiwzIwRa08k5jEC3Q6', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:01:57.542008', '2011-08-13 21:01:57.542008', 'f')
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'bernie.howe@cruickshank.com') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('bernie.howe@cruickshank.com', '$2a$10$zCTCXQ3FcnquTGlpdF0omuuakvBG6QqyeOXuR9xD9KdgiBXIMrM0S', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:01:57.634732', '2011-08-13 21:01:57.634732', 'f')
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'kim@waelchi.name') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('kim@waelchi.name', '$2a$10$PXgI87Wd1GuC.9B1Ub0em.P2QwPalAWejcMtSMw8P9BSWfxe.WSp.', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:01:57.726294', '2011-08-13 21:01:57.726294', 'f')
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'cara.kessler@morissette.biz') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('cara.kessler@morissette.biz', '$2a$10$oLtJl9Fll2qAK8LwCz0KJeUVLKfBNzdj8haprBfUjxZ5ti0yqKn7y', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:01:57.818654', '2011-08-13 21:01:57.818654', 'f')
+  [1m[36mUser Load (3.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."admin" = 'f'[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT 1 FROM "brands" WHERE ("brands"."name" = 'beatae') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES ('beatae', '2011-08-13 21:01:57.904798', '2011-08-13 21:01:57.904798')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "brand_admins" ("user_id", "brand_id", "created_at", "updated_at") VALUES (3, 1, '2011-08-13 21:01:57.915773', '2011-08-13 21:01:57.915773')
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "brands" WHERE ("brands"."name" = 'illum') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "brands" ("name", "created_at", "updated_at") VALUES ('illum', '2011-08-13 21:01:57.927459', '2011-08-13 21:01:57.927459')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "brand_admins" ("user_id", "brand_id", "created_at", "updated_at") VALUES (5, 2, '2011-08-13 21:01:57.929074', '2011-08-13 21:01:57.929074')[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "brands" WHERE ("brands"."name" = 'inventore') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES ('inventore', '2011-08-13 21:01:57.935486', '2011-08-13 21:01:57.935486')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "brand_admins" ("user_id", "brand_id", "created_at", "updated_at") VALUES (4, 3, '2011-08-13 21:01:57.936985', '2011-08-13 21:01:57.936985')
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "brands" WHERE ("brands"."name" = 'nisi') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "brands" ("name", "created_at", "updated_at") VALUES ('nisi', '2011-08-13 21:01:57.942625', '2011-08-13 21:01:57.942625')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "brand_admins" ("user_id", "brand_id", "created_at", "updated_at") VALUES (5, 4, '2011-08-13 21:01:57.944169', '2011-08-13 21:01:57.944169')[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT 1 FROM "brands" WHERE ("brands"."name" = 'reprehenderit') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES ('reprehenderit', '2011-08-13 21:01:57.949705', '2011-08-13 21:01:57.949705')[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "brand_admins" ("user_id", "brand_id", "created_at", "updated_at") VALUES (5, 5, '2011-08-13 21:01:57.951159', '2011-08-13 21:01:57.951159')
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/danielmelton/Documents/development/railsapps/sext-3/config/environment.rb:5)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-13 14:02:21 -0700
+  Processing by DashboardController#index as HTML
+Completed   in 1ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2011-08-13 14:02:21 -0700
+  Processing by Devise::SessionsController#new as HTML
+Rendered devise/shared/_links.erb (1.8ms)
+Rendered layouts/_header.html.erb (1.3ms)
+Rendered layouts/_flashes.html.erb (0.6ms)
+Rendered layouts/_footer.html.erb (0.5ms)
+Rendered layouts/_javascript.html.erb (1.9ms)
+Rendered devise/sessions/new.html.erb within layouts/application (42.1ms)
+Completed 200 OK in 164ms (Views: 72.9ms | ActiveRecord: 0.0ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/danielmelton/Documents/development/railsapps/sext-3/config/environment.rb:5)
+  [1m[36mSQL (0.3ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.9ms)[0m  [1mCREATE TABLE "account_articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "article_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (3.5ms)[0m  [1mCREATE TABLE "account_brands" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.6ms)[0m  [1mCREATE TABLE "account_organizations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "oprofile_id" integer, "brand_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.7ms)[0m  [1mCREATE TABLE "account_texts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "text_content_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.6ms)[0m  [1mCREATE TABLE "accounts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime, "name" varchar(255), "user_id" integer, "code" varchar(255)) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("accounts")
+  [1m[36mSQL (1.7ms)[0m  [1mCREATE INDEX "index_accounts_on_id" ON "accounts" ("id")[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.7ms)[0m  [1mCREATE TABLE "article_brands" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "article_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.9ms)[0m  [1mCREATE TABLE "article_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "article_id" integer, "category_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.2ms)[0m  [1mCREATE TABLE "articles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "content" text, "published" boolean, "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("articles")
+  [1m[36mSQL (3.7ms)[0m  [1mCREATE INDEX "index_articles_on_id" ON "articles" ("id")[0m
+  [1m[35mSQL (0.2ms)[0m  PRAGMA index_list("articles")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_articles_on_id')[0m
+  [1m[35mSQL (2.1ms)[0m  CREATE INDEX "index_articles_on_title" ON "articles" ("name")
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.0ms)[0m  CREATE TABLE "blogs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "title" varchar(255), "content" text, "user_id" integer, "created_at" datetime, "updated_at" datetime, "published_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.6ms)[0m  CREATE TABLE "brand_admins" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "brand_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.2ms)[0m  CREATE TABLE "brand_categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "category_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.2ms)[0m  CREATE TABLE "brand_settings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "name" varchar(255), "setting" text(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.6ms)[0m  CREATE TABLE "brand_tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "brand_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.5ms)[0m  CREATE TABLE "brand_videos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "video_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.8ms)[0m  CREATE TABLE "brands" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.8ms)[0m  CREATE TABLE "carriers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "carrierid" varchar(255)) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.9ms)[0m  CREATE TABLE "categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime, "account_id" integer DEFAULT 1) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.5ms)[0m  CREATE TABLE "category_texts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "category_id" integer, "text_content_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.0ms)[0m  CREATE TABLE "chatter_profiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "birthday" date, "age" integer, "gender" varchar(255), "phone" varchar(255), "city" varchar(255), "state" varchar(255), "zipcode" varchar(255), "country" varchar(255), "first_name" varchar(255), "last_name" varchar(255), "chatter_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.2ms)[0m  CREATE TABLE "chatters" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "demographic_id" integer, "profile_id" integer, "social_id" integer, "initiated" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.4ms)[0m  CREATE TABLE "conversations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "user_id" integer, "transcript" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.1ms)[0m  CREATE TABLE "credits" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "cents" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.5ms)[0m  CREATE TABLE "faqs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "user_id" integer, "content" text, "title" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.9ms)[0m  CREATE TABLE "feed_entries" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "summary" text, "url" varchar(255), "published_at" date, "guid" varchar(255), "feed_source_id" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("feed_entries")[0m
+  [1m[35mSQL (1.6ms)[0m  CREATE INDEX "index_feed_entries_on_id" ON "feed_entries" ("id")
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (6.7ms)[0m  CREATE TABLE "feed_sources" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "url" varchar(255), "source_url" varchar(255), "brand_id" integer, "source" varchar(255), "created_at" datetime, "updated_at" datetime, "author" varchar(255)) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (1.9ms)[0m  CREATE TABLE "helps" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "user_id" integer, "content" text, "title" varchar(255), "feature" boolean, "published" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE TABLE "keywords" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "weight" integer, "content" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.5ms)[0m  CREATE TABLE "oprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" varchar(255), "country" varchar(255), "phone" varchar(255), "mobile" varchar(255), "pager" varchar(255), "about" text(255), "sms_about" varchar(255), "account_id" integer, "created_at" datetime, "updated_at" datetime, "name" varchar(255), "geom" integer, "custodial_id" integer, "website" varchar(255), "email" varchar(255)) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("oprofiles")[0m
+  [1m[35mSQL (2.0ms)[0m  CREATE INDEX "index_oprofiles_on_id" ON "oprofiles" ("id")
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.3ms)[0m  CREATE TABLE "poweron_chatters" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "screen_name" varchar(255), "profile_id" integer, "account_id" integer, "age" integer, "gender" integer, "hiv" integer, "race" integer, "sexual_orientation" integer, "drug_use" integer, "alcohol_use" integer, "smoking" integer, "out_level" integer, "risk_level" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE TABLE "poweron_keywords" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "poweron_chatter_id" integer, "keyword_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.6ms)[0m  CREATE TABLE "profile_types" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "thumbnail" varchar(255), "url" varchar(255), "created_at" datetime, "updated_at" datetime, "content_type" varchar(255), "filename" varchar(255), "size" integer, "width" integer, "height" integer) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (1.9ms)[0m  CREATE TABLE "profiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "username" varchar(255), "password" varchar(255), "profile_type_id" integer, "profile_url" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.9ms)[0m  CREATE TABLE "referrals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "code" varchar(255), "brand_id" integer, "account_id" integer, "created_at" datetime, "updated_at" datetime, "rcontent_id" integer, "rcontent_type" varchar(255), "name" varchar(255)) 
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE TABLE "session_powerons" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "created_at" datetime, "updated_at" datetime, "referral_id" integer) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("session_powerons")[0m
+  [1m[35mSQL (2.7ms)[0m  CREATE INDEX "index_session_powerons_on_id" ON "session_powerons" ("id")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("session_powerons")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_info('index_session_powerons_on_id')
+  [1m[36mSQL (3.2ms)[0m  [1mCREATE INDEX "index_session_powerons_on_referral_id" ON "session_powerons" ("referral_id")[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE "session_videos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "video_id" integer, "start_time" time, "end_time" time, "referral_id" integer, "session_poweron_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("session_videos")
+  [1m[36mSQL (2.2ms)[0m  [1mCREATE INDEX "index_session_videos_on_id" ON "session_videos" ("id")[0m
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.1ms)[0m  [1mCREATE TABLE "tag_typos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "typo" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (2.4ms)[0m  [1mCREATE TABLE "taggings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_id" integer, "taggable_id" integer, "tagger_id" integer, "tagger_type" varchar(255), "taggable_type" varchar(255), "context" varchar(255), "created_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("taggings")
+  [1m[36mSQL (2.2ms)[0m  [1mCREATE INDEX "index_taggings_on_tag_id" ON "taggings" ("tag_id")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("taggings")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_taggings_on_tag_id')[0m
+  [1m[35mSQL (2.9ms)[0m  CREATE INDEX "index_taggings_on_taggable_id_and_taggable_type_and_context" ON "taggings" ("taggable_id", "taggable_type", "context")
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.0ms)[0m  CREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255)) 
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.7ms)[0m  CREATE TABLE "text_contents" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "brand_id" integer, "response" varchar(255), "user_id" integer, "published" boolean, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("text_contents")[0m
+  [1m[35mSQL (2.6ms)[0m  CREATE INDEX "index_text_contents_on_id" ON "text_contents" ("id")
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.4ms)[0m  CREATE TABLE "text_histories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text_session_id" integer, "tag_id" integer, "text" varchar(255), "response" varchar(255), "created_at" datetime, "updated_at" datetime, "text_type" varchar(255)) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("text_histories")[0m
+  [1m[35mSQL (2.3ms)[0m  CREATE INDEX "index_text_histories_on_id" ON "text_histories" ("id")
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.1ms)[0m  CREATE TABLE "text_sessions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "account_id" integer, "brand_id" integer, "phone" varchar(255), "carrier_id" integer, "chatter_id" integer, "created_at" datetime, "updated_at" datetime, "session" varchar(255)) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("text_sessions")[0m
+  [1m[35mSQL (2.5ms)[0m  CREATE INDEX "index_text_sessions_on_id" ON "text_sessions" ("id")
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.2ms)[0m  CREATE TABLE "uprofiles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "address" varchar(255), "city" varchar(255), "state" varchar(255), "zip" varchar(255), "country" varchar(255), "phone" varchar(255), "mobile" varchar(255), "pager" varchar(255), "about" text(255), "first_name" varchar(255), "last_name" varchar(255), "user_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("uprofiles")[0m
+  [1m[35mSQL (3.1ms)[0m  CREATE INDEX "index_uprofiles_on_id" ON "uprofiles" ("id")
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (3.0ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(128) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "password_salt" varchar(255), "created_at" datetime, "updated_at" datetime, "admin" boolean DEFAULT 'f') 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (2.6ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_users_on_email')
+  [1m[36mSQL (2.7ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (0.6ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (1.7ms)[0m  [1mCREATE TABLE "videos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "video_id" varchar(255), "name" varchar(255), "thumbnail" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("videos")
+  [1m[36mSQL (2.1ms)[0m  [1mCREATE INDEX "index_videos_on_id" ON "videos" ("id")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("videos")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_videos_on_id')[0m
+  [1m[35mSQL (2.0ms)[0m  CREATE INDEX "index_videos_on_name" ON "videos" ("name")
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (2.4ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35mSQL (2.1ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110807221158')[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090816154734')
+  [1m[36mSQL (2.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090816171425')[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090816171530')
+  [1m[36mSQL (2.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090816171742')[0m
+  [1m[35mSQL (1.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090816180726')
+  [1m[36mSQL (1.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090816210255')[0m
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090816213347')
+  [1m[36mSQL (1.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090816221514')[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090819170041')
+  [1m[36mSQL (2.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090819170106')[0m
+  [1m[35mSQL (1.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090819170513')
+  [1m[36mSQL (1.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090819191938')[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090824170551')
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090824185750')[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090824192325')
+  [1m[36mSQL (2.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090826200637')[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090826221805')
+  [1m[36mSQL (2.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090827223338')[0m
+  [1m[35mSQL (1.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090827224410')
+  [1m[36mSQL (1.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090827231149')[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090904194435')
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090904194556')[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090904194742')
+  [1m[36mSQL (1.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090904194912')[0m
+  [1m[35mSQL (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090904195516')
+  [1m[36mSQL (2.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090904204458')[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090904214202')
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090909171909')[0m
+  [1m[35mSQL (2.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090909195157')
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090911144049')[0m
+  [1m[35mSQL (2.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090914140217')
+  [1m[36mSQL (1.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090914160511')[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090914183120')
+  [1m[36mSQL (1.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20090915182050')[0m
+  [1m[35mSQL (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20090921151142')
+  [1m[36mSQL (1.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091009163409')[0m
+  [1m[35mSQL (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091009163430')
+  [1m[36mSQL (3.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091014171728')[0m
+  [1m[35mSQL (2.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091015154811')
+  [1m[36mSQL (3.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091016162447')[0m
+  [1m[35mSQL (1.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091016165020')
+  [1m[36mSQL (1.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091026162757')[0m
+  [1m[35mSQL (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091117163436')
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091203204135')[0m
+  [1m[35mSQL (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091207154314')
+  [1m[36mSQL (1.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20091207183022')[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20091229174747')
+  [1m[36mSQL (1.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100218171635')[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20100225142533')
+  [1m[36mSQL (3.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100315165140')[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20100318153823')
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20100511195907')[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20100730145634')
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20110807215920')[0m
+  [1m[35mSQL (0.6ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'elmore@nienowmraz.net') LIMIT 1[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('elmore@nienowmraz.net', '$2a$10$/U1sKcvnf.qfXUwbUoJf5O7S1kbYmbl8U6E/kl/nphvUOUkeDR8qC', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:03:23.588803', '2011-08-13 21:03:23.588803', 't')
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'nat_reichert@wisokylynch.net') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('nat_reichert@wisokylynch.net', '$2a$10$YeeMzhNRBzoqvHKg9FZXJesn1JbM2ealgaCWG3PxrtP60.pu5d8yS', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:03:23.691703', '2011-08-13 21:03:23.691703', 'f')
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'elenora@turcotte.com') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('elenora@turcotte.com', '$2a$10$Yo.JCdyotUSUM5xwJoz0w.E0T0HgjumSTrTNOitkGB.ViWisTi8iW', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:03:23.784941', '2011-08-13 21:03:23.784941', 'f')
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'sophie_rosenbaum@swift.net') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('sophie_rosenbaum@swift.net', '$2a$10$sIvy.y.f8JdO.AU9G6FhBO5lDddx4c1G39toZUdUldBJZ8k5bB/jG', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:03:23.879039', '2011-08-13 21:03:23.879039', 'f')
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'luis_ledner@davis.name') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('luis_ledner@davis.name', '$2a$10$HgL5Bne.to6RApi4jjiSAOKsgSLANMsSRME81CUa6EVWpCJ4QCrOC', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:03:23.972988', '2011-08-13 21:03:23.972988', 'f')
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."email" = 'valentine.thompson@doyle.net') LIMIT 1[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "sign_in_count", "current_sign_in_at", "last_sign_in_at", "current_sign_in_ip", "last_sign_in_ip", "password_salt", "created_at", "updated_at", "admin") VALUES ('valentine.thompson@doyle.net', '$2a$10$ocFPzx4V8T88FSI.jaAKw.FMlaGd10c7Y3v8Eq6udS25/ouz5FNjW', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, '2011-08-13 21:03:24.066646', '2011-08-13 21:03:24.066646', 'f')
+  [1m[36mUser Load (3.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."admin" = 'f'[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "brands" WHERE ("brands"."name" = 'temporibus') LIMIT 1
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES ('temporibus', '2011-08-13 21:03:24.164761', '2011-08-13 21:03:24.164761')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "brand_admins" ("user_id", "brand_id", "created_at", "updated_at") VALUES (2, 1, '2011-08-13 21:03:24.181644', '2011-08-13 21:03:24.181644')
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT 1 FROM "brands" WHERE ("brands"."name" = 'rerum') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "brands" ("name", "created_at", "updated_at") VALUES ('rerum', '2011-08-13 21:03:24.193827', '2011-08-13 21:03:24.193827')
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "brand_admins" ("user_id", "brand_id", "created_at", "updated_at") VALUES (4, 2, '2011-08-13 21:03:24.195371', '2011-08-13 21:03:24.195371')[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "brands" WHERE ("brands"."name" = 'illum') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES ('illum', '2011-08-13 21:03:24.201469', '2011-08-13 21:03:24.201469')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "brand_admins" ("user_id", "brand_id", "created_at", "updated_at") VALUES (5, 3, '2011-08-13 21:03:24.203454', '2011-08-13 21:03:24.203454')
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT 1 FROM "brands" WHERE ("brands"."name" = 'excepturi') LIMIT 1[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "brands" ("name", "created_at", "updated_at") VALUES ('excepturi', '2011-08-13 21:03:24.209257', '2011-08-13 21:03:24.209257')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO "brand_admins" ("user_id", "brand_id", "created_at", "updated_at") VALUES (3, 4, '2011-08-13 21:03:24.211220', '2011-08-13 21:03:24.211220')[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT 1 FROM "brands" WHERE ("brands"."name" = 'placeat') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "brands" ("name", "created_at", "updated_at") VALUES ('placeat', '2011-08-13 21:03:24.218896', '2011-08-13 21:03:24.218896')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "brand_admins" ("user_id", "brand_id", "created_at", "updated_at") VALUES (4, 5, '2011-08-13 21:03:24.220529', '2011-08-13 21:03:24.220529')
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/danielmelton/Documents/development/railsapps/sext-3/config/environment.rb:5)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2011-08-13 14:04:05 -0700
+  Processing by Devise::SessionsController#new as HTML
+Rendered devise/shared/_links.erb (1.6ms)
+Rendered layouts/_header.html.erb (1.0ms)
+Rendered layouts/_flashes.html.erb (0.5ms)
+Rendered layouts/_footer.html.erb (0.3ms)
+Rendered layouts/_javascript.html.erb (1.7ms)
+Rendered devise/sessions/new.html.erb within layouts/application (67.5ms)
+Completed 200 OK in 128ms (Views: 73.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2011-08-13 14:04:08 -0700
+  Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8wz/7Z49jU2H1jbqHAbh5ZH96MxLPfR8CljLWwJm9+4=", "user"=>{"email"=>"sophie_rosenbaum@swift.net", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mSQL (2.0ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (1.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'sophie_rosenbaum@swift.net' LIMIT 1
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2011-08-13 21:04:09.188578', "current_sign_in_at" = '2011-08-13 21:04:09.188578', "last_sign_in_ip" = '127.0.0.1', "current_sign_in_ip" = '127.0.0.1', "sign_in_count" = 1, "updated_at" = '2011-08-13 21:04:09.189149' WHERE "users"."id" = 4[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 341ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-13 14:04:09 -0700
+  Processing by DashboardController#index as HTML
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+Completed 500 Internal Server Error in 97ms
+
+NoMethodError (undefined method `brands' for nil:NilClass):
+  app/controllers/dashboard_controller.rb:7:in `index'
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.1ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (49.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-13 14:04:39 -0700
+  Processing by DashboardController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mBrand Load (0.2ms)[0m  SELECT "brands".* FROM "brands" LIMIT 1
+Completed 500 Internal Server Error in 111ms
+
+NoMethodError (undefined method `super?' for #<User:0x00000102e654a8>):
+  app/controllers/dashboard_controller.rb:10:in `index'
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.5ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (8.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-13 14:05:02 -0700
+  Processing by DashboardController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mBrand Load (0.2ms)[0m  SELECT "brands".* FROM "brands" LIMIT 1
+  [1m[36mUprofile Load (0.2ms)[0m  [1mSELECT "uprofiles".* FROM "uprofiles" WHERE ("uprofiles".user_id = 4) LIMIT 1[0m
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:5)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:6)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:7)
+  [1m[35mHelp Load (0.2ms)[0m  SELECT "helps".* FROM "helps" WHERE (helps.brand_id = 1) AND (helps.feature = 't') ORDER BY helps.created_at DESC LIMIT 1
+  [1m[36mHelp Load (0.2ms)[0m  [1mSELECT "helps".* FROM "helps" WHERE (helps.brand_id = 1) ORDER BY helps.created_at DESC LIMIT 5[0m
+Rendered dashboard/index.html.erb within layouts/application (12.4ms)
+Completed 500 Internal Server Error in 177ms
+
+ActionView::Template::Error (undefined method `is_mobile?' for #<#<Class:0x00000102ad11c0>:0x00000102acc418>):
+    1: <%=mobile%>
+    2:   <div class="innerBox ui-corner-top">
+    3:     <div class="status span-11 append-1">
+    4:       <%= render :partial => "first_time" %>
+  app/helpers/application_helper.rb:21:in `mobile'
+  app/views/dashboard/index.html.erb:1:in `_app_views_dashboard_index_html_erb__683896399994165394_2169915180_4076030614545971863'
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.7ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-13 14:05:47 -0700
+  Processing by DashboardController#index as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mBrand Load (0.2ms)[0m  [1mSELECT "brands".* FROM "brands" LIMIT 1[0m
+  [1m[35mUprofile Load (0.2ms)[0m  SELECT "uprofiles".* FROM "uprofiles" WHERE ("uprofiles".user_id = 4) LIMIT 1
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:5)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:6)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:7)
+  [1m[36mHelp Load (0.3ms)[0m  [1mSELECT "helps".* FROM "helps" WHERE (helps.brand_id = 1) AND (helps.feature = 't') ORDER BY helps.created_at DESC LIMIT 1[0m
+Rendered dashboard/_first_time.html.erb (1.2ms)
+Rendered dashboard/index.html.erb within layouts/application (29.8ms)
+Completed 500 Internal Server Error in 159ms
+
+ActionView::Template::Error (No route matches {:action=>"edit", :controller=>"uprofiles"}):
+    5:       <div class="update">
+    6:         <span class="title">Step 1: Edit Your Profile</span><br>
+    7:         <span class="update">Your user profile contains simple contact information that enables us or other resources to get ahold of you</span><br>
+    8:         <span class="actions"><%= link_to "Click Here to Edit Your Profile >>", edit_uprofile_path(current_user.uprofile)%></span>
+    9:       </div>
+    10:     </li>
+    11:     <li>
+  app/views/dashboard/_first_time.html.erb:8:in `_app_views_dashboard__first_time_html_erb__3558805042551703313_2169466460_3249219759007533549'
+  app/views/dashboard/index.html.erb:3:in `_app_views_dashboard_index_html_erb__683896399994165394_2169495320_4076030614545971863'
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  [1m[35mHelp Load (1.5ms)[0m  SELECT "helps".* FROM "helps" WHERE (helps.brand_id = 1) ORDER BY helps.created_at DESC LIMIT 5
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.0ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-13 14:06:27 -0700
+  Processing by DashboardController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mBrand Load (0.2ms)[0m  SELECT "brands".* FROM "brands" LIMIT 1
+  [1m[36mUprofile Load (0.2ms)[0m  [1mSELECT "uprofiles".* FROM "uprofiles" WHERE ("uprofiles".user_id = 4) LIMIT 1[0m
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:5)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:6)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:7)
+  [1m[35mHelp Load (0.3ms)[0m  SELECT "helps".* FROM "helps" WHERE (helps.brand_id = 1) AND (helps.feature = 't') ORDER BY helps.created_at DESC LIMIT 1
+Rendered dashboard/_first_time.html.erb (0.9ms)
+Rendered dashboard/index.html.erb within layouts/application (3.1ms)
+Completed 500 Internal Server Error in 133ms
+
+ActionView::Template::Error (undefined method `programs' for nil:NilClass):
+    11:       <div class="update">
+    12:         <span class="title">Step 2: Edit Your Organization's Profile</span><br>
+    13:         <span class="update">Whenever a referral is given to your organization, we use your profile information to map your address or respond to text message inquiries.</span><br>
+    14:         <span class="actions"><%= link_to "Click Here to Edit Your Organization Profile >>", edit_organization_path(current_user.account.programs.first.id)%></span>
+    15:       </div>
+    16:     </li>
+    17:     <%= render :partial => "brand_#{session[:brand]}"%>
+  app/views/dashboard/_first_time.html.erb:14:in `_app_views_dashboard__first_time_html_erb__3558805042551703313_2169460340_3249219759007533549'
+  app/views/dashboard/index.html.erb:3:in `_app_views_dashboard_index_html_erb__683896399994165394_2169488020_4076030614545971863'
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  [1m[36mHelp Load (1.4ms)[0m  [1mSELECT "helps".* FROM "helps" WHERE (helps.brand_id = 1) ORDER BY helps.created_at DESC LIMIT 5[0m
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.0ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-13 14:06:37 -0700
+  Processing by DashboardController#index as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mBrand Load (0.2ms)[0m  [1mSELECT "brands".* FROM "brands" LIMIT 1[0m
+  [1m[35mUprofile Load (0.2ms)[0m  SELECT "uprofiles".* FROM "uprofiles" WHERE ("uprofiles".user_id = 4) LIMIT 1
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:5)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:6)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:7)
+  [1m[36mHelp Load (0.2ms)[0m  [1mSELECT "helps".* FROM "helps" WHERE (helps.brand_id = 1) AND (helps.feature = 't') ORDER BY helps.created_at DESC LIMIT 1[0m
+Rendered dashboard/_first_time.html.erb (2.7ms)
+Rendered dashboard/index.html.erb within layouts/application (4.5ms)
+Completed 500 Internal Server Error in 132ms
+
+ActionView::Template::Error (Missing partial dashboard/brand_1 with {:handlers=>[:erb, :rjs, :builder, :rhtml, :rxml], :formats=>[:html], :locale=>[:en, :en]} in view paths "/Users/danielmelton/Documents/development/railsapps/sext-3/app/views", "/Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/devise-1.4.2/app/views"):
+    14: 
+    15:       </div>
+    16:     </li>
+    17:     <%= render :partial => "brand_#{session[:brand]}"%>
+    18:   </ul>
+  app/views/dashboard/_first_time.html.erb:17:in `_app_views_dashboard__first_time_html_erb__3558805042551703313_2169552060_3249219759007533549'
+  app/views/dashboard/index.html.erb:3:in `_app_views_dashboard_index_html_erb__683896399994165394_2169581180_4076030614545971863'
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  [1m[35mHelp Load (1.3ms)[0m  SELECT "helps".* FROM "helps" WHERE (helps.brand_id = 1) ORDER BY helps.created_at DESC LIMIT 5
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.9ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-13 14:06:44 -0700
+  Processing by DashboardController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mBrand Load (0.2ms)[0m  SELECT "brands".* FROM "brands" LIMIT 1
+  [1m[36mUprofile Load (0.2ms)[0m  [1mSELECT "uprofiles".* FROM "uprofiles" WHERE ("uprofiles".user_id = 4) LIMIT 1[0m
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:5)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:6)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:7)
+  [1m[35mHelp Load (0.2ms)[0m  SELECT "helps".* FROM "helps" WHERE (helps.brand_id = 1) AND (helps.feature = 't') ORDER BY helps.created_at DESC LIMIT 1
+Rendered dashboard/_first_time.html.erb (0.4ms)
+Rendered helps/_dash_help.html.erb (0.8ms)
+Rendered dashboard/index.html.erb within layouts/application (4.9ms)
+Completed 500 Internal Server Error in 130ms
+
+ActionView::Template::Error (undefined method `title' for nil:NilClass):
+    1: <h1>Help Articles</h1>
+    2: <h2><%=@help_feature.title%></h2>
+    3: <p><%=sanitize @help_feature.content[0..250] + "...", :tags => %w()  %><a href="/help/<%=@help_feature.to_url%>">More ..</a></p>
+    4: <h2>Recent Help Articles</h2>	
+    5: <ul>
+  app/views/helps/_dash_help.html.erb:2:in `_app_views_helps__dash_help_html_erb___539411768209469639_2169627260__3358347536409063326'
+  app/views/dashboard/index.html.erb:12:in `_app_views_dashboard_index_html_erb__683896399994165394_2169695560_4076030614545971863'
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  [1m[36mHelp Load (1.4ms)[0m  [1mSELECT "helps".* FROM "helps" WHERE (helps.brand_id = 1) ORDER BY helps.created_at DESC LIMIT 5[0m
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.8ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-13 14:07:32 -0700
+  Processing by DashboardController#index as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mBrand Load (0.2ms)[0m  [1mSELECT "brands".* FROM "brands" LIMIT 1[0m
+  [1m[35mUprofile Load (0.2ms)[0m  SELECT "uprofiles".* FROM "uprofiles" WHERE ("uprofiles".user_id = 4) LIMIT 1
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:5)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:6)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:7)
+  [1m[36mHelp Load (0.3ms)[0m  [1mSELECT "helps".* FROM "helps" WHERE (helps.brand_id = 1) AND (helps.feature = 't') ORDER BY helps.created_at DESC LIMIT 1[0m
+Rendered dashboard/_first_time.html.erb (0.4ms)
+Rendered helps/_dash_help.html.erb (0.4ms)
+  [1m[35mBrand Load (0.2ms)[0m  SELECT "brands".* FROM "brands" WHERE "brands"."id" = 1 LIMIT 1
+Rendered layouts/_brand.html.erb (4.2ms)
+Rendered layouts/_header.html.erb (44.1ms)
+Rendered layouts/_flashes.html.erb (0.6ms)
+Rendered layouts/_footer.html.erb (0.3ms)
+Rendered layouts/_toolbar.html.erb (1.5ms)
+Rendered dashboard/index.html.erb within layouts/application (76.6ms)
+Completed 500 Internal Server Error in 208ms
+
+ActionView::Template::Error (undefined method `brands' for nil:NilClass):
+    1: <div id="toolbar">
+    2: 	<% current_user.account.brands.each do |brand| %>
+    3:   <div class="brand_inner_icon rollover <% if session[:brand]==brand.id %> active_icon <%end%>">
+    4:     <%= link_to brand.name, brand_path(brand) %>
+    5:   </div>
+  app/views/layouts/_toolbar.html.erb:2:in `_app_views_layouts__toolbar_html_erb___2016536402928247057_2169441940_2266651890524749926'
+  app/views/layouts/application.html.erb:25:in `_app_views_layouts_application_html_erb___2705327208256951354_2169940200_4076030614545971863'
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  [1m[36mHelp Load (1.4ms)[0m  [1mSELECT "helps".* FROM "helps" WHERE (helps.brand_id = 1) ORDER BY helps.created_at DESC LIMIT 5[0m
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.0ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-13 14:07:52 -0700
+  Processing by DashboardController#index as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mBrand Load (0.2ms)[0m  [1mSELECT "brands".* FROM "brands" LIMIT 1[0m
+  [1m[35mUprofile Load (0.2ms)[0m  SELECT "uprofiles".* FROM "uprofiles" WHERE ("uprofiles".user_id = 4) LIMIT 1
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:5)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:6)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:7)
+  [1m[36mHelp Load (0.2ms)[0m  [1mSELECT "helps".* FROM "helps" WHERE (helps.brand_id = 1) AND (helps.feature = 't') ORDER BY helps.created_at DESC LIMIT 1[0m
+Rendered dashboard/_first_time.html.erb (0.4ms)
+Rendered helps/_dash_help.html.erb (0.4ms)
+  [1m[35mBrand Load (0.2ms)[0m  SELECT "brands".* FROM "brands" WHERE "brands"."id" = 1 LIMIT 1
+Rendered layouts/_brand.html.erb (3.7ms)
+Rendered layouts/_header.html.erb (5.4ms)
+Rendered layouts/_flashes.html.erb (0.7ms)
+Rendered layouts/_footer.html.erb (0.4ms)
+  [1m[36mBrand Load (0.2ms)[0m  [1mSELECT "brands".* FROM "brands"[0m
+Rendered layouts/_toolbar.html.erb (3.0ms)
+Rendered dashboard/index.html.erb within layouts/application (20.4ms)
+Completed 500 Internal Server Error in 147ms
+
+ActionView::Template::Error (No route matches {:action=>"edit", :controller=>"uprofiles"}):
+    6: 	<% end %> 
+    7:                
+    8:   <div class="profile_icon rollover <% if controller=="uprofiles"%> active_icon <%end%>">
+    9: 	<%= link_to "Your Profile", edit_uprofile_path(current_user.uprofile)%>
+    10:   </div>
+    11:   <div class="profile_icon rollover <% if controller=="oprofiles"%> active_icon <%end%>">
+    12: 	<%= link_to "Your Organization Profile", edit_oprofile_path(current_user.account.programs.first )%>
+  app/views/layouts/_toolbar.html.erb:9:in `_app_views_layouts__toolbar_html_erb___2016536402928247057_2168620480_2266651890524749926'
+  app/views/layouts/application.html.erb:25:in `_app_views_layouts_application_html_erb___2705327208256951354_2169474940_4076030614545971863'
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  [1m[35mHelp Load (1.5ms)[0m  SELECT "helps".* FROM "helps" WHERE (helps.brand_id = 1) ORDER BY helps.created_at DESC LIMIT 5
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.3ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-13 14:08:19 -0700
+  Processing by DashboardController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mBrand Load (0.2ms)[0m  SELECT "brands".* FROM "brands" LIMIT 1
+  [1m[36mUprofile Load (0.2ms)[0m  [1mSELECT "uprofiles".* FROM "uprofiles" WHERE ("uprofiles".user_id = 4) LIMIT 1[0m
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:5)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:6)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:7)
+  [1m[35mHelp Load (0.2ms)[0m  SELECT "helps".* FROM "helps" WHERE (helps.brand_id = 1) AND (helps.feature = 't') ORDER BY helps.created_at DESC LIMIT 1
+Rendered dashboard/_first_time.html.erb (0.4ms)
+Rendered helps/_dash_help.html.erb (0.3ms)
+  [1m[36mBrand Load (0.2ms)[0m  [1mSELECT "brands".* FROM "brands" WHERE "brands"."id" = 1 LIMIT 1[0m
+Rendered layouts/_brand.html.erb (3.6ms)
+Rendered layouts/_header.html.erb (5.4ms)
+Rendered layouts/_flashes.html.erb (0.5ms)
+Rendered layouts/_footer.html.erb (0.3ms)
+  [1m[35mBrand Load (0.2ms)[0m  SELECT "brands".* FROM "brands"
+Rendered layouts/_toolbar.html.erb (2.2ms)
+Rendered layouts/_javascript.html.erb (2.0ms)
+Rendered dashboard/index.html.erb within layouts/application (22.6ms)
+Completed 200 OK in 149ms (Views: 25.3ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-08-13 14:10:27 -0700
+  Processing by DashboardController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mUprofile Load (0.3ms)[0m  SELECT "uprofiles".* FROM "uprofiles" WHERE ("uprofiles".user_id = 4) LIMIT 1
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:5)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:6)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:7)
+  [1m[36mHelp Load (0.3ms)[0m  [1mSELECT "helps".* FROM "helps" WHERE (helps.brand_id = 1) AND (helps.feature = 't') ORDER BY helps.created_at DESC LIMIT 1[0m
+Rendered dashboard/_first_time.html.erb (0.4ms)
+Rendered helps/_dash_help.html.erb (0.4ms)
+  [1m[35mBrand Load (0.4ms)[0m  SELECT "brands".* FROM "brands" WHERE "brands"."id" = 1 LIMIT 1
+Rendered layouts/_brand.html.erb (99.6ms)
+Rendered layouts/_header.html.erb (102.2ms)
+Rendered layouts/_flashes.html.erb (0.6ms)
+Rendered layouts/_footer.html.erb (0.3ms)
+  [1m[36mBrand Load (0.3ms)[0m  [1mSELECT "brands".* FROM "brands"[0m
+Rendered layouts/_toolbar.html.erb (2.7ms)
+Rendered layouts/_javascript.html.erb (2.3ms)
+Rendered dashboard/index.html.erb within layouts/application (123.9ms)
+Completed 200 OK in 322ms (Views: 130.7ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/brands/1" for 127.0.0.1 at 2011-08-13 14:10:56 -0700
+  Processing by BrandsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mBrand Load (0.2ms)[0m  [1mSELECT "brands".* FROM "brands" WHERE "brands"."id" = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "brands".* FROM "brands" WHERE "brands"."id" = 1 LIMIT 1
+Rendered layouts/_brand.html.erb (6.6ms)
+Rendered layouts/_header.html.erb (8.5ms)
+Rendered layouts/_flashes.html.erb (0.6ms)
+Rendered layouts/_footer.html.erb (0.3ms)
+  [1m[36mBrand Load (0.3ms)[0m  [1mSELECT "brands".* FROM "brands"[0m
+Rendered layouts/_toolbar.html.erb (2.3ms)
+Rendered layouts/_javascript.html.erb (1.9ms)
+Rendered brands/show.html.erb within layouts/application (20.5ms)
+Completed 200 OK in 121ms (Views: 23.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/brands/2" for 127.0.0.1 at 2011-08-13 14:11:02 -0700
+  Processing by BrandsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mBrand Load (0.2ms)[0m  [1mSELECT "brands".* FROM "brands" WHERE "brands"."id" = 2 LIMIT 1[0m
+  [1m[35mBrand Load (0.2ms)[0m  SELECT "brands".* FROM "brands" WHERE "brands"."id" = 1 LIMIT 1
+Rendered layouts/_brand.html.erb (44.3ms)
+Rendered layouts/_header.html.erb (46.1ms)
+Rendered layouts/_flashes.html.erb (0.6ms)
+Rendered layouts/_footer.html.erb (0.3ms)
+  [1m[36mBrand Load (0.3ms)[0m  [1mSELECT "brands".* FROM "brands"[0m
+Rendered layouts/_toolbar.html.erb (2.6ms)
+Rendered layouts/_javascript.html.erb (1.9ms)
+Rendered brands/show.html.erb within layouts/application (59.0ms)
+Completed 200 OK in 157ms (Views: 61.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/brands" for 127.0.0.1 at 2011-08-13 14:11:18 -0700
+  Processing by BrandsController#index as HTML
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mBrand Load (0.3ms)[0m  [1mSELECT "brands".* FROM "brands"[0m
+  [1m[35mUser Load (1.9ms)[0m  SELECT "users".* FROM "users" INNER JOIN "brand_admins" ON "users".id = "brand_admins".user_id WHERE (("brand_admins".brand_id = 1))
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "brand_admins" ON "users".id = "brand_admins".user_id WHERE (("brand_admins".brand_id = 2))[0m
+  [1m[35mUser Load (1.6ms)[0m  SELECT "users".* FROM "users" INNER JOIN "brand_admins" ON "users".id = "brand_admins".user_id WHERE (("brand_admins".brand_id = 3))
+  [1m[36mUser Load (39.8ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "brand_admins" ON "users".id = "brand_admins".user_id WHERE (("brand_admins".brand_id = 4))[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "brand_admins" ON "users".id = "brand_admins".user_id WHERE (("brand_admins".brand_id = 5))
+  [1m[36mBrand Load (0.2ms)[0m  [1mSELECT "brands".* FROM "brands" WHERE "brands"."id" = 1 LIMIT 1[0m
+Rendered layouts/_brand.html.erb (4.1ms)
+Rendered layouts/_header.html.erb (5.9ms)
+Rendered layouts/_flashes.html.erb (0.6ms)
+Rendered layouts/_footer.html.erb (0.3ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "brands".* FROM "brands"
+Rendered layouts/_toolbar.html.erb (2.1ms)
+Rendered layouts/_javascript.html.erb (1.8ms)
+Rendered brands/index.html.erb within layouts/application (99.8ms)
+Completed 200 OK in 196ms (Views: 57.4ms | ActiveRecord: 46.4ms)
+
+
+Started GET "/dashboard" for 127.0.0.1 at 2011-08-13 14:13:53 -0700
+
+ArgumentError (missing :controller):
+  config/routes.rb:8:in `block in <top (required)>'
+  config/routes.rb:1:in `<top (required)>'
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (46.9ms)
+
+
+Started GET "/dashboard" for 127.0.0.1 at 2011-08-13 14:14:07 -0700
+
+ArgumentError (missing :action):
+  config/routes.rb:8:in `block in <top (required)>'
+  config/routes.rb:1:in `<top (required)>'
+
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+Rendered /Users/danielmelton/.rvm/gems/ruby-1.9.2-p136@sext/gems/actionpack-3.0.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.6ms)
+
+
+Started GET "/dashboard" for 127.0.0.1 at 2011-08-13 14:14:43 -0700
+  Processing by DashboardController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1[0m
+  [1m[35mUprofile Load (0.2ms)[0m  SELECT "uprofiles".* FROM "uprofiles" WHERE ("uprofiles".user_id = 4) LIMIT 1
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:5)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:6)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:7)
+  [1m[36mHelp Load (0.2ms)[0m  [1mSELECT "helps".* FROM "helps" WHERE (helps.brand_id = 1) AND (helps.feature = 't') ORDER BY helps.created_at DESC LIMIT 1[0m
+Rendered dashboard/_first_time.html.erb (0.3ms)
+Rendered helps/_dash_help.html.erb (0.3ms)
+  [1m[35mBrand Load (0.2ms)[0m  SELECT "brands".* FROM "brands" WHERE "brands"."id" = 1 LIMIT 1
+Rendered layouts/_brand.html.erb (26.1ms)
+Rendered layouts/_header.html.erb (28.1ms)
+Rendered layouts/_flashes.html.erb (0.6ms)
+Rendered layouts/_footer.html.erb (0.3ms)
+  [1m[36mBrand Load (0.3ms)[0m  [1mSELECT "brands".* FROM "brands"[0m
+Rendered layouts/_toolbar.html.erb (2.2ms)
+Rendered layouts/_javascript.html.erb (1.8ms)
+Rendered dashboard/index.html.erb within layouts/application (45.2ms)
+Completed 200 OK in 136ms (Views: 48.0ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/dashboard" for 127.0.0.1 at 2011-08-13 14:14:46 -0700
+  Processing by DashboardController#index as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 4 LIMIT 1
+  [1m[36mUprofile Load (0.2ms)[0m  [1mSELECT "uprofiles".* FROM "uprofiles" WHERE ("uprofiles".user_id = 4) LIMIT 1[0m
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:5)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:6)
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:Help> at /Users/danielmelton/Documents/development/railsapps/sext-3/app/models/help.rb:7)
+  [1m[35mHelp Load (0.2ms)[0m  SELECT "helps".* FROM "helps" WHERE (helps.brand_id = 1) AND (helps.feature = 't') ORDER BY helps.created_at DESC LIMIT 1
+Rendered dashboard/_first_time.html.erb (0.3ms)
+Rendered helps/_dash_help.html.erb (0.3ms)
+  [1m[36mBrand Load (0.2ms)[0m  [1mSELECT "brands".* FROM "brands" WHERE "brands"."id" = 1 LIMIT 1[0m
+Rendered layouts/_brand.html.erb (68.8ms)
+Rendered layouts/_header.html.erb (70.7ms)
+Rendered layouts/_flashes.html.erb (0.9ms)
+Rendered layouts/_footer.html.erb (0.3ms)
+  [1m[35mBrand Load (0.3ms)[0m  SELECT "brands".* FROM "brands"
+Rendered layouts/_toolbar.html.erb (3.0ms)
+Rendered layouts/_javascript.html.erb (2.0ms)
+Rendered dashboard/index.html.erb within layouts/application (88.1ms)
+Completed 200 OK in 204ms (Views: 90.3ms | ActiveRecord: 1.7ms)
