@@ -11,7 +11,19 @@ describe Brand do
       @invalid_brand = Brand.create(attr)
       @invalid_brand.should_not be_valid
     end  
+  
+    it 'downcases before saving' do
+      attr = Factory.attributes_for(:brand, :name => "NOT")
+      brand = Brand.create!(attr)
+      brand.name.should == "not"
+      brand.update_attributes(:name => "NOT")
+      brand.name.should == "not"      
+    end
+  
   end
+  
+  
+  
   context 'has many' do
     it 'admins' do
       @brand.respond_to?(:admins).should be_true

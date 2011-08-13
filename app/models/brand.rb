@@ -4,4 +4,10 @@ class Brand < ActiveRecord::Base
   validates_uniqueness_of :name, :on => :create, :message => "must be unique"
   has_many :brand_admins
   has_many :admins, :through => :brand_admins, :source => :user
+  before_save :downcase_name
+  
+  def downcase_name
+    name = self.name
+    self.name = name.downcase
+  end
 end
