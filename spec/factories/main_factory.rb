@@ -13,11 +13,11 @@ end
 Factory.define :brand do |b|
   b.name { Faker::Lorem.words(1)[0] }
   b.admins { [Factory(:user), Factory(:user)]}
+  b.categories {[Factory(:category), Factory(:category)]}
 end
 
 Factory.define :category do |c|
   c.name { Faker::Lorem.words(1)[0] }
-  c.brands {[Factory(:brand)]}
 end
 
 # 

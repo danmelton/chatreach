@@ -12,4 +12,10 @@ if Rails.env!='production'
   puts "Creating Brands"
   brands = 5.times { |x| Factory(:brand, :admins => [users[rand(4)]]) }
   
+  puts "Creating Categories"
+  25.times {|x| Category.create(:name => Faker::Lorem.words(2).join(" "))}
+  
+  puts "Adding Categories to Brands"
+  Brand.all.each {|x| x.categories << Category}
+  
 end

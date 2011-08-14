@@ -27,6 +27,11 @@ describe Brand do
       @brand.respond_to?(:admins).should be_true
       @brand.admins.size.should == 2
     end
+    it 'categories' do
+      @brand.respond_to?(:categories).should be_true
+      @brand.categories.size.should == 2
+    end
+    
   end
   
   context 'destroy' do
