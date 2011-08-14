@@ -386,6 +386,10 @@ dd.submit{
 	background-color: white;
 }
 
+ul.plain{
+	list-style:none;
+}
+
 /* ------------------------------------------------- */
 
 label.error {

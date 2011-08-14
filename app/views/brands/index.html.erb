@@ -1,26 +1,7 @@
-<% content_for :javascript do %>
-<%= javascript_include_tag "tablesorter/jquery.tablesorter.js", :cache => true %>
-<%= javascript_include_tag "quicksearch.js", :cache => true %>
-<script type="text/javascript">
-$(document).ready(function() {        
-	 $("table#tableList").tablesorter({
-	   sortList:[[0,0]], 
-	   headers: { 3: { sorter: false}}
-	 });
-	$('table#tableList tbody tr').quicksearch({
-	  position: 'before',
-	  attached: 'table#tableList',
-	  stripeRowClass: ['odd', 'even'],
-	  labelText: 'Search the table',
-	  inputClass: 'text'
-	}); 
-});
-</script>
-<% end %>
 <div id="questionList">
-<h1>Help Articles</h1>
+<h1>Brands</h1>
 <div class="directions">
-  <p>Add a new help article.</p>
+  <p>Brands are keywords.  Users text these keywords to start a session.  Brand names must be unique.</p>
 </div>
 <ul id="submenu" class="links border">
   <li><%= link_to "All Brands", brands_path%></li>
@@ -29,16 +10,24 @@ $(document).ready(function() {
 <table id="tableList" class="tablesorter">
   <thead>
     <th>Brand Name</th>
-    <th>Admins</th>
+    <th>Brand Administrators</th>
+    <% if current_user.admin?%>    
 	  <th>Actions</th>
+	  <% end %>
   </thead>
 
 <% @brands.each do |brand| %>
   <tr>
-    <td><%=h brand.name %></td>
-    <td><%=h brand.admins.join(", ") %></td>
+    <td><%= brand.name %></td>
+    <td>
+      <ul>
+        <%= render :partial => "brand_admin", :collection => brand.brand_admins, :as => :brand_admin %>
+      </ul>
+    </td>
+    <% if current_user.admin?%>
     <td><%= link_to 'Edit', edit_brand_path(brand) %>
-    <%= link_to 'Destroy', brand, :confirm => 'Are you sure?', :method => :delete %></td>
+    <%= link_to 'Destroy', brand_path(brand), :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>

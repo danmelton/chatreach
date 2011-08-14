@@ -1,0 +1,5 @@
+<% form_for @brand, :html => {:style=>"display: block;"} do |f| -%>
+  <p><%= f.label :name, "Name:" %><br>  
+  <%= f.text_field :name, :class=>"text"%></p>
+  <%= f.submit "Submit", :class=>"softButton"%>
+<% end -%>

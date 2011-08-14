@@ -6,9 +6,11 @@
     <title>chatreach</title>            
     <%= stylesheet_link_tag 'blueprint/screen', :media => 'all', :cache => true %>
     <%= stylesheet_link_tag 'style', :media => 'all', :cache => true %>
+    <%= csrf_meta_tag %>
+    <%= render :partial => 'layouts/javascript' %>    
     <%= yield :header %>
   </head>
-  <body class="<%= body_class %>" onload="<%= yield :bodyload%>">
+  <body onload="<%= yield :bodyload%>">
     <%= render :partial => 'layouts/header' -%>
   	<div id="container" class="full">
 	    <div class="blue_container">
@@ -26,7 +28,5 @@
 	<% if current_user %>    
 		<%= render :partial => 'layouts/toolbar' %>
 	<%end%>
-
-    <%= render :partial => 'layouts/javascript' %>
   </body>
 </html>

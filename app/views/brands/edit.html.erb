@@ -1,0 +1,13 @@
+<div class="blue_container">
+	<div class="innerBox span-15">
+		<h1>Edit Brand <%=h @brand.name.titleize%></h1>
+		<div class="directions">
+		  <p></p>
+		</div>	
+		<fieldset>
+      <%= render "form"%>		
+    </fieldset>
+	</div>
+	  	<%= render :partial => "help"%>
+	<div style="clear: both;"/></div>
+</div>

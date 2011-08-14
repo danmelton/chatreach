@@ -25,5 +25,10 @@ module ApplicationHelper
     end
   end
   
+  def nonbrand_users(brand)
+    users = User.all - brand.admins
+    return users.map { |x| [x.email, x.id]}
+  end
+  
 
 end

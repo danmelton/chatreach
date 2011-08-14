@@ -4,7 +4,7 @@ describe Brand do
   before do
     @brand = Factory(:brand)
   end
-  context 'validates' do
+  context 'validations' do
     it 'uniqueness of name' do
       attr = Factory.attributes_for(:brand)
       Brand.create!(attr)
@@ -28,6 +28,12 @@ describe Brand do
     it 'admins' do
       @brand.respond_to?(:admins).should be_true
       @brand.admins.size.should == 2
+    end
+  end
+  
+  context 'destroy' do
+    it 'deletes dependents' do
+      lambda {@brand.destroy}.should change(BrandAdmin, :count).by(-2)
     end
   end
   

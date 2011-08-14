@@ -151,7 +151,7 @@ describe BrandsController do
     end
 
     context "has access" do
-            
+
       it "for edit" do
         get :edit, :id => @brand.id
         response.should be_success
