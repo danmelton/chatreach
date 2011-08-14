@@ -3,10 +3,7 @@
 <div class="directions">
   <p>Brands are keywords.  Users text these keywords to start a session.  Brand names must be unique.</p>
 </div>
-<ul id="submenu" class="links border">
-  <li><%= link_to "All Brands", brands_path%></li>
-  <li><%= link_to "New Brand", new_brand_path%></li>
-</ul>
+<%= render "menu"%>
 <table id="tableList" class="tablesorter">
   <thead>
     <th>Brand Name</th>
@@ -18,15 +15,20 @@
 
 <% @brands.each do |brand| %>
   <tr>
-    <td><%= brand.name %></td>
+    <td><%=link_to brand.name, brand_path(brand) %></td>
     <td>
-      <ul>
+      <ul class="plain">
         <%= render :partial => "brand_admin", :collection => brand.brand_admins, :as => :brand_admin %>
       </ul>
-    </td>
+    </td>    
+    <% if brand.admins.include?(current_user)%>
+      <td><%= link_to 'Edit', edit_brand_path(brand) %></td>
+    <% end %>
     <% if current_user.admin?%>
-    <td><%= link_to 'Edit', edit_brand_path(brand) %>
-    <%= link_to 'Destroy', brand_path(brand), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td>
+    <%= link_to 'Edit', edit_brand_path(brand) %> | 
+    <%= link_to 'Destroy', brand_path(brand), :confirm => 'Are you sure?', :method => :delete %>
+    </td>
     <% end %>
   </tr>
 <% end %>

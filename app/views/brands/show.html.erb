@@ -4,17 +4,20 @@
 		<div class="directions">
 		  <p></p>
 		</div>	
+    <%= render "menu"%>		
     <h2>Keyword: <%=@brand.name%></h2>
     <h2>Brand Admins:</h2>
     <ul class="plain">
       <%= render :partial => "brand_admin", :collection => @brand.brand_admins, :as => :brand_admin %>
     </ul>
+    <p>
     <%= form_for :brand_admin, :url => brand_brand_admins_path(@brand) do |f| %>
     <%= f.label :user_id, "Add an Admin:" %>
     <%= select :brand_admin, :user_id, nonbrand_users(@brand) %>
     <%= f.hidden_field :brand_id, :value => @brand.id %>
-    <%= f.submit "Add", :disable_with => 'Submiting...' %>
+    <%= f.submit "Add", :disable_with => 'Submiting...', :class => 'softButton' %>
     <% end %>
+    </p>
 	</div>
 	<%= render :partial => "help"%>
 	<div style="clear: both;"/></div>
