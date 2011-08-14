@@ -22,8 +22,6 @@ describe Brand do
   
   end
   
-  
-  
   context 'has many' do
     it 'admins' do
       @brand.respond_to?(:admins).should be_true

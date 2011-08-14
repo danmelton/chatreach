@@ -6,8 +6,10 @@ Sext3::Application.routes.draw do
   end  
 
   resources :brands do 
-    resources :brand_admins, :only => [:create, :destroy]
+    resources :brand_admins, :only => [:create, :destroy]  
   end
+  
+  resources :categories
 
   get "/dashboard", :controller => :dashboard, :action => :index, :as => :dashboard_path
 

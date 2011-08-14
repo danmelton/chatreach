@@ -1,96 +1,27 @@
-class CategoriesController < ApplicationController
+class CategoriesController < InheritedResources::Base
   before_filter :authenticate_user!
-  layout "application"
-  protect_from_forgery :only => [:delete]
+  before_filter :brand_admin, :except => [:index, :show] 
   
-    
-  # GET /categories
-  # GET /categories.xml
-  def index
-    @categories = Category.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @categories }
-    end
-  end
-
-  # GET /categories/1
-  # GET /categories/1.xml
-  def show
-    @category = Category.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @category }
-    end
-  end
-
-  # GET /categories/new
-  # GET /categories/new.xml
-  def new
-    @category = Category.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @category }
-    end
-  end
-
-  # GET /categories/1/edit
-  def edit
-    @category = Category.find(params[:id])
-  end
-
-  # POST /categories
-  # POST /categories.xml
+  layout "application"
+  
   def create
-    @category = Category.new(params[:category])
-    if admin?
-      @category.account = Account.first
+    category = Category.where(:name => params[:category][:name])
+    if category.blank?
+      create!
     else
-      @category.account = current_user.account
-    end
-    @category.brands << Brand.find(session[:brand])
-
-    respond_to do |format|
-      if @category.save
-        format.js {render :html => @category}
-        format.html { redirect_to(@category) }
-        format.xml  { render :xml => @category, :status => :created, :location => @category }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @category.errors, :status => :unprocessable_entity }
-      end
+      flash[:notice] = "That category already exists"
+      redirect_to category_path(category.first)
     end
   end
-
-  # PUT /categories/1
-  # PUT /categories/1.xml
-  def update
-    @category = Category.find(params[:id])
-
-    respond_to do |format|
-      if @category.update_attributes(params[:category])
-        flash[:notice] = 'Category was successfully updated.'
-        format.html { redirect_to(@category) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @category.errors, :status => :unprocessable_entity }
+  
+  private
+    
+  def brand_admin
+    if !admin? 
+      brand = Brand.find(session[:brand])
+      if !brand.admins.include?(current_user) 
+        redirect_to :back
       end
-    end
-  end
-
-  # DELETE /categories/1
-  # DELETE /categories/1.xml
-  def destroy
-    @category = Category.find(params[:id])
-    @category.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(categories_url) }
-      format.xml  { head :ok }
     end
   end
   

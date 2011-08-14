@@ -15,6 +15,11 @@ Factory.define :brand do |b|
   b.admins { [Factory(:user), Factory(:user)]}
 end
 
+Factory.define :category do |c|
+  c.name { Faker::Lorem.words(1)[0] }
+  c.brands {[Factory(:brand)]}
+end
+
 # 
 # 
 # Factory.define :organization, :parent => :account do |org|
