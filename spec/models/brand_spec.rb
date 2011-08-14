@@ -31,13 +31,40 @@ describe Brand do
       @brand.respond_to?(:categories).should be_true
       @brand.categories.size.should == 2
     end
+    it 'brand settings' do
+      @brand.respond_to?(:brand_settings).should be_true
+    end
+    
+  end
+  
+  context 'special calls' do
+    it 'brand setting methods' do
+      @brand.respond_to?(:welcome).should be_true
+      @brand.respond_to?(:info_not_found).should be_true      
+      @brand.respond_to?(:clinic_not_found).should be_true      
+      @brand.respond_to?(:provider).should be_true      
+      @brand.respond_to?(:phone_number).should be_true      
+      @brand.respond_to?(:provider_api_key).should be_true      
+      @brand.respond_to?(:provider_secret_key).should be_true      
+    end
+    
+    it 'should build brand settings' do
+      @brand.build_brand_settings
+      @brand.reload.brand_settings.size.should == 7
+      @brand.welcome.setting.should == nil
+    end
     
   end
   
   context 'destroy' do
-    it 'deletes dependents' do
+    it 'deletes BrandAdmins' do
       lambda {@brand.destroy}.should change(BrandAdmin, :count).by(-2)
     end
+    it 'deletes brand_settings' do
+      Factory(:brand_setting, :brand => @brand)
+      lambda {@brand.destroy}.should change(BrandSetting, :count).by(-1)
+    end
   end
+  
   
 end

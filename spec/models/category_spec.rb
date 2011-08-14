@@ -23,7 +23,6 @@ describe Category do
     context 'has many' do
       it 'admins' do
         @category.respond_to?(:brands).should be_true
-        @category.brands.size.should == 1
       end
     end
   end

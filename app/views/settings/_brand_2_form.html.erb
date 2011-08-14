@@ -8,28 +8,13 @@
   		$.fn.textCounting.defaults.countDirection = 'down';
   		$.fn.textCounting.defaults.lengthExceededClass = 'charOver';
   		$("textarea.counting").textCounting();
-  });
-window.onload = function()
-{
-var oFCKeditor = new FCKeditor( 'contact' ) ;
-oFCKeditor.Config["CustomConfigurationsPath"] = "/javascripts/fckcustom.js"  
-oFCKeditor.BasePath = "/javascripts/fckeditor/" ;
-oFCKeditor.ReplaceTextarea() ;
-var oFCKeditor2 = new FCKeditor( 'about' ) ;
-oFCKeditor2.Config["CustomConfigurationsPath"] = "/javascripts/fckcustom.js"  
-oFCKeditor2.BasePath = "/javascripts/fckeditor/" ;
-oFCKeditor2.ReplaceTextarea() ;
-var oFCKeditor3 = new FCKeditor( 'parent' ) ;
-oFCKeditor3.Config["CustomConfigurationsPath"] = "/javascripts/fckcustom.js"  
-oFCKeditor3.BasePath = "/javascripts/fckeditor/" ;
-oFCKeditor3.ReplaceTextarea() ;
-}   
+  }); 
 </script>
 <% end %>
 
 <% form_tag "update" do %>
 	<p>
-		<label for="keyword">Keyword:</label> <b><%=@settings[0].setting%></b>
+		<label for="keyword">Keyword:</label> <b><%=@brand[0].setting%></b>
 		<input type="hidden" name="brand_setting_<%=@settings[0].id%>" value="<%=@settings[0].setting%>">
 	</p>
 		<label for="description">Description</label>
@@ -43,26 +28,6 @@ oFCKeditor3.ReplaceTextarea() ;
 		<label for="info not found">Description for Info Not Found</label>
 		<textarea id="info" name="brand_setting_<%=@settings[3].id%>" class="counting expanding" maxLength="140"><%=@settings[3].setting%></textarea>
 		 <p class="charLeft">Characters Left: <span id="infoDown"></span></p>
-		<p>
-			<label for="subdomain">Subdomain:</label> 
-			<input type="text" name="brand_setting_<%=@settings[4].id%>" value="<%=@settings[4].setting%>">(i.e. something if its something.yourwebsite.com)
-		</p>
-		<p>
-			<label for="domain">Full Domain:</label> 
-			<input type="text" name="brand_setting_<%=@settings[5].id%>" value="<%=@settings[5].setting%>"> (i.e. something.yourwebsite.com)
-		</p>
-		<p>
-			<label for="contact">Contact Us Page</label>
-			<textarea id="contact" name="brand_setting_<%=@settings[6].id%>"><%=@settings[6].setting%></textarea>
-		</p>
-		<p>
-			<label for="about">About Us Page</label>
-			<textarea id="about" name="brand_setting_<%=@settings[7].id%>"><%=@settings[7].setting%></textarea>
-		</p>
-		<p>
-			<label for="parent">For Parents Page</label>
-			<textarea id="parent" name="brand_setting_<%=@settings[8].id%>"><%=@settings[8].setting%></textarea>
-		</p>
 		<%= submit_tag 'Update', :class => "button clickable round-7"  %>
 	</p>
 <% end %>

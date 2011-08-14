@@ -17,7 +17,13 @@ Factory.define :brand do |b|
 end
 
 Factory.define :category do |c|
-  c.name { Faker::Lorem.words(1)[0] }
+  c.name { Faker::Lorem.words(1)[0] + rand(100).to_s }
+end
+
+Factory.define :brand_setting do |b|
+  b.brand {Factory(:brand)}
+  b.name "welcome"
+  b.setting {Faker::Lorem.sentence[0..140]}
 end
 
 # 
