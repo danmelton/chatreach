@@ -8,5 +8,4 @@ class BrandSetting < ActiveRecord::Base
   belongs_to :brand
   validates_uniqueness_of :name, :scope => :brand_id
   validates_presence_of :name, :brand
-  
 end

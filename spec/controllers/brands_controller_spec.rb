@@ -164,6 +164,23 @@ describe BrandsController do
       end
       
     end
+    
+    describe 'Special. Submitting brand setting attributes' do
+      it "for update" do
+        # TODO This test could be a littler simpler in prep
+        brand_settings = @brand.brand_settings
+        brand_settings = brand_settings.map { |x| x.serializable_hash}
+        brand_settings = brand_settings.each {|x| x.delete("brand_id"); x.delete("created_at");x.delete("updated_at")}
+        brand_settings_attributes = Hash.new
+        brand_settings.each_index {|x| brand_settings_attributes["#{x}"] = brand_settings[x] }
+        brand_settings_attributes["0"]["setting"] = "Changing!"
+
+        put :update, :id => @brand.id, :brand => {:name => "love", :brand_settings_attributes => brand_settings_attributes}
+        Brand.find(@brand.id).name.should == "love"
+        Brand.find(@brand.id).welcome.setting.should == "Changing!"        
+        response.should redirect_to brand_path(@brand)
+      end
+    end
   end
 
 end
