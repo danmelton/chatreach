@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110807221158) do
+ActiveRecord::Schema.define(:version => 20110815033241) do
 
   create_table "brand_admins", :force => true do |t|
     t.integer  "user_id"
@@ -107,6 +107,8 @@ ActiveRecord::Schema.define(:version => 20110807221158) do
     t.integer  "geom"
     t.string   "website"
     t.string   "email"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "organizations", ["id"], :name => "index_organizations_on_id"

@@ -28,14 +28,14 @@ end
 
 Factory.define :organization, do |o|
   o.name {Faker::Company.name}
-  o.address {Faker::Address.street_address}
-  o.city {Faker::Address.city}
-  o.state {Faker::Address.state_abbr}
-  o.zip {Faker::Address.zip_code}
-  o.country {Faker::Address.country}
+  o.address "1000 S Van Ness"
+  o.city "San Francisco"
+  o.state "CA"
+  o.zip "94110"
+  o.country "USA"
   o.phone {Faker::PhoneNumber.phone_number}
   o.sms_about {Faker::Lorem.sentence}
-  o.sext_list "#{Faker::Lorem.words(1)[0]},#{Faker::Lorem.words(1)[0]}"
+  o.tag_list "#{Faker::Lorem.words(1)[0]},#{Faker::Lorem.words(1)[0]}"
 end
 
 # 

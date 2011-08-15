@@ -25,13 +25,9 @@ end
 Spork.each_run do
   require 'factory_girl_rails'
   # This code will be run each time you run your specs.
-end
-
-def setup
-    FakeWeb.allow_net_connect = false
-    FakeWeb.register_uri(:get, 'http://sex.chatreach.com:80/geo?address=613%20Sandusky%20Ave%20Kansas%20City,%20KS%2066101', :body => File.read("#{Rails.root}/test/fake/geo"))      
-    FakeWeb.register_uri(:get, 'http://sex.chatreach.com:80/geo?address=19905%20S%20Clinton%20Olathe,%20KS%2066215', :body => File.read("#{Rails.root}/test/fake/geo"))      
-    FakeWeb.register_uri(:get, 'http://maps.google.com:80/maps/geo?q=66101&key=ABQIAAAAzMUFFnT9uH0xq39J0Y4kbhTJQa0g3IQ9GZqIMmInSLzwtGDKaBR6j135zrztfTGVOm2QlWnkaidDIQ&sensor=false&output=kml', :body => File.read("#{Rails.root}/test/fake/google_geo_zip"))      
+  stub_request(:get, "http://maps.google.com/maps/api/geocode/json?address=1000%20S%20Van%20Ness,%20San%20Francisco,%20CA,%2094110,%20USA&language=en&sensor=false").
+    with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
+    to_return(:status => 200, :body => fixture('google_maps'), :headers => {})
 end
 
 # --- Instructions ---
@@ -92,4 +88,8 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
+end
+
+def fixture(file)
+  File.new("#{::Rails.root}/spec/fake" + '/' + file)
 end

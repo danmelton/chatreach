@@ -3,6 +3,10 @@ require 'faker'
 require 'factory_girl_rails'
 
 if Rails.env!='production'
+  stub_request(:get, "http://maps.google.com/maps/api/geocode/json?address=1000%20S%20Van%20Ness,%20San%20Francisco,%20CA,%2094110,%20USA&language=en&sensor=false").
+    with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
+    to_return(:status => 200, :body => fixture('google_maps'), :headers => {})
+    
   puts "Creating Admin"
   admin = Factory(:admin_user)
   puts "Creating 5 Users with password something"

@@ -6,6 +6,7 @@ gem 'devise'
 gem 'acts-as-taggable-on'
 gem "inherited_resources"
 gem 'jquery-rails'
+gem "geocoder"
 
 group :test, :development do
   gem 'sqlite3'
