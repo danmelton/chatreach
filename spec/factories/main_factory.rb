@@ -26,6 +26,18 @@ Factory.define :brand_setting do |b|
   b.setting {Faker::Lorem.sentence[0..140]}
 end
 
+Factory.define :organization, do |o|
+  o.name {Faker::Company.name}
+  o.address {Faker::Address.street_address}
+  o.city {Faker::Address.city}
+  o.state {Faker::Address.state_abbr}
+  o.zip {Faker::Address.zip_code}
+  o.country {Faker::Address.country}
+  o.phone {Faker::PhoneNumber.phone_number}
+  o.sms_about {Faker::Lorem.sentence}
+  o.sext_list "#{Faker::Lorem.words(1)[0]},#{Faker::Lorem.words(1)[0]}"
+end
+
 # 
 # 
 # Factory.define :organization, :parent => :account do |org|

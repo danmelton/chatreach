@@ -7,7 +7,7 @@ class CreateChatterProfiles < ActiveRecord::Migration
       t.string :phone
       t.string :city
       t.string :state
-      t.integer :zipcode
+      t.string :zipcode
       t.string :country
       t.string :first_name
       t.string :last_name
