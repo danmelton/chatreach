@@ -1,5 +1,26 @@
 <% form_for @brand, :html => {:style=>"display: block;"} do |f| -%>
   <p><%= f.label :name, "Name:" %><br>  
   <%= f.text_field :name, :class=>"text"%></p>
+  <% if !@brand.new_record?%>
+  <%= f.fields_for :brand_settings, @brand.brand_settings do |ff| %>
+    <p><%=ff.label :setting, brand_setting_name(ff.object.name)%><br>
+    <%= form_field_type_for_settings(ff) %></p>
+    <%=raw(character_count?(ff))%>
+  <% end %> 
+  <% end %>
   <%= f.submit "Submit", :class=>"softButton"%>
 <% end -%>
+
+<% content_for :javascript do %>
+<%= javascript_include_tag "fckeditor/fckeditor.js", :cache => true %>
+<%= javascript_include_tag "jquery.autogrow.js", :cache => true %>
+<%= javascript_include_tag "jquery.textCounting.min.js", :cache => true %>
+<script type="text/javascript">
+    $(document).ready(function() {        
+  		$("textarea.expanding").autogrow(); 
+  		$.fn.textCounting.defaults.countDirection = 'down';
+  		$.fn.textCounting.defaults.lengthExceededClass = 'charOver';
+  		$("textarea.counting").textCounting();
+  }); 
+</script>
+<% end %>

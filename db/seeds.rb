@@ -16,6 +16,6 @@ if Rails.env!='production'
   25.times {|x| Category.create(:name => Faker::Lorem.words(2).join(" "))}
   
   puts "Adding Categories to Brands"
-  Brand.all.each {|x| x.categories << Category}
+  Brand.all.each {|x| x.categories << Category.all.shuffle[0..5]}
   
 end

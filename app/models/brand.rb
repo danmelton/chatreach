@@ -7,6 +7,8 @@ class Brand < ActiveRecord::Base
   has_many :categories
   has_many :brand_settings, :dependent => :destroy
   before_save :downcase_name
+  after_create :build_brand_settings
+  accepts_nested_attributes_for :brand_settings
   
   def downcase_name
     name = self.name
@@ -47,7 +49,5 @@ class Brand < ActiveRecord::Base
     end
     brand_settings
   end
-  
-  
-  
+    
 end

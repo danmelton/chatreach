@@ -1,4 +1,7 @@
 <ul id="submenu" class="links border">
+  <% if params[:action] == "show"%>
+  <li><%=link_to "Edit #{@brand.name.titleize} Settings", edit_brand_path(@brand)%></li>
+  <% end %>
   <li><%= link_to "All Brands", brands_path%></li>
   <li class="last"><%= link_to "New Brand", new_brand_path%></li>
 </ul>

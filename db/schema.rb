@@ -103,7 +103,6 @@ ActiveRecord::Schema.define(:version => 20110814014404) do
   end
 
   create_table "brand_settings", :force => true do |t|
-    t.integer  "account_id"
     t.integer  "brand_id"
     t.string   "name"
     t.text     "setting",    :limit => 255

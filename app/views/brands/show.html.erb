@@ -4,8 +4,12 @@
 		<div class="directions">
 		  <p></p>
 		</div>	
-    <%= render "menu"%>		
+    <%= render "menu" %>		
     <h2>Keyword: <%=@brand.name%></h2>
+    <% @brand.brand_settings.each do |brand_setting|%>
+    <h2><%=brand_setting_name(brand_setting.name)%>:</h2>    
+    <div class="setting"><%=brand_setting.setting%></div>
+    <% end %>
     <h2>Brand Admins:</h2>
     <ul class="plain">
       <%= render :partial => "brand_admin", :collection => @brand.brand_admins, :as => :brand_admin %>

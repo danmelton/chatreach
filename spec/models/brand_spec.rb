@@ -48,9 +48,8 @@ describe Brand do
       @brand.respond_to?(:provider_secret_key).should be_true      
     end
     
-    it 'should build brand settings' do
-      @brand.build_brand_settings
-      @brand.reload.brand_settings.size.should == 7
+    it 'should build brand settings on create' do
+      @brand.brand_settings.size.should == 7
       @brand.welcome.setting.should == nil
     end
     
@@ -61,8 +60,7 @@ describe Brand do
       lambda {@brand.destroy}.should change(BrandAdmin, :count).by(-2)
     end
     it 'deletes brand_settings' do
-      Factory(:brand_setting, :brand => @brand)
-      lambda {@brand.destroy}.should change(BrandSetting, :count).by(-1)
+      lambda {@brand.destroy}.should change(BrandSetting, :count).by(-7)
     end
   end
   
