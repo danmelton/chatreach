@@ -10,6 +10,7 @@ Sext3::Application.routes.draw do
   end
   
   resources :categories
+  resources :organizations
 
   get "/dashboard", :controller => :dashboard, :action => :index, :as => :dashboard_path
 
