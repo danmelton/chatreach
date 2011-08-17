@@ -30,6 +30,13 @@ module ApplicationHelper
     return users.map { |x| [x.email, x.id]}
   end
   
+  def not_selected_brands(org)
+    brands = Brand.all - org.brands
+    if !brands.blank?
+    brands.map { |x| [x.name, x.id]}
+    end
+  end
+  
   def brand_setting_name(name)
     case name
     when "welcome"

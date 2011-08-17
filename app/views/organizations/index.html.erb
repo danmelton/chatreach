@@ -24,6 +24,7 @@ $(document).ready(function() {
 <table id="tableList" class="tablesorter">
   <thead>
     <th>Name</th>
+    <th>Brands</th>
     <th>City</th>
     <th>Zip</th>
     <th>SMS</th>
@@ -34,6 +35,11 @@ $(document).ready(function() {
 <% @organizations.each do |org| %>
   <tr id="organization<%="#{org.id}"%>">
     <td><%= org.name %></td>
+    <td>
+      <ul class="plain">
+        <%= render :partial => "brand", :collection => org.brand_organizations, :as => :brand_org %>
+      </ul>
+    </td>     
     <td><%= org.city %></td>
     <td><%= org.zip %></td>    
     <td><%= org.sms_about[0..50] unless org.sms_about.nil? %></td>    

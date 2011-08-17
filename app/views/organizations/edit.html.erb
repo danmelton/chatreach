@@ -25,6 +25,24 @@ oFCKeditor.ReplaceTextarea() ;
 			  </p>
 			<% end %>
 		</fieldset>
+    <fieldset>
+		  <legend>Brands</legend>      
+      <ul class="plain">
+        <%= render :partial => "brand", :collection => @organization.brand_organizations, :as => :brand_org %>
+      </ul>
+      <p>
+      <% if not_selected_brands(@organization) %>
+      <%= form_for :brand_organization, :url => brand_brand_organizations_path(@organization) do |f| %>
+      <%= f.label :brand_id, "Add a Brand:" %>
+      <%= select :brand_organization, :brand_id, not_selected_brands(@organization) %>
+      <%= f.hidden_field :organization_id, :value => @organization.id %>
+      <%= f.submit "Add", :disable_with => 'Submiting...', :class => 'softButton' %>
+      <% end %>
+      <% end %>
+      </p>
+      
+    </fieldset>
+		
 	</div>
 	  	<%= render :partial => "help"%>
 	<div style="clear: both;"/></div>

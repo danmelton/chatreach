@@ -1,4 +1,6 @@
 class Organization < ActiveRecord::Base
+  has_many :brand_organizations, :dependent => :destroy
+  has_many :brands, :through => :brand_organizations
   acts_as_taggable_on :tag
   validates_uniqueness_of :name, :on => :create, :message => "must be unique"
   validates_presence_of :name, :address, :city, :state, :zip, :sms_about
