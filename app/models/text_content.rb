@@ -1,8 +1,6 @@
 class TextContent < ActiveRecord::Base
   belongs_to :brand
   belongs_to :user
-  has_many :account_texts
-  has_many :accounts, :through => :account_texts
   has_many :category_texts
   has_many :categories, :through => :category_texts
   named_scope :published, lambda {{:conditions => ['text_contents.published = ?', true]}}

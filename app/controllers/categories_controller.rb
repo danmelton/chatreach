@@ -7,10 +7,10 @@ class CategoriesController < InheritedResources::Base
   def create
     category = Category.where(:name => params[:category][:name])
     if category.blank?
-      create!
+      create! {categories_path}
     else
       flash[:notice] = "That category already exists"
-      redirect_to category_path(category.first)
+      redirect_to new_category_path
     end
   end
   

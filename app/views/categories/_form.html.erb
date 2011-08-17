@@ -1,8 +1,5 @@
-<% form_for @category, :html => {:id=>"addCat", :style=>"display: block;"} do |f| -%>
-<div id="questionForm">
-<div id="categoryBank">
-<%= f.text_field :name, :id=>"addCat_input", :class=>"text"%>
+<% form_for @category do |f| -%>
+<p><%= f.label :name, "Name" %><br>
+<%= f.text_field :name%></p>
 <%= f.submit "Submit", :value=>"Add Category", :class=>"softButton"%>
-</div>
-</div>
 <% end -%>
