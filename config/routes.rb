@@ -7,6 +7,7 @@ Sext3::Application.routes.draw do
 
   resources :brands do 
     resources :brand_admins, :only => [:create, :destroy]  
+    resources :brand_organizations, :only => [:create, :destroy]
   end
   
   resources :categories
