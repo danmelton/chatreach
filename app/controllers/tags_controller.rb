@@ -1,29 +1,21 @@
-class TagsController < InheritedResources::Base
+class TagsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :brand_admin, :except => [:index, :show] 
-  
   layout "application"
+  protect_from_forgery :only => [:delete]
   
+  # POST /categories
+  # POST /categories.xml
   def create
-    tag = Tag.where(:name => params[:tag][:name])
-    if tag.blank?
-      create! {tags_path}
-    else
-      flash[:notice] = "That tag already exists"
-      redirect_to new_tag_path
-    end
-  end
-  
-  private
-    
-  def brand_admin
-    if !admin? 
-      brand = Brand.find(session[:brand])
-      if !brand.admins.include?(current_user) 
-        redirect_to :back
-      end
-    end
-  end
-  
+    tag = params[:tag][:name]
+    @tag = Tag.find_or_create_by_name(tag)
+    @tag.brands << Brand.find(session[:brand])
+    @tag_list_name = Brand.find(session[:brand]).name.downcase.to_s + "_list"
 
+    respond_to do |format|
+        format.js {render :html => @tag}
+        format.html { redirect_to(@tag) }
+        format.xml  { render :xml => @tag, :status => :created, :location => @tag }
+    end
+  end
+  
 end

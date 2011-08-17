@@ -1,7 +1,9 @@
 class Category < ActiveRecord::Base
+  has_many :brand_categories
+  has_many :brands, :through => :brand_categories
+  has_many :category_texts
   validates_presence_of :name
   validates_uniqueness_of :name, :on => :create, :message => "must be unique"
-  has_many :text_contents
 
   default_scope :order => 'categories.name ASC'
 

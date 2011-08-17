@@ -3,6 +3,7 @@ source 'http://gems.rubyforge.org'
 
 gem 'rails', '3.0.9'
 gem 'devise'
+gem 'acts-as-taggable-on'
 gem "inherited_resources"
 gem 'jquery-rails'
 gem "geocoder"
