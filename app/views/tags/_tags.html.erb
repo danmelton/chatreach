@@ -1,0 +1,6 @@
+<ul id="tags" class="lists">
+<% ActsAsTaggableOn::Tag.all.each do |tag| -%>
+  <li id="tag"><%= check_box_tag "tag_list", tag.name, item.tag_list.include?(tag.name), :name => model_name.to_s + '[tag_list][]' -%>
+  <%= label_tag "tag_list", tag.name -%></li>
+<% end %>
+</ul>

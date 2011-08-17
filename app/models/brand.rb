@@ -4,6 +4,8 @@ class Brand < ActiveRecord::Base
   validates_uniqueness_of :name, :on => :create, :message => "must be unique"
   has_many :brand_admins, :dependent => :destroy
   has_many :admins, :through => :brand_admins, :source => :user
+  has_many :brand_organizations, :dependent => :destroy
+  has_many :organizations, :through => :brand_organizations  
   has_many :categories
   has_many :brand_settings, :dependent => :destroy
   before_save :downcase_name

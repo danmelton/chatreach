@@ -34,6 +34,9 @@ describe Brand do
     it 'brand settings' do
       @brand.respond_to?(:brand_settings).should be_true
     end
+    it 'organizations' do
+      @brand.respond_to?(:organizations).should be_true
+    end
     
   end
   
@@ -56,11 +59,20 @@ describe Brand do
   end
   
   context 'destroy' do
+    before do
+      stub_request(:get, "http://maps.google.com/maps/api/geocode/json?address=1000%20S%20Van%20Ness,%20San%20Francisco,%20CA,%2094110,%20USA&language=en&sensor=false").
+        with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
+        to_return(:status => 200, :body => fixture('google_maps'), :headers => {})
+    end
     it 'deletes BrandAdmins' do
       lambda {@brand.destroy}.should change(BrandAdmin, :count).by(-2)
     end
     it 'deletes brand_settings' do
       lambda {@brand.destroy}.should change(BrandSetting, :count).by(-7)
+    end
+    it 'deletes brand_organizations' do
+      @brand.organizations << Factory(:organization)
+      lambda {@brand.destroy}.should change(BrandOrganization, :count).by(-1)
     end
   end
   

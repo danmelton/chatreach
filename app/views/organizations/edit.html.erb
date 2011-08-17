@@ -1,0 +1,31 @@
+<% content_for :javascript do %>
+<%= javascript_include_tag "fckeditor/fckeditor.js", :cache => true %>
+<script type="text/javascript">
+window.onload = function()
+{
+var oFCKeditor = new FCKeditor( 'organization_about' ) ;
+oFCKeditor.Config["CustomConfigurationsPath"] = "/javascripts/fckcustom.js"  
+oFCKeditor.BasePath = "/javascripts/fckeditor/" ;
+oFCKeditor.ReplaceTextarea() ;
+}
+</script>
+<%end%>
+<div class="blue_container">
+	<div class="innerBox span-15">
+		<h1>Edit <%=h @organization.name%>'s Profile</h1>
+		<div class="directions">
+		  <p>This information is what your clients will see on public search pages, contact forms and other places.</p>
+		</div>	
+<%= render "menu"%>		
+		<fieldset>
+			<% form_for(@organization) do |f| %>
+			  <%= render :partial => 'form', :locals => { :f => f}%>
+			  <p>
+			    <%= f.submit 'Update', :class => "button clickable round-7" %>
+			  </p>
+			<% end %>
+		</fieldset>
+	</div>
+	  	<%= render :partial => "help"%>
+	<div style="clear: both;"/></div>
+</div>

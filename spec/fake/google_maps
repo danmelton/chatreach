@@ -1,0 +1,79 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "1000",
+               "short_name" : "1000",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "S Van Ness Ave",
+               "short_name" : "S Van Ness Ave",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "San Francisco",
+               "short_name" : "SF",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "San Francisco",
+               "short_name" : "San Francisco",
+               "types" : [ "administrative_area_level_3", "political" ]
+            },
+            {
+               "long_name" : "San Francisco",
+               "short_name" : "San Francisco",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "California",
+               "short_name" : "CA",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "United States",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "94110",
+               "short_name" : "94110",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "1000 S Van Ness Ave, San Francisco, CA 94110, USA",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 37.75715320,
+                  "lng" : -122.41672730
+               },
+               "southwest" : {
+                  "lat" : 37.75715180,
+                  "lng" : -122.416750
+               }
+            },
+            "location" : {
+               "lat" : 37.75715180,
+               "lng" : -122.416750
+            },
+            "location_type" : "RANGE_INTERPOLATED",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 37.75850148029149,
+                  "lng" : -122.4153896697085
+               },
+               "southwest" : {
+                  "lat" : 37.75580351970849,
+                  "lng" : -122.4180876302915
+               }
+            }
+         },
+         "partial_match" : true,
+         "types" : [ "street_address" ]
+      }
+   ],
+   "status" : "OK"
+}

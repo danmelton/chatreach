@@ -17,7 +17,10 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'ZenTest'
   gem 'simplecov'
-  gem 'webmock'
   gem 'yard'
   gem 'faker'
+end
+
+group :test do
+  gem 'webmock'
 end

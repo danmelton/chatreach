@@ -1,0 +1,61 @@
+<% content_for :javascript do %>
+<%= javascript_include_tag "fckeditor/fckeditor.js", :cache => true %>
+<%= javascript_include_tag "jquery.autogrow.js", :cache => true %>
+<%= javascript_include_tag "jquery.textCounting.min.js", :cache => true %>
+<script type="text/javascript">
+    $(document).ready(function() {        
+  		$("textarea.expanding").autogrow(); 
+  		$.fn.textCounting.defaults.countDirection = 'down';
+  		$.fn.textCounting.defaults.lengthExceededClass = 'charOver';
+  		$("textarea.counting").textCounting();
+  }); 
+</script>
+<% end %>
+<p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </p>
+  <p>
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </p>
+  <p>
+    <%= f.label :state %><br />
+	<%= f.select :state, ["select one",'AK','AL','AR','AZ','CA','CO','CT','DC','DE','FL','GA','HI','IA','ID','IL','IN','KS','KY','LA','MA','MD','ME','MI','MN','MO','MS',
+	'MT','NC','ND','NE','NH','NJ','NM','NV','NY','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VA','VT','WA','WI','WV','WY'] %>
+  </p>
+  <p>
+    <%= f.label :zip %><br />
+    <%= f.text_field :zip %>
+  </p>
+  <p>
+    <%= f.label :country %><br />
+    <%= f.text_field :country %>
+  </p>
+  <p>
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </p>
+  <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :website %><br />
+    <%= f.text_field :website %>
+  </p>    
+  <p>
+    <%= f.label :sms_about, "Text MSG Description" %><br />
+    <%= f.text_area :sms_about, :maxlength => '140', :class=>"counting valid", :id=>"profilesms_desc" %>
+  </p>
+  <p class="charLeft">Characters: <span id="profilesms_descDown" class="">0</span> of 140</p>
+
+<fieldset>
+	<legend>Tags:</legend>
+	<%= render :partial=>"tags/tags", :locals => {:model_name => 'organization', :tags => ActsAsTaggableOn::Tag.all, :item => @organization, :tagged => @tagged}%>
+	<input type="text" name="organization[tag_list][]" id="addTag_input" class="text"/>
+</fieldset>
