@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110817035228) do
+ActiveRecord::Schema.define(:version => 20110817061309) do
 
   create_table "brand_admins", :force => true do |t|
     t.integer  "user_id"
@@ -120,6 +120,13 @@ ActiveRecord::Schema.define(:version => 20110817035228) do
 
   add_index "organizations", ["id"], :name => "index_organizations_on_id"
 
+  create_table "tag_text_contents", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "text_content_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tag_typos", :force => true do |t|
     t.integer  "tag_id"
     t.string   "typo"
@@ -147,10 +154,10 @@ ActiveRecord::Schema.define(:version => 20110817035228) do
   create_table "text_contents", :force => true do |t|
     t.integer  "brand_id"
     t.string   "response"
-    t.integer  "user_id"
-    t.boolean  "published"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "tag_id"
+    t.integer  "category_id"
   end
 
   add_index "text_contents", ["id"], :name => "index_text_contents_on_id"

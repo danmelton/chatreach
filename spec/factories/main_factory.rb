@@ -38,25 +38,14 @@ Factory.define :organization, do |o|
   o.tag_list "#{Faker::Lorem.words(1)[0]},#{Faker::Lorem.words(1)[0]}"
 end
 
-# 
-# 
-# Factory.define :organization, :parent => :account do |org|
-#   org.name "Something Fun"
-#   org.users {[Factory(:user),Factory(:user)]}
-# end
-# 
-# #Account Factories
-# Factory.define :account do |account|
-#   account.name "My Organization"
-# end
-# 
+Factory.define :text_content do |t|
+  t.brand {Factory(:brand)}
+  t.tag {ActsAsTaggableOn::Tag.create(:name => Faker::Lorem.words(1)[0])}
+  t.category [Factory(:category)]
+  t.response {Faker::Lorem.sentence}
+end
 
-# 
-# #Brand Factories
-# Factory.define :brand do |brand|
-#   brand.name { Factory.next :bname }
-# end
-# 
+
 # # Chatter Factories
 # 
 # Factory.define :chatter do |chatter|
