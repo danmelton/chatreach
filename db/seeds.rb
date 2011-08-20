@@ -47,5 +47,12 @@ if Rails.env!='production'
   puts "Adding chatters"
   25.times { Factory(:chatter)}
   
+  puts "Adding Text Sessions"
+  chatter = Chatter.all
+  Brand.all.each { |brand|
+    25.times {|x| Factory(:text_session,:brand => brand, :chatter => chatter[x])}
+  }
+  
+  
   
 end

@@ -81,6 +81,12 @@ describe Brand do
       Factory(:text_content, :brand => @brand)
       lambda {@brand.destroy}.should change(TextContent, :count).by(-1)
     end
+    
+    it 'deletes text sessions' do
+      Factory(:text_session, :brand => @brand)
+      lambda {@brand.destroy}.should change(TextSession, :count).by(-1)
+    end
+    
   end
   
   

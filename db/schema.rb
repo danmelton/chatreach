@@ -148,11 +148,10 @@ ActiveRecord::Schema.define(:version => 20110817035228) do
 
   create_table "text_sessions", :force => true do |t|
     t.integer  "brand_id"
-    t.string   "phone"
     t.integer  "chatter_id"
+    t.string   "session"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "session"
   end
 
   add_index "text_sessions", ["id"], :name => "index_text_sessions_on_id"

@@ -9,6 +9,7 @@ class Brand < ActiveRecord::Base
   has_many :categories
   has_many :text_contents, :dependent => :destroy  
   has_many :brand_settings, :dependent => :destroy
+  has_many :text_sessions, :dependent => :destroy  
   before_save :downcase_name
   after_create :build_brand_settings
   accepts_nested_attributes_for :brand_settings

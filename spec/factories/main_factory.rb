@@ -58,6 +58,12 @@ Factory.define :chatter do |c|
   c.state {Faker::Address.state_abbr}
 end
 
+Factory.define :text_session do |t|
+  t.brand {Factory(:brand)}
+  t.chatter {Factory(:chatter)}
+  t.session {rand(1000)}
+end
+
 
 # 
 # 
