@@ -77,15 +77,22 @@ describe TextMessage do
   
   context "finds brand, action or tag" do
     before do
+      @brand = Factory(:brand)
       @session = Factory(:text_session, :brand => @brand)
       @text_content = Factory(:text_content, :brand => @brand)
     end
-    it "should set_action if present" do
 
-      lambda {
-        s = TextMessage.new(chatter.phone, @brand.name)
-      }.should change(TextSession, :count).by(1)
+    it "should set_action if present" do
+      s = TextMessage.new(@session.chatter.phone, @text_content.category.name)
+      s.set_action.should == @text_content.category
     end
+
+    it "should set_tag if present" do
+      s = TextMessage.new(@session.chatter.phone, @text_content.tag.name)
+      s.set_tag.should == @text_content.tag
+    end
+
+    
   end
     
   

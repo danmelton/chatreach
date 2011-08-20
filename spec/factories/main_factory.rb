@@ -45,6 +45,7 @@ end
 Factory.define :text_content do |t|
   t.brand {Factory(:brand)}
   t.category {Factory(:category)}
+  t.tag {Factory(:tag)}  
   t.response {Faker::Lorem.sentence}
 end
 

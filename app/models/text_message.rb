@@ -13,6 +13,8 @@ class TextMessage
     set_chatter
     set_brand
     set_session
+    set_action
+    set_tag
   end
     
   def chatter
@@ -96,22 +98,24 @@ class TextMessage
   def set_action
     @action = Category.find_by_name(@message)
   end
-    # 
-    # def tag
-    #   @tag
-    # end
-    # 
-    # def set_tag
-    #   @tag = Tag.find_by_name(@message)
-    # end
-    # 
-    # def is_keyword
-    #   if @message.downcase.include?(@keyword.setting.downcase)
-    #     @response = BrandSetting.description_for_keyword(@account.id, @brand.id).first.setting
-    #     @session.text_histories.create(:tag => Tag.find_by_name(@message), :text => @message, :response => @response, :text_type => 'keyword')
-    #     return true
-    #   end
-    # end
+  
+  def tag
+    @tag
+  end
+  
+  def set_tag
+    @tag = Tag.find_by_name(@message)
+  end
+  
+  
+  def is_keyword
+    if @message.downcase.include?(@brand.name)
+      @response = @brand.welcome.setting
+      @session.text_histories.create(:tag => Tag.find_by_name(@message), :text => @message, :response => @response, :text_type => 'keyword')
+      return true
+    end
+  end
+  
     # 
     # def is_list
     #   if @message.downcase.include?('list')
