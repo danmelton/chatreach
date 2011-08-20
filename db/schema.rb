@@ -60,8 +60,7 @@ ActiveRecord::Schema.define(:version => 20110817035228) do
     t.datetime "updated_at"
   end
 
-  create_table "chatter_profiles", :force => true do |t|
-    t.date     "birthday"
+  create_table "chatters", :force => true do |t|
     t.integer  "age"
     t.string   "gender"
     t.string   "phone"
@@ -69,18 +68,6 @@ ActiveRecord::Schema.define(:version => 20110817035228) do
     t.string   "state"
     t.string   "zipcode"
     t.string   "country"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.integer  "chatter_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "chatters", :force => true do |t|
-    t.integer  "demographic_id"
-    t.integer  "profile_id"
-    t.integer  "social_id"
-    t.boolean  "initiated"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

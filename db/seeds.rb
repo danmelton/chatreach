@@ -5,6 +5,8 @@ require 'webmock'
 require 'rspec/rails'
 
 if Rails.env!='production'
+  
+  puts "Making some Fakers!"
 
   puts "Creating Admin"
   admin = Factory(:admin_user)
@@ -29,10 +31,10 @@ if Rails.env!='production'
   with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
   to_return(:status => 200, :body =>   File.new("#{::Rails.root}/spec/fake" + '/' + 'google_maps'), :headers => {})
 
-  puts "adding organizations"
+  puts "Adding Organizations"
   20.times { |x| Factory(:organization, :tag_list => ActsAsTaggableOn::Tag.all.shuffle[0..5])}      
 
-  puts "adding content"  
+  puts "Adding Content"  
   Brand.all.each do |brand|
     puts "  for #{brand.name}"
     Category.all.each do |category|
@@ -41,6 +43,9 @@ if Rails.env!='production'
       end
     end
   end
+  
+  puts "Adding chatters"
+  25.times { Factory(:chatter)}
   
   
 end

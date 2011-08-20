@@ -1,4 +1,4 @@
-
+ 
 Factory.define :user do |u|
   u.email { Faker::Internet.email }
   u.password "something"
@@ -27,7 +27,7 @@ Factory.define :brand_setting do |b|
 end
 
 Factory.define :organization, do |o|
-  o.name {Faker::Company.name}
+  o.name {Faker::Company.name + rand(1000).to_s}
   o.address "1000 S Van Ness"
   o.city "San Francisco"
   o.state "CA"
@@ -48,6 +48,15 @@ Factory.define :text_content do |t|
   t.response {Faker::Lorem.sentence}
 end
 
+Factory.define :chatter do |c|
+  c.phone {rand(1000)}
+  c.age(rand(12)+10)
+  c.gender (["M", "F", "T"].shuffle[0])
+  c.city {Faker::Address.city}
+  c.zipcode {Faker::Address.zip_code}
+  c.country {Faker::Address.country}
+  c.state {Faker::Address.state_abbr}
+end
 
 
 # 
