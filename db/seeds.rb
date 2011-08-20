@@ -19,20 +19,20 @@ if Rails.env!='production'
   brands = 3.times { |x| Factory(:brand, :admins => [users[rand(4)]]) }
   
   puts "Creating Categories"
-  25.times {|x| Category.create(:name => Faker::Lorem.words(2).join(" "))}
+  10.times {|x| Category.create(:name => Faker::Lorem.words(2).join(" "))}
   
   puts "Adding Categories to Brands"
   Brand.all.each {|x| x.categories << Category.all.shuffle[0..5]}
   
   puts "Adding Tags"
-  25.times {|x| ActsAsTaggableOn::Tag.create(:name => Faker::Lorem.words(1)[0] + rand(100).to_s)}  
+  10.times {|x| ActsAsTaggableOn::Tag.create(:name => Faker::Lorem.words(1)[0] + rand(100).to_s)}  
 
   WebMock.stub_request(:get, "http://maps.google.com/maps/api/geocode/json?address=1000%20S%20Van%20Ness,%20San%20Francisco,%20CA,%2094110,%20USA&language=en&sensor=false").
   with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
   to_return(:status => 200, :body =>   File.new("#{::Rails.root}/spec/fake" + '/' + 'google_maps'), :headers => {})
 
   puts "Adding Organizations"
-  20.times { |x| Factory(:organization, :tag_list => ActsAsTaggableOn::Tag.all.shuffle[0..5])}      
+  10.times { |x| Factory(:organization, :tag_list => ActsAsTaggableOn::Tag.all.shuffle[0..5])}      
 
   puts "Adding Content"  
   Brand.all.each do |brand|
@@ -45,12 +45,12 @@ if Rails.env!='production'
   end
   
   puts "Adding chatters"
-  25.times { Factory(:chatter)}
+  5.times { Factory(:chatter)}
   
   puts "Adding Text Sessions"
   chatter = Chatter.all
   Brand.all.each { |brand|
-    25.times {|x| Factory(:text_session,:brand => brand, :chatter => chatter[x])}
+    5.times {|x| Factory(:text_session,:brand => brand, :chatter => chatter[x])}
   }
   
   
