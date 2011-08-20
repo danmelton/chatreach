@@ -1,32 +1,25 @@
 <% content_for :javascript do %>
+<%= javascript_include_tag "fckeditor/fckeditor.js", :cache => true %>
 <%= javascript_include_tag "jquery.autogrow.js", :cache => true %>
 <%= javascript_include_tag "jquery.textCounting.min.js", :cache => true %>
-<%= javascript_include_tag "add_tag_or_cat_select.js", :cache => true %>
 <script type="text/javascript">
     $(document).ready(function() {        
-  		$('textarea.expanding').autogrow(); 
+  		$("textarea.expanding").autogrow(); 
   		$.fn.textCounting.defaults.countDirection = 'down';
   		$.fn.textCounting.defaults.lengthExceededClass = 'charOver';
   		$("textarea.counting").textCounting();
-  });   
+  }); 
 </script>
 <% end %>
-		<%= render :partial=>"tags/tag_drop_down", :locals => {:model_name => 'text_content', :tags => @brand_tag_list, :item => @text_content, :tagged => @tagged, :tag_list_name => @tag_list_name, :f => f}%>		
-	<%= render :partial=>"tags/tag_form"%>
-  <p><%= f.label :category, "Select an Action" %><br />
-	<select name="text_content[category_ids]" id="text_content_category_ids">
-		<% Category.brand(session[:brand]).each do |cat| %>
-	<option value="<%= cat.id %>" <% if @textcontent.categories.include?(cat)%>selected<%end%>><%= cat.name %></option>
-		<% end %>
-	</select>
-	<a href id="createCat">Add New</a>
+
+  <p><%= f.label :tag_id, "Tag " %>
+    <%= select :text_content, :tag_id, Tag.all.collect {|x| [x.name, x.id]}%>
   </p>
-	<%= render :partial=>"categories/category_form"%>
-  <p>
-    <%= f.label :published, "Published?" %><%= f.check_box :published %>
-  </p>
-  <p>
-    <%= f.label :response %><br />
+  <p><%= f.label :category_id, "Action " %>  
+    <%= select :text_content, :category_id, Category.all.collect {|x| [x.name, x.id]}%>    
+  </p>  
+  <%= f.hidden_field :brand_id, :value => session[:brand] %>
+  <p><%= f.label :response %><br />
 	<%= f.text_area :response, :id=>"response", :class=>"counting expanding", :maxLength=>"140" %>
   	<p class="charLeft">Characters Left: <span id="responseDown"></span></p>
   </p>

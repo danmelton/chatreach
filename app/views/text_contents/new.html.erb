@@ -7,8 +7,7 @@
 
 <fieldset>
 	<legend>Details</legend>
-	<% form_for(@textcontent) do |f| %>
-	  <%= f.error_messages %>
+	<% form_for(@text_content) do |f| %>
 	
 <%= render :partial=>'form', :locals => { :f => f} %>
   <p>

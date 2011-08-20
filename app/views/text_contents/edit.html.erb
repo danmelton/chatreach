@@ -1,3 +1,5 @@
+
+
 <div class="blue_container">
 <div class="innerBox span-15">
 <h1>Edit Text Content</h1>
@@ -7,28 +9,12 @@
 
 <fieldset>
 	<legend>Details</legend>
-	<% form_for(@textcontent) do |f| %>
-	  <%= f.error_messages %>
-	
-	<% content_for :javascript do %>
-	<%= javascript_include_tag "jquery.autogrow.js", :cache => true %>
-	<%= javascript_include_tag "jquery.textCounting.min.js", :cache => true %>
-	<%= javascript_include_tag "add_tag_or_cat_select.js", :cache => true %>
-	<script type="text/javascript">
-	    $(document).ready(function() {        
-	  		$('textarea.expanding').autogrow(); 
-	  		$.fn.textCounting.defaults.countDirection = 'down';
-	  		$.fn.textCounting.defaults.lengthExceededClass = 'charOver';
-	  		$("textarea.counting").textCounting();
-	  });   
-	</script>
+  <%= form_for(@text_content) do |f| %>
+	  <%= render :partial => 'form', :locals => { :f => f}%>
+	  <p>
+	    <%= f.submit 'Update', :class => "button clickable round-7" %>
+	  </p>
 	<% end %>
-	  	<p>
-		<%= render :partial=>'form', :locals => { :f => f} %>
-  		<p>
-    	<%= f.submit 'Update', :class => "button clickable round-7" %>
-  </p>
-<% end %>
 </fieldset>
 </div>
   	<%= render :partial => "help"%>
