@@ -38,12 +38,17 @@ Factory.define :organization, do |o|
   o.tag_list "#{Faker::Lorem.words(1)[0]},#{Faker::Lorem.words(1)[0]}"
 end
 
+Factory.define :tag do |t|
+  t.name {Faker::Lorem.words(1)[0] + rand(100).to_s}
+end
+
 Factory.define :text_content do |t|
   t.brand {Factory(:brand)}
   t.category {Factory(:category)}
-  t.tag {ActsAsTaggableOn::Tag.create(:name => Faker::Lorem.words(1)[0])}
   t.response {Faker::Lorem.sentence}
 end
+
+
 
 # 
 # 

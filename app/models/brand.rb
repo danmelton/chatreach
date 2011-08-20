@@ -7,6 +7,7 @@ class Brand < ActiveRecord::Base
   has_many :brand_organizations, :dependent => :destroy
   has_many :organizations, :through => :brand_organizations  
   has_many :categories
+  has_many :text_contents, :dependent => :destroy  
   has_many :brand_settings, :dependent => :destroy
   before_save :downcase_name
   after_create :build_brand_settings

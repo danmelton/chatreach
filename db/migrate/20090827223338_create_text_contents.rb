@@ -3,6 +3,7 @@ class CreateTextContents < ActiveRecord::Migration
     create_table :text_contents do |t|
       t.integer :brand_id
       t.integer :tag_id
+      t.integer :category_id
       t.string :response
       t.timestamps
     end

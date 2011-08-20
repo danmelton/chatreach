@@ -60,13 +60,6 @@ ActiveRecord::Schema.define(:version => 20110817035228) do
     t.datetime "updated_at"
   end
 
-  create_table "category_texts", :force => true do |t|
-    t.integer  "category_id"
-    t.integer  "text_content_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "chatter_profiles", :force => true do |t|
     t.date     "birthday"
     t.integer  "age"
@@ -111,7 +104,6 @@ ActiveRecord::Schema.define(:version => 20110817035228) do
     t.string   "sms_about"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "geom"
     t.string   "website"
     t.string   "email"
     t.float    "latitude"
@@ -146,9 +138,9 @@ ActiveRecord::Schema.define(:version => 20110817035228) do
 
   create_table "text_contents", :force => true do |t|
     t.integer  "brand_id"
+    t.integer  "tag_id"
+    t.integer  "category_id"
     t.string   "response"
-    t.integer  "user_id"
-    t.boolean  "published"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

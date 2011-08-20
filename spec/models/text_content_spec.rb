@@ -5,7 +5,7 @@ describe TextContent do
     @text_content = Factory(:text_content)
   end
   context 'validations' do
-    it 'uniqueness of name scoped by category and tag' do
+    it 'uniqueness of brand scoped by category and tag' do
       attr = Factory.attributes_for(:text_content)
       TextContent.create!(attr)
       @invalid_text_content = TextContent.create(attr)

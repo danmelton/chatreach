@@ -14,7 +14,7 @@ if Rails.env!='production'
   users = User.where(:admin => false)
   
   puts "Creating Brands"
-  brands = 5.times { |x| Factory(:brand, :admins => [users[rand(4)]]) }
+  brands = 3.times { |x| Factory(:brand, :admins => [users[rand(4)]]) }
   
   puts "Creating Categories"
   25.times {|x| Category.create(:name => Faker::Lorem.words(2).join(" "))}
@@ -31,6 +31,16 @@ if Rails.env!='production'
 
   puts "adding organizations"
   20.times { |x| Factory(:organization, :tag_list => ActsAsTaggableOn::Tag.all.shuffle[0..5])}      
+
+  puts "adding content"  
+  Brand.all.each do |brand|
+    puts "  for #{brand.name}"
+    Category.all.each do |category|
+      Tag.all.each do |tag|
+        Factory(:text_content, :brand => brand, :category => category, :tag => tag)
+      end
+    end
+  end
   
   
 end

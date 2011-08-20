@@ -77,7 +77,7 @@ describe Brand do
       @brand.organizations << Factory(:organization)
       lambda {@brand.destroy}.should change(BrandOrganization, :count).by(-1)
     end
-    it 'deletes tedt contents' do
+    it 'deletes text contents' do
       Factory(:text_content, :brand => @brand)
       lambda {@brand.destroy}.should change(TextContent, :count).by(-1)
     end
