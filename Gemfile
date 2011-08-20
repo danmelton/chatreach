@@ -20,4 +20,5 @@ group :test, :development do
   gem 'ZenTest'
   gem 'simplecov'
   gem 'yard'
+  gem 'timecop'
 end
