@@ -37,6 +37,9 @@ describe Brand do
     it 'organizations' do
       @brand.respond_to?(:organizations).should be_true
     end
+    it 'text_contents' do
+      @brand.respond_to?(:text_contents).should be_true
+    end
     
   end
   
@@ -73,6 +76,10 @@ describe Brand do
     it 'deletes brand_organizations' do
       @brand.organizations << Factory(:organization)
       lambda {@brand.destroy}.should change(BrandOrganization, :count).by(-1)
+    end
+    it 'deletes tedt contents' do
+      Factory(:text_content, :brand => @brand)
+      lambda {@brand.destroy}.should change(TextContent, :count).by(-1)
     end
   end
   

@@ -11,7 +11,7 @@ end
 
 
 Factory.define :brand do |b|
-  b.name { Faker::Lorem.words(1)[0] }
+  b.name { Faker::Lorem.words(1)[0] + rand(1000).to_s }
   b.admins { [Factory(:user), Factory(:user)]}
   b.categories {[Factory(:category), Factory(:category)]}
 end
@@ -36,6 +36,13 @@ Factory.define :organization, do |o|
   o.phone {Faker::PhoneNumber.phone_number}
   o.sms_about {Faker::Lorem.sentence}
   o.tag_list "#{Faker::Lorem.words(1)[0]},#{Faker::Lorem.words(1)[0]}"
+end
+
+Factory.define :text_content do |t|
+  t.brand {Factory(:brand)}
+  t.category {Factory(:category)}
+  t.tag {ActsAsTaggableOn::Tag.create(:name => Faker::Lorem.words(1)[0])}
+  t.response {Faker::Lorem.sentence}
 end
 
 # 

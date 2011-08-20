@@ -11,16 +11,13 @@ gem "geocoder"
 group :test, :development do
   gem 'sqlite3'
   gem 'activerecord-spatialite-adapter'
-  gem 'spork', '0.9.0.rc9'
   gem 'factory_girl_rails', :require => false
-  gem 'mocha'
+  gem 'faker'
+  gem 'webmock'
+  gem 'spork', '0.9.0.rc9'
+  gem 'mocha'  
   gem 'rspec-rails'
   gem 'ZenTest'
   gem 'simplecov'
   gem 'yard'
-  gem 'faker'
-end
-
-group :test do
-  gem 'webmock'
 end
