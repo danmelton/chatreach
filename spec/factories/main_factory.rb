@@ -64,6 +64,14 @@ Factory.define :text_session do |t|
   t.session {rand(1000)}
 end
 
+Factory.define :text_history do |t|
+  t.text_session {Factory(:text_session)}
+  t.text_type "Action"
+  t.text {Faker::Lorem.sentence}
+  t.tag {Factory(:tag)}
+  t.category {Factory(:category)}
+  t.response {Faker::Lorem.sentence}
+end
 
 # 
 # 

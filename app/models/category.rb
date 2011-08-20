@@ -2,6 +2,7 @@ class Category < ActiveRecord::Base
   has_many :brand_categories
   has_many :brands, :through => :brand_categories
   has_many :text_contents
+  has_many :text_histories
   validates_presence_of :name
   validates_uniqueness_of :name, :on => :create, :message => "must be unique"
 

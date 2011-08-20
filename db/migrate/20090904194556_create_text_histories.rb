@@ -5,7 +5,7 @@ class CreateTextHistories < ActiveRecord::Migration
       t.integer :tag_id
       t.string :text
       t.string :response
-
+      t.string :text_type
       t.timestamps
     end
   end
