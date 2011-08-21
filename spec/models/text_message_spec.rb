@@ -100,6 +100,7 @@ describe TextMessage do
       @session = Factory(:text_session, :brand => @brand)      
       @history = Factory(:text_history, :text_session => @session, :tag => @text_content.tag)
       @brand.brand_settings.where(:name => "welcome").first.update_attributes(:setting => "hi")      
+      @brand.brand_settings.where(:name => "info_not_found").first.update_attributes(:setting => "love")      
     end
     
     it 'should return keyword' do
@@ -123,7 +124,7 @@ describe TextMessage do
       s.actions.should == "#{@text_content.category.name} or get help"
     end
     
-    it 'should return list of actions in response' do
+    it 'should return list of actions in response to tag' do
       s = TextMessage.new(@session.chatter.phone, @text_content.tag.name)
       lambda {
         s.is_tag
@@ -138,6 +139,14 @@ describe TextMessage do
         s.is_tag
       }.should change(TextHistory, :count).by(1)        
       s.response.should == new_content.response
+    end
+    
+    it 'should return list of actions in response if its a tag typoe' do
+      s = TextMessage.new(@session.chatter.phone, Tag.first.tag_typos.first.typo)
+      lambda {
+        s.is_typo
+      }.should change(TextHistory, :count).by(1)        
+      s.response.should == "Respond with #{@text_content.category.name} or get help"
     end
     
     it 'should return text of action when a text history is found' do
@@ -157,6 +166,15 @@ describe TextMessage do
         s.is_action
       }.should change(TextHistory, :count).by(1)
     end
+    
+    it 'should return info not found text for brand when nothing is found' do
+      s = TextMessage.new(@session.chatter.phone, "bla")
+      lambda {
+        s.not_found
+      }.should change(TextHistory, :count).by(1)
+      s.response.should == @brand.info_no_found.setting      
+    end
+    
 
     
     

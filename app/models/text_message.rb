@@ -181,14 +181,26 @@ class TextMessage
     end
   end
   
-    # 
-    # def is_test
-    #   if ['hlep', 'gt help', 'get hlp', 'get hlep', 'test', 'hlpe', 'get help', 'help'].include?(@message.downcase)
-    #     @response = "Respond with your zipcode for a list of local places to get help. You can also text next for another clinic."
-    #     @session.text_histories.create!(:tag => session.text_histories.last.tag, :text => @message, :response => @response, :text_type => 'help')
-    #     return true
-    #   end
-    # end
+  def is_typo
+    tag_typo = TagTypo.find_by_typo(@message)
+    @tag = tag_typo.tag
+    is_tag
+    return true
+  end
+  
+  def not_found
+    @response = @brand.info_not_found.setting
+    add_history('not found', @session.text_histories.last.tag)
+  end  
+  
+  def is_test
+    if ['hlep', 'gt help', 'get hlp', 'get hlep', 'test', 'hlpe', 'get help', 'help'].include?(@message.downcase)
+      @response = "Respond with your zipcode for a list of local places to get help. You can also text next for another clinic."
+      add_history('help', @session.text_histories.last.tag)
+      return true
+    end
+  end
+  
     # 
     # def is_next
     #   if ['next', 'nxt', 'enxt', 'nxet'].include?(@message.downcase)
@@ -228,22 +240,7 @@ class TextMessage
     #   return @list
     # end
     # 
-    # def is_typo
-    #   tag = TagTypo.find_by_typo(@message)
-    #   if tag
-    #      f = []
-    #      TextContent.tagged_with(tag.tag.name, :on => :sext).map{|x| f << x.categories.last.name}
-    #      @actions = f.to_sentence(:words_connector => ', ', :last_word_connector => ' or ', :two_words_connector =>' or ')
-    #      @session.text_histories.create(:tag => tag.tag, :text => @message, :response => @response, :text_type => 'tag')
-    #      @response = "Respond with #{@actions}"
-    #      return true
-    #    end
-    # end
-    # 
-    # def not_found
-    #   @session.text_histories.create(:tag => session.text_histories.last.tag, :text => @message, :response => @response, :text_type => 'not found')
-    #   @response = BrandSetting.description_for_info_not_found(@account.id, @brand.id).first.setting
-    # end
+
     # 
     # 
   
