@@ -166,7 +166,7 @@ class TextMessage
   
   def is_action
     if !@action.nil?
-      @response = action_text
+      action_text
       add_history('action', @tag)
       return true
     end

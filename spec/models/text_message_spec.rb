@@ -99,6 +99,7 @@ describe TextMessage do
       @text_content = Factory(:text_content, :brand => @brand)
       @session = Factory(:text_session, :brand => @brand)      
       @history = Factory(:text_history, :text_session => @session, :tag => @text_content.tag)
+      @brand.brand_settings.where(:name => "welcome").first.update_attributes(:setting => "hi")      
     end
     
     it 'should return keyword' do
@@ -139,16 +140,22 @@ describe TextMessage do
       s.response.should == new_content.response
     end
     
-    it 'should return text of action when a session is found' do
+    it 'should return text of action when a text history is found' do
       s = TextMessage.new(@session.chatter.phone, @text_content.category.name)
       s.action_text
       s.response.should == @text_content.response
+      lambda {
+        s.is_action
+      }.should change(TextHistory, :count).by(1)
     end
 
-    it 'should return text of action when a session is found' do
+    it 'should return text of action when a text history session is not found' do
       s = TextMessage.new(rand(10000), @text_content.category.name)
       s.action_text
       s.response.should == @brand.welcome.setting
+      lambda {
+        s.is_action
+      }.should change(TextHistory, :count).by(1)
     end
 
     
