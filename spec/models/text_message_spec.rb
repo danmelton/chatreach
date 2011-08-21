@@ -91,7 +91,28 @@ describe TextMessage do
       s = TextMessage.new(@session.chatter.phone, @text_content.tag.name)
       s.set_tag.should == @text_content.tag
     end
-
+  end
+  
+  context "response" do
+    before do
+      @brand = Factory(:brand)
+      @session = Factory(:text_session, :brand => @brand)
+      @text_content = Factory(:text_content, :brand => @brand)
+    end
+    
+    it 'should return keyword' do
+      @brand.welcome.update_attributes(:setting => "text this in")
+      s = TextMessage.new(@session.chatter.phone, @brand.name)
+      lambda {
+        s.is_keyword
+      }.should change(TextHistory, :count).by(1)
+      s.response.should == "text this in"
+    end
+    
+    it 'should return list' do
+      s = TextMessage.new(@session.chatter.phone, "list")
+      s.response.should == s.tag_list.join(", ")
+    end
     
   end
     

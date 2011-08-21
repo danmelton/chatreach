@@ -3,7 +3,7 @@ class TextHistory < ActiveRecord::Base
   belongs_to :category
   belongs_to :text_session
   
-  validates_presence_of :response, :tag, :category, :text_session, :text_type
+  validates_presence_of :response, :text_session, :text_type
   
   scope :between_created_dates, lambda { |account, start_date, end_date| { :include => :text_session, :conditions => ['text_sessions.account_id = ? and text_histories.created_at >=? and text_histories.created_at <=? ', account, start_date, end_date] } }
   scope :average_count, lambda { |account, start_date, end_date| { :select => "text_histories.count(*) as count_all, text_sessions.updated_at", :include => :text_session, :group => "text_histories.text_session_id", :conditions => ['text_sessions.account_id = ? and text_histories.created_at >=? and text_histories.created_at <=? ', account, start_date, end_date] } }  

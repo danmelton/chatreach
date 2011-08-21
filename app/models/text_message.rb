@@ -111,19 +111,28 @@ class TextMessage
   def is_keyword
     if @message.downcase.include?(@brand.name)
       @response = @brand.welcome.setting
-      @session.text_histories.create(:tag => Tag.find_by_name(@message), :text => @message, :response => @response, :text_type => 'keyword')
+      add_history('keyword')
       return true
     end
   end
   
-    # 
-    # def is_list
-    #   if @message.downcase.include?('list')
-    #     @response = Brand.find(2).tags.join(", ")
-    #     return true
-    #   end
-    # end
-    # 
+
+  def is_list
+    if @message.downcase.include?('list')
+      @response = tag_list.join(", ")
+      add_history('list')
+      return true
+    end
+  end
+  
+  def add_history(text_type, tag=nil, category=nil)
+    @session.text_histories.create!(:tag => tag, :text => @message, :response => @response, :text_type => text_type)      
+  end
+  
+  def tag_list
+    @brand.text_contents.joins(:tag).map { |x| x.tag.name}.sort
+  end
+  # 
     # def is_tag
     #   if !@tag.nil?
     #     f = []
