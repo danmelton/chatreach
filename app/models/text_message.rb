@@ -24,9 +24,33 @@ class TextMessage
   def brand
     @brand
   end
+
+  def service
+    @service
+  end
+  
+  def session
+    @session
+  end
+    
+  def action
+    @action
+  end
+  
+  def tag
+    @tag
+  end
+  
+  def actions
+    @actions
+  end
   
   def set_chatter
     @chatter = Chatter.find_or_create_by_phone(@chatter_phone)
+  end
+  
+  def response
+    @response
   end
   
   # If the brand isn't texted in first, then check out the chatter to see if they texted in before.
@@ -43,6 +67,14 @@ class TextMessage
     @brand = Brand.find_by_name(@message.downcase)
   end
   
+  def set_tag
+    @tag = Tag.find_by_name(@message)
+  end
+  
+  def set_action
+    @action = Category.find_by_name(@message)
+  end
+  
   # Look up brand setting by our phone, return the first brand result
   def set_brand_by_phone
     brand_setting = BrandSetting.where(:setting => @our_phone )
@@ -57,11 +89,7 @@ class TextMessage
   def set_brand_by_last_session
     @brand = @chatter.text_sessions.last.brand
   end
-
-  def service
-    @service
-  end
-
+  
   # grab today's session with the chatter, return the last one
   # if no sessions, create a new one for today
   def set_session
@@ -72,8 +100,7 @@ class TextMessage
     end
   end
   
-
-  def response
+  def set_response
     if is_keyword 
     elsif is_list
     elsif is_tag
@@ -86,27 +113,6 @@ class TextMessage
     end
     @response
   end
-  
-  def session
-    @session
-  end
-    
-  def action
-    @action
-  end
-  
-  def set_action
-    @action = Category.find_by_name(@message)
-  end
-  
-  def tag
-    @tag
-  end
-  
-  def set_tag
-    @tag = Tag.find_by_name(@message)
-  end
-  
   
   def is_keyword
     if @message.downcase.include?(@brand.name)
@@ -132,30 +138,49 @@ class TextMessage
   def tag_list
     @brand.text_contents.joins(:tag).map { |x| x.tag.name}.sort
   end
-  # 
-    # def is_tag
-    #   if !@tag.nil?
-    #     f = []
-    #     TextContent.published.tagged_with(@message, :on => :sext).map{|x| f << x.categories.last.name}
-    #     f << "get help"
-    #     @actions = f.to_sentence(:words_connector => ', ', :last_word_connector => ' or ', :two_words_connector =>' or ')
-    #     if @actions.include?('no action')
-    #     @response = TextContent.published.tagged_with(@tag.name, :on => :sext).last.response
-    #     else
-    #     @response = "Respond with #{@actions}"
-    #     end
-    #     @session.text_histories.create(:tag => Tag.find_by_name(@message), :text => @message, :response => @response, :text_type => 'tag')
-    #     return true
-    #   end
-    # end
-    # 
-    # def is_action
-    #   if !@action.nil?
-    #     @response = TextContent.published.tagged_with(@session.text_histories.last.tag.name, :on => :sext).with_category(self.action.id).last.response
-    #     @session.text_histories.create(:tag =>@session.text_histories.last.tag, :text => @message, :response => @response, :text_type => 'action')
-    #     return true
-    #   end
-    # end
+
+  def is_tag
+    if !@tag.nil?
+      tag_actions
+      if @actions.include?('no action')
+        @response = tag_action_array.last.response
+        add_history('tag', @tag, tag_action_array.last.category )
+      else
+        @response = "Respond with #{@actions}"
+        add_history('tag', @tag)
+      end
+      return true
+    end
+  end
+  
+  def tag_actions
+    actions = tag_action_array
+    f = actions.map {|x| x.category.name}
+    f << "get help"
+    @actions = f.to_sentence(:words_connector => ', ', :last_word_connector => ' or ', :two_words_connector =>' or ')
+  end
+  
+  def tag_action_array
+    @brand.text_contents.joins(:category).where(:tag_id => @tag.id)
+  end
+  
+  def is_action
+    if !@action.nil?
+      @response = action_text
+      add_history('action', @tag)
+      return true
+    end
+  end
+  
+  def action_text
+    if !@session.text_histories.blank?
+      @tag = @session.text_histories.last.tag
+      @response = TextContent.where(:tag_id => @tag.id, :category_id => @action.id, :brand_id => @brand.id).first.response
+    else
+      @response = @brand.welcome.setting
+    end
+  end
+  
     # 
     # def is_test
     #   if ['hlep', 'gt help', 'get hlp', 'get hlep', 'test', 'hlpe', 'get help', 'help'].include?(@message.downcase)

@@ -96,8 +96,9 @@ describe TextMessage do
   context "response" do
     before do
       @brand = Factory(:brand)
-      @session = Factory(:text_session, :brand => @brand)
       @text_content = Factory(:text_content, :brand => @brand)
+      @session = Factory(:text_session, :brand => @brand)      
+      @history = Factory(:text_history, :text_session => @session, :tag => @text_content.tag)
     end
     
     it 'should return keyword' do
@@ -111,8 +112,46 @@ describe TextMessage do
     
     it 'should return list' do
       s = TextMessage.new(@session.chatter.phone, "list")
+      s.is_list
       s.response.should == s.tag_list.join(", ")
     end
+    
+    it 'should return list of actions' do
+      s = TextMessage.new(@session.chatter.phone, @text_content.tag.name)
+      s.tag_actions
+      s.actions.should == "#{@text_content.category.name} or get help"
+    end
+    
+    it 'should return list of actions in response' do
+      s = TextMessage.new(@session.chatter.phone, @text_content.tag.name)
+      lambda {
+        s.is_tag
+      }.should change(TextHistory, :count).by(1)        
+      s.response.should == "Respond with #{@text_content.category.name} or get help"
+    end
+    
+    it 'should return response if tag has a no action category' do
+      new_content = Factory(:text_content, :category => Factory(:category, :name => 'no action'), :brand => @brand, :tag =>@text_content.tag)
+      s = TextMessage.new(@session.chatter.phone, @text_content.tag.name)
+      lambda {
+        s.is_tag
+      }.should change(TextHistory, :count).by(1)        
+      s.response.should == new_content.response
+    end
+    
+    it 'should return text of action when a session is found' do
+      s = TextMessage.new(@session.chatter.phone, @text_content.category.name)
+      s.action_text
+      s.response.should == @text_content.response
+    end
+
+    it 'should return text of action when a session is found' do
+      s = TextMessage.new(rand(10000), @text_content.category.name)
+      s.action_text
+      s.response.should == @brand.welcome.setting
+    end
+
+    
     
   end
     
