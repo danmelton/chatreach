@@ -20,6 +20,12 @@ describe Category do
       cat.name.should == "not"      
     end
     
+    it 'has tag typos' do
+      @category.respond_to?(:tag_typos).should be_true
+      @category.tag_typos.blank?.should be_false
+    end
+    
+    
     context 'has many' do
       it 'admins' do
         @category.respond_to?(:brands).should be_true

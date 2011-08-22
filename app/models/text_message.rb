@@ -184,8 +184,13 @@ class TextMessage
   def is_typo
     tag_typo = TagTypo.find_by_typo(@message)
     if !tag_typo.blank?
-    @tag = tag_typo.tag
-    is_tag
+    if tag_typo.tag
+      @tag = tag_typo.tag
+      is_tag
+    else
+      @action = tag_typo.category
+      is_action
+    end 
     end
   end
   

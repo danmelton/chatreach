@@ -149,6 +149,14 @@ describe TextMessage do
       s.response.should == "Respond with #{@text_content.category.name} or get help"
     end
     
+    it 'should return action response if its an action typo' do
+      s = TextMessage.new(@session.chatter.phone, @text_content.category.tag_typos.first.typo)
+      lambda {
+        s.is_typo
+      }.should change(TextHistory, :count).by(1)        
+      s.response.should == @text_content.response
+    end
+    
     it 'should return text of action when a text history is found' do
       s = TextMessage.new(@session.chatter.phone, @text_content.category.name)
       s.action_text

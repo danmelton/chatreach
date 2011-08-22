@@ -11,6 +11,10 @@ Sext3::Application.routes.draw do
   end
   
   resources :categories
+  resources :tags
+    
+  resources :tag_typos, :only => [:create, :destroy]    
+  
   resources :organizations
   resources :text_contents
 

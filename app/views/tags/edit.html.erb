@@ -1,6 +1,6 @@
 <div class="blue_container">
 	<div class="innerBox span-15">
-		<h1>Edit Category</h1>
+		<h1>Edit Tag</h1>
 		<div class="directions">
 		  <p></p>
 		</div>	
@@ -9,22 +9,23 @@
       <%= render "form"%>		
     </fieldset>
     <fieldset>
-      <%= form_for @category.tag_typos.new do |f|%>
+      <%= form_for @tag.tag_typos.new do |f|%>
         <p><%= f.label :typo, "Add a New Typo" %><br>
           <%= f.text_field :typo %></p>
-          <%= f.hidden_field :category_id, :value => @category.id %>
+          <%= f.hidden_field :tag_id, :value => @tag.id %>
           <%= f.submit "Submit", :value=>"Add Typo", :class=>"softButton"%>
       <% end %>
     </fieldset>
     <fieldset>
-      <legend>Typos for <%=@category.name%></legend>
+      <legend>Typos for <%=@tag.name%></legend>
       <ul id="tags" class="lists">
-        <% @category.tag_typos.order("typo desc").each do |typo|%>
+        <% @tag.tag_typos.order("typo desc").each do |typo|%>
         <li><%= link_to typo.typo + '(remove)', tag_typo_path(typo), :confirm => 'Are you sure?', :method => :delete %></li>
         <% end %>
       </ul>
     </fieldset>
-    
 	</div>
 	<div style="clear: both;"/></div>
 </div>
+
+

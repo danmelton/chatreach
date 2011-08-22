@@ -46,7 +46,7 @@ if Rails.env!='production'
   to_return(:status => 200, :body =>   File.new("#{::Rails.root}/spec/fake" + '/' + 'google_maps_zip_94110'), :headers => {})
 
   puts "Adding Organizations"
-  10.times { |x| Factory(:organization, :tag_list => Tag.all.shuffle[0..10])}      
+  10.times { |x| Factory(:organization, :tag_list => Tag.all.shuffle[0..10].map(&:name).join(", "))}      
 
   puts "Adding Content"  
   Brand.all.each do |brand|

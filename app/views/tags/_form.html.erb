@@ -1,0 +1,5 @@
+<% form_for @tag do |f| -%>
+<p><%= f.label :name, "Name" %><br>
+<%= f.text_field :name%></p>
+<%= f.submit "Submit", :value=>"Add Tag", :class=>"softButton"%>
+<% end -%>

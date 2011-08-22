@@ -2,7 +2,7 @@ class Tag < ActiveRecord::Base
   scope :alpha, :order => "name ASC"
   has_many :text_contents
   has_many :text_histories
-  has_many :tag_typos
+  has_many :tag_typos, :dependent => :destroy
   after_save :save_tag_typos
   
   def save_tag_typos
