@@ -37,14 +37,23 @@ module ApplicationHelper
     end
   end
   
+  def not_selected_brand(brand)
+    brands = Brand.where("id != #{brand.id}")
+    if !brands.blank?
+    brands.map { |x| [x.name, x.id]}
+    end
+  end
+  
   def brand_setting_name(name)
     case name
     when "welcome"
       "Welcome"
-    when "clinic_not_found"
-      "Clinic Not Found Return Text"
+    when "organization_not_found"
+      "organization Not Found Return Text"
     when "info_not_found"  
       "Information Not Return Text"
+    when "distance_for_organization"
+      "Distance in Miles for Organization Search"  
     when "provider"  
       "SMS Provider"      
     when "phone_number"

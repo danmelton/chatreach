@@ -100,7 +100,7 @@ class TextMessage
     end
   end
   
-  def set_response
+  def get_response
     if is_keyword 
     elsif is_list
     elsif is_tag
@@ -183,9 +183,10 @@ class TextMessage
   
   def is_typo
     tag_typo = TagTypo.find_by_typo(@message)
+    if !tag_typo.blank?
     @tag = tag_typo.tag
     is_tag
-    return true
+    end
   end
   
   def not_found

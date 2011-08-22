@@ -10,6 +10,7 @@ if Rails.env!='production'
 
   puts "Creating Admin"
   admin = Factory(:admin_user)
+  puts "admin:" + admin.email
 
   puts "Creating 5 Users with password something"
   5.times { |x| u = Factory(:user); puts "   " + u.email }
@@ -18,6 +19,15 @@ if Rails.env!='production'
   puts "Creating Brands"
   brands = 3.times { |x| Factory(:brand, :admins => [users[rand(4)]]) }
   
+  puts "Updating Brand Settings"
+  Brand.all.each do |brand|
+    brand.welcome.update_attributes(:setting => "welcome")
+    brand.info_not_found.update_attributes(:setting => "info not found")
+    brand.organization_not_found.update_attributes(:setting => "org not found")
+    brand.distance_for_organization.update_attributes(:setting => "20")
+    brand.provider.update_attributes(:setting => 'text caster')
+  end
+  
   puts "Creating Categories"
   10.times {|x| Category.create(:name => Faker::Lorem.words(2).join(" "))}
   
@@ -25,7 +35,7 @@ if Rails.env!='production'
   Brand.all.each {|x| x.categories << Category.all.shuffle[0..5]}
   
   puts "Adding Tags"
-  10.times {|x| ActsAsTaggableOn::Tag.create(:name => Faker::Lorem.words(1)[0] + rand(100).to_s)}  
+  10.times {|x| Tag.create(:name => Faker::Lorem.words(1)[0] + rand(100).to_s)}  
 
   WebMock.stub_request(:get, "http://maps.google.com/maps/api/geocode/json?address=1000%20S%20Van%20Ness,%20San%20Francisco,%20CA,%2094110,%20USA&language=en&sensor=false").
   with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).

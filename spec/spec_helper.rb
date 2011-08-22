@@ -24,6 +24,11 @@ end
 
 Spork.each_run do
   require 'factory_girl_rails'
+  require 'simplecov'
+  SimpleCov.start do
+    add_group "Models", "app/models"
+    add_group "Controllers", "app/controllers"
+  end
   # This code will be run each time you run your specs.
 end
 
