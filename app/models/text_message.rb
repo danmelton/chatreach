@@ -201,6 +201,21 @@ class TextMessage
     end
   end
   
+  def is_help
+    if @session.text_histories.last.text_type == 'help' and @message.to_i > 0
+      @session.chatter.update_attributes(:zipcode => @message)
+      orgs = get_org_list
+      if orgs.blank?
+        @response = @brand.organization_not_found.setting
+        add_history('help', @session.text_histories.last.tag)
+      else
+        @response = orgs.first.sms_about
+        add_history('help', @session.text_histories.last.tag)        
+      end
+      return true
+    end
+  end  
+  
     # 
     # def is_next
     #   if ['next', 'nxt', 'enxt', 'nxet'].include?(@message.downcase)
@@ -216,29 +231,11 @@ class TextMessage
     #   return org_array.fetch(s, org_array.first).sms_about
     # end
     # 
-    # def is_help
-    #   if @session.text_histories.last.text_type == 'help' and @message.to_i > 0
-    #     @session.chatter.chatter_profile.update_attributes!(:zipcode => @message)
-    #     zip = Geocoding::get(@message)
-    #     get_org_list(zip)
-    #     @session.text_histories.create!(:tag => session.text_histories.last.tag, :text => @message, :response => @response, :text_type => 'help')
-    #     return true
-    #   end
-    # end
     # 
     # 
-    # def get_org_list(zip)
-    #   oprofile = @account.account_organizations.with_brand(@brand.id).map(&:oprofile_id).join(",")
-    #   if oprofile ==''  
-    #     @response = BrandSetting.description_for_not_found(@account.id, @brand.id).first.setting
-    #   elsif Oprofile.linked(oprofile).tagged_with(@session.text_histories.last.tag, :on => :sext).m_circle(zip[0].longitude, zip[0].latitude, 50).blank?
-    #     @response = BrandSetting.description_for_not_found(@account.id, @brand.id).first.setting
-    #   else
-    #     @list = Oprofile.linked(oprofile).tagged_with(@session.text_histories.last.tag, :on => :sext).m_circle(zip[0].longitude, zip[0].latitude, 50)
-    #     @response = Oprofile.linked(oprofile).tagged_with(@session.text_histories.last.tag, :on => :sext).m_circle(zip[0].longitude, zip[0].latitude, 50).first.sms_about
-    #   end
-    #   return @list
-    # end
+  def get_org_list
+    @brand.organizations.near(@message, @brand.distance_for_organization.setting)
+  end
     # 
 
     # 

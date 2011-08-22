@@ -1,0 +1,64 @@
+
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "66101",
+               "short_name" : "66101",
+               "types" : [ "postal_code" ]
+            },
+            {
+               "long_name" : "Kansas City",
+               "short_name" : "Kansas City",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Wyandotte",
+               "short_name" : "Wyandotte",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Kansas",
+               "short_name" : "KS",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "United States",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Kansas City, KS 66101, USA",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 39.145620,
+                  "lng" : -94.61075190000001
+               },
+               "southwest" : {
+                  "lat" : 39.0904290,
+                  "lng" : -94.6381610
+               }
+            },
+            "location" : {
+               "lat" : 39.10949380,
+               "lng" : -94.62953940
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 39.145620,
+                  "lng" : -94.61075190000001
+               },
+               "southwest" : {
+                  "lat" : 39.0904290,
+                  "lng" : -94.6381610
+               }
+            }
+         },
+         "types" : [ "postal_code" ]
+      }
+   ],
+   "status" : "OK"
+}

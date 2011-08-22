@@ -172,13 +172,64 @@ describe TextMessage do
       lambda {
         s.not_found
       }.should change(TextHistory, :count).by(1)
-      s.response.should == @brand.info_no_found.setting      
+      s.response.should == @brand.info_not_found.setting      
     end
     
+    context 'organizations' do
+      before do
+        stub_request(:get, "http://maps.google.com/maps/api/geocode/json?address=94110&language=en&sensor=false").
+          with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
+          to_return(:status => 200, :body => fixture('google_maps_zip_94110'), :headers => {})
+        stub_request(:get, "http://maps.google.com/maps/api/geocode/json?address=1000%20S%20Van%20Ness,%20San%20Francisco,%20CA,%2094110,%20USA&language=en&sensor=false").
+          with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
+          to_return(:status => 200, :body => fixture('google_maps'), :headers => {})
+        stub_request(:get, "http://maps.google.com/maps/api/geocode/json?address=66101&language=en&sensor=false").
+          with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
+          to_return(:status => 200, :body => fixture('google_maps_zip_66101'), :headers => {})
+        @brand.distance_for_organization.update_attributes(:setting => 10)          
+        @org = Factory(:organization, :tag_list => [@text_content.tag.name])
+        @brand.organizations << @org        
+      end
 
-    
+      it 'finds closest organization with tag' do
+        s = TextMessage.new(@session.chatter.phone, "94110")      
+        s.get_org_list.first.should == @org
+      end
+      
+      it 'doesnt find closest organization with tag' do
+        s = TextMessage.new(@session.chatter.phone, "66101")      
+        s.get_org_list.should == []
+      end
+      
+      context "is_help" do
+        before do
+          @brand.organization_not_found.update_attributes(:setting => "not found")
+        end
+        
+        it 'returns org, updates chatter, and adds history' do
+          @session.text_histories.last.update_attributes(:text_type => "help")
+          s = TextMessage.new(@session.chatter.phone, "94110")      
+          lambda {
+            s.is_help
+          }.should change(TextHistory, :count).by(1)
+          @session.reload.chatter.zipcode.should == "94110"
+          s.response.should == @org.sms_about
+        end
+        
+        it 'returns organization not found and adds history' do
+          @session.text_histories.last.update_attributes(:text_type => "help")
+          s = TextMessage.new(@session.chatter.phone, "66101")      
+          lambda {
+            s.is_help
+          }.should change(TextHistory, :count).by(1)
+          s.response.should == @brand.organization_not_found.setting
+        end
+        
+      end
+      
+      
+    end
     
   end
     
-  
 end

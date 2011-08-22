@@ -23,12 +23,16 @@ class Brand < ActiveRecord::Base
     brand_settings.where(:name => "welcome").first
   end
   
-  def clinic_not_found
-    brand_settings.where(:name => "clinic_not_found").first    
+  def organization_not_found
+    brand_settings.where(:name => "organization_not_found").first    
   end
   
   def info_not_found
     brand_settings.where(:name => "info_not_found").first    
+  end
+  
+  def distance_for_organization
+    brand_settings.where(:name => "distance_for_organization").first    
   end
   
   def provider
@@ -48,7 +52,7 @@ class Brand < ActiveRecord::Base
   end
   
   def build_brand_settings
-    ["welcome","clinic_not_found","info_not_found","provider","phone_number","api_key","provider_secret_key" ].each do |setting|
+    ["welcome","organization_not_found","info_not_found", "distance_for_organization", "provider","phone_number","api_key","provider_secret_key" ].each do |setting|
       brand_settings.create(:name => setting)
     end
     brand_settings

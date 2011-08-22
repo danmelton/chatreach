@@ -47,7 +47,8 @@ describe Brand do
     it 'brand setting methods' do
       @brand.respond_to?(:welcome).should be_true
       @brand.respond_to?(:info_not_found).should be_true      
-      @brand.respond_to?(:clinic_not_found).should be_true      
+      @brand.respond_to?(:organization_not_found).should be_true      
+      @brand.respond_to?(:distance_for_organization).should be_true            
       @brand.respond_to?(:provider).should be_true      
       @brand.respond_to?(:phone_number).should be_true      
       @brand.respond_to?(:provider_api_key).should be_true      
@@ -55,7 +56,7 @@ describe Brand do
     end
     
     it 'should build brand settings on create' do
-      @brand.brand_settings.size.should == 7
+      @brand.brand_settings.size.should == 8
       @brand.welcome.setting.should == nil
     end
     
@@ -71,7 +72,7 @@ describe Brand do
       lambda {@brand.destroy}.should change(BrandAdmin, :count).by(-2)
     end
     it 'deletes brand_settings' do
-      lambda {@brand.destroy}.should change(BrandSetting, :count).by(-7)
+      lambda {@brand.destroy}.should change(BrandSetting, :count).by(-8)
     end
     it 'deletes brand_organizations' do
       @brand.organizations << Factory(:organization)
