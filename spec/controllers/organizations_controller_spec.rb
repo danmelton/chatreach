@@ -91,11 +91,7 @@ describe OrganizationsController do
         response.should be_success
       end
       
-      it "show" do
-        get :show, :id => @organization.id
-        response.should be_success
-      end
-      
+
     end
   end 
   
@@ -122,13 +118,13 @@ describe OrganizationsController do
         lambda {
           post :create, :organization => Factory.attributes_for(:organization)
         }.should change(Organization, :count).by(1) 
-        response.should redirect_to organization_path(Organization.last)
+        response.should redirect_to organizations_path
       end
 
       it "for update" do
         put :update, :id => @organization.id, :organization => {:name => "love"}
         Organization.find(@organization.id).name.should == "love"
-        response.should redirect_to organization_path(@organization)
+        response.should redirect_to edit_organization_path(@organization)
       end
 
       it "for destroy" do
@@ -140,11 +136,6 @@ describe OrganizationsController do
 
       it "index" do
         get :index
-        response.should be_success
-      end
-
-      it "show" do
-        get :show, :id => @organization.id
         response.should be_success
       end
 
@@ -175,13 +166,13 @@ describe OrganizationsController do
         lambda {
           post :create, :organization => Factory.attributes_for(:organization)
         }.should change(Organization, :count).by(1) 
-        response.should redirect_to organization_path(Organization.last)
+        response.should redirect_to organizations_path
       end
 
       it "for update" do
         put :update, :id => @organization.id, :organization => {:name => "love"}
         Organization.find(@organization.id).name.should == "love"
-        response.should redirect_to organization_path(@organization)
+        response.should redirect_to edit_organization_path(@organization)
       end
 
       it "for destroy" do
@@ -195,12 +186,6 @@ describe OrganizationsController do
         get :index
         response.should be_success
       end
-
-      it "show" do
-        get :show, :id => @organization.id
-        response.should be_success
-      end
-
     end
   end
    
