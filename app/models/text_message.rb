@@ -214,31 +214,28 @@ class TextMessage
       end
       return true
     end
-  end  
+  end    
   
-    # 
-    # def is_next
-    #   if ['next', 'nxt', 'enxt', 'nxet'].include?(@message.downcase)
-    #     zip = Geocoding::get(@chatter.chatter_profile.zipcode)
-    #     @response = get_next_org(get_org_list(zip), self.session.text_histories.last.response)
-    #     self.session.text_histories.create!(:tag => session.text_histories.last.tag, :text => @message, :response => @response, :text_type => 'help')
-    #     return true
-    #   end
-    # end
-    # 
-    # def get_next_org(org_array, last_response)
-    #   s = org_array.index(org_array.detect{|o| o.sms_about == last_response})+1
-    #   return org_array.fetch(s, org_array.first).sms_about
-    # end
-    # 
-    # 
-    # 
-  def get_org_list
-    @brand.organizations.near(@message, @brand.distance_for_organization.setting)
+  def is_next
+    if ['next', 'nxt', 'enxt', 'nxet'].include?(@message.downcase)
+      org_list = get_org_list(@chatter.zipcode)
+      if !org_list.blank?
+        @response = get_next_org(org_list, @session.text_histories.last.response).sms_about
+      else
+        @response = @brand.organization_not_found.setting
+      end
+      add_history('help',@session.text_histories.last.tag)
+      return true
+    end
   end
-    # 
+  
+  def get_next_org(org_array, last_response)
+    s = org_array.index(org_array.detect{|o| o.sms_about == last_response})+1
+    return org_array.fetch(s, org_array.first)
+  end
 
-    # 
-    # 
+  def get_org_list(zip=@message)
+    @brand.organizations.near(zip, @brand.distance_for_organization.setting)
+  end
   
 end

@@ -225,7 +225,57 @@ describe TextMessage do
           s.response.should == @brand.organization_not_found.setting
         end
         
+        context 'is next' do
+          
+          it 'gets next organization in an array of two' do
+          @org2 = Factory(:organization, :tag_list => [@text_content.tag.name])
+          @brand.organizations << @org2
+          s = TextMessage.new(@session.chatter.phone, "94110")      
+          s.get_next_org(s.get_org_list, @org.sms_about).should == @org2
+          end
+          
+          it 'gets one organization in an array of one' do
+          s = TextMessage.new(@session.chatter.phone, "94110")      
+          s.get_next_org(s.get_org_list, @org.sms_about).should == @org
+          end
+          
+          
+          it 'response is next organizations sms_about' do
+          @org2 = Factory(:organization, :tag_list => [@text_content.tag.name])
+          @session.chatter.update_attributes(:zipcode => "94110")
+          Factory(:text_history, :text_session=> @session, :response=>@org.sms_about, :tag => @text_content.tag)
+          @brand.organizations << @org2
+          s = TextMessage.new(@session.chatter.phone, "next")      
+          lambda {
+            s.is_next
+          }.should change(TextHistory, :count).by(1)
+          s.response.should == @org2.sms_about
+          end
+          
+          it 'response is organization if only one is in the array' do
+          @session.chatter.update_attributes(:zipcode => "94110")
+          Factory(:text_history, :text_session=> @session, :response=>@org.sms_about, :tag => @text_content.tag)
+          s = TextMessage.new(@session.chatter.phone, "next")      
+          lambda {
+            s.is_next
+          }.should change(TextHistory, :count).by(1)
+          s.response.should == @org.sms_about
+          end
+          
+          it 'response is organzation not found' do
+          @session.chatter.update_attributes(:zipcode => "66101")
+          Factory(:text_history, :text_session=> @session, :response=>@org.sms_about, :tag => @text_content.tag)
+          s = TextMessage.new(@session.chatter.phone, "next")      
+          lambda {
+            s.is_next
+          }.should change(TextHistory, :count).by(1)
+          s.response.should == @brand.organization_not_found.setting
+          end
+          
+        end
+        
       end
+      
       
       
     end
