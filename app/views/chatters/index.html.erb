@@ -13,7 +13,7 @@ $(document).ready(function() {
 </script>
 <% end %>
 <div id="questionList">
-<h1>Chatters</h1>
+<h1>Chatters for <%=@brand.name%></h1>
 <%= render "menu"%>
 <table id="tableList" class="tablesorter">
   <thead>
@@ -24,12 +24,12 @@ $(document).ready(function() {
     <th>Action</th>	  
   </thead>
 
-<% @chatters.each do |chatter| %>
+<% @chatters.uniq.each do |chatter| %>
   <tr>
   <td><%=chatter.zipcode%></td>
   <td><%=chatter.text_sessions.size%></td>
-  <td><%=TextHistory.where("text_session_id IN (#{chatter.text_sessions.map(&:id).join(", ")})").size%></td>
-  <td><%=TextHistory.where("text_session_id IN (#{chatter.text_sessions.map(&:id).join(", ")}) and text_type='help'").size%></td>      
+  <td><%=TextHistory.joins(:text_session).where("text_sessions.brand_id = #{@brand.id} and text_session_id IN (#{chatter.text_sessions.map(&:id).join(", ")})").size%></td>
+  <td><%=TextHistory.joins(:text_session).where("text_sessions.brand_id = #{@brand.id} and text_session_id IN (#{chatter.text_sessions.map(&:id).join(", ")}) and text_type='help'").size%></td>      
     <td><%=link_to "Show Chatter", chatter%></td>  
   </tr>
 <% end %>

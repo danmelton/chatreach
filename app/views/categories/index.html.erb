@@ -13,20 +13,24 @@ $(document).ready(function() {
 </script>
 <% end %>
 <div id="questionList">
-<h1>Categories</h1>
+<h1>Actions</h1>
 <div class="directions">
-  <p>Categories are available options under tags.  For instance, a tag could be pregnancy and a category would information.  Categories are shared across tags but each tag can only have one category.</p>
+  <p>Actions are available options under tags.  For instance, a tag could be pregnancy and an action would be information.  Actions are shared across tags but actions have to be unique under each tag and brand.</p>
 </div>
 <%= render "menu"%>
 <table id="tableList" class="tablesorter">
   <thead>
     <th>Category Name</th>
+    <th>Text Content</th>
+    <th>Text Messages</th>    
 	  <th>Actions</th>
   </thead>
 
 <% @categories.each do |category| %>
   <tr>
     <td><%=link_to category.name, edit_category_path(category) %></td>
+    <td><%=category.text_contents.size%></td>
+    <td><%=category.text_histories.size%></td>    
     <% if !current_user.brand_admins.blank? || current_user.admin? %>
       <td><%= link_to 'Edit', edit_category_path(category) %> | <%= link_to 'Destroy', category_path(category), :confirm => 'Are you sure?', :method => :delete %>
     </td>

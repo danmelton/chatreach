@@ -5,6 +5,7 @@ class TextContentsController < InheritedResources::Base
   layout "application"
   
   def index
+    @brand = Brand.find(session[:brand])    
     @text_contents = TextContent.where(:brand_id => session[:brand])
   end
   

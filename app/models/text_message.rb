@@ -132,7 +132,7 @@ class TextMessage
   end
   
   def add_history(text_type, tag=nil, category=nil, flag=false)
-    @session.text_histories.create!(:tag => tag, :text => @message, :response => @response, :text_type => text_type, :flag => flag)      
+    @session.text_histories.create!(:tag => tag, :category => category, :text => @message, :response => @response, :text_type => text_type, :flag => flag)      
   end
   
   def tag_list
@@ -167,7 +167,7 @@ class TextMessage
   def is_action
     if !@action.nil?
       action_text
-      add_history('action', @tag)
+      add_history('action', @tag, @action)
       return true
     end
   end

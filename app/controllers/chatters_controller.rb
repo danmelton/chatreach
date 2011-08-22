@@ -3,7 +3,8 @@ class ChattersController < InheritedResources::Base
   before_filter :authenticate_user!
 
   def index
-    @chatters = Chatter.paginate(
+    @brand = Brand.where(:id => session[:brand]).first
+    @chatters = Chatter.joins(:text_sessions).where("text_sessions.brand_id = #{session[:brand]}").paginate(
       :per_page => 100, :page => params[:page])
   end
 
