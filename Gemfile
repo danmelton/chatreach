@@ -7,6 +7,7 @@ gem 'acts-as-taggable-on'
 gem "inherited_resources"
 gem 'jquery-rails'
 gem "geocoder"
+gem 'will_paginate'
 
 group :test, :development do
   gem 'sqlite3'

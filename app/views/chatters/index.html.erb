@@ -1,0 +1,39 @@
+<% content_for :javascript do %>
+<%= javascript_include_tag "quicksearch.js", :cache => true %>
+<script type="text/javascript">
+$(document).ready(function() {        
+	$('table#tableList tbody tr').quicksearch({
+	  position: 'before',
+	  attached: 'table#tableList',
+	  stripeRowClass: ['odd', 'even'],
+	  labelText: 'Search the table',
+	  inputClass: 'text'
+	}); 
+});
+</script>
+<% end %>
+<div id="questionList">
+<h1>Chatters</h1>
+
+<table id="tableList" class="tablesorter">
+  <thead>
+    <th>Zipcode</th>
+	  <th>Sessions</th>
+	  <th>Texts</th>	  
+	  <th>Referrals</th>	  
+    <th>Action</th>	  
+  </thead>
+
+<% @chatters.each do |chatter| %>
+  <tr>
+  <td><%=chatter.zipcode%></td>
+  <td><%=chatter.text_sessions.size%></td>
+  <td><%=TextHistory.where("text_session_id IN (#{chatter.text_sessions.map(&:id).join(", ")})").size%></td>
+  <td><%=TextHistory.where("text_session_id IN (#{chatter.text_sessions.map(&:id).join(", ")}) and text_type='help'").size%></td>      
+    <td><%=link_to "Show Chatter", chatter%></td>  
+  </tr>
+<% end %>
+</table>
+    <%= will_paginate @chatters %>
+
+</div>

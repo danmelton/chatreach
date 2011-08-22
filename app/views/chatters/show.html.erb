@@ -1,0 +1,44 @@
+<% content_for :javascript do %>
+<%= javascript_include_tag "quicksearch.js", :cache => true %>
+<script type="text/javascript">
+$(document).ready(function() {        
+	$('table#tableList tbody tr').quicksearch({
+	  position: 'before',
+	  attached: 'table#tableList',
+	  stripeRowClass: ['odd', 'even'],
+	  labelText: 'Search the table',
+	  inputClass: 'text'
+	}); 
+});
+</script>
+<% end %>
+<div id="questionList">
+<h1>Chatter History</h1>
+
+<table id="tableList" class="tablesorter">
+  <thead>
+    <th>Session ID</th>
+    <th>Brand</th>
+    <th>Tag</th>
+    <th>Action</th>
+	  <th>Text</th>	  
+	  <th>Response</th>	  
+    <th>Text Type</th>	  
+  </thead>
+<% @chatter.text_sessions.each do |session| %>
+  <% session.text_histories.each do |history|%>
+  <tr>  
+  <td><%=session.id%></td>
+  <td><%=session.brand.name%></td>  
+  <td><%=history.tag.name unless history.tag.nil? %></td>
+  <td><%=history.category.name unless history.category.nil?%></td>  
+  <td><%=history.text%></td>  
+  <td><%=history.response%></td>  
+  <td><%=history.text_type%></td>  
+  </tr>
+  <% end %>
+
+<% end %>
+</table>
+
+</div>

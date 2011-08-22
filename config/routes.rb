@@ -14,6 +14,7 @@ Sext3::Application.routes.draw do
   resources :tags
     
   resources :tag_typos, :only => [:create, :destroy]    
+  resources :chatters, :only => [:index, :show]      
   
   resources :organizations
   resources :text_contents

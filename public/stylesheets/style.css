@@ -911,6 +911,10 @@ h2.about {
 	clear :both;
 }
 
+.pagination {
+    text-align: center;
+}
+
 /************** Videos ****************/
 #myytplayer {
 	margin-bottom: 25px;
