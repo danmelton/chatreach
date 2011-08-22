@@ -36,7 +36,7 @@ class TextContentsController < InheritedResources::Base
   def brand_admin
     if !admin? 
       @brand = Brand.find(session[:brand])
-      if !brand.admins.include?(current_user)
+      if !@brand.admins.include?(current_user)
         @brand_admin = true 
         redirect_to :back
       end
