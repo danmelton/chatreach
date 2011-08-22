@@ -87,11 +87,6 @@ describe CategoriesController do
         response.should be_success
       end
       
-      it "show" do
-        get :show, :id => @category.id
-        response.should be_success
-      end
-      
     end
   end
 
@@ -118,7 +113,7 @@ describe CategoriesController do
         lambda {
           post :create, :category => Factory.attributes_for(:category)
         }.should change(Category, :count).by(1) 
-        response.should be_success
+        response.should redirect_to categories_path
       end
       
       it "for update" do
@@ -139,17 +134,12 @@ describe CategoriesController do
         response.should be_success
       end
       
-      it "show" do
-        get :show, :id => @category.id
-        response.should be_success
-      end
-      
     end
     
     context "returns category if already exist" do
       it "for update" do
         put :create, :category => {:name => @category.name}
-        response.should redirect_to category_path(@category)
+        response.should redirect_to new_category_path
       end
     end
   end  
@@ -178,7 +168,7 @@ describe CategoriesController do
         lambda {
           post :create, :category => Factory.attributes_for(:category)
         }.should change(Category, :count).by(1) 
-        response.should be_success
+        response.should redirect_to categories_path
       end
       
       it "for update" do
@@ -199,10 +189,6 @@ describe CategoriesController do
         response.should be_success
       end
       
-      it "show" do
-        get :show, :id => @category.id
-        response.should be_success
-      end
       
     end
   end  

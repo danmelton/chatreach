@@ -15,6 +15,7 @@ class TextMessage
     set_session
     set_action
     set_tag
+    set_response
   end
     
   def chatter

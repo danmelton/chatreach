@@ -239,7 +239,6 @@ describe TextMessage do
           s.get_next_org(s.get_org_list, @org.sms_about).should == @org
           end
           
-          
           it 'response is next organizations sms_about' do
           @org2 = Factory(:organization, :tag_list => [@text_content.tag.name])
           @session.chatter.update_attributes(:zipcode => "94110")
@@ -275,9 +274,7 @@ describe TextMessage do
         end
         
       end
-      
-      
-      
+
     end
     
   end
