@@ -41,8 +41,12 @@ if Rails.env!='production'
   with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
   to_return(:status => 200, :body =>   File.new("#{::Rails.root}/spec/fake" + '/' + 'google_maps'), :headers => {})
 
+  WebMock.stub_request(:get, "http://maps.google.com/maps/api/geocode/json?address=94110&language=en&sensor=false").
+  with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
+  to_return(:status => 200, :body =>   File.new("#{::Rails.root}/spec/fake" + '/' + 'google_maps_zip_94110'), :headers => {})
+
   puts "Adding Organizations"
-  10.times { |x| Factory(:organization, :tag_list => ActsAsTaggableOn::Tag.all.shuffle[0..5])}      
+  10.times { |x| Factory(:organization, :tag_list => Tag.all.shuffle[0..10])}      
 
   puts "Adding Content"  
   Brand.all.each do |brand|
@@ -59,10 +63,20 @@ if Rails.env!='production'
   
   puts "Adding Text Sessions"
   chatter = Chatter.all
-  Brand.all.each { |brand|
-    5.times {|x| Factory(:text_session,:brand => brand, :chatter => chatter[x])}
-  }
+  Brand.all.each do |brand|
+    5.times do |x| 
+      session = Factory(:text_session,:brand => brand, :chatter => chatter[x])
+      session.update_attributes(:created_at => Time.now + x.days)
+      puts "Adding session with brand, tag, action, help, zip for chatter"
+      TextMessage.new(session.chatter.phone, brand.name).get_response
+      TextMessage.new(session.chatter.phone, brand.text_contents[rand(10)].tag.name).get_response
+      TextMessage.new(session.chatter.phone, brand.text_contents[rand(10)].category.name).get_response
+      TextMessage.new(session.chatter.phone, "get help").get_response
+      TextMessage.new(session.chatter.phone, "94110").get_response
+      session.text_histories.each { |x| x.update_attributes(:created_at => session.created_at) }                        
+    end
+  end
   
-  
+
   
 end

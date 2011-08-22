@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110817035228) do
+ActiveRecord::Schema.define(:version => 20110822153854) do
 
   create_table "brand_admins", :force => true do |t|
     t.integer  "user_id"
@@ -142,6 +142,7 @@ ActiveRecord::Schema.define(:version => 20110817035228) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "text_type"
+    t.boolean  "flag",            :default => false
   end
 
   add_index "text_histories", ["id"], :name => "index_text_histories_on_id"

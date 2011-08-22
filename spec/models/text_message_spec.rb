@@ -173,6 +173,7 @@ describe TextMessage do
         s.not_found
       }.should change(TextHistory, :count).by(1)
       s.response.should == @brand.info_not_found.setting      
+      TextHistory.last.flag.should be_true
     end
     
     context 'organizations' do
@@ -223,6 +224,7 @@ describe TextMessage do
             s.is_help
           }.should change(TextHistory, :count).by(1)
           s.response.should == @brand.organization_not_found.setting
+          TextHistory.last.flag.should be_true
         end
         
         context 'is next' do
@@ -269,6 +271,7 @@ describe TextMessage do
             s.is_next
           }.should change(TextHistory, :count).by(1)
           s.response.should == @brand.organization_not_found.setting
+          s.session.text_histories.last.flag.should be_true          
           end
           
         end

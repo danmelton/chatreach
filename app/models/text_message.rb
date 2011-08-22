@@ -131,8 +131,8 @@ class TextMessage
     end
   end
   
-  def add_history(text_type, tag=nil, category=nil)
-    @session.text_histories.create!(:tag => tag, :text => @message, :response => @response, :text_type => text_type)      
+  def add_history(text_type, tag=nil, category=nil, flag=false)
+    @session.text_histories.create!(:tag => tag, :text => @message, :response => @response, :text_type => text_type, :flag => flag)      
   end
   
   def tag_list
@@ -191,7 +191,7 @@ class TextMessage
   
   def not_found
     @response = @brand.info_not_found.setting
-    add_history('not found', @session.text_histories.last.tag)
+    add_history('not found', @session.text_histories.last.tag, nil, true)
   end  
   
   def is_test
@@ -208,7 +208,7 @@ class TextMessage
       orgs = get_org_list
       if orgs.blank?
         @response = @brand.organization_not_found.setting
-        add_history('help', @session.text_histories.last.tag)
+        add_history('help', @session.text_histories.last.tag, nil, true)        
       else
         @response = orgs.first.sms_about
         add_history('help', @session.text_histories.last.tag)        
@@ -222,10 +222,12 @@ class TextMessage
       org_list = get_org_list(@chatter.zipcode)
       if !org_list.blank?
         @response = get_next_org(org_list, @session.text_histories.last.response).sms_about
+        add_history('help',@session.text_histories.last.tag)        
       else
         @response = @brand.organization_not_found.setting
+        add_history('help', @session.text_histories.last.tag, nil, true)        
       end
-      add_history('help',@session.text_histories.last.tag)
+
       return true
     end
   end
