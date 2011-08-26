@@ -18,15 +18,17 @@ $(document).ready(function() {
 <table id="tableList" class="tablesorter">
   <thead>
     <th>Zipcode</th>
+    <th>Date</th>
 	  <th>Sessions</th>
 	  <th>Texts</th>	  
 	  <th>Referrals</th>	  
     <th>Action</th>	  
   </thead>
 
-<% @chatters.uniq.each do |chatter| %>
+<% @chatters.order("created_at DESC").uniq.each do |chatter| %>
   <tr>
   <td><%=chatter.zipcode%></td>
+  <td><%=chatter.created_at.strftime("%Y-%m-%d")%>
   <td><%=chatter.text_sessions.size%></td>
   <td><%=TextHistory.joins(:text_session).where("text_sessions.brand_id = #{@brand.id} and text_session_id IN (#{chatter.text_sessions.map(&:id).join(", ")})").size%></td>
   <td><%=TextHistory.joins(:text_session).where("text_sessions.brand_id = #{@brand.id} and text_session_id IN (#{chatter.text_sessions.map(&:id).join(", ")}) and text_type='help'").size%></td>      
@@ -34,6 +36,6 @@ $(document).ready(function() {
   </tr>
 <% end %>
 </table>
-    <%= will_paginate @chatters %>
+<%= will_paginate @chatters %>
 
 </div>
