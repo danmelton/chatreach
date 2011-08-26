@@ -5,7 +5,7 @@ class TextMessagesController < ApplicationController
     @response = msg.get_response
     
     # check for text caster
-    if msg.brand.provider.setting == 'text caster'
+    if msg.brand.provider.setting == 'Text Caster'
       render :xml => Builder::XmlMarkup.new.root { |x| x.result { |y| y.cdata! @response}}
     else
     end

@@ -17,11 +17,14 @@ Sext3::Application.routes.draw do
   resources :chatters, :only => [:index, :show]      
   
   resources :organizations
+
   resources :text_contents
+  
+  get "simulator",:controller => :text_contents, :action => :simulator
 
   get "/dashboard", :controller => :dashboard, :action => :index, :as => :dashboard_path
 
-  resources :text_messages
+  resources :text_messages 
   resources :users
 
   root :to => "dashboard#index"

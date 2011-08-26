@@ -2,7 +2,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#send_message").click(function(){
-		$.get("/textmessage/", {message:$('#message').attr('value'), sessionId:$('#session_id').attr('value'), phoneNumber:'9999999999', carrierID:'99999'}, function(data){
+		$.get("/text_messages/", {message:$('#message').attr('value'), sessionId:$('#session_id').attr('value'), phoneNumber:'9999999999'}, function(data){
 			var response = $(data).find("result").text();
 			$("#response").append("<span class='text_request'># " + $('#message').attr('value') + "</span><br />");
 			$("#response").append("<span class='text_response'># " + response + "</span><br />");
