@@ -20,27 +20,29 @@ $(document).ready(function() {
 <div id="questionList">
 	
 <h1>Manage Users</h1>
-<%     if current_user.admin == true %>
+<% if current_user.admin? %>
 <ul id="submenu" class="links border">
   <li class="last"><%= link_to "Create a New User", {:action=>:new}%></a></li>
 </ul>
 <% end %>
 <table id="tableList" class="tablesorter">
   <thead>
-    <th>Name</th>
     <th>Email</th>
-    <th>Active?</th>
     <th>Admin?</th>
-	<th>Actions</th>
+	  <th>Actions</th>
   </thead>
 
 <% @users.each do |user| %>
   <tr id="user<%="#{user.id}"%>">
-    <td><%=h user.name %></td>
     <td><%=h user.email %></td>
-    <td><%=h !user.inactive? %></td>    
     <td><%=h user.admin %></td>
-    <td><%= delete_user(user)%></td>
+    <% if user == current_user or current_user.admin?%>
+      <td><%= link_to 'Edit', edit_user_path(user) %> 
+    <%end%>
+    <% if current_user.admin? %>
+    | <%= link_to 'Destroy', user_path(user), :confirm => 'Are you sure?', :method => :delete %>
+    <%end%>
+      </td>      
   </tr>
 <% end %>
 </table>

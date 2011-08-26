@@ -1,14 +1,11 @@
 <div class="blue_container">
 	<div class="innerBox span-15">
-<h1>New User</h1>
-<div class="directions">
-  <p>Add a new user to your account.</p>
-</div>
+<h1>Edit User</h1>
 
 <fieldset>
 	<legend>Details</legend>
 
-<%= form_for @user do |f| %>
+<%= form_for(@user) do |f| %>
   <%= render "form", :f => f%>
 	<%= f.submit 'Create', :class => "button clickable round-7" %>
 <% end %>

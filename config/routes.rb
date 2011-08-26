@@ -22,6 +22,7 @@ Sext3::Application.routes.draw do
   get "/dashboard", :controller => :dashboard, :action => :index, :as => :dashboard_path
 
   resources :text_messages
+  resources :users
 
   root :to => "dashboard#index"
     
