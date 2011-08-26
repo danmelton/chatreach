@@ -25,7 +25,7 @@ if Rails.env!='production'
     brand.info_not_found.update_attributes(:setting => "info not found")
     brand.organization_not_found.update_attributes(:setting => "org not found")
     brand.distance_for_organization.update_attributes(:setting => "20")
-    brand.provider.update_attributes(:setting => 'text caster')
+    brand.provider.update_attributes(:setting => 'Text Caster')
   end
   
   puts "Creating Categories"
@@ -47,6 +47,11 @@ if Rails.env!='production'
 
   puts "Adding Organizations"
   10.times { |x| Factory(:organization, :tag_list => Tag.all.shuffle[0..10].map(&:name).join(", "))}      
+
+  puts "Adding Organization to Brand"
+  Brand.all.each do |brand|
+    brand.organizations << Organization.all.shuffle[0..5]
+  end  
 
   puts "Adding Content"  
   Brand.all.each do |brand|
