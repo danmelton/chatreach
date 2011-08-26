@@ -2,6 +2,7 @@ class TextHistory < ActiveRecord::Base
   belongs_to :tag
   belongs_to :category
   belongs_to :text_session
+  belongs_to :text_content, :class_name => "TextContent", :foreign_key => "text_content_id"  
   
   validates_presence_of :response, :text_session, :text_type
   

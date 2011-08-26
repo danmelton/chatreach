@@ -23,6 +23,9 @@ describe TextContent do
     it 'tags' do
       @text_content.respond_to?(:tag).should be_true
     end
+    it 'text histories' do
+      @text_content.respond_to?(:text_histories).should be_true
+    end
   end
   
 end

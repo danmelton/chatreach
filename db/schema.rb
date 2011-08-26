@@ -145,6 +145,7 @@ ActiveRecord::Schema.define(:version => 20110822195919) do
     t.string   "text_type"
     t.boolean  "flag",            :default => false
     t.integer  "category_id"
+    t.integer  "text_content_id"
   end
 
   add_index "text_histories", ["id"], :name => "index_text_histories_on_id"

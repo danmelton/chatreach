@@ -15,6 +15,9 @@ describe TextHistory do
     it 'category' do
       @text_history.respond_to?(:category).should be_true
     end    
+    it 'text content' do
+      @text_history.respond_to?(:text_content).should be_true
+    end    
     
   end
     

@@ -45,6 +45,7 @@ describe BrandsController do
       @user = Factory(:user)
       sign_in(@user)
       @brand = Factory(:brand)
+      request.env["HTTP_REFERER"] = root_url      
     end
 
     context "has no access" do
@@ -96,6 +97,7 @@ describe BrandsController do
       @user = Factory(:admin_user)
       sign_in(@user)
       @brand = Factory(:brand)
+      request.env["HTTP_REFERER"] = root_url      
     end
 
     context "has access" do
@@ -114,13 +116,13 @@ describe BrandsController do
         lambda {
           post :create, :brand => Factory.attributes_for(:brand)
         }.should change(Brand, :count).by(1) 
-        response.should redirect_to brand_path(Brand.last)
+        response.should redirect_to edit_brand_path(Brand.last)
       end
       
       it "for update" do
         put :update, :id => @brand.id, :brand => {:name => "love"}
         Brand.find(@brand.id).name.should == "love"
-        response.should redirect_to brand_path(@brand)
+        response.should redirect_to edit_brand_path(@brand)
       end
       
       it "for destroy" do
@@ -148,6 +150,7 @@ describe BrandsController do
       @user = Factory(:user)
       sign_in(@user)
       @brand = Factory(:brand, :admins => [@user] )
+      request.env["HTTP_REFERER"] = root_url
     end
 
     context "has access" do
@@ -160,7 +163,7 @@ describe BrandsController do
       it "for update" do
         put :update, :id => @brand.id, :brand => {:name => "love"}
         Brand.find(@brand.id).name.should == "love"
-        response.should redirect_to brand_path(@brand)
+        response.should redirect_to edit_brand_path(@brand)
       end
       
     end
@@ -178,7 +181,7 @@ describe BrandsController do
         put :update, :id => @brand.id, :brand => {:name => "love", :brand_settings_attributes => brand_settings_attributes}
         Brand.find(@brand.id).name.should == "love"
         Brand.find(@brand.id).welcome.setting.should == "Changing!"        
-        response.should redirect_to brand_path(@brand)
+        response.should redirect_to edit_brand_path(@brand)
       end
     end
   end

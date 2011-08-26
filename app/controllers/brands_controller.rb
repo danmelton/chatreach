@@ -6,7 +6,12 @@ class BrandsController < InheritedResources::Base
   
   def show
     session[:brand] = params[:id]
-    show!
+    flash[:success] = "Changed Brand"
+    redirect_to :back
+  end
+  
+  def update
+    update! {edit_brand_path(@brand)}
   end
     
   private
