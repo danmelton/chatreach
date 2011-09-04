@@ -7,16 +7,7 @@ describe Organization do
       to_return(:status => 200, :body => fixture('google_maps'), :headers => {})
     @organization = Factory(:organization, :brands => [Factory(:brand)])
   end
-  
-  context 'validations' do
-    it 'uniqueness of name' do
-      attr = Factory.attributes_for(:organization)
-      Organization.create!(attr)
-      @invalid_organization = Organization.create(attr)
-      @invalid_organization.should_not be_valid
-    end  
-  end
-  
+    
   context 'responds' do
     it 'to tags' do
       @organization.respond_to?(:tag_list).should be_true
