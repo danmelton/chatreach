@@ -86,7 +86,7 @@ describe BrandsController do
       
       it "show" do
         get :show, :id => @brand.id
-        response.should be_success
+        response.should redirect_to :back
       end
       
     end
@@ -148,7 +148,7 @@ describe BrandsController do
       
       it "show" do
         get :show, :id => @brand.id
-        response.should be_success
+        response.should redirect_to :back
       end
       
     end
