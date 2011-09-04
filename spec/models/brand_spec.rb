@@ -91,11 +91,20 @@ describe Brand do
   end
   
   context 'it copies a previous brand content' do
-    it 'copies text content' do
+    it 'copies all text content' do
       5.times {Factory(:text_content, :brand => @brand)}
       new_brand = Factory(:brand)
       new_brand.copy_text_content_from(@brand)
       new_brand.text_contents.size.should == 5
+    end
+    
+    it 'doesnt fail out on duplicates or other problems' do
+      2.times {Factory(:text_content, :brand => @brand)}
+      new_brand = Factory(:brand)
+      new_brand.copy_text_content_from(@brand)
+      new_brand.text_contents.size.should == 2
+      new_brand.copy_text_content_from(@brand)
+      new_brand.text_contents.size.should == 2      
     end
   end
   

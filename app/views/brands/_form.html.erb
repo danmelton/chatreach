@@ -8,6 +8,10 @@
     <%=raw(character_count?(ff))%>
   <% end %> 
   <% end %>
+  <% if current_user.admin?%>	
+  <p><%=label :copy_brand_id, "Copy Text Contents from another Brand?" %>
+  <%=select "copy_brand", :id, Brand.all.map { |x| [x.name,x.id]},{:prompt => 'Select a Brand'} %></p>      
+  <% end %>  
   <%= f.submit "Submit", :class=>"softButton"%>
 <% end -%>
 

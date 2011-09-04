@@ -10,6 +10,21 @@ class BrandsController < InheritedResources::Base
     redirect_to :back
   end
   
+  def create
+    @brand = Brand.new(params[:brand])
+    if @brand.save
+      if params[:copy_brand]
+        copy_brand = Brand.where(:id => params[:copy_brand][:id]).first
+        @brand.copy_text_content_from(copy_brand)
+      end
+      flash[:success] = "Yippee, Brand created!"
+      redirect_to edit_brand_path(@brand)      
+    else
+      flash[:error] = "We had a problem creating that Brand"
+      redirect_to new_brand_path(@brand)            
+    end
+  end
+  
   def update
     update! {edit_brand_path(@brand)}
   end

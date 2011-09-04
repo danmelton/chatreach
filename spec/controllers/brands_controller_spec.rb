@@ -119,6 +119,15 @@ describe BrandsController do
         response.should redirect_to edit_brand_path(Brand.last)
       end
       
+      it "for create and option to copy brand creates content" do
+        2.times {Factory(:text_content, :brand => @brand)}
+        lambda {
+          post :create, :brand => Factory.attributes_for(:brand), :copy_brand => {:id => @brand.id}
+        }.should change(Brand, :count).by(1)
+        TextContent.count.should == 4
+        response.should redirect_to edit_brand_path(Brand.last)
+      end      
+      
       it "for update" do
         put :update, :id => @brand.id, :brand => {:name => "love"}
         Brand.find(@brand.id).name.should == "love"
