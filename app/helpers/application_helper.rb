@@ -49,7 +49,7 @@ module ApplicationHelper
     when "welcome"
       "Welcome"
     when "organization_not_found"
-      "organization Not Found Return Text"
+      "Organization Not Found Return Text"
     when "info_not_found"  
       "Information Not Return Text"
     when "distance_for_organization"
@@ -69,7 +69,7 @@ module ApplicationHelper
     case ff.object.name
     when "welcome"                                                                                   
       ff.text_area :setting, :class => "counting expanding #{ff.object.name}", :id => ff.object.name, :maxLength=>"140"
-    when "clinic_not_found"                                                                          
+    when "organization_not_found"                                                                          
       ff.text_area :setting, :class => "counting expanding #{ff.object.name}", :id => ff.object.name, :maxLength=>"140"
     when "info_not_found"                                                                            
       ff.text_area :setting, :class => "counting expanding #{ff.object.name}", :id => ff.object.name, :maxLength=>"140"
