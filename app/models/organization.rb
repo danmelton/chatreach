@@ -6,10 +6,6 @@ class Organization < ActiveRecord::Base
   geocoded_by :full_street_address
   after_validation :geocode 
   
-  scope :m_circle, lambda { |lon, lat, m| {  :select => ['oprofiles.*, round((((acos(sin(('+lon.to_s+'*pi()/180)) * sin((x(oprofiles.geom)*pi()/180)) + cos(('+lon.to_s+'*pi()/180)) * cos((x(oprofiles.geom)*pi()/180)) * cos((('+lat.to_s+'- y(oprofiles.geom))*pi()/180))))*180/pi())*60*1.1515),2) as distance'],
-     :conditions => ['round((((acos(sin((?*pi()/180)) * sin((x(oprofiles.geom)*pi()/180)) + cos((?*pi()/180)) * cos((x(oprofiles.geom)*pi()/180)) * cos(((?- y(oprofiles.geom))*pi()/180))))*180/pi())*60*1.1515),2) <= ?', lon, lon, lat, m] ,
-     :order => ['round((((acos(sin(('+lon.to_s+'*pi()/180)) * sin((x(oprofiles.geom)*pi()/180)) + cos(('+lon.to_s+'*pi()/180)) * cos((x(oprofiles.geom)*pi()/180)) * cos((('+lat.to_s+'- y(oprofiles.geom))*pi()/180))))*180/pi())*60*1.1515),2) ASC'] } }   
-  
   def full_street_address
     [address, city, state, zip, country].compact.join(', ')
   end

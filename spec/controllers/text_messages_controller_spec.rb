@@ -4,6 +4,7 @@ describe TextMessagesController do
   before do
     @brand = Factory(:brand)
     @brand.welcome.update_attributes(:setting => "welcome")
+    @brand.provider.update_attributes(:setting => "Text Caster")    
     @text_content = Factory(:text_content, :brand => @brand)
   end
   

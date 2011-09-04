@@ -140,9 +140,9 @@ ActiveRecord::Schema.define(:version => 20110822195919) do
     t.integer  "tag_id"
     t.string   "text"
     t.string   "response"
+    t.string   "text_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "text_type"
     t.boolean  "flag",            :default => false
     t.integer  "category_id"
     t.integer  "text_content_id"
