@@ -12,11 +12,13 @@
 </script>
 <% end %>
 
-  <p><%= f.label :tag_id, "Tag " %>
+  <p><%= f.label :tag_id, "Tag " %><br>
     <%= select :text_content, :tag_id, Tag.all.collect {|x| [x.name, x.id]}%>
+    <%= link_to "Add a New Tag", new_tag_path%>
   </p>
-  <p><%= f.label :category_id, "Action " %>  
+  <p><%= f.label :category_id, "Action " %>  <br>
     <%= select :text_content, :category_id, Category.all.collect {|x| [x.name, x.id]}%>    
+    <%= link_to "Add a New Action", new_category_path%>    
   </p>  
   <%= f.hidden_field :brand_id, :value => session[:brand] %>
   <p><%= f.label :response %><br />
