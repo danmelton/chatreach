@@ -28,14 +28,16 @@ $(document).ready(function() {
   	<th>Tag</th>
   	<th>Action</th>
     <th>Response</th>
+    <th>Views</th>
   	<th>Actions</th>
   </thead>
 <% @text_contents.each do |text_content| %>
   <tr id="text<%="#{text_content.id}"%>">
-  	<td><%=h text_content.brand.name %></td>
-  	<td><%=h text_content.tag.name %></td>
-  	<td><%=h text_content.category.name %></td>
+  	<td><%= text_content.brand.name %></td>
+  	<td><%= text_content.tag.name %></td>
+  	<td><%= text_content.category.name %></td>
     <td><%=h text_content.response %></td>
+  	<td><%= text_content.text_histories.size%>    
     <% if @brand_admin or current_user.admin?%>
       <td><%= link_to 'Edit', edit_text_content_path(text_content) %> | <%= link_to 'Destroy', text_content_path(text_content), :confirm => 'Are you sure?', :method => :delete %></td>      
     <% end %>
