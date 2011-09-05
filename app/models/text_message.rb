@@ -131,8 +131,8 @@ class TextMessage
     end
   end
   
-  def add_history(text_type, tag=nil, category=nil, flag=false)
-    @session.text_histories.create!(:tag => tag, :category => category, :text => @message, :response => @response, :text_type => text_type, :flag => flag)      
+  def add_history(text_type, tag=nil, category=nil, flag=false, text_content=nil)
+    @session.text_histories.create!(:tag => tag, :category => category, :text => @message, :response => @response, :text_type => text_type, :flag => flag, :text_content => text_content)      
   end
   
   def tag_list
@@ -167,7 +167,7 @@ class TextMessage
   def is_action
     if !@action.nil?
       action_text
-      add_history('action', @tag, @action)
+      add_history('action', @tag, @action, false, @text_content)
       return true
     end
   end
@@ -175,7 +175,8 @@ class TextMessage
   def action_text
     if !@session.text_histories.blank?
       @tag = @session.text_histories.last.tag
-      @response = TextContent.where(:tag_id => @tag.id, :category_id => @action.id, :brand_id => @brand.id).first.response
+      @text_content = TextContent.where(:tag_id => @tag.id, :category_id => @action.id, :brand_id => @brand.id).first
+      @response = @text_content.response
     else
       @response = @brand.welcome.setting
     end

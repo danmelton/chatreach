@@ -164,6 +164,7 @@ describe TextMessage do
       lambda {
         s.is_action
       }.should change(TextHistory, :count).by(1)
+      TextHistory.last.text_content_id.should_not == nil
     end
 
     it 'should return text of action when a text history session is not found' do
