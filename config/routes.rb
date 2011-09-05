@@ -23,6 +23,8 @@ Sext3::Application.routes.draw do
   get "simulator",:controller => :text_contents, :action => :simulator
 
   get "/dashboard", :controller => :dashboard, :action => :index, :as => :dashboard_path
+  
+  get "/textmessage",:controller => :text_messages, :action => :index
 
   resources :text_messages 
   resources :users
