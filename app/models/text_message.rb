@@ -68,7 +68,7 @@ class TextMessage
   end
   
   def set_tag
-    @tag = Tag.find_by_name(@message)
+    @tag = Tag.find_by_name(@message.downcase)
   end
   
   def set_action
