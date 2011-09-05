@@ -1,3 +1,4 @@
+require 'active_record/connection_adapters/spatialite_adapter/railtie'
 Sext3::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
