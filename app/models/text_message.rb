@@ -125,7 +125,7 @@ class TextMessage
 
   def is_list
     if @message.downcase.include?('list')
-      @response = tag_list.join(", ")
+      @response = tag_list.uniq.join(", ")
       add_history('list')
       return true
     end
