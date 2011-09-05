@@ -22,7 +22,8 @@ $(document).ready(function() {
     <th>Tag</th>
     <th>Action</th>
 	  <th>Text</th>	  
-	  <th>Response</th>	  
+	  <th>Response</th>
+	  <th>Text Link</th>
     <th>Text Type</th>	  
   </thead>
 <% @chatter.text_sessions.each do |session| %>
@@ -33,7 +34,8 @@ $(document).ready(function() {
   <td><%=history.tag.name unless history.tag.nil? %></td>
   <td><%=history.category.name unless history.category.nil?%></td>  
   <td><%=history.text%></td>  
-  <td><%=history.response%></td>  
+  <td><%=history.response%></td>
+  <td><% if history.text_content_id? %><%=link_to "Text", history.text_content%><% end %></td>
   <td><%=history.text_type%></td>  
   </tr>
   <% end %>
