@@ -23,10 +23,15 @@ Sext3::Application.routes.draw do
   get "simulator",:controller => :text_contents, :action => :simulator
 
   get "/dashboard", :controller => :dashboard, :action => :index, :as => :dashboard_path
-  
-  get "/textmessage",:controller => :text_messages, :action => :index
 
-  resources :text_messages 
+  # for text caster and twilio  
+  get "/textmessage",:controller => :text_messages, :action => :index
+  get "/text_messages",:controller => :text_messages, :action => :index  
+  
+  # for tropo
+  post "/textmessage",:controller => :text_messages, :action => :index  
+  post "/text_messages",:controller => :text_messages, :action => :index  
+ 
   resources :users
 
   root :to => "dashboard#index"

@@ -74,7 +74,7 @@ module ApplicationHelper
     when "info_not_found"                                                                            
       ff.text_area :setting, :class => "counting expanding #{ff.object.name}", :id => ff.object.name, :maxLength=>"140"
     when "provider"
-      ff.select :setting, [["Select a Provider",""],["Text Caster", "Text Caster"], ["Twilio", "Twilio"]]
+      ff.select :setting, [["Select a Provider",""],["Text Caster", "Text Caster"], ["Tropos", "Tropos"], ["Twilio", "Twilio"]]
     else
       ff.text_field :setting, :class => "counting expanding #{ff.object.name}"
     end

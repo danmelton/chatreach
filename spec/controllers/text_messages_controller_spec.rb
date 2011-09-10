@@ -39,5 +39,22 @@ describe TextMessagesController do
     end
   end
   
+  context "tropos" do
+    
+    it 'should assign the response' do
+      @brand.provider.update_attributes(:setting => "Tropos") 
+      @brand.phone_number.update_attributes(:setting => "9999999999")            
+      post :index, :session => {:initialText => @brand.name, :from => @chatter.phone}
+      assigns[:response].should == @brand.welcome.setting
+    end
+    
+    it "should return response" do
+      @brand.provider.update_attributes(:setting => "Tropos") 
+      @brand.phone_number.update_attributes(:setting => "9999999999")            
+      post :index, :session => {:initialText => @brand.name, :from => @chatter.phone}
+      @response.body.should == "{\"tropo\":[{\"say\":[{\"value\":\""+@brand.welcome.setting+"\"}]}]}"
+    end
+  end
+  
 
 end

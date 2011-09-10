@@ -11,11 +11,16 @@ class TextMessagesController < ApplicationController
       @response = msg.get_response
       xml = Builder::XmlMarkup.new
       xml.instruct!
-      render :xml => xml.Response { |x| x.Sms @response}      
+      render :xml => xml.Response { |x| x.Sms @response}
+    elsif params[:session][:initialText]
+      msg = TextMessage.new(params[:session][:from], params[:session][:initialText])
+      @response = msg.get_response
+      response = Tropo::Generator.say @response
+      render :json => response
     end
   end
-  
+
   def simulator
   end
-  
+
 end
