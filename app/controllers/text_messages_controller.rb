@@ -9,7 +9,9 @@ class TextMessagesController < ApplicationController
     elsif params[:SmsSid]
       msg = TextMessage.new(params[:From], params[:Body])
       @response = msg.get_response
-      render :xml => Builder::XmlMarkup.new.response { |x| x.sms @response}      
+      xml = Builder::XmlMarkup.new
+      xml.instruct!
+      render :xml => xml.Response { |x| x.Sms @response}      
     end
   end
   

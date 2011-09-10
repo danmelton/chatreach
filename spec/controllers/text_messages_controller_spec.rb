@@ -35,7 +35,7 @@ describe TextMessagesController do
       @brand.provider.update_attributes(:setting => "Twilio") 
       @brand.phone_number.update_attributes(:setting => "9999999999")            
       get :index, :SmsSid => rand(9), :Body => @brand.name, :From => @chatter.phone, :To => 9999999
-      @response.body.should == "<response><sms>"+@brand.welcome.setting+"</sms></response>"
+      @response.body.should == "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Sms>"+@brand.welcome.setting+"</Sms></Response>"
     end
   end
   
