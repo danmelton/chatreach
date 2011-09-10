@@ -52,11 +52,13 @@ class Brand < ActiveRecord::Base
   
   # Copies the text contents from a brand to this one
   def copy_text_content_from(brand)
+    if !brand.nil?
       brand.text_contents.each do |text|
         tc = text.clone
         tc.brand_id = self.id
         tc.save
       end
+    end
   end
     
 end
