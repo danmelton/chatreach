@@ -8,6 +8,7 @@ gem "inherited_resources"
 gem 'jquery-rails'
 gem "geocoder"
 gem 'will_paginate'
+gem 'twilio'
 
 group :test, :development do
   gem 'sqlite3'

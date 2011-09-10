@@ -54,6 +54,8 @@ GEM
       i18n (~> 0.4)
     geocoder (1.0.2)
     has_scope (0.5.1)
+    httparty (0.7.8)
+      crack (= 0.1.8)
     i18n (0.5.0)
     inherited_resources (1.2.2)
       has_scope (~> 0.5.0)
@@ -120,6 +122,9 @@ GEM
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
+    twilio (3.0.1)
+      builder (~> 2.1.2)
+      httparty (~> 0.7.4)
     tzinfo (0.3.29)
     warden (1.0.5)
       rack (>= 1.0)
@@ -149,6 +154,7 @@ DEPENDENCIES
   spork (= 0.9.0.rc9)
   sqlite3
   timecop
+  twilio
   webmock
   will_paginate
   yard
