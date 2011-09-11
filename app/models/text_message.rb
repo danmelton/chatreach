@@ -211,7 +211,7 @@ class TextMessage
   def is_help
     if @session.text_histories.last.text_type == 'help' and @message.to_i > 0
       @session.chatter.update_attributes(:zipcode => @message)
-      orgs = get_org_list
+      orgs = get_org_list(@message, @session.text_histories.last.tag)
       if orgs.blank?
         @response = @brand.organization_not_found.setting
         add_history('help', @session.text_histories.last.tag, nil, true)        
@@ -225,7 +225,7 @@ class TextMessage
   
   def is_next
     if ['next', 'nxt', 'enxt', 'nxet'].include?(@message.downcase)
-      org_list = get_org_list(@chatter.zipcode)
+      org_list = get_org_list(@chatter.zipcode, @session.text_histories.last.tag)
       if !org_list.blank?
         @response = get_next_org(org_list, @session.text_histories.last.response).sms_about
         add_history('help',@session.text_histories.last.tag)        
@@ -243,8 +243,15 @@ class TextMessage
     return org_array.fetch(s, org_array.first)
   end
 
-  def get_org_list(zip=@message)
-    @brand.organizations.near(zip, @brand.distance_for_organization.setting)
+  def get_org_list(zip=@message, tag=@tag)
+    # get list of organizations by tag
+    org_list_tag = @brand.organizations.tagged_with(Tag.last.name)
+    # get list of organizations ordered by distance
+    org_list_distance = Organization.near(zip, @brand.distance_for_organization.setting)
+    # go through list of distance_orgs and delete if not in the tagged organizations
+    org_list = []
+    org_list_distance.each { |x| org_list << x unless !org_list_tag.include?(x) }
+    org_list
   end
   
 end

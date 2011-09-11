@@ -198,6 +198,7 @@ describe TextMessage do
           to_return(:status => 200, :body => fixture('google_maps_zip_66101'), :headers => {})
         @brand.distance_for_organization.update_attributes(:setting => 10)          
         @org = Factory(:organization, :tag_list => [@text_content.tag.name])
+        @org2 = Factory(:organization, :tag_list => [@text_content.tag.name])        
         @brand.organizations << @org        
       end
 
