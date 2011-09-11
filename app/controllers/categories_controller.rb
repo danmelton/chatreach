@@ -4,6 +4,13 @@ class CategoriesController < InheritedResources::Base
   
   layout "application"
   
+  def index
+    @search = Category.search(params[:search])
+    @categories = @search.paginate(
+      :per_page => 50, :page => params[:page])
+    
+  end
+  
   def create
     category = Category.where(:name => params[:category][:name])
     if category.blank?

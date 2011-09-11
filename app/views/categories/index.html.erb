@@ -1,36 +1,30 @@
-<% content_for :javascript do %>
-<%= javascript_include_tag "quicksearch.js",  %>
-<script type="text/javascript">
-$(document).ready(function() {        
-	$('table#tableList tbody tr').quicksearch({
-	  position: 'before',
-	  attached: 'table#tableList',
-	  stripeRowClass: ['odd', 'even'],
-	  labelText: 'Search the table',
-	  inputClass: 'text'
-	}); 
-});
-</script>
-<% end %>
 <div id="questionList">
 <h1>Actions</h1>
 <div class="directions">
   <p>Actions are available options under tags.  For instance, a tag could be pregnancy and an action would be information.  Actions are shared across tags but actions have to be unique under each tag and brand.</p>
 </div>
 <%= render "menu"%>
+
+  <%= form_for @search do |f| %>
 <table id="tableList" class="tablesorter">
   <thead>
     <th>Name</th>
     <th>Text Content</th>
     <th>Text Messages</th>    
+    <th>Typos</th>        
 	  <th>Actions</th>
   </thead>
-
+  <td><%= f.text_field :name_contains,:class=>"search_large" %></td>
+  <td></td>
+  <td></td>
+  <td><%= f.text_field :tag_typos_typo_contains,:class=>"search_huge"  %></td>
+  <td><%= f.submit "Submit", :value=>"Search", :class=>"softButton"%></td>  
 <% @categories.each do |category| %>
   <tr>
     <td><%=link_to category.name, edit_category_path(category) %></td>
     <td><%=category.text_contents.size%></td>
     <td><%=category.text_histories.size%></td>    
+    <td><%=category.tag_typos.size%></td>        
     <% if !current_user.brand_admins.blank? || current_user.admin? %>
       <td><%= link_to 'Edit', edit_category_path(category) %> | <%= link_to 'Destroy', category_path(category), :confirm => 'Are you sure?', :method => :delete %>
     </td>
@@ -38,5 +32,7 @@ $(document).ready(function() {
   </tr>
 <% end %>
 </table>
+<% end %>
+<%=will_paginate @categories%>
 
 </div>
