@@ -17,7 +17,7 @@
       <p>
       <%= form_for :brand_admin, :url => brand_brand_admins_path(@brand) do |f| %>
       <%= f.label :user_id, "Add an Admin:" %>
-      <%= select :brand_admin, :user_id, not_selected_brand(@brand) %>
+      <%= select :brand_admin, :user_id, nonbrand_users(@brand) %>
       <%= f.hidden_field :brand_id, :value => @brand.id %>
       <%= f.submit "Add", :disable_with => 'Submiting...', :class => 'softButton' %>
       <% end %>
