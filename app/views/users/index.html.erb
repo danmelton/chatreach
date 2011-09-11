@@ -20,6 +20,9 @@ $(document).ready(function() {
 <div id="questionList">
 	
 <h1>Manage Users</h1>
+<div class="directions">
+  <p>You can add users at multiple levels to help manage your text lines.  Administrators can add new users, delete or edit them.  Administrators can also create new brands.  You can add any user to a brand as a brand administrator on the brand's edit page.  Brand Administrators can edit/create/destroy organizations, text contents and edit the brand settings.</p>
+</div>
 <% if current_user.admin? %>
 <ul id="submenu" class="links border">
   <li class="last"><%= link_to "Create a New User", {:action=>:new}%></a></li>
