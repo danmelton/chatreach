@@ -58,6 +58,17 @@ describe TextMessage do
       s.set_session.should == session
     end
     
+    it "should update the session with different brand if new brand is texted in" do
+      session = Factory(:text_session, :brand => @brand)
+      @brand2 = Factory(:brand)
+      s = TextMessage.new(session.chatter.phone, @brand.name)
+      s.set_session.should == session
+      session.reload.brand.should == @brand
+      s2 = TextMessage.new(session.chatter.phone, @brand2.name)
+      s2.set_session.should == session      
+      session.reload.brand.should == @brand2      
+    end
+    
     it "should set_session to a new session if chatter had a session yesterday" do
       session = Factory(:text_session, :brand => @brand)
       session.update_attributes(:created_at => 28.hours.ago)

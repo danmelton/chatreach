@@ -59,7 +59,7 @@ class TextMessage
   
   def set_brand
     if find_brand.nil?
-      @chatter.text_sessions.last.blank? ? set_brand_by_phone : set_brand_by_last_session
+      @chatter.text_sessions.blank? ? set_brand_by_phone : set_brand_by_last_session
     end
   end
   
@@ -97,6 +97,10 @@ class TextMessage
       @session = @chatter.text_sessions.create(:brand => @brand, :session => @sessionid)
     else
       @session = @chatter.text_sessions.today.first
+      if @session.brand != @brand
+        @session.update_attributes(:brand => @brand)
+      end
+      @session
     end
   end
   
