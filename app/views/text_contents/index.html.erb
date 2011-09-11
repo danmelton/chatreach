@@ -1,22 +1,3 @@
-<% content_for :javascript do %>
-<%= javascript_include_tag "tablesorter/jquery.tablesorter.js",  %>
-<%= javascript_include_tag "quicksearch.js",  %>
-<script type="text/javascript">
-$(document).ready(function() {        
-	 $("table#tableList").tablesorter({
-	   sortList:[[0,0]], 
-	   headers: { 3: { sorter: false}}
-	 });
-	$('table#tableList tbody tr').quicksearch({
-	  position: 'before',
-	  attached: 'table#tableList',
-	  stripeRowClass: ['odd', 'even'],
-	  labelText: 'Search the table',
-	  inputClass: 'text'
-	}); 
-});
-</script>
-<% end %>
 <div id="questionList">
 <h1>Text Content for <%=@brand.name%></h1>
 <div class="directions">
@@ -25,6 +6,7 @@ $(document).ready(function() {
 <ul id="submenu" class="links border">
   <li><%= link_to "New Content Item", new_text_content_path%></li>
 </ul>
+  <%= form_for @search do |f| %>
 <table id="tableList" class="tablesorter">
   <thead>
   	<th>Brand</th>
@@ -34,6 +16,13 @@ $(document).ready(function() {
     <th>Views</th>
   	<th>Actions</th>
   </thead>
+  <td></td>
+  <td><%= f.text_field :tag_name_contains,:class=>"search_small"  %></td>
+  <td><%= f.text_field :category_name_contains,:class=>"search_medium"  %></td>
+  <td><%= f.text_field :response_contains,:class=>"search_small"  %></td>
+  <td></td>
+  <td><%= f.submit "Submit", :value=>"Search", :class=>"softButton"%></td>
+  
 <% @text_contents.each do |text_content| %>
   <tr id="text<%="#{text_content.id}"%>">
   	<td><%= text_content.brand.name %></td>
@@ -47,6 +36,8 @@ $(document).ready(function() {
   </tr>
 <% end %>
 </table>
+<% end %>
+<%= will_paginate @text_contents%>
 
 <br />
 

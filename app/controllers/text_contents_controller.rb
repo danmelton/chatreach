@@ -6,7 +6,9 @@ class TextContentsController < InheritedResources::Base
   
   def index
     @brand = Brand.find(session[:brand])    
-    @text_contents = TextContent.where(:brand_id => session[:brand])
+    @search = TextContent.search(params[:search])
+    @text_contents = @search.where(:brand_id => session[:brand]).paginate(
+      :per_page => 50, :page => params[:page])    
   end
   
   def update
