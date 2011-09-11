@@ -5,15 +5,15 @@
   <div class="navigation">
     <ul class="links full" id="nav">
 	<% if current_user%>
-      <li class="link_item"><%= link_to "Home", "/dashboard"%></li>
-      <li class="link_item"><%= link_to "Brands", brands_path%></li>      
-      <li class="link_item"><%= link_to "Organizations", organizations_path%></li>            
-      <li class="link_item"><%= link_to "Tags", tags_path%></li>            
-      <li class="link_item"><%= link_to "Actions", categories_path%></li>            
-      <li class="link_item"><%= link_to "Text Contents", text_contents_path%></li>                  
-      <li class="link_item"><%= link_to "SMS Simulator", "/simulator"%></li>                        
-      <li class="link_item"><%= link_to "Chatters", chatters_path%></li>                  
-      <li class="link_item"><%= link_to "Users", users_path%></li>                        
+      <li class="link_item <%if params[:controller]=="dashboard"%>active<% end %>"><%= link_to "Home", "/dashboard"%></li>
+      <li class="link_item <%if params[:controller]=="brands"%>active<% end %>"><%= link_to "Brands", brands_path%></li>      
+      <li class="link_item <%if params[:controller]=="organizations"%>active<% end %>"><%= link_to "Organizations", organizations_path%></li>            
+      <li class="link_item <%if params[:controller]=="tags"%>active<% end %>"><%= link_to "Tags", tags_path%></li>            
+      <li class="link_item <%if params[:controller]=="categories"%>active<% end %>"><%= link_to "Actions", categories_path%></li>            
+      <li class="link_item <%if params[:controller]=="text_contents"  and params[:action]!="simulator"%>active<% end %>"><%= link_to "Text Contents", text_contents_path%></li>                  
+      <li class="link_item <%if params[:controller]=="text_contents" and params[:action]=="simulator"%>active<% end %>"><%= link_to "SMS Simulator", "/simulator"%></li>                        
+      <li class="link_item <%if params[:controller]=="chatters"%>active<% end %>"><%= link_to "Chatters", chatters_path%></li>                  
+      <li class="link_item <%if params[:controller]=="users"%>active<% end %>"><%= link_to "Users", users_path%></li>                        
       <li class="link_item"><%= link_to "Log Out", '/sign_out'%></li>
 	<% else %>
 	  <li class="link_item"><%= link_to "Main", root_url%></li>
