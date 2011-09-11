@@ -14,7 +14,7 @@
 
 <% @brands.each do |brand| %>
   <tr>
-    <td><%=link_to brand.name, brand_path(brand) %></td>
+    <td><%=brand.name%></td>
     <td><%=brand.phone_number.setting%></td>    
     <td>
       <ul class="plain">
