@@ -3,6 +3,9 @@ Chatreach
 
 An open source tool built in Ruby on Rails for social service agencies to provide text message based content and locator services for their clients.
 
+[![Chatreach](https://github.com/danmelton/chatreach/raw/master/public/images/chat_reach_logo_white_clean.png)](http://chatreachwiki.pbworks.com)
+
+
 Getting Started Guide
 ------------
 
