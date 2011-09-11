@@ -204,12 +204,12 @@ describe TextMessage do
 
       it 'finds closest organization with tag' do
         s = TextMessage.new(@session.chatter.phone, "94110")      
-        s.get_org_list.first.should == @org
+        s.get_org_list("94110", Tag.first).first.should == @org
       end
       
       it 'doesnt find closest organization with tag' do
         s = TextMessage.new(@session.chatter.phone, "66101")      
-        s.get_org_list.should == []
+        s.get_org_list("66101", Tag.first).should == []
       end
       
       context "is_help" do
@@ -243,12 +243,12 @@ describe TextMessage do
           @org2 = Factory(:organization, :tag_list => [@text_content.tag.name])
           @brand.organizations << @org2
           s = TextMessage.new(@session.chatter.phone, "94110")      
-          s.get_next_org(s.get_org_list, @org.sms_about).should == @org2
+          s.get_next_org(s.get_org_list("94110", Tag.first), @org.sms_about).should == @org2
           end
           
           it 'gets one organization in an array of one' do
           s = TextMessage.new(@session.chatter.phone, "94110")      
-          s.get_next_org(s.get_org_list, @org.sms_about).should == @org
+          s.get_next_org(s.get_org_list("94110", Tag.first), @org.sms_about).should == @org
           end
           
           it 'response is next organizations sms_about' do
