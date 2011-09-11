@@ -4,6 +4,12 @@ class TagsController < InheritedResources::Base
   
   layout "application"
   
+  def index
+    @search = Tag.search(params[:search])
+    @tags = @search.paginate(
+      :per_page => 50, :page => params[:page])
+  end
+  
   def create
     tag = Tag.where(:name => params[:tag][:name])
     if tag.blank?

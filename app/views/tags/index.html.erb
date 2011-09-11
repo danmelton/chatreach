@@ -1,36 +1,30 @@
-<% content_for :javascript do %>
-<%= javascript_include_tag "quicksearch.js",  %>
-<script type="text/javascript">
-$(document).ready(function() {        
-	$('table#tableList tbody tr').quicksearch({
-	  position: 'before',
-	  attached: 'table#tableList',
-	  stripeRowClass: ['odd', 'even'],
-	  labelText: 'Search the table',
-	  inputClass: 'text'
-	}); 
-});
-</script>
-<% end %>
 <div id="questionList">
 <h1>Tags</h1>
 <div class="directions">
   <p>Tags are top level directory items with actions under them. Tag names have to be unique.  A user texts in a tag like HIV and gets back actions like 'info' or 'prevention'. Each tag has typos as well. You can add synonyms as a tag typo too. The following table also has counts so you can get a sense of how many text contents or text messages are using that tag.  For more help on tags, <a href="http://chatreachwiki.pbworks.com/w/page/45362785/Adding%20Tags%20and%20Actions">visit the wiki</a></p>
 </div>
 <%= render "menu"%>
+  <%= form_for @search do |f| %>
 <table id="tableList" class="tablesorter">
   <thead>
     <th>Tag Name</th>
     <th>Text Content Count</th>
     <th>Text Messages Count</th>
+    <th>Typos Count</th>            
 	  <th>Actions</th>	  
   </thead>
+  <td><%= f.text_field :name_contains,:class=>"search_large" %></td>
+  <td></td>
+  <td></td>
+  <td><%= f.text_field :tag_typos_typo_contains,:class=>"search_huge"  %></td>
+  <td><%= f.submit "Submit", :value=>"Search", :class=>"softButton"%></td>  
 
 <% @tags.each do |tag| %>
   <tr>
     <td><%=link_to tag.name, edit_tag_path(tag) %></td>
     <td><%=tag.text_contents.size%></td>
     <td><%=tag.text_histories.size%></td>        
+    <td><%=tag.tag_typos.size%></td>            
     <% if !current_user.brand_admins.blank? || current_user.admin? %>
       <td><%= link_to 'Edit', edit_tag_path(tag) %> | <%= link_to 'Destroy', tag_path(tag), :confirm => 'Are you sure?', :method => :delete %>
     </td>
@@ -38,5 +32,7 @@ $(document).ready(function() {
   </tr>
 <% end %>
 </table>
+<%= will_paginate @tags%>
+<% end %>
 
 </div>
