@@ -1,19 +1,11 @@
 <% content_for :javascript do %>
 <%= javascript_include_tag "tablesorter/jquery.tablesorter.js",  %>
-<%= javascript_include_tag "quicksearch.js",  %>
 <script type="text/javascript">
 $(document).ready(function() {        
 	 $("table#tableList").tablesorter({
 	   sortList:[[0,0]], 
 	   headers: { 3: { sorter: false}}
 	 });
-	$('table#tableList tbody tr').quicksearch({
-	  position: 'before',
-	  attached: 'table#tableList',
-	  stripeRowClass: ['odd', 'even'],
-	  labelText: 'Search the table',
-	  inputClass: 'text'
-	}); 
 });
 </script>
 <% end %>
@@ -25,6 +17,8 @@ $(document).ready(function() {
 </div>
 
 <%= render "menu"%>
+
+  <%= form_for @search do |f| %>
 <table id="tableList" class="tablesorter">
   <thead>
     <th>Name</th>
@@ -35,7 +29,13 @@ $(document).ready(function() {
   	<th>Tags</th>    
   	<th>Actions</th>
   </thead>
-
+<td><%= f.text_field :name_contains,:class=>"search_large" %></td>
+<td><%= f.text_field :name_contains,:class=>"search_small"  %></td>
+<td><%= f.text_field :city_contains,:class=>"search_medium"  %></td>
+<td><%= f.text_field :zip_contains,:class=>"search_small"  %></td>
+<td><%= f.text_field :sms_about_contains,:class=>"search_large"  %></td>
+<td><%= f.text_field :tagged_with,:class=>"search_huge"  %></td>
+<td><%= f.submit "Submit", :value=>"Search", :class=>"softButton"%></td>
 <% @organizations.each do |org| %>
   <tr id="organization<%="#{org.id}"%>">
     <td><%= org.name %></td>
@@ -51,9 +51,10 @@ $(document).ready(function() {
     <% if @brand_admin or current_user.admin?%>
       <td><%= link_to 'Edit', edit_organization_path(org) %> | <%= link_to 'Destroy', organization_path(org), :confirm => 'Are you sure?', :method => :delete %></td>      
     <% end %>
-
   </tr>
 <% end %>
 </table>
+  <% end %>
+<%= will_paginate @organizations%>
 
 <br />

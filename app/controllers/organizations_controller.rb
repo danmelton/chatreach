@@ -4,6 +4,12 @@ class OrganizationsController < InheritedResources::Base
   before_filter :brand_admin, :only => [:create, :new, :destroy, :update, :edit]    
   layout "application"
   
+  def index
+    @search = Organization.search(params[:search])
+    @organizations = @search.paginate(
+      :per_page => 15, :page => params[:page])
+  end
+  
   def update
     update! {edit_organization_path(@organization)}
   end

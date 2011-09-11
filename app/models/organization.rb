@@ -5,6 +5,7 @@ class Organization < ActiveRecord::Base
   validates_presence_of :name, :address, :city, :state, :zip, :sms_about
   geocoded_by :full_street_address
   after_validation :geocode 
+  search_methods :tagged_with
   
   def full_street_address
     [address, city, state, zip, country].compact.join(', ')

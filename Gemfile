@@ -10,6 +10,8 @@ gem "geocoder"
 gem 'will_paginate'
 gem 'twilio'
 gem 'tropo-webapi-ruby'
+gem 'meta_search'
+
 
 group :test, :development do
   gem 'sqlite3'

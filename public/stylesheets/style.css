@@ -812,10 +812,25 @@ span.bubble_blk{
 
 /******************************/
 
-
 table.tablesorter thead tr .header{
 	background-image:none;
 } 
+
+table.tablesorter input.search_small {
+    width: 50px;
+}
+
+table.tablesorter input.search_medium {
+    width: 75px;
+}
+
+table.tablesorter input.search_large {
+    width: 100px;    
+}
+
+table.tablesorter input.search_huge {
+    width: 200px;    
+}
 
 table.tablesorter caption {
 	background-color: white;
