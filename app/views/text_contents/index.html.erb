@@ -1,10 +1,13 @@
 <div id="questionList">
-<h1>Text Content for <%=@brand.name%></h1>
+<h1><%=@brand.name%> Text Contents  (<%=@text_contents.total_entries%>)</h1>
 <div class="directions">
 <p>Text contents are 160 characters of text that are attached to a tag and an action.  The user might send in a tag 'hiv' and then followup with 'info' which returns something like 'HIV is a virus that ....'.  You could also specify no action, so that when 'hiv' is texted in, a text string like 'HIV is a virus that ....' comes back, instead of an array of actions. For more help on text contents,<a href='http://chatreachwiki.pbworks.com/w/page/45362922/Adding%20Text%20Content'> visit the wiki</a>
   </div>
 <ul id="submenu" class="links border">
   <li><%= link_to "New Content Item", new_text_content_path%></li>
+  <% Brand.all.each do |brand|%>
+  <li><%=link_to "#{brand.name} Contents", brand_path(brand)%></li>
+    <% end %>
 </ul>
   <%= form_for @search do |f| %>
 <table id="tableList" class="tablesorter">
