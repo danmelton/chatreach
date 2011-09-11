@@ -245,7 +245,7 @@ class TextMessage
 
   def get_org_list(zip=@message, tag=@tag)
     # get list of organizations by tag
-    org_list_tag = @brand.organizations.tagged_with(Tag.last.name)
+    org_list_tag = @brand.organizations.tagged_with(tag.name)
     # get list of organizations ordered by distance
     org_list_distance = Organization.near(zip, @brand.distance_for_organization.setting)
     # go through list of distance_orgs and delete if not in the tagged organizations
