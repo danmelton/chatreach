@@ -851,6 +851,17 @@ ul#submenu {
 	margin-bottom: 15px;
 }
 
+#search_created_at_greater_than_1i { width: 60px;}
+#search_created_at_greater_than_2i {width: 60px;}
+#search_created_at_greater_than_3i {width: 50px;}
+#search_created_at_greater_than_4i {width: 50px;}
+#search_created_at_greater_than_5i {width: 50px;}
+#search_created_at_less_than_1i { width: 60px;}
+#search_created_at_less_than_2i {width: 60px;}
+#search_created_at_less_than_3i {width: 50px;}
+#search_created_at_less_than_4i {width: 50px;}
+#search_created_at_less_than_5i {width: 50px;}
+
 /******************************/
 
 #help_pane{

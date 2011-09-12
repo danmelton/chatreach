@@ -1,3 +1,5 @@
 <ul id="submenu" class="links border">
-  <li class="last"><%= link_to "All Chatters", chatters_path%></li>
+  <% Brand.all.each do |brand|%>
+  <li><%=link_to "#{brand.name} Contents", brand_path(brand)%></li>
+    <% end %>
 </ul>

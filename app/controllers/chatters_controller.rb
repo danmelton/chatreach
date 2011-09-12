@@ -3,9 +3,10 @@ class ChattersController < InheritedResources::Base
   before_filter :authenticate_user!
 
   def index
-    @brand = Brand.where(:id => session[:brand]).first
-    @chatters = Chatter.joins(:text_sessions).where("text_sessions.brand_id = #{session[:brand]}").paginate(
-      :per_page => 100, :page => params[:page])
+    @brand = Brand.find(session[:brand])    
+    @search = Chatter.search(params[:search])
+    @chatters = @search.includes(:text_sessions).where("text_sessions.brand_id = #{@brand.id}").order("chatters.created_at DESC").paginate(
+      :per_page => 50, :page => params[:page])    
   end
 
 end

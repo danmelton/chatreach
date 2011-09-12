@@ -1,22 +1,10 @@
-<% content_for :javascript do %>
-<%= javascript_include_tag "quicksearch.js",  %>
-<script type="text/javascript">
-$(document).ready(function() {        
-	$('table#tableList tbody tr').quicksearch({
-	  position: 'before',
-	  attached: 'table#tableList',
-	  stripeRowClass: ['odd', 'even'],
-	  labelText: 'Search the table',
-	  inputClass: 'text'
-	}); 
-});
-</script>
-<% end %>
 <div id="questionList">
-<h1>Chatters for <%=@brand.name%></h1>
+<h1><%=@brand.name%> Chatters (<%=@chatters.total_entries%>)</h1>
 <%= render "menu"%>
+  <%= form_for @search do |f| %>
 <table id="tableList" class="tablesorter">
   <thead>
+    <th>Brand</th>
     <th>Zipcode</th>
     <th>Date</th>
 	  <th>Sessions</th>
@@ -24,18 +12,29 @@ $(document).ready(function() {
 	  <th>Referrals</th>	  
     <th>Action</th>	  
   </thead>
+  <td></td>
+  <td><%= f.text_field :zipcode_contains,:class=>"search_small"  %></td>
+  <td>Between <%= f.datetime_select :created_at_greater_than, :include_blank => true, :default => 1.months.ago %><br>
+      and <%= f.datetime_select :created_at_less_than, :include_blank => true, :default => Time.now %>
+  </td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td><%= f.submit "Submit", :value=>"Search", :class=>"softButton"%></td>
 
-<% @chatters.order("created_at DESC").uniq.each do |chatter| %>
+<% @chatters.uniq.each do |chatter| %>
   <tr>
+  <td><%=chatter.text_sessions.last.brand.name%></td>
   <td><%=chatter.zipcode%></td>
   <td><%=chatter.created_at.strftime("%Y-%m-%d")%>
   <td><%=chatter.text_sessions.size%></td>
-  <td><%=TextHistory.joins(:text_session).where("text_sessions.brand_id = #{@brand.id} and text_session_id IN (#{chatter.text_sessions.map(&:id).join(", ")})").size%></td>
-  <td><%=TextHistory.joins(:text_session).where("text_sessions.brand_id = #{@brand.id} and text_session_id IN (#{chatter.text_sessions.map(&:id).join(", ")}) and text_type='help'").size%></td>      
+  <td><%f = 0; chatter.text_sessions.each {|x| f = f + x.text_histories.size}%><%=f%></td>
+  <td><%f = 0; chatter.text_sessions.each {|x| f = f + x.text_histories.where(:text_type => "help").size}%><%=f%></td>
     <td><%=link_to "Show Chatter", chatter%></td>  
   </tr>
 <% end %>
 </table>
+<% end %>
 <%= will_paginate @chatters %>
 
 </div>
