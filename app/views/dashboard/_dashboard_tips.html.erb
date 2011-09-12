@@ -1,0 +1,11 @@
+<h2>Welcome to Chatreach! Let's Get Started</h2>
+  <ul>
+    <% if !@dashboard.check_brands%>
+    <li>
+      <div class="update">
+        <span class="title">Add a New Brand</span><br>
+        <span class="update">We need to add a new brand keyword.  <%=link_to "Add A new Brand", new_brand_path%></span><br>
+      </div>
+    </li>
+    <% end %>
+  </ul>
