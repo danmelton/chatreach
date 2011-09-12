@@ -1,0 +1,42 @@
+<div id="questionList">
+<h1><%=@brand.name%> Texts (<%=@texts.total_entries%>)</h1>
+<%= render "menu"%>
+  <%= form_for @search do |f| %>
+  <div id="search">
+  Search by Dates Between <%= f.datetime_select :created_at_greater_than, :include_blank => true, :default => 1.months.ago %> and <%= f.datetime_select :created_at_less_than, :include_blank => true, :default => Time.now %>
+  <%= f.submit "Submit", :value=>"Search", :class=>"softButton"%>  
+      </div>
+<table id="tableList" class="tablesorter">
+  <thead>
+    <th>Brand</th>
+    <th>Date</th>
+    <th>Text</th>
+	  <th>Response</th>
+	  <th>Text Type</th>	  
+	  <th>Flagged?</th>
+    <th>Action</th>	  
+  </thead>
+  <td></td>
+  <td></td>
+  <td><%= f.text_field :text_contains,:class=>"search_medium" %></td>
+  <td><%= f.text_field :response_contains,:class=>"search_medium" %></td>
+  <td><%= f.text_field :text_type_contains,:class=>"search_medium" %></td>  
+  <td><%= f.check_box :flag_is_true%></td>
+  <td><%= f.submit "Submit", :value=>"Search", :class=>"softButton"%></td>
+
+<% @texts.each do |text| %>
+  <tr>
+  <td><%=text.text_session.brand.name%></td>
+  <td><%=text.created_at.strftime("%Y-%m-%d")%>
+  <td><%=text.text%></td>
+  <td><%=text.response%></td>  
+  <td><%=text.text_type%></td>    
+  <td><%=text.flag%></td>
+  <td><%=link_to "Show Chatter", text.text_session.chatter%></td>  
+  </tr>
+<% end %>
+</table>
+<% end %>
+<%= will_paginate @texts %>
+
+</div>

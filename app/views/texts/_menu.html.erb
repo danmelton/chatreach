@@ -1,0 +1,5 @@
+<ul id="submenu" class="links border">
+  <% Brand.all.each do |brand|%>
+  <li><%=link_to "#{brand.name} Texts", brand_path(brand)%></li>
+    <% end %>
+</ul>
