@@ -7,7 +7,6 @@ class DashboardController < ApplicationController
       session[:brand] = Brand.first.id
     end 
     @dashboard = Dashboard.new
-
   end
   
 
