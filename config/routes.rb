@@ -31,6 +31,9 @@ Sext3::Application.routes.draw do
   # for tropo
   post "/textmessage",:controller => :text_messages, :action => :index  
   post "/text_messages",:controller => :text_messages, :action => :index  
+  
+  get "/texts", :controller => :texts, :action => :index, :as => :texts
+  post "/texts", :controller => :texts, :action => :index, :as => :text_histories
  
   resources :users
 
