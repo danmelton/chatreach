@@ -4,7 +4,7 @@
     <li>
       <div class="update">
         <span class="title">Add a New Brand</span><br>
-        <span class="update">We need to add a new brand keyword.  <%=link_to "Add A new Brand", new_brand_path%></span><br>
+        <span class="update">We need to add a new brand keyword.  <%=link_to "Add A New Brand", new_brand_path%></span><br>
       </div>
     </li>
     <% end %>
@@ -20,7 +20,23 @@
     <li>
       <div class="update">
         <span class="title">Add a New Action</span><br>
-        <span class="update">Let's add some Actions  <%=link_to "Add A New Action", new_actions_path%></span><br>
+        <span class="update">Let's add some Actions  <%=link_to "Add A New Action", new_category_path%></span><br>
+      </div>
+    </li>
+    <% end %>    
+    <% if !@dashboard.check_text_contents%>
+    <li>
+      <div class="update">
+        <span class="title">Add a New Piece of Text Content</span><br>
+        <span class="update">We don't have any text contents. Let's add a few.  <%=link_to "Add A New Piece of Text Content", new_text_content_path%></span><br>
+      </div>
+    </li>
+    <% end %>    
+    <% if !@dashboard.check_organizations%>
+    <li>
+      <div class="update">
+        <span class="title">Add a New Organization</span><br>
+        <span class="update">We should probably add some organizations for referrals.  We don't have any in the database at the moment. <%=link_to "Add A New Organization Referral", new_organization_path%></span><br>
       </div>
     </li>
     <% end %>    
