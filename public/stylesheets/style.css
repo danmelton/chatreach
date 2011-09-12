@@ -851,6 +851,10 @@ ul#submenu {
 	margin-bottom: 15px;
 }
 
+#search {
+    float: right;
+}
+
 #search_created_at_greater_than_1i { width: 60px;}
 #search_created_at_greater_than_2i {width: 60px;}
 #search_created_at_greater_than_3i {width: 50px;}
