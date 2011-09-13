@@ -1,0 +1,13 @@
+<h1>Welcome to Chatreach!</h1>
+<h2>Funnel Metrics for the Past 30 Days</h2>
+<ul>
+  <li><span class="title"><%= @dashboard.text_history.size%></span> Texts</li>  
+  <li><span class="title"><%= @dashboard.texters.size%></span> Texters</li>
+  <li><span class="title"><%= @dashboard.new_chatters.size%></span> New Texters</li>    
+  <li><span class="title"><%=@dashboard.texters_over_one_message%></span> Texters sent more than 1 message</li>
+  <li><span class="title"><%=@dashboard.texters_over_five_messages%></span> Texters sent more than 5 messages</li>  
+  <li><span class="title"><%=@dashboard.text_referrals.size.size%></span> Texters requesting a referral</li>    
+</ul>
+<% if @dashboard.text_referrals.size.size > 5%>
+<p><h2>Over the last 30 days, you've helped <span class="title"><%=@dashboard.text_referrals.size.size%></span> texters find a referral. That's awesome!</h2></p>
+<% end %>

@@ -11,6 +11,7 @@ gem 'will_paginate'
 gem 'twilio'
 gem 'tropo-webapi-ruby'
 gem 'meta_search'
+gem 'feedzirra'
 
 
 group :test, :development do

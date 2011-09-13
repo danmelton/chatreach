@@ -3,15 +3,11 @@
       <% if @dashboard.get_started?%>
       <%= render :partial => "dashboard_tips" %>
       <% else %>
-      hi
+      <%= render :partial => "dashboard_metrics" %>
       <% end %>
     </div>
     <div class="news span-11 last">
-      <ul>
-        <li class="event">
-
-        </li>
-      </ul>
+      <%= render :partial => "wiki_changes" %>          
     </div>
     
     <div style="clear:both;"></div>
