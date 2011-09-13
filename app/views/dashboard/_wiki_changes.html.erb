@@ -1,0 +1,9 @@
+<h2>Recent Wiki Updates</h2>
+    <ul>
+      <% Dashboard.new.parse_wiki.entries[0..10].each do |entry|%>
+      <li>
+          <%=link_to "#{entry.published.strftime('%m/%d/%Y')} #{entry.title}", entry.entry_id%>
+      </li>
+      <% end %>
+    </ul>
+
