@@ -6,7 +6,7 @@
 class TextMessage
   def initialize(phone, message, sms_service_name="text caster", receiving_phone=nil, sessionid = nil)
     @chatter_phone = phone
-    @message = message
+    @message = message.downcase
     @service = sms_service_name
     @sessionid = sessionid
     @our_phone = receiving_phone
@@ -64,11 +64,11 @@ class TextMessage
   end
   
   def find_brand
-    @brand = Brand.find_by_name(@message.downcase)
+    @brand = Brand.find_by_name(@message)
   end
   
   def set_tag
-    @tag = Tag.find_by_name(@message.downcase)
+    @tag = Tag.find_by_name(@message)
   end
   
   def set_action
