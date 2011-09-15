@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110822195919) do
+ActiveRecord::Schema.define(:version => 20110915042353) do
 
   create_table "brand_admins", :force => true do |t|
     t.integer  "user_id"
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(:version => 20110822195919) do
     t.string   "state"
     t.string   "zip"
     t.string   "country"
-    t.integer  "phone"
+    t.string   "phone"
     t.string   "sms_about"
     t.datetime "created_at"
     t.datetime "updated_at"
