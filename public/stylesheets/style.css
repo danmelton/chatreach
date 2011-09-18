@@ -866,6 +866,16 @@ ul#submenu {
 #search_created_at_less_than_4i {width: 50px;}
 #search_created_at_less_than_5i {width: 50px;}
 
+#time_time1_1i {width: 60px;}
+#time_time1_2i {width: 70px;}
+#time_time1_3i {width: 50px;}
+
+#time_time2_1i {width: 60px;}
+#time_time2_2i {width: 70px;}
+#time_time2_3i {width: 50px;}
+
+
+
 /******************************/
 
 #help_pane{
@@ -1086,4 +1096,6 @@ ul#report {
 ul#report b{
 	color: black;
 }
+
+
 

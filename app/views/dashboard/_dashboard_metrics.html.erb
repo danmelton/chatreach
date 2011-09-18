@@ -1,5 +1,11 @@
 <h1>Welcome to Chatreach!</h1>
-<h2>Funnel Metrics for the Past 30 Days</h2>
+<h2>Funnel Metrics for the Past <%=@dashboard.time_elapsed%> Days</h2>
+<% form_for "dashboard", :action => "index", :method => :post do |f| -%>
+<%=date_select("time", "time1", :default => @dashboard.time1, :start_year => TextHistory.first.created_at.year, :end_year => Time.now.year)%> to   
+<%=date_select("time", "time2", :default => @dashboard.time2, :start_year => TextHistory.first.created_at.year, :end_year => Time.now.year)%> 
+<%= f.submit "Change Date", :value=>"Go", :class=>"softButton"%> 
+<% end -%>
+
 <ul>
   <li><span class="title"><%= @dashboard.text_history.size%></span> Texts</li>  
   <li><span class="title"><%= @dashboard.texters.size%></span> Texters</li>
@@ -9,5 +15,5 @@
   <li><span class="title"><%=@dashboard.text_referrals.size.size%></span> Texters requesting a referral</li>    
 </ul>
 <% if @dashboard.text_referrals.size.size > 5%>
-<p><h2>Over the last 30 days, you've helped <span class="title"><%=@dashboard.text_referrals.size.size%></span> texters find a referral. That's awesome!</h2></p>
+<p><h2>Over the last <span class="title"><%=@dashboard.time_elapsed%> days</span>, you've helped <span class="title"><%=@dashboard.text_referrals.size.size%></span> texters find a referral. That's awesome!</h2></p>
 <% end %>
