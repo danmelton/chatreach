@@ -19,7 +19,14 @@ We recommend using Ruby Version Manager.
     git clone git@github.com:danmelton/chatreach.git
     cd chatreach
     bundle install
-    
+    rake db:migrate
+
+To get Seed Data:
+
+    rake db:reset
+    or
+    rake db:seed
+
 Status
 -------
 
