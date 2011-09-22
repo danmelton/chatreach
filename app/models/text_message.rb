@@ -160,7 +160,7 @@ class TextMessage
   def tag_actions
     actions = tag_action_array
     f = actions.map {|x| x.category.name}
-    f << "get help"
+    f << "get help" unless @brand.organizations.tagged_with(@tag.name).blank?
     @actions = f.to_sentence(:words_connector => ', ', :last_word_connector => ' or ', :two_words_connector =>' or ')
   end
   

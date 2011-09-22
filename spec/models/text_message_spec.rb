@@ -129,13 +129,28 @@ describe TextMessage do
       s.response.should == s.tag_list.join(", ")
     end
     
-    it 'should return list of actions' do
+    it 'should return list of actions with help' do
+      stub_request(:get, "http://maps.google.com/maps/api/geocode/json?address=1000%20S%20Van%20Ness,%20San%20Francisco,%20CA,%2094110,%20USA&language=en&sensor=false").
+        with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
+        to_return(:status => 200, :body => fixture('google_maps'), :headers => {})      
+      org = Factory(:organization, :tag_list => @text_content.tag.name, :brands => [@brand])
       s = TextMessage.new(@session.chatter.phone, @text_content.tag.name)
       s.tag_actions
       s.actions.should == "#{@text_content.category.name} or get help"
     end
     
+    it 'should return list of actions without help if no tag' do
+      s = TextMessage.new(@session.chatter.phone, @text_content.tag.name)
+      s.tag_actions
+      s.actions.should == "#{@text_content.category.name}"
+    end
+    
     it 'should return list of actions in response to tag' do
+      stub_request(:get, "http://maps.google.com/maps/api/geocode/json?address=1000%20S%20Van%20Ness,%20San%20Francisco,%20CA,%2094110,%20USA&language=en&sensor=false").
+        with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
+        to_return(:status => 200, :body => fixture('google_maps'), :headers => {})      
+      org = Factory(:organization, :tag_list => @text_content.tag.name, :brands => [@brand])
+      
       s = TextMessage.new(@session.chatter.phone, @text_content.tag.name)
       lambda {
         s.is_tag
@@ -153,6 +168,11 @@ describe TextMessage do
     end
     
     it 'should return list of actions in response if its a tag typoe' do
+      stub_request(:get, "http://maps.google.com/maps/api/geocode/json?address=1000%20S%20Van%20Ness,%20San%20Francisco,%20CA,%2094110,%20USA&language=en&sensor=false").
+        with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
+        to_return(:status => 200, :body => fixture('google_maps'), :headers => {})      
+      org = Factory(:organization, :tag_list => @text_content.tag.name, :brands => [@brand])
+      
       s = TextMessage.new(@session.chatter.phone, Tag.first.tag_typos.first.typo)
       lambda {
         s.is_typo
