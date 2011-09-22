@@ -17,14 +17,15 @@
   	<th>Action</th>
     <th>Response</th>
     <th>Views</th>
-  	<th>Actions</th>
   	<th>Missing Org?</th>
+  	<th>Actions</th>
   </thead>
   <td></td>
   <td><%= f.text_field :tag_name_contains,:class=>"search_small"  %></td>
   <td><%= f.text_field :category_name_contains,:class=>"search_medium"  %></td>
   <td><%= f.text_field :response_contains,:class=>"search_small"  %></td>
   <td></td>
+  <td></td>  
   <td><%= f.submit "Submit", :value=>"Search", :class=>"softButton"%></td>
   
 <% @text_contents.each do |text_content| %>
