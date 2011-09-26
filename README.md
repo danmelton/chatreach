@@ -7,7 +7,7 @@ An open source tool built in Ruby on Rails for social service agencies to provid
 
 
 Getting Started Guide
-------------
+-------------
 
 http://chatreachwiki.pbworks.com/
 
