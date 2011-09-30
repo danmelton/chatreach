@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110915042353) do
+ActiveRecord::Schema.define(:version => 20110930144605) do
 
   create_table "brand_admins", :force => true do |t|
     t.integer  "user_id"
@@ -138,12 +138,12 @@ ActiveRecord::Schema.define(:version => 20110915042353) do
   create_table "text_histories", :force => true do |t|
     t.integer  "text_session_id"
     t.integer  "tag_id"
-    t.string   "text"
-    t.string   "response"
-    t.string   "text_type"
+    t.text     "text",            :limit => 255
+    t.text     "response",        :limit => 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "flag",            :default => false
+    t.string   "text_type"
+    t.boolean  "flag",                           :default => false
     t.integer  "category_id"
     t.integer  "text_content_id"
   end

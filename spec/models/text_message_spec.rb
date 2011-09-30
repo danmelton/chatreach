@@ -123,7 +123,7 @@ describe TextMessage do
       s.response.should == "text this in"
     end
     
-    it 'should return list' do
+    it 'should return list for brands text contents' do
       s = TextMessage.new(@session.chatter.phone, "list")
       s.is_list
       s.response.should == s.tag_list.join(", ")
@@ -202,6 +202,16 @@ describe TextMessage do
       s = TextMessage.new(rand(10000), @text_content.category.name)
       s.action_text
       s.response.should == @brand.welcome.setting
+      lambda {
+        s.is_action
+      }.should change(TextHistory, :count).by(1)
+    end
+    
+    it 'should return text of action when a tag is also present but has no text content' do
+      Factory(:tag, :name=>@text_content.category.name)
+      s = TextMessage.new(@session.chatter.phone, @text_content.category.name)
+      s.get_response.should == @text_content.response
+
       lambda {
         s.is_action
       }.should change(TextHistory, :count).by(1)

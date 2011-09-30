@@ -149,9 +149,11 @@ class TextMessage
       if @actions.include?('no action')
         @response = tag_action_array.last.response
         add_history('tag', @tag, tag_action_array.last.category )
-      else
+      elsif !@actions.blank?
         @response = "Respond with #{@actions}"
         add_history('tag', @tag)
+      else
+        return false
       end
       return true
     end
@@ -178,7 +180,7 @@ class TextMessage
   
   def action_text
     if !@session.text_histories.blank?
-      @tag = @session.text_histories.last.tag
+      @tag = @session.text_histories.last.tag      
       @text_content = TextContent.where(:tag_id => @tag.id, :category_id => @action.id, :brand_id => @brand.id).first
       @response = @text_content.response
     else
