@@ -207,6 +207,16 @@ describe TextMessage do
       }.should change(TextHistory, :count).by(1)
     end
     
+    it 'should return text of action when a tag is also present but has no text content' do
+      Factory(:tag, :name=>@text_content.category.name)
+      s = TextMessage.new(@session.chatter.phone, @text_content.category.name)
+      s.get_response.should == @text_content.response
+
+      lambda {
+        s.is_action
+      }.should change(TextHistory, :count).by(1)
+    end
+    
     it 'should return info not found text for brand when nothing is found' do
       s = TextMessage.new(@session.chatter.phone, "bla")
       lambda {
