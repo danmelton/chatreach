@@ -123,7 +123,7 @@ describe TextMessage do
       s.response.should == "text this in"
     end
     
-    it 'should return list' do
+    it 'should return list for brands text contents' do
       s = TextMessage.new(@session.chatter.phone, "list")
       s.is_list
       s.response.should == s.tag_list.join(", ")
