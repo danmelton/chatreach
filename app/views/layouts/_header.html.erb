@@ -16,11 +16,13 @@
       <li class="link_item <%if params[:controller]=="users"%>active<% end %>"><%= link_to "Users", users_path%></li>
       <li class="link_item <%if params[:controller]=="texts"%>active<% end %>"><%= link_to "Texts", texts_path%></li>      
       <li class="link_item"><%= link_to "Help", "http://chatreachwiki.pbworks.com", :target => "_blank"%></li>                              
+      <li><%= link_to "Submit an Issue", "http://www.github.com/danmelton/chatreach/issues"%></li>            
       <li class="link_item"><%= link_to "Log Out", '/sign_out'%></li>
+      
 	<% else %>
-	  <li class="link_item"><%= link_to "Main", root_url%></li>
-      <li><a href="/login/about">About</a></li>
-      <li><a href="/login/contact">Contact</a></li>	
+	  <li class="link_item"><%= link_to "Wiki", "http://chatreachwiki.pbworks.com"%></li>
+      <li><%= link_to "GitHub Code", "http://www.github.com/danmelton/chatreach"%></li>
+      <li><%= link_to "Submit an Issue", "http://www.github.com/danmelton/chatreach/issues"%></li>      
 	<% end %>
     </ul>
 

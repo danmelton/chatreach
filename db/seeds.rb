@@ -1,10 +1,18 @@
-require 'factory_girl'
-require 'faker'
-require 'factory_girl_rails'
-require 'webmock'
-require 'rspec/rails'
+if Rails.env=='production'
+  puts "Adding Admin"
+  User.create(:email => "admin@example.com", :password => "admin")
+  puts "Adding Brand"
+  brand = Brand.create(:name => 'Chatreach')
+  puts "Updating Brand Settings"
+end
 
 if Rails.env!='production'
+  
+  require 'factory_girl'
+  require 'faker'
+  require 'factory_girl_rails'
+  require 'webmock'
+  require 'rspec/rails'
   
   puts "Making some Fakers!"
 
