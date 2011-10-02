@@ -20,7 +20,11 @@ class CategoriesController < InheritedResources::Base
       redirect_to new_category_path
     end
   end
-  
+
+  def update
+    update! {categories_path}
+  end  
+    
   private
     
   def brand_admin
