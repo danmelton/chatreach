@@ -5,6 +5,7 @@ class CreateCategories < ActiveRecord::Migration
 
       t.timestamps
     end
+    Category.create(:name => "no action")
   end
 
   def self.down
