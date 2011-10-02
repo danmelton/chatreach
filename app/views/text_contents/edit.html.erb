@@ -1,11 +1,13 @@
-
-
 <div class="blue_container">
 <div class="innerBox span-15">
 <h1>Edit Text Content</h1>
 <div class="directions">
   <p>This information is what your clients will as text messages.</p>
 </div>
+<ul id="submenu" class="links border">
+  <li><%= link_to "All Text Contents", text_contents_path%></li>
+  <li class="last"><%= link_to "New Content Item", new_text_content_path%></li>
+</ul>
 
 <fieldset>
 	<legend>Details</legend>
