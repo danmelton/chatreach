@@ -180,11 +180,11 @@ class TextMessage
   
   def action_text
     if !@session.text_histories.blank?
-      @tag = @session.text_histories.last.tag      
+      @tag = @session.text_histories.where("tag_id is NOT NULL").last.tag
       @text_content = TextContent.where(:tag_id => @tag.id, :category_id => @action.id, :brand_id => @brand.id).first
       @response = @text_content.response
     else
-      @response = @brand.welcome.setting
+      @response = @brand.info_not_found
     end
   end
   
