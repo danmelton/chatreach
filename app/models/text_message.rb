@@ -184,7 +184,7 @@ class TextMessage
       @text_content = TextContent.where(:tag_id => @tag.id, :category_id => @action.id, :brand_id => @brand.id).first
       @response = @text_content.response
     else
-      @response = @brand.info_not_found
+      @response = @brand.info_not_found.setting
     end
   end
   

@@ -201,7 +201,7 @@ describe TextMessage do
     it 'should return text of action when a text history session is not found' do
       s = TextMessage.new(rand(10000), @text_content.category.name)
       s.action_text
-      s.response.should == @brand.welcome.setting
+      s.response.should == @brand.info_not_found.setting
       lambda {
         s.is_action
       }.should change(TextHistory, :count).by(1)

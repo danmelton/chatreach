@@ -119,7 +119,7 @@ describe CategoriesController do
       it "for update" do
         put :update, :id => @category.id, :category => {:name => "love"}
         Category.find(@category.id).name.should == "love"
-        response.should redirect_to category_path(@category)
+        response.should redirect_to categories_path
       end
       
       it "for destroy" do
@@ -174,7 +174,7 @@ describe CategoriesController do
       it "for update" do
         put :update, :id => @category.id, :category => {:name => "love"}
         Category.find(@category.id).name.should == "love"
-        response.should redirect_to category_path(@category)
+        response.should redirect_to categories_path
       end
       
       it "for destroy" do
