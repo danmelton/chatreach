@@ -19,6 +19,7 @@ $(document).ready(function() {
   <thead>
     <th>Session ID</th>
     <th>Brand</th>
+    <th>Date</th>
     <th>Tag</th>
     <th>Action</th>
 	  <th>Text</th>	  
@@ -30,7 +31,8 @@ $(document).ready(function() {
   <% session.text_histories.each do |history|%>
   <tr>  
   <td><%=session.id%></td>
-  <td><%=session.brand.name%></td>  
+  <td><%=session.brand.name%></td>
+  <td><%=history.created_at.strftime("%Y-%m-%d")%></td>    
   <td><%=history.tag.name unless history.tag.nil? %></td>
   <td><%=history.category.name unless history.category.nil?%></td>  
   <td><%=history.text%></td>  
