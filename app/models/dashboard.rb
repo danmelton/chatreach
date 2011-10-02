@@ -1,9 +1,10 @@
 require 'open-uri'
 class Dashboard
   
-  def initialize(time1 = 30.days.ago, time2=Time.now)
+  def initialize(brand=nil, time1 = 30.days.ago, time2=Time.now)
     @time1 = time1.to_time
     @time2 = time2.to_time
+    @brand = brand
   end
   
   def get_started?
@@ -12,6 +13,10 @@ class Dashboard
     else
       true
     end
+  end
+  
+  def brand
+    @brand
   end
   
   def time1
@@ -59,11 +64,19 @@ class Dashboard
   end
   
   def text_history
-    TextHistory.where("created_at > '#{@time1}' and created_at < '#{@time2}'")
+    if @brand
+      TextHistory.includes(:text_session).where("text_sessions.brand_id = #{@brand.id} and text_histories.created_at > '#{@time1}' and text_histories.created_at < '#{@time2}'")
+    else
+      TextHistory.includes(:text_session).where("text_histories.created_at > '#{@time1}' and text_histories.created_at < '#{@time2}'")
+    end
   end
   
   def group_texters
-    TextHistory.includes(:text_session).where("text_histories.created_at > '#{@time1}' and text_histories.created_at < '#{@time2}'").group("text_sessions.chatter_id")
+    if @brand
+      TextHistory.includes(:text_session).where("text_sessions.brand_id = #{@brand.id} and text_histories.created_at > '#{@time1}' and text_histories.created_at < '#{@time2}'").group("text_sessions.chatter_id")
+    else
+      TextHistory.includes(:text_session).where("text_histories.created_at > '#{@time1}' and text_histories.created_at < '#{@time2}'").group("text_sessions.chatter_id")
+    end
   end
   
   def texters
@@ -83,11 +96,19 @@ class Dashboard
   end
   
   def new_chatters
-    Chatter.where("created_at > '#{@time1}' and created_at < '#{@time2}'")
+    if @brand
+      Chatter.includes(:text_sessions).where("text_sessions.brand_id = #{@brand.id} and chatters.created_at > '#{@time1}' and chatters.created_at < '#{@time2}'")
+    else
+      Chatter.where("created_at > '#{@time1}' and created_at < '#{@time2}'")
+    end
   end
   
   def text_referrals
-    TextHistory.includes(:text_session).where("text_histories.created_at > '#{@time1}' and text_histories.created_at < '#{@time2}' and text_type='help'").group("text_sessions.chatter_id")    
+    if @brand
+      TextHistory.includes(:text_session).where("text_sessions.brand_id =#{@brand.id} and text_histories.created_at > '#{@time1}' and text_histories.created_at < '#{@time2}' and text_type='help'").group("text_sessions.chatter_id")        
+    else
+      TextHistory.includes(:text_session).where("text_histories.created_at > '#{@time1}' and text_histories.created_at < '#{@time2}' and text_type='help'").group("text_sessions.chatter_id")    
+    end
   end
   
 end
