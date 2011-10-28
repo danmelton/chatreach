@@ -11,6 +11,8 @@
     <th>Brand</th>
     <th>Date</th>
     <th>Text</th>
+    <th>Tag</th>
+    <th>action</th>    
 	  <th>Response</th>
 	  <th>Text Type</th>	  
 	  <th>Flagged?</th>
@@ -19,6 +21,8 @@
   <td></td>
   <td></td>
   <td><%= f.text_field :text_contains,:class=>"search_medium" %></td>
+  <td><%= f.text_field :tag_name_contains,:class=>"search_medium" %></td>  
+  <td><%= f.text_field :category_name_contains,:class=>"search_medium" %></td>    
   <td><%= f.text_field :response_contains,:class=>"search_medium" %></td>
   <td><%= f.text_field :text_type_contains,:class=>"search_medium" %></td>  
   <td><%= f.check_box :flag_is_true%></td>
@@ -29,6 +33,16 @@
   <td><%=text.text_session.brand.name%></td>
   <td><%=text.created_at.strftime("%Y-%m-%d")%>
   <td><%=text.text%></td>
+  <td>
+  <% if text.tag_id%>
+    <%=text.tag.name%>
+  <% end %>
+  </td>
+  <td>
+    <% if text.category_id%>
+      <%=text.category.name%>      
+    <% end %>
+  </td>
   <td><%=text.response%></td>  
   <td><%=text.text_type%></td>    
   <td><%=text.flag%></td>
