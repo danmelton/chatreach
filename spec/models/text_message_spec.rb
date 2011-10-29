@@ -217,6 +217,26 @@ describe TextMessage do
       }.should change(TextHistory, :count).by(1)
     end
     
+    it 'should scan the text to see if it can find a tag match' do
+      text = "what is a #{@text_content.tag.name}?"
+      s = TextMessage.new(@session.chatter.phone,text)
+      s.is_tag_in_text
+      s.response.should == "Respond with #{@text_content.category.name}"    
+      s = TextMessage.new(@session.chatter.phone,text)
+      s.get_response
+      s.response.should == "Respond with #{@text_content.category.name}"      
+    end
+    
+    it 'should scan the text to see if it can find an action match' do
+      text = "what is a #{@text_content.category.name}?"
+      s = TextMessage.new(@session.chatter.phone,text)
+      s.is_action_in_text
+      s.response.should == @text_content.response
+      s = TextMessage.new(@session.chatter.phone,text)
+      s.get_response
+      s.response.should == @text_content.response
+    end
+    
     it 'should return info not found text for brand when nothing is found' do
       s = TextMessage.new(@session.chatter.phone, "bla")
       lambda {

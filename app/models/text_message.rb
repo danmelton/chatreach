@@ -113,6 +113,8 @@ class TextMessage
     elsif is_typo
     elsif is_next
     elsif is_help
+    elsif is_tag_in_text
+    elsif is_action_in_text
     else not_found
     end
     @response
@@ -141,6 +143,10 @@ class TextMessage
   
   def tag_list
     @brand.text_contents.joins(:tag).map { |x| x.tag.name}.sort
+  end
+  
+  def action_list
+    @brand.text_contents.joins(:category).map { |x| x.category.name}.sort
   end
 
   def is_tag
@@ -260,4 +266,22 @@ class TextMessage
     org_list
   end
   
+  def is_tag_in_text
+    # grab a list of tags
+    tag = tag_list.detect { |tag| @message.downcase.include?(tag.downcase)}
+    if tag
+      @tag = Tag.where(:name => tag).first
+      get_response
+    end
+  end
+  
+  def is_action_in_text
+    # grab a list of actions
+    action = action_list.detect { |action| @message.downcase.include?(action.downcase)}
+    if action
+      @action = Category.where(:name => action).first
+      get_response
+    end
+  end
+    
 end
