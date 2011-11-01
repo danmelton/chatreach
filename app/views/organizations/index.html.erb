@@ -48,7 +48,7 @@ $(document).ready(function() {
     <td><%= org.zip %></td>    
     <td><%= org.sms_about[0..50] unless org.sms_about.nil? %></td>    
     <td><%= org.tag_list%></td>
-    <% if @brand_admin or current_user.admin?%>
+    <% if !current_user.brand_admins.blank? or current_user.admin?%>
       <td><%= link_to 'Edit', edit_organization_path(org) %> | <%= link_to 'Destroy', organization_path(org), :confirm => 'Are you sure?', :method => :delete %></td>      
     <% end %>
   </tr>

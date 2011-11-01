@@ -18,11 +18,7 @@ class OrganizationsController < InheritedResources::Base
     
   def brand_admin
     if !admin? 
-      brand = Brand.find(session[:brand])
-      if !brand.admins.include?(current_user)
-        @brand_admin = true 
-        redirect_to :back
-      end
+      @brand_admin = !current_user.brand_admins.blank?
     end
   end
 end
