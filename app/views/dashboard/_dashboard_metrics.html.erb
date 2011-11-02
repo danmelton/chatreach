@@ -1,5 +1,5 @@
 <h1>Welcome to Chatreach!</h1>
-<h2>Funnel Metrics for the Past <%=@dashboard.time_elapsed%> Days</h2>
+<h2><%=@dashboard.brand.name.camelcase%> Funnel Metrics for the Past <%=@dashboard.time_elapsed%> Days</h2>
 <% form_for "dashboard", :action => "index", :method => :post do |f| -%>
 <%=date_select("time", "time1", :default => @dashboard.time1, :start_year => TextHistory.first.created_at.year, :end_year => Time.now.year)%> to   
 <%=date_select("time", "time2", :default => @dashboard.time2, :start_year => TextHistory.first.created_at.year, :end_year => Time.now.year)%> 

@@ -1,6 +1,6 @@
 <div id="toolbar">
 	<% Brand.all.each do |brand| %>
-  <div class="brand_inner_icon rollover <% if session[:brand]==brand.id %> active_icon <%end%>">
+  <div class="brand_inner_icon rollover <% if session[:brand]==brand.id.to_s %> active_icon <%end%>">
     <%= link_to brand.name, brand_path(brand) %>
   </div>
 	<% end %> 
