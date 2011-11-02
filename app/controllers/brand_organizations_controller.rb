@@ -15,8 +15,7 @@ class BrandOrganizationsController < InheritedResources::Base
     
   def brand_admin
     if !admin? 
-      brand = Brand.find(params[:brand_id])
-      if !brand.admins.include?(current_user) 
+      if current_user.brands.blank?
         redirect_to :back
       end
     end
