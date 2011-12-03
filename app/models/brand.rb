@@ -43,8 +43,12 @@ class Brand < ActiveRecord::Base
     brand_settings.where(:name => "phone_number").first    
   end
   
+  def list_tags
+    brand_settings.where(:name => "list_tags").first    
+  end
+  
   def build_brand_settings
-    ["welcome","organization_not_found","info_not_found", "distance_for_organization", "provider","phone_number"].each do |setting|
+    ["welcome","organization_not_found","info_not_found", "distance_for_organization", "provider","phone_number", "list_tags"].each do |setting|
       brand_settings.create(:name => setting)
     end
     brand_settings

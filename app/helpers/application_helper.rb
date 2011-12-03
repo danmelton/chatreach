@@ -58,6 +58,8 @@ module ApplicationHelper
       "SMS Provider"      
     when "phone_number"
       "Phone Number or Short Code"        
+    when "list_tags"
+      "List Tags for List Response Feature"        
     when "api_key"
       "API Key if needed"      
     when "provider_secret_key"
@@ -73,6 +75,8 @@ module ApplicationHelper
       ff.text_area :setting, :class => "counting expanding #{ff.object.name}", :id => ff.object.name, :maxLength=>"140"
     when "info_not_found"                                                                            
       ff.text_area :setting, :class => "counting expanding #{ff.object.name}", :id => ff.object.name, :maxLength=>"140"
+    when "list_tags"                                                                            
+      ff.text_area :setting, :class => "counting expanding #{ff.object.name}", :id => ff.object.name, :maxLength=>"140"
     when "provider"
       ff.select :setting, [["Select a Provider",""],["Text Caster", "Text Caster"], ["Tropos", "Tropos"], ["Twilio", "Twilio"]]
     else
@@ -87,6 +91,8 @@ module ApplicationHelper
     when "clinic_not_found"
       '<p class="charLeft">Characters Left: <span id="' + ff.object.name + 'Down"></span>'
     when "info_not_found"  
+      '<p class="charLeft">Characters Left: <span id="' + ff.object.name + 'Down"></span>'
+    when "list_tags"  
       '<p class="charLeft">Characters Left: <span id="' + ff.object.name + 'Down"></span>'
     else
     end

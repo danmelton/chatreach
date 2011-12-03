@@ -17,8 +17,10 @@ class OrganizationsController < InheritedResources::Base
   private
     
   def brand_admin
-    if !admin? 
-      @brand_admin = !current_user.brand_admins.blank?
+    if admin?
+    elsif !current_user.brand_admins.blank?
+    else
+      redirect_to :back
     end
   end
 end

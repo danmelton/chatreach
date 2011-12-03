@@ -51,10 +51,11 @@ describe Brand do
       @brand.respond_to?(:distance_for_organization).should be_true            
       @brand.respond_to?(:provider).should be_true      
       @brand.respond_to?(:phone_number).should be_true      
+      @brand.respond_to?(:list_tags).should be_true
     end
     
     it 'should build brand settings on create' do
-      @brand.brand_settings.size.should == 6
+      @brand.brand_settings.size.should == 7
       @brand.welcome.setting.should == nil
     end
     
@@ -62,7 +63,7 @@ describe Brand do
   
   context 'destroy' do
     before do
-      stub_request(:get, "http://maps.google.com/maps/api/geocode/json?address=1000%20S%20Van%20Ness,%20San%20Francisco,%20CA,%2094110,%20USA&language=en&sensor=false").
+      stub_request(:get, "http://maps.googleapis.com/maps/api/geocode/json?address=1000%20S%20Van%20Ness,%20San%20Francisco,%20CA,%2094110,%20USA&language=en&sensor=false").
         with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
         to_return(:status => 200, :body => fixture('google_maps'), :headers => {})
     end
@@ -70,7 +71,7 @@ describe Brand do
       lambda {@brand.destroy}.should change(BrandAdmin, :count).by(-2)
     end
     it 'deletes brand_settings' do
-      lambda {@brand.destroy}.should change(BrandSetting, :count).by(-6)
+      lambda {@brand.destroy}.should change(BrandSetting, :count).by(-7)
     end
     it 'deletes brand_organizations' do
       @brand.organizations << Factory(:organization)

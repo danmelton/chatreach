@@ -124,13 +124,14 @@ describe TextMessage do
     end
     
     it 'should return list for brands text contents' do
+      @brand.list_tags.update_attributes(:setting => "tag1,tag2,tag3")
       s = TextMessage.new(@session.chatter.phone, "list")
       s.is_list
-      s.response.should == s.tag_list.join(", ")
+      s.response.should == @brand.list_tags.setting
     end
     
     it 'should return list of actions with help' do
-      stub_request(:get, "http://maps.google.com/maps/api/geocode/json?address=1000%20S%20Van%20Ness,%20San%20Francisco,%20CA,%2094110,%20USA&language=en&sensor=false").
+      stub_request(:get, "http://maps.googleapis.com/maps/api/geocode/json?address=1000%20S%20Van%20Ness,%20San%20Francisco,%20CA,%2094110,%20USA&language=en&sensor=false").
         with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
         to_return(:status => 200, :body => fixture('google_maps'), :headers => {})      
       org = Factory(:organization, :tag_list => @text_content.tag.name, :brands => [@brand])
@@ -146,7 +147,7 @@ describe TextMessage do
     end
     
     it 'should return list of actions in response to tag' do
-      stub_request(:get, "http://maps.google.com/maps/api/geocode/json?address=1000%20S%20Van%20Ness,%20San%20Francisco,%20CA,%2094110,%20USA&language=en&sensor=false").
+      stub_request(:get, "http://maps.googleapis.com/maps/api/geocode/json?address=1000%20S%20Van%20Ness,%20San%20Francisco,%20CA,%2094110,%20USA&language=en&sensor=false").
         with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
         to_return(:status => 200, :body => fixture('google_maps'), :headers => {})      
       org = Factory(:organization, :tag_list => @text_content.tag.name, :brands => [@brand])
@@ -168,7 +169,7 @@ describe TextMessage do
     end
     
     it 'should return list of actions in response if its a tag typoe' do
-      stub_request(:get, "http://maps.google.com/maps/api/geocode/json?address=1000%20S%20Van%20Ness,%20San%20Francisco,%20CA,%2094110,%20USA&language=en&sensor=false").
+      stub_request(:get, "http://maps.googleapis.com/maps/api/geocode/json?address=1000%20S%20Van%20Ness,%20San%20Francisco,%20CA,%2094110,%20USA&language=en&sensor=false").
         with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
         to_return(:status => 200, :body => fixture('google_maps'), :headers => {})      
       org = Factory(:organization, :tag_list => @text_content.tag.name, :brands => [@brand])
@@ -248,13 +249,13 @@ describe TextMessage do
     
     context 'organizations' do
       before do
-        stub_request(:get, "http://maps.google.com/maps/api/geocode/json?address=94110&language=en&sensor=false").
+        stub_request(:get, "http://maps.googleapis.com/maps/api/geocode/json?address=94110&language=en&sensor=false").
           with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
           to_return(:status => 200, :body => fixture('google_maps_zip_94110'), :headers => {})
-        stub_request(:get, "http://maps.google.com/maps/api/geocode/json?address=1000%20S%20Van%20Ness,%20San%20Francisco,%20CA,%2094110,%20USA&language=en&sensor=false").
+        stub_request(:get, "http://maps.googleapis.com/maps/api/geocode/json?address=1000%20S%20Van%20Ness,%20San%20Francisco,%20CA,%2094110,%20USA&language=en&sensor=false").
           with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
           to_return(:status => 200, :body => fixture('google_maps'), :headers => {})
-        stub_request(:get, "http://maps.google.com/maps/api/geocode/json?address=66101&language=en&sensor=false").
+        stub_request(:get, "http://maps.googleapis.com/maps/api/geocode/json?address=66101&language=en&sensor=false").
           with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
           to_return(:status => 200, :body => fixture('google_maps_zip_66101'), :headers => {})
         @brand.distance_for_organization.update_attributes(:setting => 10)          
