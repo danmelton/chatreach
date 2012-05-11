@@ -5,7 +5,12 @@ class OrganizationsController < InheritedResources::Base
   layout "application"
   
   def index
-    @search = Organization.search(params[:search])
+    if session[:brand]
+      @brand = Brand.find(session[:brand])
+      @search = @brand.organizations.search(params[:search])
+    else  
+      @search = Organization.search(params[:search])
+    end
     @organizations = @search.paginate(
       :per_page => 15, :page => params[:page])
   end
