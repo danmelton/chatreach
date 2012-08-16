@@ -15,6 +15,30 @@ class OrganizationsController < InheritedResources::Base
       :per_page => 15, :page => params[:page])
   end
   
+  def create
+    @organization = Organization.new(params[:organization])
+    if session[:brand]
+      @brand = Brand.find(session[:brand])
+    else
+      @brand = Brand.first
+    end
+      
+    @organization.brands << @brand
+    
+    if @organization.save
+        flash[:success] = "Yippee, Brand created!"
+        redirect_to edit_organization_path(@organization)
+      else
+        flash[:error] = "We had a problem creating that Brand"
+        redirect_to edit_organization_path(@organization)
+    end
+    
+  end
+
+  def edit
+    edit!
+  end
+  
   def update
     update! {edit_organization_path(@organization)}
   end
