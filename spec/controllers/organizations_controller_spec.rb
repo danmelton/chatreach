@@ -168,6 +168,7 @@ describe OrganizationsController do
         }.should change(Organization, :count).by(1) 
         response.should redirect_to edit_organization_path(Organization.last)
         assert_equal Organization.last, assigns[:organization]
+        assert_equal [@brand], assigns[:organization].brands
       end
 
       it "for update" do
