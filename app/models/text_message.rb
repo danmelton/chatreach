@@ -21,6 +21,10 @@ class TextMessage
     @chatter
   end
   
+  def brand_number
+    @our_phone
+  end
+  
   def brand
     @brand
   end
@@ -58,14 +62,27 @@ class TextMessage
   # If they have, then get the brand from the last session
   
   def set_brand
-    if find_brand.nil?
-      @chatter.text_sessions.blank? ? set_brand_by_phone : set_brand_by_last_session
-    end
+    find_brand || find_brand_by_phone || set_brand_by_last_session
   end
   
   def find_brand
-    @brand = Brand.find_by_name(@message)
+    brand = Brand.where(:name => @message).count 
+    brand > 1 ? nil : @brand = Brand.find_by_name(@message)
   end
+  
+  
+  def find_brand_by_phone
+    phones = BrandSetting.where(:setting => @our_phone )
+    if phones.size > 1
+     phone =  phones.find_all { |x| x.brand.name==@message}.first
+     brand.nil? ? nil : @brand = phone.brand
+    elsif phones.size == 1
+      @brand = phones.first.brand
+    else
+      nil
+    end
+  end
+  
   
   def set_tag
     @tag = Tag.find_by_name(@message)
@@ -73,21 +90,12 @@ class TextMessage
   
   def set_action
     @action = Category.find_by_name(@message)
-  end
+  end  
   
-  # Look up brand setting by our phone, return the first brand result
-  def set_brand_by_phone
-    brand_setting = BrandSetting.where(:setting => @our_phone )
-    if brand_setting.blank?
-      @brand = Brand.all.first
-    else
-      @brand = brand_setting.first.brand
-    end
-  end
   
   # look up the chatter's last session and set the brand
   def set_brand_by_last_session
-    @brand = @chatter.text_sessions.last.brand
+    @brand = @chatter.text_sessions.blank? ? Brand.first : @chatter.text_sessions.last.brand
   end
   
   # grab today's session with the chatter, return the last one

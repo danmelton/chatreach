@@ -41,15 +41,40 @@ describe TextMessage do
       s.set_brand_by_last_session.should == @brand
     end
     
-    it "should return brand set_brand_by_phone if found our number found" do
+    it "should return brand find_brand_by_phone if found our number found" do
       @brand.brand_settings.where(:name => "phone_number").first.update_attributes(:setting => 0000000000)
       s = TextMessage.new(0000000001, @brand.name,"text_caster",0000000000)
-      s.set_brand_by_phone.should == @brand
+      s.find_brand_by_phone.should == @brand
     end
     
-    it "should return first brand if our number not found" do
+    it "should return nil if our number not found" do
       s = TextMessage.new(0000000001, @brand.name,"text_caster",0010000000)
-      s.set_brand_by_phone.should == @brand
+      s.find_brand_by_phone.should == nil
+    end
+    
+    it "find_brand should return nil if the brand has multiple phone numbers" do
+      brand = Factory(:brand, :name => @brand.name)
+      @brand.brand_settings.where(:name => "phone_number").first.update_attributes(:setting => 0000000000)
+      s = TextMessage.new(0000000001, @brand.name,"text_caster",0000000000)
+      s.find_brand.should == nil
+    end
+    
+    it "set_brand return right brand if multiple phone numbers with same brand name" do
+      brand = Factory(:brand, :name => @brand.name)
+      brand.brand_settings.where(:name => "phone_number").first.update_attributes(:setting => "0000000001")
+      @brand.brand_settings.where(:name => "phone_number").first.update_attributes(:setting => "0000000000")
+      s = TextMessage.new("0000000001", @brand.name,"text_caster","0000000000")
+      s.brand.should == @brand
+      s.brand_number.should == "0000000000"
+    end
+    
+    it "set_brand return right brand if number has multiple brands" do
+      brand = Factory(:brand)
+      brand.brand_settings.where(:name => "phone_number").first.update_attributes(:setting => "000000000")
+      @brand.brand_settings.where(:name => "phone_number").first.update_attributes(:setting => "0000000000")
+      s = TextMessage.new("0000000001", @brand.name,"text_caster","0000000000")
+      s.brand.should == @brand
+      s.brand_number.should == "0000000000"
     end
     
     it "should set_session if chatter has one today" do

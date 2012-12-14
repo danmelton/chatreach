@@ -5,12 +5,6 @@ describe Brand do
     @brand = Factory(:brand)
   end
   context 'validations' do
-    it 'uniqueness of name' do
-      attr = Factory.attributes_for(:brand)
-      Brand.create!(attr)
-      @invalid_brand = Brand.create(attr)
-      @invalid_brand.should_not be_valid
-    end  
   
     it 'downcases before saving' do
       attr = Factory.attributes_for(:brand, :name => "NOT")

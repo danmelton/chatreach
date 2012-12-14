@@ -118,7 +118,7 @@ describe OrganizationsController do
         lambda {
           post :create, :organization => Factory.attributes_for(:organization)
         }.should change(Organization, :count).by(1) 
-        response.should redirect_to organizations_path
+        response.should redirect_to edit_organization_path(Organization.last)
       end
 
       it "for update" do
